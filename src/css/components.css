@@ -473,3 +473,59 @@ details.comic-accordion .accordion-content {
   0% { rotate: -1deg; }
   100% { rotate: 1deg; }
 }
+
+/* Mobile Responsiveness Rules */
+@media (max-width: 768px) {
+  :root {
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 4rem;
+  }
+  
+  .magazine-nav {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    white-space: nowrap;
+  }
+  
+  .magazine-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-tab {
+    font-size: 1rem;
+    padding: var(--spacing-xs) 0.75rem;
+  }
+  
+  .split-section > * {
+    flex: 1 1 100%;
+    min-width: unset;
+  }
+  
+  .card-comic-panel {
+    padding: var(--spacing-sm) !important;
+  }
+  
+  .scrapbook-cluster {
+    min-height: 500px;
+  }
+  
+  .mascot-float, .doodle {
+    max-width: 80px;
+  }
+  
+  .poster-footer {
+    min-height: 60vh;
+  }
+  
+  .sticker, .stamp-red {
+    font-size: 1rem !important;
+    padding: 0.25rem 0.5rem;
+  }
+  
+  .handwritten {
+    font-size: 1rem !important;
+  }
+}
