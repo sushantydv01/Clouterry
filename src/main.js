@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const target = link.getAttribute('href');
       
       // Only transition on internal pages (not hashes or external)
-      if (target && target.includes('.html') && transitionEl) {
+      if (target && target.startsWith('/') && transitionEl) {
         e.preventDefault();
         
         // Remove loaded class to trigger wipe animation
@@ -82,12 +82,12 @@ document.addEventListener('DOMContentLoaded', () => {
           ? `<div class="card-comic-panel in-view" style="text-align: center; padding: var(--spacing-xl); background: var(--color-paper); border-color: var(--color-accent-yellow);">
               <h2 style="font-size: 3rem; margin-bottom: var(--spacing-md); color: var(--color-ink); text-shadow: var(--shadow-hard);">WELCOME TO THE ORBIT 🚀</h2>
               <p class="editorial" style="font-size: 1.5rem; margin-bottom: var(--spacing-lg); color: var(--color-ink);">Your creator profile has been received.<br/><br/>We'll reach out whenever we find a campaign that matches your content.</p>
-              <a href="/index.html" class="magnetic-btn blue">BACK TO HOME</a>
+              <a href="/" class="magnetic-btn blue">BACK TO HOME</a>
             </div>`
           : `<div class="card-comic-panel in-view" style="text-align: center; padding: var(--spacing-xl); background: var(--color-paper); border-color: var(--color-accent-blue);">
               <h2 style="font-size: 3rem; margin-bottom: var(--spacing-md); color: var(--color-ink); text-shadow: var(--shadow-hard);">MESSAGE RECEIVED ✨</h2>
               <p class="editorial" style="font-size: 1.5rem; margin-bottom: var(--spacing-lg); color: var(--color-ink);">Thanks for reaching out.<br/><br/>We'll review your campaign and get back to you soon.</p>
-              <a href="/index.html" class="magnetic-btn red">BACK TO HOME</a>
+              <a href="/" class="magnetic-btn red">BACK TO HOME</a>
             </div>`;
         form.outerHTML = successHtml;
       } else {
