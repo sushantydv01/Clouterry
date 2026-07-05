@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clouterry - For Brands</title>
+  </head>
+  <body>
+
+    <!-- Page Transition Overlay -->
+    <div id="page-transition">
+      <div class="transition-circle"></div>
+      <svg class="transition-mascot mascot-float" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="50" rx="45" ry="15" fill="none" stroke="var(--color-accent-yellow)" stroke-width="4" transform="rotate(-20 50 50)"/>
+        <circle cx="50" cy="50" r="30" fill="var(--color-accent-red)" stroke="var(--color-ink)" stroke-width="3"/>
+        <g class="mascot-eyes"><circle cx="40" cy="45" r="4" fill="var(--color-ink)"/><circle cx="60" cy="45" r="4" fill="var(--color-ink)"/></g>
+        <path d="M42,55 Q50,65 58,55" fill="none" stroke="var(--color-ink)" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+
+    <!-- Navigation Component -->
+    <nav class="magazine-nav">
+      <a href="/index.html#hero" class="nav-tab">Clouterry</a>
+      <a href="/about.html" class="nav-tab">About</a>
+      <a href="/creators.html" class="nav-tab">Creators</a>
+      <a href="/brands.html" class="nav-tab active">Brands</a>
+      <a href="/orbit.html" class="nav-tab">Orbit</a>
+    </nav>
+
+    <div class="design-system-container" style="position: relative;">
+      
+      <!-- SECTION 1 — HERO -->
+      <section id="hero" class="hero-section" style="min-height: 60vh;">
+        <div class="orbit-ring mascot-float" style="width: 800px; height: 800px; top: 30%; right: -200px; opacity: 0.1; border-color: var(--color-ink);"></div>
+        
+        <h1 class="hero-title" style="margin-top: var(--spacing-lg);">PEOPLE DON'T<br/>HATE ADS.<br/><br/>THEY HATE<br/>BAD ADS.</h1>
+        
+        <p class="editorial" style="font-size: 1.5rem; max-width: 600px; margin: 0 auto var(--spacing-lg); z-index: 2;">
+          The best sponsorships don't feel like sponsorships.<br/><br/>
+          They feel like content people genuinely want to watch. Clouterry helps brands find creators who know how to do exactly that.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div style="display: flex; gap: var(--spacing-md); justify-content: center; z-index: 10;">
+          <a href="#inquiry" class="magnetic-btn blue">LET'S FIND YOUR PEOPLE</a>
+        </div>
+
+        <!-- Scrapbook Elements -->
+        <div class="handwritten doodle-red" style="position: absolute; right: 15%; top: 35%; transform: rotate(15deg); font-size: 1.5rem;">this one actually works -></div>
+        <div class="sticker red" style="position: absolute; left: 10%; bottom: 30%; transform: rotate(-10deg);">viewer approved</div>
+        <div class="handwritten" style="position: absolute; left: 20%; top: 20%; transform: rotate(-5deg); font-size: 1.2rem;">not another boring ad</div>
+
+        <!-- Orbit Mascot -->
+        <svg class="mascot-float" style="position: absolute; left: 10%; top: 40%; width: 120px; height: 120px; z-index: 20;" viewBox="0 0 100 100">
+          <ellipse cx="50" cy="50" rx="45" ry="15" fill="none" stroke="var(--color-accent-yellow)" stroke-width="4" transform="rotate(-20 50 50)"/>
+          <circle cx="50" cy="50" r="30" fill="var(--color-accent-blue)" stroke="var(--color-ink)" stroke-width="3"/>
+          <g class="mascot-eyes"><circle cx="40" cy="45" r="4" fill="var(--color-ink)"/><circle cx="60" cy="45" r="4" fill="var(--color-ink)"/></g>
+          <path d="M42,55 Q50,65 58,55" fill="none" stroke="var(--color-ink)" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </section>
+
+      <div class="orbit-divider"></div>
+
+      <!-- SECTION 2 — WHY MOST CREATOR ADS FAIL -->
+      <section id="why-fail" class="section-wrapper">
+        <h2 class="section-title">Why Most Creator Ads Fail</h2>
+        
+        <div style="position: relative; padding: var(--spacing-xl) 0; overflow-x: auto;">
+          <svg class="orbit-path" viewBox="0 0 1200 200" style="top: 50%; left: 0; transform: translateY(-50%); width: 100%; min-width: 1000px; z-index: 0; opacity: 0.2;">
+             <path d="M0,100 L1200,100" fill="none" stroke="var(--color-ink)" stroke-width="5" stroke-dasharray="20,10"/>
+          </svg>
+
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; position: relative; z-index: 2; min-width: 1000px; gap: 1rem;">
+            <!-- Panel 1 -->
+            <div class="card-comic-panel" style="width: 180px; transform: rotate(-3deg);">
+              <h3 style="color: var(--color-ink);">Same brief.</h3>
+              <svg width="100%" height="80" viewBox="0 0 100 100"><rect x="30" y="20" width="40" height="60" fill="white" stroke="var(--color-ink)" stroke-width="3"/><line x1="40" y1="35" x2="60" y2="35" stroke="var(--color-ink)" stroke-width="2"/><line x1="40" y1="45" x2="60" y2="45" stroke="var(--color-ink)" stroke-width="2"/></svg>
+            </div>
+            <!-- Panel 2 -->
+            <div class="card-comic-panel" style="width: 180px; transform: rotate(2deg); margin-bottom: 20px;">
+              <h3 style="color: var(--color-ink);">Same talking points.</h3>
+              <p class="handwritten" style="font-size: 1rem;">"Synergistic B2B solutions..."</p>
+            </div>
+            <!-- Panel 3 -->
+            <div class="card-comic-panel" style="width: 180px; transform: rotate(-5deg); margin-bottom: -10px;">
+              <h3 style="color: var(--color-ink);">Same creator script.</h3>
+              <p class="editorial">Reading off a teleprompter with dead eyes.</p>
+            </div>
+            <!-- Panel 4 -->
+            <div class="card-comic-panel" style="width: 180px; transform: rotate(4deg); background: var(--color-accent-red); color: white;">
+              <h3>Audience skips.</h3>
+              <h1 style="margin: 0; font-size: 3rem;">+15s</h1>
+            </div>
+            <!-- Panel 5 -->
+            <div class="card-polaroid" style="width: 180px; transform: rotate(-6deg);">
+              <div style="height: 100px; background: #333; display: flex; align-items: center; justify-content: center; color: white;">
+                <h2>VOID</h2>
+              </div>
+              <h3 style="margin-top: 0.5rem; font-size: 1rem;">Campaign disappears.</h3>
+              <div class="handwritten doodle-red" style="position: absolute; top: -10px; right: -20px; font-size: 1.2rem;">waste of money!</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3 — WHAT GOOD CREATOR MARKETING LOOKS LIKE -->
+      <section id="comparison" class="section-wrapper" style="margin-top: var(--spacing-xl);">
+        <div style="text-align: center; margin-bottom: var(--spacing-xl);">
+          <h2 style="font-size: clamp(3rem, 5vw, 4rem); color: var(--color-ink); text-shadow: var(--shadow-hard-red); line-height: 1;">GOOD CREATOR ADS<br/>DON'T LOOK LIKE ADS.</h2>
+        </div>
+        
+        <div class="split-section">
+          <!-- Boring Side -->
+          <div class="scrapbook-cluster" style="min-height: 400px; padding: 2rem; border: var(--border-thick); background: white;">
+            <div class="stamp-red" style="position: absolute; top: 10px; left: 10px; transform: rotate(-5deg);">BORING</div>
+            
+            <div class="card-comic-panel scrapbook-item-1" style="background: #eee; right: 10%; top: 20%; transform: rotate(5deg);">
+              <h3 style="color: #666;">Scripted</h3>
+            </div>
+            
+            <div class="card-comic-panel scrapbook-item-2" style="background: #eee; left: 10%; top: 50%; transform: rotate(-8deg);">
+              <h3 style="color: #666;">Forced</h3>
+            </div>
+            
+            <div class="card-comic-panel scrapbook-item-3" style="background: #eee; right: 20%; bottom: 10%; transform: rotate(3deg);">
+              <h3 style="color: #666;">Generic</h3>
+            </div>
+          </div>
+
+          <!-- Watchable Side -->
+          <div class="scrapbook-cluster" style="min-height: 400px; padding: 2rem; border: var(--border-thick); background: var(--color-accent-yellow);">
+            <div class="sticker blue" style="position: absolute; top: 10px; left: 10px; transform: rotate(5deg); font-size: 2rem;">WATCHABLE</div>
+            
+            <div class="card-comic-panel scrapbook-item-1" style="border-color: var(--color-accent-blue); left: 10%; top: 30%; transform: rotate(-5deg);">
+              <h3 style="color: var(--color-accent-blue);">Creator-led</h3>
+            </div>
+            
+            <div class="card-comic-panel scrapbook-item-2" style="border-color: var(--color-accent-red); right: 10%; top: 50%; transform: rotate(8deg); z-index: 10;">
+              <h3 style="color: var(--color-accent-red);">Natural</h3>
+            </div>
+            
+            <div class="card-comic-panel scrapbook-item-3" style="border-color: var(--color-accent-green); left: 30%; bottom: 15%; transform: rotate(-3deg);">
+              <h3 style="color: var(--color-accent-green);">Entertaining</h3>
+            </div>
+            
+            <svg class="doodle doodle-red" style="position: absolute; right: 20%; top: 10%; width: 60px;" viewBox="0 0 100 100">
+               <path d="M10,50 Q50,10 90,50 Q50,90 10,50" fill="none" stroke-width="4"/>
+               <circle cx="50" cy="50" r="10" fill="var(--color-accent-blue)"/>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4 — INDUSTRIES WE'RE EXPLORING -->
+      <section id="industries" class="section-wrapper" style="margin-top: var(--spacing-xl);">
+        <h2 class="section-title">Industries We're Exploring</h2>
+        
+        <div class="scrapbook-cluster" style="min-height: 350px; background: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><circle cx=%2220%22 cy=%2220%22 r=%222%22 fill=%22%23ccc%22/></svg>') repeat; border: var(--border-thick);">
+          
+          <div class="sticker" style="position: absolute; top: 15%; left: 10%; transform: rotate(-10deg); font-size: 2rem;">BEAUTY</div>
+          <div class="sticker red" style="position: absolute; top: 25%; right: 15%; transform: rotate(15deg); font-size: 2rem;">FASHION</div>
+          <div class="sticker blue" style="position: absolute; bottom: 20%; left: 20%; transform: rotate(-5deg); font-size: 2rem;">SKINCARE</div>
+          <div class="sticker" style="position: absolute; top: 40%; left: 45%; transform: rotate(8deg); font-size: 2rem; background: var(--color-accent-green);">FOOD</div>
+          <div class="stamp-red" style="position: absolute; bottom: 15%; right: 25%; transform: rotate(12deg); background: var(--color-paper); color: var(--color-ink);">D2C</div>
+
+          <div class="card-polaroid" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(2deg); z-index: 20; width: 300px; padding: 2rem;">
+            <p class="editorial" style="font-size: 1.5rem;">We're still exploring.</p>
+            <p class="handwritten" style="font-size: 1.2rem; margin-top: 1rem;">We're looking for brands willing to build genuinely creative campaigns.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5 — HOW CLOUTERRY WORKS -->
+      <section class="section-wrapper">
+        <h2 class="section-title">How Clouterry Works</h2>
+        
+        <div style="position: relative; padding: var(--spacing-xl) 0; overflow-x: auto;">
+          <svg class="orbit-path" viewBox="0 0 1400 200" style="top: 50%; left: 0; transform: translateY(-50%); width: 100%; min-width: 1200px; z-index: 0; opacity: 0.5;">
+             <path d="M50,100 Q300,-50 700,100 T1350,100" fill="none" stroke="var(--color-ink)" stroke-width="5" stroke-dasharray="10,10"/>
+          </svg>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; min-width: 1200px; gap: 1rem;">
+            <!-- Step 1 -->
+            <div class="card-polaroid" style="transform: rotate(-5deg); width: 160px;">
+              <div style="height: 80px; background: var(--color-accent-yellow); border: var(--border-medium); display: flex; align-items: center; justify-content: center;">
+                <h1 style="font-size: 2.5rem; margin:0;">1</h1>
+              </div>
+              <h3 style="margin-top: 0.5rem; font-size: 1rem;">Brand Brief</h3>
+            </div>
+            <!-- Step 2 -->
+            <div class="card-polaroid" style="transform: rotate(3deg); width: 160px; margin-top: -50px;">
+              <div style="height: 80px; background: var(--color-accent-blue); border: var(--border-medium); display: flex; align-items: center; justify-content: center; color: white;">
+                <h1 style="font-size: 2.5rem; margin:0;">2</h1>
+              </div>
+              <h3 style="margin-top: 0.5rem; font-size: 1rem;">Creator Discovery</h3>
+            </div>
+            <!-- Step 3 -->
+            <div class="card-polaroid" style="transform: rotate(-2deg); width: 160px; margin-top: 50px;">
+              <div style="height: 80px; background: var(--color-accent-red); border: var(--border-medium); display: flex; align-items: center; justify-content: center; color: white;">
+                <h1 style="font-size: 2.5rem; margin:0;">3</h1>
+              </div>
+              <h3 style="margin-top: 0.5rem; font-size: 1rem;">Matching</h3>
+            </div>
+            <!-- Step 4 -->
+            <div class="card-polaroid" style="transform: rotate(4deg); width: 160px; margin-top: -30px;">
+              <div style="height: 80px; background: #fff; border: var(--border-medium); display: flex; align-items: center; justify-content: center;">
+                <h1 style="font-size: 2.5rem; margin:0;">4</h1>
+              </div>
+              <h3 style="margin-top: 0.5rem; font-size: 1rem;">Campaign Planning</h3>
+            </div>
+            <!-- Step 5 -->
+            <div class="card-polaroid" style="transform: rotate(-3deg); width: 160px; margin-top: 20px;">
+              <div style="height: 80px; background: var(--color-paper); border: var(--border-medium); display: flex; align-items: center; justify-content: center;">
+                <h1 style="font-size: 2.5rem; margin:0;">5</h1>
+              </div>
+              <h3 style="margin-top: 0.5rem; font-size: 1rem;">Launch</h3>
+            </div>
+            <!-- Step 6 -->
+            <div class="card-polaroid" style="transform: rotate(-6deg); width: 160px; margin-top: 10px;">
+              <div style="height: 80px; background: var(--color-accent-green); border: var(--border-medium); display: flex; align-items: center; justify-content: center; color: var(--color-ink);">
+                <h1 style="font-size: 2.5rem; margin:0;">WIN</h1>
+              </div>
+              <h3 style="margin-top: 0.5rem; font-size: 1rem;">Everyone Wins</h3>
+              <div class="sticker" style="position: absolute; top: -10px; right: -10px; font-size: 0.8rem;">APPROVED</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6 — WHAT WE CARE ABOUT -->
+      <section class="section-wrapper">
+        <div style="background-color: white; border: var(--border-thick); padding: var(--spacing-xl); position: relative;">
+          <h2 style="font-size: clamp(3rem, 6vw, 4rem); color: var(--color-ink); text-shadow: var(--shadow-hard-yellow);">We care about:</h2>
+          
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: var(--spacing-xl); margin-top: var(--spacing-md);">
+            <div class="card-cutout" style="background: var(--color-accent-yellow);">creators having creative freedom</div>
+            <div class="card-cutout" style="background: var(--color-accent-yellow);">content feeling authentic</div>
+            <div class="card-cutout" style="background: var(--color-accent-yellow);">long-term relationships</div>
+            <div class="card-cutout" style="background: var(--color-accent-yellow);">audience trust</div>
+          </div>
+
+          <h2 style="font-size: clamp(3rem, 6vw, 4rem); color: var(--color-ink); text-shadow: var(--shadow-hard-red);">We do NOT care about:</h2>
+          
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: var(--spacing-md);">
+            <div class="stamp-red" style="transform: rotate(-3deg);">forcing scripts</div>
+            <div class="stamp-red" style="transform: rotate(2deg);">fake engagement</div>
+            <div class="stamp-red" style="transform: rotate(-1deg);">boring campaigns</div>
+          </div>
+
+          <svg class="doodle doodle-red" style="position: absolute; right: 10%; top: 20%; width: 100px; transform: rotate(45deg);" viewBox="0 0 50 50">
+            <path d="M0,0 L50,50 M50,0 L0,50" fill="none" stroke-width="5"/>
+          </svg>
+        </div>
+      </section>
+
+      <!-- SECTION 7 — BRAND INQUIRY FORM -->
+      <section id="inquiry" class="section-wrapper">
+        <h2 class="section-title">Brand Inquiry Form</h2>
+        
+        <div class="card-comic-panel" style="background-color: var(--color-accent-blue); color: white; padding: var(--spacing-xl);">
+          <h2 style="font-size: 3rem; text-shadow: var(--shadow-hard); margin-bottom: var(--spacing-lg);">LET'S FIND YOUR PEOPLE.</h2>
+          
+          <form id="brand-form" action="https://formspree.io/f/xaqgvqng" method="POST">
+            <div class="split-section" style="margin-bottom: var(--spacing-md);">
+              <div class="form-group"><label style="color: white;">Brand Name</label><input type="text" name="brand_name" class="comic-input" placeholder="Company Inc." required></div>
+              <div class="form-group"><label style="color: white;">Website</label><input type="url" name="website" class="comic-input" placeholder="https://"></div>
+            </div>
+            
+            <div class="split-section" style="margin-bottom: var(--spacing-md);">
+              <div class="form-group"><label style="color: white;">Industry</label><input type="text" name="industry" class="comic-input" placeholder="Software, Fashion..." required></div>
+              <div class="form-group"><label style="color: white;">Campaign Budget</label><input type="text" name="budget" class="comic-input" placeholder="e.g. $5000"></div>
+            </div>
+
+            <div class="split-section" style="margin-bottom: var(--spacing-md);">
+              <div class="form-group"><label style="color: white;">Creators Needed</label><input type="number" name="creators_needed" class="comic-input" placeholder="e.g. 5"></div>
+              <div class="form-group"><label style="color: white;">Email</label><input type="email" name="email" class="comic-input" placeholder="marketing@domain.com" required autocomplete="email"></div>
+            </div>
+
+            <div class="form-group" style="margin-bottom: var(--spacing-lg);">
+              <label style="color: white;">Campaign Goal & Additional Notes</label>
+              <textarea name="campaign_goal" class="comic-input" rows="4" placeholder="Tell us what you want to achieve..." style="resize: vertical; font-family: var(--font-body);"></textarea>
+            </div>
+
+            <button type="submit" class="magnetic-btn red" style="font-size: 2rem;">START THE CONVERSATION</button>
+          </form>
+          
+          <!-- Decorative mascot -->
+          <svg class="mascot-float" style="position: absolute; bottom: 5%; right: 5%; width: 120px; height: 120px;" viewBox="0 0 100 100">
+            <ellipse cx="50" cy="50" rx="45" ry="15" fill="none" stroke="var(--color-accent-yellow)" stroke-width="4" transform="rotate(-20 50 50)"/>
+            <circle cx="50" cy="50" r="30" fill="var(--color-paper)" stroke="var(--color-ink)" stroke-width="3"/>
+            <g class="mascot-eyes"><circle cx="40" cy="45" r="4" fill="var(--color-ink)"/><circle cx="60" cy="45" r="4" fill="var(--color-ink)"/></g>
+            <path d="M42,55 Q50,65 58,55" fill="none" stroke="var(--color-ink)" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </section>
+
+      <!-- SECTION 8 — FAQ -->
+      <section class="section-wrapper">
+        <h2 class="section-title">FAQ</h2>
+        
+        <div style="max-width: 800px; margin: 0 auto;">
+          <details class="comic-accordion">
+            <summary>Why Clouterry?</summary>
+            <div class="accordion-content">
+              <p style="padding-top: var(--spacing-sm);">Because the internet is tired of boring ads. We connect you with creators who naturally integrate your product into content people actually want to watch.</p>
+            </div>
+          </details>
+
+          <details class="comic-accordion">
+            <summary>Do you have a creator roster?</summary>
+            <div class="accordion-content">
+              <p style="padding-top: var(--spacing-sm);">We maintain a highly curated, private orbit of creators across various niches who have proven they can make engaging, anti-corporate content.</p>
+            </div>
+          </details>
+
+          <details class="comic-accordion">
+            <summary>What industries do you work with?</summary>
+            <div class="accordion-content">
+              <p style="padding-top: var(--spacing-sm);">We are currently exploring everything from Beauty and Fashion to SaaS and D2C. If you're willing to build genuinely creative campaigns, we want to talk.</p>
+            </div>
+          </details>
+
+          <details class="comic-accordion">
+            <summary>How do campaigns work?</summary>
+            <div class="accordion-content">
+              <p style="padding-top: var(--spacing-sm);">You give us the brief and the goal. We find the perfect creator match, facilitate the creative freedom they need, and launch the campaign. No micromanaging required.</p>
+            </div>
+          </details>
+
+          <details class="comic-accordion">
+            <summary>How much does it cost?</summary>
+            <div class="accordion-content">
+              <p style="padding-top: var(--spacing-sm);">Budgets vary wildly depending on the creator and the scope of the campaign. Fill out the inquiry form above and we'll start the conversation!</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- SECTION 9 — POSTER FOOTER -->
+    <footer class="poster-footer">
+      <div class="poster-orbit-ring mascot-float"></div>
+      <div class="poster-orbit-ring" style="width: 100vw; height: 100vw; border-color: var(--color-ink); opacity: 0.1;"></div>
+      
+      <div class="sticker blue" style="position: absolute; top: 15%; left: 10%; transform: rotate(-15deg); font-size: 2rem;">JOIN US</div>
+      
+      <h2 class="poster-title" style="font-size: 12vw;">BETTER CREATORS.<br/>BETTER ADS.</h2>
+      
+      <div class="poster-subtitle" style="margin-top: 2rem; color: white;">clouterry@gmail.com</div>
+      <div class="poster-subtitle" style="margin-top: 1rem; color: white;">India</div>
+      <div class="poster-subtitle" style="margin-top: 1rem; color: var(--color-accent-yellow);">Open for collaborations.</div>
+      
+      <div class="stamp-red" style="position: absolute; bottom: 10%; right: 5%; transform: rotate(10deg); background: var(--color-paper); color: var(--color-ink);">CREATOR CLUB</div>
+      <div class="sticker" style="position: absolute; bottom: 20%; left: 10%; transform: rotate(-5deg);">NO BORING ADS</div>
+      
+      <!-- Giant Mascot -->
+      <svg class="mascot-float" style="position: absolute; top: 15%; right: 10%; width: 180px; height: 180px; z-index: 20;" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="50" rx="45" ry="15" fill="none" stroke="var(--color-accent-yellow)" stroke-width="4" transform="rotate(-20 50 50)"/>
+        <circle cx="50" cy="50" r="30" fill="var(--color-paper)" stroke="var(--color-ink)" stroke-width="3"/>
+        <g class="mascot-eyes"><circle cx="40" cy="45" r="4" fill="var(--color-ink)"/><circle cx="60" cy="45" r="4" fill="var(--color-ink)"/></g>
+        <path d="M42,55 Q50,65 58,55" fill="none" stroke="var(--color-ink)" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      
+    </footer>
+  </body>
+</html>

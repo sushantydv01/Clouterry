@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clouterry - Orbit Club</title>
+  </head>
+  <body>
+
+    <!-- Page Transition Overlay -->
+    <div id="page-transition">
+      <div class="transition-circle"></div>
+      <svg class="transition-mascot mascot-float" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="50" rx="45" ry="15" fill="none" stroke="var(--color-accent-yellow)" stroke-width="4" transform="rotate(-20 50 50)"/>
+        <circle cx="50" cy="50" r="30" fill="var(--color-accent-red)" stroke="var(--color-ink)" stroke-width="3"/>
+        <g class="mascot-eyes"><circle cx="40" cy="45" r="4" fill="var(--color-ink)"/><circle cx="60" cy="45" r="4" fill="var(--color-ink)"/></g>
+        <path d="M42,55 Q50,65 58,55" fill="none" stroke="var(--color-ink)" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+
+    <!-- Navigation Component -->
+    <nav class="magazine-nav">
+      <a href="/index.html#hero" class="nav-tab">Clouterry</a>
+      <a href="/about.html" class="nav-tab">About</a>
+      <a href="/creators.html" class="nav-tab">Creators</a>
+      <a href="/brands.html" class="nav-tab">Brands</a>
+      <a href="/orbit.html" class="nav-tab active">Orbit</a>
+    </nav>
+
+    <div class="design-system-container" style="position: relative;">
+      
+      <!-- SECTION 1 — HERO -->
+      <section id="hero" class="hero-section" style="min-height: 60vh;">
+        <div class="orbit-ring mascot-float" style="width: 800px; height: 800px; top: 30%; right: -200px; opacity: 0.1; border-color: var(--color-ink);"></div>
+        
+        <h1 class="hero-title" style="margin-top: var(--spacing-lg);">WELCOME TO<br/>THE ORBIT.</h1>
+        
+        <p class="editorial" style="font-size: 1.5rem; max-width: 600px; margin: 0 auto var(--spacing-lg); z-index: 2;">
+          A growing collection of creators, ideas, campaigns, and internet weirdness.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div style="display: flex; gap: var(--spacing-md); justify-content: center; z-index: 10;">
+          <a href="/creators.html#join" class="magnetic-btn blue">JOIN THE CLUB</a>
+        </div>
+
+        <!-- Scrapbook Elements -->
+        <div class="handwritten doodle-red" style="position: absolute; right: 25%; top: 25%; transform: rotate(-15deg); font-size: 1.5rem;">we are so back</div>
+        <div class="sticker red" style="position: absolute; left: 15%; bottom: 25%; transform: rotate(10deg);">CREATOR CLUB</div>
+        <div class="handwritten" style="position: absolute; left: 20%; top: 20%; transform: rotate(5deg); font-size: 1.2rem;">noticeboard</div>
+
+        <!-- Orbit Mascot -->
+        <svg class="mascot-float" style="position: absolute; right: 10%; top: 40%; width: 120px; height: 120px; z-index: 20;" viewBox="0 0 100 100">
+          <ellipse cx="50" cy="50" rx="45" ry="15" fill="none" stroke="var(--color-accent-blue)" stroke-width="4" transform="rotate(-20 50 50)"/>
+          <circle cx="50" cy="50" r="30" fill="var(--color-accent-yellow)" stroke="var(--color-ink)" stroke-width="3"/>
+          <g class="mascot-eyes"><circle cx="40" cy="45" r="4" fill="var(--color-ink)"/><circle cx="60" cy="45" r="4" fill="var(--color-ink)"/></g>
+          <path d="M42,55 Q50,65 58,55" fill="none" stroke="var(--color-ink)" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </section>
+
+      <div class="orbit-divider"></div>
+
+      <!-- SECTION 2 — WHAT IS THE ORBIT? -->
+      <section class="section-wrapper">
+        <div style="text-align: center; margin-bottom: var(--spacing-md);">
+          <h2 style="font-size: clamp(3rem, 5vw, 4rem); color: var(--color-ink); text-shadow: var(--shadow-hard-yellow); line-height: 1;">NOT AN AGENCY.<br/>NOT A PLATFORM.<br/>A CLUB.</h2>
+          <p class="editorial" style="font-size: 1.5rem; max-width: 700px; margin: var(--spacing-lg) auto 0;">
+            The Orbit is Clouterry's growing network of creators.<br/><br/>
+            We're building a place where creators discover opportunities and brands discover people worth watching.
+          </p>
+        </div>
+      </section>
+
+      <!-- SECTION 3 — THE WALL -->
+      <section class="section-wrapper">
+        <div class="scrapbook-cluster" style="min-height: 700px; background: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><circle cx=%2220%22 cy=%2220%22 r=%222%22 fill=%22%23ccc%22/></svg>') repeat; border: var(--border-thick);">
+          
+          <div class="card-polaroid" style="position: absolute; top: 10%; left: 10%; transform: rotate(-5deg); z-index: 10;">
+             <div style="width: 150px; height: 100px; background: var(--color-paper); border: var(--border-medium); display: flex; align-items:center; justify-content:center;">
+                <svg viewBox="0 0 50 50" width="50"><circle cx="25" cy="25" r="15" fill="none" stroke="var(--color-accent-blue)" stroke-width="4"/></svg>
+             </div>
+             <div class="polaroid-caption">making cool stuff</div>
+          </div>
+          
+          <div class="sticker red" style="position: absolute; top: 15%; right: 15%; transform: rotate(15deg); font-size: 1.5rem;">landed my first collab</div>
+          <div class="sticker blue" style="position: absolute; bottom: 25%; left: 20%; transform: rotate(-10deg); font-size: 1.5rem;">creator spotted</div>
+          <div class="stamp-red" style="position: absolute; top: 40%; right: 10%; transform: rotate(12deg); background: var(--color-paper); color: var(--color-ink);">APPROVED BY THE INTERNET</div>
+          <div class="sticker" style="position: absolute; bottom: 15%; right: 30%; transform: rotate(-5deg); font-size: 1.5rem;">open for opportunities</div>
+
+          <div class="card-cutout" style="background: var(--color-accent-yellow); color: var(--color-ink); position: absolute; top: 45%; left: 35%; transform: rotate(5deg); font-size: 2rem;">Noticeboard!</div>
+
+          <svg class="doodle doodle-red" style="position: absolute; bottom: 10%; left: 10%; width: 100px; transform: rotate(-15deg);" viewBox="0 0 50 50">
+            <path d="M0,0 L50,50 M50,0 L0,50" fill="none" stroke-width="5"/>
+          </svg>
+
+          <!-- Mascot variations -->
+          <svg class="mascot-float" style="position: absolute; top: 50%; left: 10%; width: 90px; height: 90px;" viewBox="0 0 100 100">
+            <ellipse cx="50" cy="50" rx="45" ry="15" fill="none" stroke="var(--color-accent-red)" stroke-width="4" transform="rotate(-20 50 50)"/>
+            <circle cx="50" cy="50" r="30" fill="var(--color-paper)" stroke="var(--color-ink)" stroke-width="3"/>
+            <g class="mascot-eyes"><circle cx="40" cy="45" r="4" fill="var(--color-ink)"/><circle cx="60" cy="45" r="4" fill="var(--color-ink)"/></g>
+            <path d="M42,55 Q50,65 58,55" fill="none" stroke="var(--color-ink)" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+
+        </div>
+      </section>
+
+      <!-- SECTION 4 — CREATOR TYPES -->
+      <section class="section-wrapper" style="margin-top: var(--spacing-xl);">
+        <h2 class="section-title">Creator Types</h2>
+        
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; position: relative; padding: var(--spacing-md) 0;">
+          <div class="card-comic-panel" style="width: 150px; background: var(--color-accent-blue); color: white; transform: rotate(-3deg);">
+            <h3 style="text-align: center; margin: 0;">Beauty</h3>
+          </div>
+          <div class="card-comic-panel" style="width: 150px; background: var(--color-accent-yellow); transform: rotate(4deg);">
+            <h3 style="text-align: center; margin: 0;">Fashion</h3>
+          </div>
+          <div class="card-comic-panel" style="width: 150px; background: var(--color-accent-red); color: white; transform: rotate(-2deg);">
+            <h3 style="text-align: center; margin: 0;">Food</h3>
+          </div>
+          <div class="card-comic-panel" style="width: 150px; background: var(--color-paper); transform: rotate(5deg);">
+            <h3 style="text-align: center; margin: 0;">Lifestyle</h3>
+          </div>
+          <div class="card-comic-panel" style="width: 150px; background: var(--color-accent-green); transform: rotate(-4deg);">
+            <h3 style="text-align: center; margin: 0;">College</h3>
+          </div>
+          <div class="card-comic-panel" style="width: 150px; background: white; transform: rotate(2deg);">
+            <h3 style="text-align: center; margin: 0;">Fitness</h3>
+          </div>
+          <div class="card-comic-panel" style="width: 150px; background: var(--color-accent-blue); color: white; transform: rotate(-5deg);">
+            <h3 style="text-align: center; margin: 0;">Comedy</h3>
+          </div>
+          <div class="card-comic-panel" style="width: 150px; background: var(--color-accent-yellow); transform: rotate(3deg);">
+            <h3 style="text-align: center; margin: 0;">Skincare</h3>
+          </div>
+          <div class="card-comic-panel" style="width: 150px; background: var(--color-accent-red); color: white; transform: rotate(-2deg);">
+            <h3 style="text-align: center; margin: 0;">Travel</h3>
+          </div>
+          <div class="card-comic-panel" style="width: 150px; background: #eee; transform: rotate(4deg);">
+            <h3 style="text-align: center; margin: 0;">UGC</h3>
+          </div>
+
+          <div class="handwritten doodle-red" style="position: absolute; bottom: -30px; right: 10%; font-size: 1.5rem; transform: rotate(-10deg);">No niche is too weird.</div>
+        </div>
+      </section>
+
+      <!-- SECTION 5 — FUTURE CREATOR BOARD -->
+      <section class="section-wrapper" style="margin-top: var(--spacing-xl);">
+        <div style="background-color: var(--color-accent-yellow); border: var(--border-thick); padding: var(--spacing-xl); text-align: center; position: relative;">
+          <h2 style="font-size: clamp(3rem, 5vw, 4rem); color: var(--color-ink); text-shadow: var(--shadow-hard); line-height: 1;">CREATOR BOARD<br/>COMING SOON.</h2>
+          <p class="editorial" style="font-size: 1.5rem; max-width: 600px; margin: var(--spacing-md) auto var(--spacing-xl);">
+            As more creators join Clouterry, this section will slowly fill up.
+          </p>
+
+          <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap;">
+            <!-- Placeholders -->
+            <div class="card-polaroid" style="width: 180px; transform: rotate(-3deg); filter: grayscale(100%) opacity(0.6);">
+              <div style="height: 120px; background: #eee; border: var(--border-medium);"></div>
+              <div class="stamp-red" style="position: absolute; top: 40px; left: 10px; transform: rotate(-15deg); font-size: 1rem;">Reserved.</div>
+            </div>
+            
+            <div class="card-polaroid" style="width: 180px; transform: rotate(4deg); filter: grayscale(100%) opacity(0.6);">
+              <div style="height: 120px; background: #ddd; border: var(--border-medium);"></div>
+              <div class="stamp-red" style="position: absolute; top: 40px; left: 10px; transform: rotate(10deg); font-size: 1rem;">Reserved.</div>
+            </div>
+
+            <div class="card-polaroid" style="width: 180px; transform: rotate(-5deg); filter: grayscale(100%) opacity(0.6);">
+              <div style="height: 120px; background: #ccc; border: var(--border-medium);"></div>
+              <div class="stamp-red" style="position: absolute; top: 40px; left: 10px; transform: rotate(-5deg); font-size: 1rem;">Reserved.</div>
+            </div>
+
+            <div class="card-polaroid" style="width: 180px; transform: rotate(2deg); filter: grayscale(100%) opacity(0.6);">
+              <div style="height: 120px; background: #eee; border: var(--border-medium);"></div>
+              <div class="stamp-red" style="position: absolute; top: 40px; left: 10px; transform: rotate(8deg); font-size: 1rem;">Reserved.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6 — INTERNET MANIFESTO -->
+      <section class="section-wrapper" style="margin-top: var(--spacing-xl);">
+        <h2 class="section-title">Internet Manifesto</h2>
+        
+        <div style="position: relative; padding: var(--spacing-xl) 0; overflow-x: auto;">
+          <svg class="orbit-path" viewBox="0 0 1400 200" style="top: 50%; left: 0; transform: translateY(-50%); width: 100%; min-width: 1200px; z-index: 0; opacity: 0.5;">
+             <path d="M0,100 L1400,100" fill="none" stroke="var(--color-accent-red)" stroke-width="5" stroke-dasharray="15,15"/>
+          </svg>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; min-width: 1200px; gap: 1rem;">
+            
+            <div class="card-comic-panel" style="width: 250px; transform: rotate(-3deg); background: var(--color-paper);">
+              <h2 style="color: var(--color-ink); font-size: 2.5rem; text-align: center;">GOOD CONTENT WINS.</h2>
+            </div>
+            
+            <div class="card-comic-panel" style="width: 250px; transform: rotate(4deg); background: var(--color-accent-blue); color: white;">
+              <h2 style="font-size: 2.5rem; text-align: center;">AUDIENCES ARE SMART.</h2>
+            </div>
+            
+            <div class="card-comic-panel" style="width: 250px; transform: rotate(-5deg); background: var(--color-accent-yellow);">
+              <h2 style="color: var(--color-ink); font-size: 2.5rem; text-align: center;">BORING ADS ARE A CHOICE.</h2>
+            </div>
+            
+            <div class="card-comic-panel" style="width: 250px; transform: rotate(2deg); background: var(--color-accent-green);">
+              <h2 style="color: var(--color-ink); font-size: 2.5rem; text-align: center;">CREATORS DESERVE BETTER.</h2>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7 — JOIN THE ORBIT -->
+      <section class="section-wrapper" style="text-align: center; margin-top: var(--spacing-xl);">
+        <h2 style="font-size: clamp(3rem, 5vw, 4rem); color: var(--color-ink); text-shadow: var(--shadow-hard); margin-bottom: var(--spacing-lg);">READY TO JOIN?</h2>
+        
+        <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap;">
+          <a href="/creators.html#join" class="magnetic-btn red">JOIN THE ORBIT</a>
+          <a href="/brands.html#inquiry" class="magnetic-btn">I'M A BRAND</a>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- SECTION 8 — POSTER FOOTER -->
+    <footer class="poster-footer" style="background-color: var(--color-accent-blue); color: white;">
+      <div class="poster-orbit-ring mascot-float" style="border-color: white;"></div>
+      <div class="poster-orbit-ring" style="width: 100vw; height: 100vw; border-color: white; opacity: 0.1;"></div>
+      
+      <div class="sticker" style="position: absolute; top: 15%; left: 10%; transform: rotate(-15deg); font-size: 2rem;">ORBIT CLUB</div>
+      
+      <h2 class="poster-title" style="font-size: 13vw;">SEE YOU<br/>IN ORBIT.</h2>
+      
+      <div class="poster-subtitle" style="margin-top: 2rem; color: white;">clouterry@gmail.com</div>
+      <div class="poster-subtitle" style="margin-top: 1rem; color: white;">creator club.</div>
+      <div class="poster-subtitle" style="margin-top: 1rem; color: white;">India.</div>
+      <div class="poster-subtitle" style="margin-top: 1rem; color: var(--color-accent-yellow);">open for collaborations.</div>
+      
+      <div class="stamp-red" style="position: absolute; bottom: 10%; right: 5%; transform: rotate(10deg); background: var(--color-accent-yellow); color: var(--color-ink);">CREATOR CLUB</div>
+      
+      <!-- Giant Mascot -->
+      <svg class="mascot-float" style="position: absolute; top: 20%; right: 15%; width: 180px; height: 180px; z-index: 20;" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="50" rx="45" ry="15" fill="none" stroke="var(--color-accent-yellow)" stroke-width="4" transform="rotate(-20 50 50)"/>
+        <circle cx="50" cy="50" r="30" fill="var(--color-paper)" stroke="var(--color-ink)" stroke-width="3"/>
+        <g class="mascot-eyes"><circle cx="40" cy="45" r="4" fill="var(--color-ink)"/><circle cx="60" cy="45" r="4" fill="var(--color-ink)"/></g>
+        <path d="M42,55 Q50,65 58,55" fill="none" stroke="var(--color-ink)" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      
+    </footer>
+  </body>
+</html>
