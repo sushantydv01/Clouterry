@@ -44,15 +44,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        // Optional: stop observing once revealed
-        // observer.unobserve(entry.target);
+        entry.target.classList.add('is-revealed');
+        // If it's a scribble/SVG path, trigger draw
+        if (entry.target.classList.contains('draw-in')) {
+           entry.target.style.animationPlayState = 'running';
+        }
       }
     });
   }, observerOptions);
 
   // Target elements to animate on scroll
-  const animatedElements = document.querySelectorAll('.card-comic-panel, .card-polaroid, .sticker, .stamp-red, .doodle');
+  const animatedElements = document.querySelectorAll('.reveal-mask, .draw-in');
   animatedElements.forEach(el => observer.observe(el));
 
   // Formspree Integration Logic
@@ -79,15 +81,15 @@ document.addEventListener('DOMContentLoaded', () => {
       if (response.ok) {
         // Success State
         const successHtml = type === 'creator' 
-          ? `<div class="card-comic-panel in-view" style="text-align: center; padding: var(--spacing-xl); background: var(--color-paper); border-color: var(--color-accent-yellow);">
-              <h2 style="font-size: 3rem; margin-bottom: var(--spacing-md); color: var(--color-ink); text-shadow: var(--shadow-hard);">WELCOME TO THE ORBIT 🚀</h2>
-              <p class="editorial" style="font-size: 1.5rem; margin-bottom: var(--spacing-lg); color: var(--color-ink);">Your creator profile has been received.<br/><br/>We'll reach out whenever we find a campaign that matches your content.</p>
-              <a href="/" class="magnetic-btn blue">BACK TO HOME</a>
+          ? `<div class="bento-card accent" style="text-align: center; padding: var(--spacing-xl);">
+              <h2 class="massive-text" style="color: white; margin-bottom: var(--spacing-md);">WELCOME TO THE ORBIT</h2>
+              <p class="editorial" style="font-size: 1.5rem; margin-bottom: var(--spacing-lg); color: white;">Your creator profile has been received.<br/><br/>We'll reach out whenever we find a campaign that matches your content.</p>
+              <a href="/" class="magnetic-btn dark">BACK TO HOME</a>
             </div>`
-          : `<div class="card-comic-panel in-view" style="text-align: center; padding: var(--spacing-xl); background: var(--color-paper); border-color: var(--color-accent-blue);">
-              <h2 style="font-size: 3rem; margin-bottom: var(--spacing-md); color: var(--color-ink); text-shadow: var(--shadow-hard);">MESSAGE RECEIVED ✨</h2>
-              <p class="editorial" style="font-size: 1.5rem; margin-bottom: var(--spacing-lg); color: var(--color-ink);">Thanks for reaching out.<br/><br/>We'll review your campaign and get back to you soon.</p>
-              <a href="/" class="magnetic-btn red">BACK TO HOME</a>
+          : `<div class="bento-card dark" style="text-align: center; padding: var(--spacing-xl);">
+              <h2 class="massive-text" style="color: white; margin-bottom: var(--spacing-md);">MESSAGE RECEIVED</h2>
+              <p class="editorial" style="font-size: 1.5rem; margin-bottom: var(--spacing-lg); color: rgba(255,255,255,0.7);">Thanks for reaching out.<br/><br/>We'll review your campaign and get back to you soon.</p>
+              <a href="/" class="magnetic-btn accent">BACK TO HOME</a>
             </div>`;
         form.outerHTML = successHtml;
       } else {
@@ -95,9 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } catch (error) {
       // Error State
-      const errorHtml = `<div class="card-comic-panel in-view" style="text-align: center; padding: var(--spacing-xl); background: var(--color-accent-red); color: white;">
-          <h2 style="font-size: 3rem; margin-bottom: var(--spacing-md); color: white; text-shadow: var(--shadow-hard);">UH OH.</h2>
-          <p class="editorial" style="font-size: 1.5rem; margin-bottom: var(--spacing-lg);">Something went wrong.<br/><br/>Please try again in a moment or email us directly at:<br/><strong>clouterry@gmail.com</strong></p>
+      const errorHtml = `<div class="bento-card dark" style="text-align: center; padding: var(--spacing-xl);">
+          <h2 class="massive-text" style="color: var(--color-accent); margin-bottom: var(--spacing-md);">UH OH.</h2>
+          <p class="editorial" style="font-size: 1.5rem; margin-bottom: var(--spacing-lg); color: white;">Something went wrong.<br/><br/>Please try again in a moment or email us directly at:<br/><strong>clouterry@gmail.com</strong></p>
         </div>`;
       form.outerHTML = errorHtml;
     }

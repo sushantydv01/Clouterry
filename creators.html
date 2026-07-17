@@ -6,374 +6,248 @@
     <title>Clouterry - For Creators</title>
   </head>
   <body>
-
     <!-- Page Transition Overlay -->
     <div id="page-transition">
       <div class="transition-circle"></div>
       <svg class="transition-mascot mascot-float" viewBox="0 0 100 100">
-        <ellipse cx="50" cy="50" rx="45" ry="15" fill="none" stroke="var(--color-accent-yellow)" stroke-width="4" transform="rotate(-20 50 50)"/>
-        <circle cx="50" cy="50" r="30" fill="var(--color-accent-red)" stroke="var(--color-ink)" stroke-width="3"/>
-        <g class="mascot-eyes"><circle cx="40" cy="45" r="4" fill="var(--color-ink)"/><circle cx="60" cy="45" r="4" fill="var(--color-ink)"/></g>
+        <ellipse cx="50" cy="50" rx="45" ry="15" fill="none" stroke="var(--color-ink)" stroke-width="4" transform="rotate(-20 50 50)"/>
+        <circle cx="50" cy="50" r="30" fill="var(--color-accent)" stroke="var(--color-ink)" stroke-width="3"/>
+        <g class="mascot-eyes"><circle cx="40" cy="45" r="4" fill="var(--color-paper)"/><circle cx="60" cy="45" r="4" fill="var(--color-paper)"/></g>
         <path d="M42,55 Q50,65 58,55" fill="none" stroke="var(--color-ink)" stroke-width="3" stroke-linecap="round"/>
       </svg>
     </div>
 
     <script type="module" src="/src/main.js"></script>
 
-    <!-- Navigation Component -->
-    <nav class="magazine-nav">
-      <a href="/#hero" class="nav-tab">Clouterry</a>
-      <a href="/about" class="nav-tab">About</a>
-      <a href="/creators" class="nav-tab active">Creators</a>
-      <a href="/brands" class="nav-tab">Brands</a>
-      <a href="/orbit" class="nav-tab">Orbit</a>
-    </nav>
-
-    <div class="design-system-container" style="position: relative;">
+    <div class="app-wrapper">
       
-      <!-- SECTION 1 — HERO -->
-      <section id="hero" class="hero-section" style="min-height: 60vh;">
-        <div class="orbit-ring mascot-float" style="width: 800px; height: 800px; top: 30%; right: -200px; opacity: 0.1; border-color: var(--color-accent-blue);"></div>
+      <!-- LEFT SIDEBAR NAVIGATION -->
+      <aside class="sidebar-nav">
+        <a href="/" class="sidebar-logo">clouterry.</a>
         
-        <h1 class="hero-title" style="margin-top: var(--spacing-lg);">MAKE STUFF.<br/>GET PAID.<br/>DON'T GET BORING.</h1>
-        
-        <p class="editorial" style="font-size: 1.5rem; max-width: 600px; margin: 0 auto var(--spacing-lg); z-index: 2;">
-          We're building a creator-first club for people who actually enjoy making content.<br/><br/>
-          No long contracts.<br/>
-          No weird commitments.<br/>
-          Just opportunities.
-        </p>
-
-        <!-- CTA Buttons -->
-        <div style="display: flex; gap: var(--spacing-md); justify-content: center; z-index: 10;">
-          <a href="#join" class="magnetic-btn red">JOIN THE ORBIT</a>
-        </div>
-
-        <!-- Scrapbook Elements -->
-        <div class="handwritten doodle-red" style="position: absolute; right: 25%; top: 25%; transform: rotate(-15deg); font-size: 1.5rem;">your next collab?</div>
-        <div class="sticker blue" style="position: absolute; left: 15%; bottom: 25%; transform: rotate(10deg);">this creator gets it</div>
-        <div class="handwritten" style="position: absolute; left: 20%; top: 20%; transform: rotate(5deg); font-size: 1.2rem;">open for sponsorships</div>
-
-        <!-- Orbit Mascot -->
-        <svg class="mascot-float" style="position: absolute; left: 10%; top: 40%; width: 120px; height: 120px; z-index: 20;" viewBox="0 0 100 100">
-          <ellipse cx="50" cy="50" rx="45" ry="15" fill="none" stroke="var(--color-accent-yellow)" stroke-width="4" transform="rotate(-20 50 50)"/>
-          <circle cx="50" cy="50" r="30" fill="var(--color-accent-blue)" stroke="var(--color-ink)" stroke-width="3"/>
-          <g class="mascot-eyes"><circle cx="40" cy="45" r="4" fill="var(--color-ink)"/><circle cx="60" cy="45" r="4" fill="var(--color-ink)"/></g>
-          <path d="M42,55 Q50,65 58,55" fill="none" stroke="var(--color-ink)" stroke-width="3" stroke-linecap="round"/>
-        </svg>
-      </section>
-
-      <div class="orbit-divider"></div>
-
-      <!-- SECTION 2 — WHO WE'RE LOOKING FOR -->
-      <section class="section-wrapper">
-        <h2 class="section-title">Who We're Looking For</h2>
-        <div style="text-align: center; margin-bottom: var(--spacing-md);">
-          <h2 style="font-size: clamp(3rem, 5vw, 4rem); color: var(--color-ink); text-shadow: var(--shadow-hard-red); line-height: 1;">YOU DON'T NEED<br/>A MILLION FOLLOWERS.</h2>
+        <div class="nav-links">
+          <a href="/" class="nav-link">
+            <span>Home</span>
+            <span class="nav-link-number">01</span>
+          </a>
+          <a href="/brands.html" class="nav-link">
+            <span>Brands</span>
+            <span class="nav-link-number">02</span>
+          </a>
+          <a href="/creators.html" class="nav-link active">
+            <span>Creators</span>
+            <span class="nav-link-number">03</span>
+          </a>
+          <a href="/orbit.html" class="nav-link">
+            <span>Orbit</span>
+            <span class="nav-link-number">04</span>
+          </a>
+          <a href="/about.html" class="nav-link">
+            <span>About</span>
+            <span class="nav-link-number">05</span>
+          </a>
         </div>
         
-        <div class="scrapbook-cluster" style="min-height: 450px; border: var(--border-thick); background: white;">
-          <div class="card-cutout" style="background: var(--color-accent-blue); color: white; position: absolute; top: 10%; left: 10%; transform: rotate(-5deg); font-size: 1.5rem;">Beauty</div>
-          <div class="card-cutout" style="background: var(--color-accent-yellow); position: absolute; top: 20%; right: 15%; transform: rotate(10deg); font-size: 1.5rem;">Fashion</div>
-          <div class="card-cutout" style="background: var(--color-accent-red); color: white; position: absolute; bottom: 15%; left: 20%; transform: rotate(-8deg); font-size: 1.5rem;">Food</div>
-          <div class="card-cutout" style="background: var(--color-accent-green); position: absolute; top: 50%; left: 40%; transform: rotate(5deg); font-size: 1.5rem;">Skincare</div>
-          <div class="card-cutout" style="background: #fff; position: absolute; bottom: 30%; right: 25%; transform: rotate(-3deg); font-size: 1.5rem;">Lifestyle</div>
-          <div class="card-cutout" style="background: #eee; position: absolute; top: 15%; left: 45%; transform: rotate(12deg); font-size: 1.5rem;">College</div>
-          <div class="card-cutout" style="background: var(--color-accent-blue); color: white; position: absolute; bottom: 10%; right: 10%; transform: rotate(-10deg); font-size: 1.5rem;">Comedy</div>
-          <div class="card-cutout" style="background: var(--color-accent-yellow); position: absolute; top: 40%; right: 5%; transform: rotate(8deg); font-size: 1.5rem;">Fitness</div>
-          
-          <div class="card-polaroid" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-2deg); z-index: 20; width: 320px; padding: 2rem;">
-            <p class="editorial" style="font-size: 1.5rem;">If people enjoy watching you, we want to know you.</p>
-            <p class="handwritten doodle-red" style="font-size: 1.2rem; margin-top: 1rem;">Not every creator needs massive numbers.</p>
+        <div style="margin-top: auto; padding-top: var(--spacing-sm); display: flex; flex-direction: column; gap: var(--spacing-xs);">
+          <a href="/brands.html" class="magnetic-btn accent" style="text-align: center; width: 100%; border-radius: 4px; padding: 0.75rem;">Hire Creators ↗</a>
+          <div style="display: flex; gap: var(--spacing-xs);">
+             <a href="#" class="magnetic-btn outline" style="flex: 1; text-align: center; font-size: 1rem; border-radius: 4px; padding: 0.5rem;">IG</a>
+             <a href="#" class="magnetic-btn outline" style="flex: 1; text-align: center; font-size: 1rem; border-radius: 4px; padding: 0.5rem;">TT</a>
           </div>
         </div>
-      </section>
+      </aside>
 
-      <div class="orbit-divider"></div>
-
-      <!-- SECTION 3 — THE INTERNET'S PROBLEM -->
-      <section class="section-wrapper">
-        <h2 class="section-title">The Internet's Problem</h2>
+      <!-- MAIN CONTENT -->
+      <main class="main-content">
         
-        <div style="position: relative; padding: var(--spacing-xl) 0; overflow-x: auto;">
-          <svg class="orbit-path" viewBox="0 0 1500 200" style="top: 50%; left: 0; transform: translateY(-50%); width: 100%; min-width: 1400px; z-index: 0; opacity: 0.2;">
-             <path d="M0,100 L1500,100" fill="none" stroke="var(--color-ink)" stroke-width="5" stroke-dasharray="20,10"/>
-          </svg>
-
-          <div style="display: flex; justify-content: space-between; align-items: flex-end; position: relative; z-index: 2; min-width: 1400px; gap: 1rem;">
-            <!-- Panel 1 -->
-            <div class="card-comic-panel" style="width: 200px; transform: rotate(-3deg);">
-              <h3 style="color: var(--color-ink);">Creator works hard.</h3>
-              <svg width="100%" height="80" viewBox="0 0 100 100"><circle cx="50" cy="50" r="25" fill="var(--color-accent-yellow)"/><rect x="30" y="40" width="40" height="30" fill="white" stroke="var(--color-ink)" stroke-width="3"/></svg>
-            </div>
-            <!-- Panel 2 -->
-            <div class="card-comic-panel" style="width: 200px; transform: rotate(2deg); margin-bottom: 20px;">
-              <h3 style="color: var(--color-ink);">Creates good content.</h3>
-              <div class="sticker" style="position: absolute; top: -10px; right: -10px;">APPROVED</div>
-            </div>
-            <!-- Panel 3 -->
-            <div class="card-comic-panel" style="width: 200px; transform: rotate(-5deg); margin-bottom: -10px;">
-              <h3 style="color: var(--color-ink);">Brand never notices.</h3>
-              <p class="handwritten" style="font-size: 1rem;">(crickets)</p>
-            </div>
-            <!-- Panel 4 -->
-            <div class="card-comic-panel" style="width: 200px; transform: rotate(4deg);">
-              <h3 style="color: var(--color-ink);">Inbox stays empty.</h3>
-              <svg width="100%" height="60" viewBox="0 0 100 100"><rect x="10" y="30" width="80" height="40" fill="white" stroke="var(--color-ink)" stroke-width="3"/><path d="M10,30 L50,60 L90,30" fill="none" stroke="var(--color-ink)" stroke-width="3"/></svg>
-            </div>
-            <!-- Panel 5 -->
-            <div class="card-polaroid" style="width: 200px; transform: rotate(-6deg);">
-              <div style="height: 100px; background: #333; display: flex; align-items: center; justify-content: center; color: white;">
-                <h2>LOST</h2>
+        <!-- HERO -->
+        <section class="bento-card flush" style="min-height: 70vh; border: none; position: relative; background-color: var(--color-forest);">
+          <div class="bg-grid-texture" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.1; z-index: 0; filter: invert(1);"></div>
+          <div class="bento-split" style="padding: clamp(2rem, 5vw, 4rem); height: 100%; position: relative; z-index: 2;">
+            <div style="z-index: 2;">
+              <div style="display: flex; gap: var(--spacing-sm); align-items: center; margin-bottom: 2rem;">
+                 <span class="sticker outline" style="color: var(--color-lime); border-color: rgba(217,255,66,0.3);">FOR THE ONES WHO ACTUALLY MAKE STUFF</span>
+                 <span style="font-family: var(--font-retro); color: rgba(255,255,255,0.5);">NO. 003</span>
               </div>
-              <h3 style="margin-top: 0.5rem; font-size: 1rem;">Potential wasted.</h3>
-            </div>
-            <!-- Panel 6 -->
-            <div class="card-cutout" style="width: 200px; transform: rotate(5deg); background: var(--color-accent-red); color: white;">
-              <h2 style="margin: 0; font-size: clamp(1.5rem, 5vw, 2.5rem);">Let's fix that.</h2>
-              <div class="handwritten doodle-red" style="color: white; font-size: 1.2rem; margin-top: 1rem;">we got you.</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION 4 — WHAT HAPPENS AFTER YOU JOIN -->
-      <section class="section-wrapper" style="margin-top: var(--spacing-xl);">
-        <h2 class="section-title">What Happens After You Join</h2>
-        
-        <div style="position: relative; padding: var(--spacing-xl) 0; overflow-x: auto;">
-          <svg class="orbit-path" viewBox="0 0 1600 200" style="top: 50%; left: 0; transform: translateY(-50%); width: 100%; min-width: 1400px; z-index: 0; opacity: 0.5;">
-             <path d="M50,100 Q300,-50 800,100 T1550,100" fill="none" stroke="var(--color-accent-blue)" stroke-width="5" stroke-dasharray="10,10"/>
-          </svg>
-
-          <div style="display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; min-width: 1400px; gap: 1rem;">
-            <!-- Step 1 -->
-            <div class="card-polaroid" style="transform: rotate(-5deg); width: 150px;">
-              <div style="height: 80px; background: var(--color-accent-yellow); border: var(--border-medium); display: flex; align-items: center; justify-content: center;">
-                <h1 style="font-size: clamp(1.5rem, 5vw, 2.5rem); margin:0;">1</h1>
+              <h1 class="massive-text" style="color: white; margin-bottom: var(--spacing-md);">MAKE STUFF.<br/>GET PAID.<br/><span style="color: var(--color-lime);">DON'T GET<br/>BORING.</span></h1>
+              <p class="editorial-sub" style="max-width: 500px; margin-top: var(--spacing-lg); color: rgba(255,255,255,0.9);">
+                We're building a creator-first club for people who actually enjoy making content. No long contracts. No weird commitments. Just high-quality brand opportunities.
+              </p>
+              <div style="margin-top: var(--spacing-lg); display: flex; gap: var(--spacing-sm); align-items: center;">
+                <a href="#join" class="magnetic-btn" style="background: var(--color-lime); color: var(--color-forest);">JOIN THE ORBIT</a>
+                <span class="handwritten" style="color: var(--color-lime); font-size: 1.2rem;">Free to join</span>
               </div>
-              <h3 style="margin-top: 0.5rem; font-size: 0.9rem;">Tell us about yourself.</h3>
-            </div>
-            <!-- Step 2 -->
-            <div class="card-polaroid" style="transform: rotate(3deg); width: 150px; margin-top: -30px;">
-              <div style="height: 80px; background: var(--color-accent-blue); border: var(--border-medium); display: flex; align-items: center; justify-content: center; color: white;">
-                <h1 style="font-size: clamp(1.5rem, 5vw, 2.5rem); margin:0;">2</h1>
-              </div>
-              <h3 style="margin-top: 0.5rem; font-size: 0.9rem;">We learn your style.</h3>
-            </div>
-            <!-- Step 3 -->
-            <div class="card-polaroid" style="transform: rotate(-2deg); width: 150px; margin-top: 30px;">
-              <div style="height: 80px; background: var(--color-accent-red); border: var(--border-medium); display: flex; align-items: center; justify-content: center; color: white;">
-                <h1 style="font-size: clamp(1.5rem, 5vw, 2.5rem); margin:0;">3</h1>
-              </div>
-              <h3 style="margin-top: 0.5rem; font-size: 0.9rem;">Brand opportunity.</h3>
-            </div>
-            <!-- Step 4 -->
-            <div class="card-polaroid" style="transform: rotate(4deg); width: 150px; margin-top: -20px;">
-              <div style="height: 80px; background: #fff; border: var(--border-medium); display: flex; align-items: center; justify-content: center;">
-                <h1 style="font-size: clamp(1.5rem, 5vw, 2.5rem); margin:0;">4</h1>
-              </div>
-              <h3 style="margin-top: 0.5rem; font-size: 0.9rem;">We reach out.</h3>
-            </div>
-            <!-- Step 5 -->
-            <div class="card-polaroid" style="transform: rotate(-3deg); width: 150px; margin-top: 10px;">
-              <div style="height: 80px; background: var(--color-accent-yellow); border: var(--border-medium); display: flex; align-items: center; justify-content: center;">
-                <h1 style="font-size: clamp(1.5rem, 5vw, 2.5rem); margin:0;">5</h1>
-              </div>
-              <h3 style="margin-top: 0.5rem; font-size: 0.9rem;">You decide.</h3>
-              <div class="handwritten doodle-red" style="position: absolute; bottom: -20px; right: -10px; font-size: 1rem; width: 120px;">you can always say no!</div>
-            </div>
-            <!-- Step 6 -->
-            <div class="card-polaroid" style="transform: rotate(5deg); width: 150px; margin-top: -10px;">
-              <div style="height: 80px; background: var(--color-accent-blue); border: var(--border-medium); display: flex; align-items: center; justify-content: center; color: white;">
-                <h1 style="font-size: clamp(1.5rem, 5vw, 2.5rem); margin:0;">6</h1>
-              </div>
-              <h3 style="margin-top: 0.5rem; font-size: 0.9rem;">Campaign happens.</h3>
-            </div>
-            <!-- Step 7 -->
-            <div class="card-polaroid" style="transform: rotate(-6deg); width: 150px; margin-top: 20px;">
-              <div style="height: 80px; background: var(--color-accent-green); border: var(--border-medium); display: flex; align-items: center; justify-content: center; color: var(--color-ink);">
-                <h1 style="font-size: clamp(1.5rem, 5vw, 2.5rem); margin:0;">PAY</h1>
-              </div>
-              <h3 style="margin-top: 0.5rem; font-size: 0.9rem;">You get paid.</h3>
-              <div class="sticker" style="position: absolute; top: -10px; right: -10px; font-size: 0.8rem;">GET PAID</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION 5 — WHAT WE CARE ABOUT -->
-      <section class="section-wrapper">
-        <div style="background-color: var(--color-accent-blue); border: var(--border-thick); padding: var(--spacing-xl); position: relative; color: white;">
-          <h2 style="font-size: clamp(3rem, 6vw, 4rem); color: var(--color-accent-yellow); text-shadow: var(--shadow-hard);">WE CARE ABOUT:</h2>
-          
-          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: var(--spacing-xl); margin-top: var(--spacing-md);">
-            <div class="card-cutout" style="background: white; color: var(--color-ink);">good content</div>
-            <div class="card-cutout" style="background: white; color: var(--color-ink);">audience trust</div>
-            <div class="card-cutout" style="background: white; color: var(--color-ink);">creative freedom</div>
-            <div class="card-cutout" style="background: white; color: var(--color-ink);">long-term creator growth</div>
-          </div>
-
-          <h2 style="font-size: clamp(3rem, 6vw, 4rem); color: white; text-shadow: var(--shadow-hard-red);">WE DON'T CARE ABOUT:</h2>
-          
-          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: var(--spacing-md);">
-            <div class="stamp-red" style="transform: rotate(-3deg);">fake followers</div>
-            <div class="stamp-red" style="transform: rotate(2deg);">spammy ads</div>
-            <div class="stamp-red" style="transform: rotate(-1deg);">forcing scripts</div>
-            <div class="stamp-red" style="transform: rotate(4deg);">making content boring</div>
-          </div>
-
-          <svg class="doodle doodle-red" style="position: absolute; right: 10%; bottom: 20%; width: 100px; transform: rotate(-15deg);" viewBox="0 0 50 50">
-            <path d="M0,0 L50,50 M50,0 L0,50" fill="none" stroke="var(--color-paper)" stroke-width="5"/>
-          </svg>
-        </div>
-      </section>
-
-      <!-- SECTION 6 — CREATOR WALL -->
-      <section class="section-wrapper" style="margin-top: var(--spacing-xl);">
-        <h2 class="section-title">Creator Wall</h2>
-        
-        <div class="scrapbook-cluster" style="min-height: 600px; background: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><circle cx=%2220%22 cy=%2220%22 r=%222%22 fill=%22%23ccc%22/></svg>') repeat; border: var(--border-thick);">
-          
-          <div class="card-polaroid" style="position: absolute; top: 10%; left: 15%; transform: rotate(-5deg); z-index: 10;">
-             <div style="width: 150px; height: 100px; background: var(--color-paper); border: var(--border-medium); display: flex; align-items:center; justify-content:center;">
-                <svg viewBox="0 0 50 50" width="50"><circle cx="25" cy="25" r="15" fill="none" stroke="var(--color-accent-red)" stroke-width="4"/></svg>
-             </div>
-             <div class="polaroid-caption">making cool stuff</div>
-          </div>
-          
-          <div class="sticker red" style="position: absolute; top: 20%; right: 10%; transform: rotate(15deg); font-size: 1.5rem;">landed my first collab!</div>
-          <div class="sticker blue" style="position: absolute; bottom: 20%; right: 20%; transform: rotate(-10deg); font-size: 1.5rem;">CREATOR CLUB</div>
-          <div class="stamp-red" style="position: absolute; top: 50%; left: 10%; transform: rotate(12deg); background: var(--color-paper); color: var(--color-ink);">APPROVED BY THE INTERNET</div>
-          <div class="sticker" style="position: absolute; bottom: 15%; left: 30%; transform: rotate(-5deg); font-size: 1.5rem;">open for work</div>
-
-          <div class="handwritten doodle-red" style="position: absolute; top: 40%; right: 30%; transform: rotate(-8deg); font-size: 2rem;">Noticeboard!</div>
-
-          <!-- Mascot variations -->
-          <svg class="mascot-float" style="position: absolute; top: 15%; right: 40%; width: 90px; height: 90px;" viewBox="0 0 100 100">
-            <ellipse cx="50" cy="50" rx="45" ry="15" fill="none" stroke="var(--color-accent-blue)" stroke-width="4" transform="rotate(-20 50 50)"/>
-            <circle cx="50" cy="50" r="30" fill="var(--color-accent-yellow)" stroke="var(--color-ink)" stroke-width="3"/>
-            <g class="mascot-eyes"><circle cx="40" cy="45" r="4" fill="var(--color-ink)"/><circle cx="60" cy="45" r="4" fill="var(--color-ink)"/></g>
-            <path d="M42,55 Q50,65 58,55" fill="none" stroke="var(--color-ink)" stroke-width="3" stroke-linecap="round"/>
-          </svg>
-
-        </div>
-      </section>
-
-      <!-- SECTION 7 — JOIN THE ORBIT FORM -->
-      <section id="join" class="section-wrapper">
-        <h2 class="section-title">Join The Orbit Form</h2>
-        
-        <div class="card-comic-panel" style="background-color: var(--color-accent-yellow); color: var(--color-ink); padding: var(--spacing-xl); max-width: 800px; margin: 0 auto; position: relative;">
-          <h2 style="font-size: clamp(1.8rem, 6vw, 3rem); text-shadow: var(--shadow-hard); margin-bottom: var(--spacing-lg);">TELL US ABOUT YOU.</h2>
-          
-          <form id="creator-form" action="https://formspree.io/f/mbdvwdlq" method="POST">
-            <div class="split-section" style="margin-bottom: var(--spacing-md);">
-              <div class="form-group"><label>Name</label><input type="text" name="name" class="comic-input" placeholder="Your real name" required autocomplete="name"></div>
-              <div class="form-group"><label>Instagram Handle</label><input type="text" name="instagram" class="comic-input" placeholder="@handle" required></div>
             </div>
             
-            <div class="split-section" style="margin-bottom: var(--spacing-md);">
-              <div class="form-group"><label>Followers</label><input type="text" name="followers" class="comic-input" placeholder="e.g. 50k"></div>
-              <div class="form-group"><label>Primary Niche</label><input type="text" name="niche" class="comic-input" placeholder="Comedy, Tech, Lifestyle..." required></div>
+            <div style="position: relative; height: 100%; min-height: 400px;">
+              <div class="bento-card flush reveal-mask" style="position: absolute; width: 85%; height: 85%; bottom: 10%; right: 0; transform: rotate(-2deg); border: var(--border-thin); box-shadow: var(--shadow-editorial);">
+                <img src="/images/creator_workspace.png" class="bento-card-image-full" alt="Creator workspace">
+              </div>
+              <div class="floating-sticker dark" style="position: absolute; bottom: 5%; left: 5%;">CREATOR CLUB</div>
+              
+              <!-- Fake pinned note -->
+              <div style="position: absolute; top: 10%; left: 0; background: var(--color-lime); padding: 1rem 1.5rem; transform: rotate(-8deg); box-shadow: var(--shadow-editorial); border: 1px solid rgba(0,0,0,0.1); font-family: var(--font-handwritten); font-size: 1.2rem; color: var(--color-forest); z-index: 5;">
+                 <div style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); width: 20px; height: 20px; background: var(--color-accent); border-radius: 50%; box-shadow: 0 2px 5px rgba(0,0,0,0.3);"></div>
+                 Needs more B-roll!
+              </div>
             </div>
+          </div>
+        </section>
 
-            <div class="split-section" style="margin-bottom: var(--spacing-md);">
-              <div class="form-group"><label>Average Views</label><input type="text" name="average_views" class="comic-input" placeholder="e.g. 10k per reel"></div>
-              <div class="form-group"><label>Location</label><input type="text" name="location" class="comic-input" placeholder="City, Country"></div>
-            </div>
-            
-            <div class="form-group" style="margin-bottom: var(--spacing-md);">
-              <label>Email</label>
-              <input type="email" name="email" class="comic-input" placeholder="you@domain.com" required autocomplete="email">
-            </div>
+        <!-- WHO WE'RE LOOKING FOR -->
+        <section class="bento-card" style="margin-top: var(--spacing-lg); border: none;">
+          <h2 class="section-title" style="margin-bottom: var(--spacing-md);">YOU DON'T NEED<br/>A MILLION FOLLOWERS.</h2>
+          <p class="editorial-sub" style="margin-bottom: var(--spacing-lg);">If people enjoy watching you, we want to know you. We don't care about vanity metrics; we care about retention and aesthetics.</p>
+          
+          <div class="bento-grid" style="border: none; background: transparent; gap: var(--spacing-sm);">
+            <div class="bento-card dark" style="padding: 2rem; background: var(--color-forest);"><h3 style="font-family: var(--font-display); font-size: 2rem; color: var(--color-lime); margin:0;">Beauty</h3></div>
+            <div class="bento-card" style="border: var(--border-light); padding: 2rem;"><h3 style="font-family: var(--font-display); font-size: 2rem; margin:0;">Fashion</h3></div>
+            <div class="bento-card accent" style="padding: 2rem;"><h3 style="font-family: var(--font-display); font-size: 2rem; color: white; margin:0;">Food</h3></div>
+            <div class="bento-card" style="border: var(--border-light); padding: 2rem;"><h3 style="font-family: var(--font-display); font-size: 2rem; margin:0;">Skincare</h3></div>
+            <div class="bento-card" style="border: var(--border-light); padding: 2rem;"><h3 style="font-family: var(--font-display); font-size: 2rem; margin:0;">Lifestyle</h3></div>
+            <div class="bento-card" style="border: var(--border-light); padding: 2rem;"><h3 style="font-family: var(--font-display); font-size: 2rem; margin:0;">College</h3></div>
+            <div class="bento-card dark" style="padding: 2rem;"><h3 style="font-family: var(--font-display); font-size: 2rem; color: white; margin:0;">Comedy</h3></div>
+            <div class="bento-card" style="border: var(--border-light); padding: 2rem;"><h3 style="font-family: var(--font-display); font-size: 2rem; margin:0;">Fitness</h3></div>
+          </div>
+        </section>
 
-            <div class="form-group" style="margin-bottom: var(--spacing-lg);">
-              <label>Anything Else?</label>
-              <textarea name="anything_else" class="comic-input" rows="4" placeholder="Tell us what makes your content weird and wonderful..." style="resize: vertical; font-family: var(--font-body);"></textarea>
+        <!-- THE INTERNET'S PROBLEM (INBOX REALITY) -->
+        <section class="bento-card dark flush" style="margin-top: var(--spacing-lg); padding: clamp(2rem, 5vw, 4rem); position: relative; background: var(--color-ink);">
+          <div class="bg-grid-texture" style="position: absolute; top:0; left:0; width:100%; height:100%; opacity:0.1; filter: invert(1);"></div>
+          <div style="position: relative; z-index: 1;">
+            <div style="display: flex; justify-content: space-between; align-items: end; border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: var(--spacing-sm); margin-bottom: var(--spacing-md);">
+              <h2 class="section-title" style="color: white; margin: 0;">THE INBOX REALITY.</h2>
+              <span class="retro" style="color: rgba(255,255,255,0.4);">THE STRUGGLE</span>
             </div>
+            <div class="card-system-horizontal reveal-mask" style="background: transparent; border: none; gap: var(--spacing-sm); padding-bottom: 0;">
+              <div class="bento-card" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); color: white; width: 280px;">
+                <span class="retro" style="opacity: 0.5; margin-bottom: var(--spacing-sm);">PROBLEM 01</span>
+                <h3 style="font-family: var(--font-display); font-size: 1.5rem;">Unpaid Collabs</h3>
+                <p class="editorial-sub" style="font-size: 1rem; color: #888; margin-top: auto;">"We'd love to send you free product in exchange for 3 TikToks and a Reel."</p>
+              </div>
+              <div class="bento-card" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); color: white; width: 280px;">
+                <span class="retro" style="opacity: 0.5; margin-bottom: var(--spacing-sm);">PROBLEM 02</span>
+                <h3 style="font-family: var(--font-display); font-size: 1.5rem;">Ghosting</h3>
+                <p class="editorial-sub" style="font-size: 1rem; color: #888; margin-top: auto;">You pitch, they reply, you send rates, they vanish.</p>
+              </div>
+              <div class="bento-card" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); color: white; width: 280px;">
+                <span class="retro" style="opacity: 0.5; margin-bottom: var(--spacing-sm);">PROBLEM 03</span>
+                <h3 style="font-family: var(--font-display); font-size: 1.5rem;">Creative Control</h3>
+                <p class="editorial-sub" style="font-size: 1rem; color: #888; margin-top: auto;">Brands want you to read a 60-second press release without breathing.</p>
+              </div>
+              <div class="bento-card" style="background: var(--color-forest); border: 1px solid var(--color-lime); width: 280px;">
+                <h3 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--color-lime);">Let's fix that.</h3>
+                <h1 class="massive-text" style="margin-top: auto; line-height: 0.8; color: var(--color-lime);">WE GOT<br/>YOU.</h1>
+              </div>
+            </div>
+          </div>
+        </section>
 
-            <button type="submit" class="magnetic-btn red" style="font-size: 2rem;">JOIN THE ORBIT</button>
+        <!-- AFTER YOU JOIN -->
+        <section class="bento-card" style="margin-top: var(--spacing-lg);">
+          <h2 class="section-title" style="margin-bottom: var(--spacing-md);">WHAT HAPPENS NEXT.</h2>
+          <div class="card-system-horizontal" style="background: transparent; border: none; gap: var(--spacing-sm); padding: 0;">
+            <div class="bento-card" style="border: var(--border-light); width: 320px; background: var(--color-stone);"><span class="retro" style="opacity:0.5; margin-bottom: var(--spacing-sm);">STEP 1</span><h3 style="margin-top: auto; font-family: var(--font-display); font-size: 1.8rem;">Tell us about yourself</h3></div>
+            <div class="bento-card" style="border: var(--border-light); width: 320px; background: var(--color-stone);"><span class="retro" style="opacity:0.5; margin-bottom: var(--spacing-sm);">STEP 2</span><h3 style="margin-top: auto; font-family: var(--font-display); font-size: 1.8rem;">We learn your style</h3></div>
+            <div class="bento-card" style="border: var(--border-light); width: 320px; background: var(--color-stone);"><span class="retro" style="opacity:0.5; margin-bottom: var(--spacing-sm);">STEP 3</span><h3 style="margin-top: auto; font-family: var(--font-display); font-size: 1.8rem;">Brand opportunity</h3></div>
+            <div class="bento-card" style="border: var(--border-light); width: 320px; background: var(--color-stone);"><span class="retro" style="opacity:0.5; margin-bottom: var(--spacing-sm);">STEP 4</span><h3 style="margin-top: auto; font-family: var(--font-display); font-size: 1.8rem;">We reach out</h3></div>
+            <div class="bento-card" style="border: var(--border-light); width: 320px; background: var(--color-forest);">
+               <span class="retro" style="color: rgba(255,255,255,0.5); margin-bottom: var(--spacing-sm);">STEP 5</span>
+               <h3 style="margin-top: auto; color: white; font-family: var(--font-display); font-size: 1.8rem;">You decide</h3>
+               <div class="handwritten" style="position: absolute; top: 20px; right: 20px; font-size: 1.2rem; color: var(--color-lime); transform: rotate(10deg);">say no anytime!</div>
+            </div>
+            <div class="bento-card" style="border: none; width: 320px; background: var(--color-lime);">
+              <h1 class="massive-text" style="color: var(--color-forest); font-size: 4rem;">PAY</h1>
+              <h3 style="margin-top: auto; color: var(--color-forest); font-family: var(--font-display); font-size: 1.8rem;">You get paid.</h3>
+            </div>
+          </div>
+        </section>
+
+        <!-- CARE / DON'T CARE -->
+        <section class="bento-grid-asym reverse" style="margin-top: var(--spacing-lg);">
+          <div class="bento-card" style="border: var(--border-light); background: var(--color-stone);">
+            <div class="retro" style="display: inline-block; padding: 0.5rem 1rem; border: 1px solid var(--color-ink); margin-bottom: var(--spacing-md); border-radius: 4px;">WE CARE</div>
+            <ul class="editorial-sub" style="color: var(--color-ink); list-style: none; display: flex; flex-direction: column; gap: 1rem;">
+              <li>✓ Creative freedom and trust</li>
+              <li>✓ Content that fits your feed</li>
+              <li>✓ Earning your audience's respect</li>
+              <li>✓ Paying creators fairly</li>
+            </ul>
+          </div>
+          <div class="bento-card" style="background: var(--color-forest);">
+            <div class="retro" style="display: inline-block; padding: 0.5rem 1rem; background: var(--color-lime); color: var(--color-forest); margin-bottom: var(--spacing-md); border-radius: 4px;">WE DON'T CARE</div>
+            <ul class="editorial-sub" style="color: white; list-style: none; display: flex; flex-direction: column; gap: 1rem;">
+              <li>✗ How many followers you have (if engagement is dead)</li>
+              <li>✗ Making you read rigid corporate scripts</li>
+              <li>✗ Spammy dropshipping campaigns</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- FORM -->
+        <section id="join" class="bento-card" style="margin-top: var(--spacing-lg); padding: clamp(2rem, 5vw, 4rem); background: var(--color-paper); border: 1px solid var(--color-border);">
+          <h2 class="massive-text" style="color: var(--color-ink); margin-bottom: var(--spacing-lg);">TELL US ABOUT YOU.</h2>
+          <form id="creator-form" action="https://formspree.io/f/mbdvwdlq" method="POST" style="max-width: 800px;">
+            <div class="bento-split" style="gap: var(--spacing-md); margin-bottom: var(--spacing-sm);">
+              <div><label class="form-label">Name</label><input type="text" name="name" class="bento-input" required></div>
+              <div><label class="form-label">IG / TikTok Handle</label><input type="text" name="instagram" class="bento-input" required></div>
+            </div>
+            <div class="bento-split" style="gap: var(--spacing-md); margin-bottom: var(--spacing-sm);">
+              <div><label class="form-label">Followers</label><input type="text" name="followers" class="bento-input"></div>
+              <div><label class="form-label">Primary Niche</label><input type="text" name="niche" class="bento-input" required></div>
+            </div>
+            <div class="bento-split" style="gap: var(--spacing-md); margin-bottom: var(--spacing-sm);">
+              <div><label class="form-label">Average Views</label><input type="text" name="average_views" class="bento-input"></div>
+              <div><label class="form-label">Email</label><input type="email" name="email" class="bento-input" required></div>
+            </div>
+            <div style="margin-bottom: var(--spacing-lg);">
+              <label class="form-label">Anything Else?</label>
+              <textarea name="anything_else" class="bento-input" rows="4"></textarea>
+            </div>
+            <button type="submit" class="magnetic-btn accent" style="font-size: 1.5rem; padding: 1.5rem 3rem;">JOIN THE ORBIT</button>
           </form>
-          
-          <!-- Decorative mascot -->
-          <svg class="mascot-float" style="position: absolute; top: -50px; right: -50px; width: 120px; height: 120px;" viewBox="0 0 100 100">
-            <ellipse cx="50" cy="50" rx="45" ry="15" fill="none" stroke="var(--color-accent-blue)" stroke-width="4" transform="rotate(-20 50 50)"/>
-            <circle cx="50" cy="50" r="30" fill="var(--color-paper)" stroke="var(--color-ink)" stroke-width="3"/>
-            <g class="mascot-eyes"><circle cx="40" cy="45" r="4" fill="var(--color-ink)"/><circle cx="60" cy="45" r="4" fill="var(--color-ink)"/></g>
-            <path d="M42,55 Q50,65 58,55" fill="none" stroke="var(--color-ink)" stroke-width="3" stroke-linecap="round"/>
-          </svg>
+        </section>
+
+        <!-- SITE FOOTER (V4.5 BILLBOARD) -->
+        <div style="margin-top: var(--spacing-xl); border-top: var(--border-thick); background: var(--color-ink); color: white; padding: clamp(4rem, 10vw, 8rem) clamp(2rem, 5vw, 4rem); position: relative; overflow: hidden;">
+           <div class="bg-grid-texture" style="position: absolute; top:0; left:0; width:100%; height:100%; opacity:0.1; filter: invert(1);"></div>
+           
+           <div style="position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; justify-content: space-between; min-height: 50vh;">
+              
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: var(--spacing-md);">
+                 <div>
+                    <h2 class="section-title" style="color: white; margin-bottom: 1rem;">DON'T SETTLE<br/>FOR BORING.</h2>
+                    <p class="editorial-sub" style="color: rgba(255,255,255,0.6); max-width: 400px;">
+                      Clouterry is the creator marketing network building a bridge between good brands and good content. No spam, no bs.
+                    </p>
+                 </div>
+                 
+                 <div style="display: flex; gap: 4rem;">
+                    <div class="footer-column">
+                      <span class="retro" style="color: var(--color-accent); margin-bottom: 1rem; display: block;">SAY HELLO</span>
+                      <a href="#" class="footer-link" style="color: white; font-family: var(--font-display); font-size: 1.2rem;">hello@clouterry.com</a>
+                      <a href="#" class="footer-link" style="color: white; font-family: var(--font-display); font-size: 1.2rem;">@clouterry</a>
+                    </div>
+                    <div class="footer-column">
+                      <span class="retro" style="color: var(--color-accent); margin-bottom: 1rem; display: block;">INDEX</span>
+                      <a href="/brands.html" class="footer-link" style="color: white; font-family: var(--font-display); font-size: 1.2rem;">For Brands</a>
+                      <a href="/creators.html" class="footer-link" style="color: white; font-family: var(--font-display); font-size: 1.2rem;">For Creators</a>
+                      <a href="/orbit.html" class="footer-link" style="color: white; font-family: var(--font-display); font-size: 1.2rem;">The Orbit</a>
+                      <a href="/about.html" class="footer-link" style="color: white; font-family: var(--font-display); font-size: 1.2rem;">About Us</a>
+                    </div>
+                 </div>
+              </div>
+
+              <div style="margin-top: auto; padding-top: 4rem; position: relative;">
+                 <h1 class="massive-text" style="color: white; font-size: clamp(4rem, 15vw, 12rem); line-height: 0.8; letter-spacing: -0.04em;">CLOUTERRY.</h1>
+                 
+                 <div style="position: absolute; right: 0; bottom: 10px; display: flex; align-items: center; gap: 1rem;">
+                    <span class="retro" style="color: rgba(255,255,255,0.4);">EST. 2024 / ALL RIGHTS RESERVED</span>
+                 </div>
+              </div>
+
+           </div>
         </div>
-      </section>
-
-      <!-- SECTION 8 — FAQ -->
-      <section class="section-wrapper">
-        <h2 class="section-title">FAQ</h2>
-        
-        <div style="max-width: 800px; margin: 0 auto;">
-          <details class="comic-accordion">
-            <summary>Do I need a huge audience?</summary>
-            <div class="accordion-content">
-              <p style="padding-top: var(--spacing-sm);">Nope! If you make good stuff and people genuinely enjoy watching it, we want you in the club. Engagement matters way more than just a follower count.</p>
-            </div>
-          </details>
-
-          <details class="comic-accordion">
-            <summary>Do I sign any contract?</summary>
-            <div class="accordion-content">
-              <p style="padding-top: var(--spacing-sm);">No long-term commitments or weird management exclusivity clauses. You are completely independent. We just bring you opportunities.</p>
-            </div>
-          </details>
-
-          <details class="comic-accordion">
-            <summary>How do opportunities work?</summary>
-            <div class="accordion-content">
-              <p style="padding-top: var(--spacing-sm);">When a brand comes to us looking for your exact vibe, we reach out with the details, budget, and creative goals. If you like it, we move forward.</p>
-            </div>
-          </details>
-
-          <details class="comic-accordion">
-            <summary>Do I have to accept campaigns?</summary>
-            <div class="accordion-content">
-              <p style="padding-top: var(--spacing-sm);">Never. You always have 100% control over what you say yes to. If a brand doesn't fit your audience, just pass on it.</p>
-            </div>
-          </details>
-
-          <details class="comic-accordion">
-            <summary>How do payments work?</summary>
-            <div class="accordion-content">
-              <p style="padding-top: var(--spacing-sm);">We negotiate the best rate for you, secure the funds, and ensure you get paid promptly as soon as the campaign requirements are fulfilled. No chasing invoices.</p>
-            </div>
-          </details>
-        </div>
-      </section>
-
     </div>
-
-    <!-- SECTION 9 — POSTER FOOTER -->
-    <footer class="poster-footer" style="background-color: var(--color-accent-yellow); color: var(--color-ink);">
-      <div class="poster-orbit-ring mascot-float" style="border-color: var(--color-accent-red);"></div>
-      <div class="poster-orbit-ring" style="width: 100vw; height: 100vw; border-color: var(--color-accent-red); opacity: 0.1;"></div>
-      
-      <div class="sticker red" style="position: absolute; top: 15%; right: 10%; transform: rotate(15deg); font-size: 2rem;">FOR CREATORS</div>
-      
-      <h2 class="poster-title" style="font-size: 13vw;">MAKE<br/>COOL STUFF.</h2>
-      
-      <div class="poster-subtitle" style="margin-top: 2rem; color: var(--color-ink);">clouterry@gmail.com</div>
-      <div class="poster-subtitle" style="margin-top: 1rem; color: var(--color-ink);">creator-first club.</div>
-      <div class="poster-subtitle" style="margin-top: 1rem; color: var(--color-ink);">India.</div>
-      <div class="poster-subtitle" style="margin-top: 1rem; color: var(--color-accent-red);">Open for creators.</div>
-      
-      <div class="stamp-red" style="position: absolute; bottom: 10%; left: 5%; transform: rotate(-10deg); background: var(--color-accent-red); color: white;">CREATOR CLUB</div>
-      
-      <!-- Giant Mascot -->
-      <svg class="mascot-float" style="position: absolute; bottom: 15%; right: 15%; width: 200px; height: 200px; z-index: 20;" viewBox="0 0 100 100">
-        <ellipse cx="50" cy="50" rx="45" ry="15" fill="none" stroke="var(--color-accent-red)" stroke-width="4" transform="rotate(-20 50 50)"/>
-        <circle cx="50" cy="50" r="30" fill="var(--color-paper)" stroke="var(--color-ink)" stroke-width="3"/>
-        <g class="mascot-eyes"><circle cx="40" cy="45" r="4" fill="var(--color-ink)"/><circle cx="60" cy="45" r="4" fill="var(--color-ink)"/></g>
-        <path d="M42,55 Q50,65 58,55" fill="none" stroke="var(--color-ink)" stroke-width="3" stroke-linecap="round"/>
-      </svg>
-      
-    </footer>
   </body>
 </html>

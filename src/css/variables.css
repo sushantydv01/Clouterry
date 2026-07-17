@@ -1,35 +1,38 @@
 :root {
-  /* Colors */
-  --color-paper: #F7F2E8;
-  --color-ink: #111111;
-  --color-accent-red: #E63946;
-  --color-accent-yellow: #FFD166;
-  --color-accent-blue: #4A90E2;
-  --color-accent-green: #50C878;
+  /* Global Colors */
+  --color-paper: #F4F2EF; /* Premium Alabaster / Cream */
+  --color-ink: #0A0A0A;   /* Deep Charcoal */
+  --color-accent: #FF3B00; /* Signature Vermilion Red */
+  --color-border: rgba(10, 10, 10, 0.15);
+  
+  /* Additional Page-specific Palettes */
+  --color-forest: #122115; /* Creators Page Dominant */
+  --color-lime: #D9FF42; /* Creators Page Accent */
+  --color-stone: #E8E5E1; /* Secondary Backgrounds */
 
-  /* Typography */
-  --font-display: 'Bowlby One SC', 'Bangers', cursive;
-  --font-editorial: 'DM Serif Display', 'Merriweather', serif;
-  --font-handwritten: 'Kalam', 'Permanent Marker', cursive;
-  --font-retro: 'VT323', 'Press Start 2P', monospace;
-  --font-body: 'Inter', 'Roboto', sans-serif;
+  /* Typography System */
+  --font-display: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+  --font-editorial: 'Inter', sans-serif;
+  --font-handwritten: 'Kalam', cursive;
+  --font-retro: 'VT323', monospace;
+  --font-body: 'Inter', sans-serif;
 
-  /* Borders & Shadows (Cartoon/Comic style) */
-  --border-thick: 4px solid var(--color-ink);
-  --border-medium: 2px solid var(--color-ink);
-  --shadow-hard: 6px 6px 0px 0px var(--color-ink);
-  --shadow-hard-hover: 2px 2px 0px 0px var(--color-ink);
-  --shadow-hard-red: 6px 6px 0px 0px var(--color-accent-red);
-  --shadow-hard-yellow: 6px 6px 0px 0px var(--color-accent-yellow);
+  /* Borders & Shadows */
+  --border-thin: 1px solid var(--color-ink);
+  --border-thick: 1.5px solid var(--color-ink);
+  --border-light: 1px solid var(--color-border);
+  --shadow-editorial: 0 4px 20px rgba(0,0,0,0.06);
 
   /* Spacing */
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
-  --spacing-md: 2rem;
-  --spacing-lg: 4rem;
-  --spacing-xl: 8rem;
+  --spacing-md: 2.5rem;
+  --spacing-lg: 5rem;
+  --spacing-xl: 10rem;
   
-  /* Radii for organic shapes */
-  --radius-scrapbook: 2px 255px 3px 225px / 255px 5px 225px 3px;
-  --radius-polaroid: 2px;
+  /* Radii */
+  --radius-bento: 8px; /* Strict editorial corners */
+  --radius-bento-sm: 4px;
+  --radius-button: 100px;
 }
