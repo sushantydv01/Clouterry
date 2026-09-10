@@ -1,47 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { X } from "@phosphor-icons/react";
 
 const CATEGORIES = [
-  {
-    name: "Beauty & Lifestyle",
-    cadence: "Daily routines, GRWM, skincare, aesthetics",
-    status: "Active Cohort",
-  },
-  {
-    name: "Food & Travel",
-    cadence: "Local spots, recipes, authentic tasting, city guides",
-    status: "Active Cohort",
-  },
-  {
-    name: "Fitness & Wellness",
-    cadence: "Workouts, recovery, mindful living, performance",
-    status: "Curating Now",
-  },
-  {
-    name: "Tech & Gaming",
-    cadence: "Desk setups, gear walkthroughs, daily driver reviews",
-    status: "Curating Now",
-  },
-];
-
-const PROCESS_STEPS = [
-  {
-    step: "01",
-    title: "Category alignment",
-    desc: "We define your target niche and content goals without bloated agency discovery decks.",
-  },
-  {
-    step: "02",
-    title: "Cohort selection",
-    desc: "We handpick matching creators with authentic engagement and voice, not inflated follower vanity.",
-  },
-  {
-    step: "03",
-    title: "Managed execution",
-    desc: "From creative brief to final delivery and usage rights, Clouterry manages the full relationship.",
-  },
+  "Beauty & Daily Rituals",
+  "Food & Regional Culture",
+  "Movement & Conditioning",
+  "Workspaces & Tech EDC",
 ];
 
 export default function BrandSection() {
@@ -50,169 +16,89 @@ export default function BrandSection() {
   return (
     <section
       id="brands"
-      className="relative bg-cream px-6 py-24 sm:py-32 text-ink border-t border-ink/8"
+      className="relative bg-void/85 backdrop-blur-xs px-6 py-16 sm:py-20 text-star-white border-t border-star-white/10 text-left"
     >
       <div className="mx-auto max-w-6xl">
-        {/* Header Block */}
-        <div className="max-w-2xl">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-          >
-            <div className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-cream-dim px-3.5 py-1 text-xs font-semibold text-ink/80">
-              <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-              For Brands
-            </div>
-
-            <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-ink sm:text-5xl leading-[1.15]">
-              A curated bench of creators, managed end to end.
+        <div className="grid gap-12 lg:grid-cols-12 lg:items-start">
+          {/* Main narrative: One clean paragraph, confident headline, single CTA */}
+          <div className="lg:col-span-7">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-star-white leading-snug">
+              A curated bench of creators,
+              <br />
+              managed end to end.
             </h2>
 
-            <p className="mt-5 text-base sm:text-lg text-ink/70 leading-relaxed">
-              We build cohorts around your category and manage the relationship from brief to delivery. You get authentic content that resonates with your audience, without the operational drag of chasing individual creators.
+            <p className="mt-5 text-sm sm:text-base text-silver leading-relaxed max-w-xl">
+              We build specialized creator cohorts around your vertical and coordinate the entire relationship from brief to delivered short-form assets. You receive high-converting, rights-cleared video on a guaranteed 14-day turnaround without wrangling 30 independent contracts or chasing revisions.
             </p>
 
-            <div className="mt-5 rounded-2xl border border-gold/30 bg-gold/10 px-4 py-3 text-xs text-ink/80 leading-relaxed">
-              <span className="font-semibold text-ink">Founding partner advantage:</span> Brands who collaborate early help shape the exact verticals and creator cohorts we construct.
-            </div>
-
-            <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-              <a
-                href="https://calendly.com/clouterry"
-                target="_blank"
-                rel="noreferrer"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setShowCallModal(true);
-                }}
-                className="inline-flex items-center gap-2 rounded-full bg-ink px-8 py-3.5 text-sm font-semibold text-cream shadow-md transition-all hover:bg-ink/85 hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-ink focus-visible:outline-none"
+            {/* Liquid Glass "Book a call" CTA with the rare ember signature edge */}
+            <div className="mt-8">
+              <button
+                type="button"
+                onClick={() => setShowCallModal(true)}
+                className="rounded-md liquid-glass-interactive px-6 py-2.5 text-xs sm:text-sm font-semibold text-star-white border-b-2 border-b-ember/80 hover:border-b-ember focus-visible:ring-2 focus-visible:ring-ember"
               >
-                <span>Book a call</span>
-                <svg
-                  className="h-4 w-4 text-cream/70"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </a>
-
-              <span className="text-xs text-ink/50">
-                Direct with founder • 20 min introductory discussion
-              </span>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Categories & Process Split */}
-        <div className="mt-16 grid gap-12 lg:grid-cols-12 lg:items-start">
-          {/* Creator Categories Grid */}
-          <div className="lg:col-span-7">
-            <h3 className="font-display text-lg font-semibold text-ink/90">
-              Categories we&apos;re actively building cohorts around
-            </h3>
-            <p className="mt-1 text-xs text-ink/55">
-              Curated by aesthetic fit and engagement consistency
-            </p>
-
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              {CATEGORIES.map((cat) => (
-                <div
-                  key={cat.name}
-                  className="group rounded-2xl border border-ink/10 bg-cream-dim/60 p-5 transition-all hover:border-ink/25 hover:bg-cream-dim"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-display text-base font-semibold text-ink">
-                      {cat.name}
-                    </span>
-                    <span className="rounded-full bg-cream px-2.5 py-0.5 text-[11px] font-medium text-ink/65 border border-ink/8">
-                      {cat.status}
-                    </span>
-                  </div>
-                  <p className="mt-2 text-xs text-ink/65 leading-relaxed">
-                    {cat.cadence}
-                  </p>
-                </div>
-              ))}
+                Book a call
+              </button>
             </div>
           </div>
 
-          {/* Process Clarity */}
-          <div className="lg:col-span-5 rounded-3xl border border-ink/10 bg-cream-dim/40 p-6 sm:p-8">
-            <h3 className="font-display text-lg font-semibold text-ink">
-              How partnership works
-            </h3>
-            <p className="mt-1 text-xs text-ink/55">
-              Credibility through operational clarity
-            </p>
-
-            <div className="mt-6 flex flex-col gap-6">
-              {PROCESS_STEPS.map((step) => (
-                <div key={step.step} className="flex gap-4">
-                  <span className="font-display text-sm font-bold text-red shrink-0 pt-0.5">
-                    {step.step}
-                  </span>
-                  <div>
-                    <h4 className="text-sm font-semibold text-ink">
-                      {step.title}
-                    </h4>
-                    <p className="mt-1 text-xs text-ink/70 leading-relaxed">
-                      {step.desc}
-                    </p>
-                  </div>
+          {/* Categories: Simple, quiet list beside the copy */}
+          <div className="lg:col-span-5 border-t lg:border-t-0 lg:border-l border-star-white/10 pt-8 lg:pt-0 lg:pl-10">
+            <div className="text-xs uppercase tracking-wider text-silver/60 font-semibold mb-4">
+              Active Cohort Verticals
+            </div>
+            <div className="space-y-3 text-sm text-silver/85">
+              {CATEGORIES.map((cat) => (
+                <div key={cat} className="border-b border-star-white/10 pb-2.5">
+                  {cat}
                 </div>
               ))}
+            </div>
+            <div className="mt-6 text-xs text-silver/50 leading-relaxed">
+              Standard 14-day turnaround. Pre-cleared 90-day Spark Ads and organic commercial rights included.
             </div>
           </div>
         </div>
       </div>
 
-      {/* Booking Modal / Dialog */}
+      {/* Booking Modal in Liquid Glass */}
       {showCallModal && (
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-50 flex items-center justify-center bg-ink/50 backdrop-blur-xs p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-void/80 backdrop-blur-md p-4"
         >
-          <div className="w-full max-w-md rounded-3xl bg-cream p-7 text-ink shadow-2xl border border-ink/10">
-            <div className="flex items-center justify-between border-b border-ink/10 pb-4">
+          <div className="w-full max-w-md rounded-xl liquid-glass p-7 text-star-white shadow-2xl relative animate-in fade-in zoom-in-95 duration-200">
+            <div className="flex items-center justify-between border-b border-star-white/15 pb-4">
               <div>
-                <h4 className="font-display text-xl font-bold text-ink">
-                  Schedule a Founder Call
+                <h4 className="font-display text-lg font-bold text-star-white">
+                  Schedule Brand Consultation
                 </h4>
-                <p className="text-xs text-ink/60 mt-0.5">
-                  Direct introductory strategy session
+                <p className="text-xs text-silver/60 mt-0.5">
+                  Direct 20 minute category strategy
                 </p>
               </div>
               <button
                 type="button"
                 onClick={() => setShowCallModal(false)}
-                className="rounded-full p-1 text-ink/50 hover:bg-ink/10 hover:text-ink transition-colors"
+                className="p-1 text-silver/60 hover:text-star-white transition-colors"
                 aria-label="Close modal"
               >
-                <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path
-                    fillRule="evenodd"
-                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                <X size={20} />
               </button>
             </div>
 
-            <div className="mt-5 space-y-3 text-sm text-ink/75 leading-relaxed">
+            <div className="mt-5 space-y-3 text-xs sm:text-sm text-silver leading-relaxed">
               <p>
-                While volume is low, all brand inquiries are handled personally by our founding team to understand your exact category objectives.
+                Brand consultations are conducted directly by our founding team to understand your aesthetic targets and cohort requirements.
               </p>
-              <div className="rounded-2xl bg-cream-dim p-4 border border-ink/8 text-xs text-ink/80">
-                <span className="font-semibold text-ink">Prefer email first?</span> Reach us anytime at{" "}
+              <div className="rounded-md bg-space-deep/80 p-4 border border-star-white/10 text-xs text-silver">
+                <span className="font-semibold text-star-white">Direct contact:</span> Reach us directly at{" "}
                 <a
                   href="mailto:hello@clouterry.com"
-                  className="font-semibold text-red underline hover:text-red-deep"
+                  className="font-semibold text-ember underline hover:text-ember/80"
                 >
                   hello@clouterry.com
                 </a>
@@ -224,14 +110,14 @@ export default function BrandSection() {
                 href="https://calendly.com/clouterry"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-center rounded-full bg-ink py-3 px-6 text-sm font-semibold text-cream transition-all hover:bg-ink/85"
+                className="rounded-md liquid-glass-interactive py-3 text-center text-xs sm:text-sm font-semibold text-star-white border-b-2 border-b-ember"
               >
                 Open Calendly Scheduler
               </a>
               <button
                 type="button"
                 onClick={() => setShowCallModal(false)}
-                className="py-2 text-center text-xs font-semibold text-ink/50 hover:text-ink"
+                className="py-2 text-center text-xs font-semibold text-silver/50 hover:text-silver"
               >
                 Cancel
               </button>

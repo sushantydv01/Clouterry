@@ -46,7 +46,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       success: true,
-      message: "You're on the list — cohorts are filling now.",
+      message: "You're on the list. Cohorts are filling now.",
     });
   } catch (error) {
     console.error("Application submission error:", error);

@@ -1,11 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Fredoka, Manrope } from "next/font/google";
+import { Plus_Jakarta_Sans, Manrope } from "next/font/google";
+import SmoothScroll from "@/components/SmoothScroll";
+import Starfield from "@/components/Starfield";
 import "./globals.css";
 
-const fredoka = Fredoka({
-  variable: "--font-fredoka",
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -17,13 +19,13 @@ const manrope = Manrope({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#C41E3A",
+  themeColor: "#0A0A0F",
   width: "device-width",
   initialScale: 1,
 };
 
 export const metadata: Metadata = {
-  title: "Clouterry — Creator cohorts connected with authentic brands",
+  title: "Clouterry - Creator cohorts connected with authentic brands",
   description:
     "Clouterry sources small creators into curated cohorts and connects them with brands who want authentic content that actually lands.",
   keywords: [
@@ -36,7 +38,7 @@ export const metadata: Metadata = {
     "TikTok creators",
   ],
   openGraph: {
-    title: "Clouterry — Real creators. Real content. Built into cohorts brands can trust.",
+    title: "Clouterry - Real creators. Real voice. Built into cohorts brands can trust.",
     description:
       "Pre-launch creator agency sourcing small creators into curated cohorts and connecting them with forward-thinking brands.",
     url: "https://clouterry.com",
@@ -46,7 +48,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Clouterry — The Creator Cohort Agency",
+    title: "Clouterry - The Creator Cohort Agency",
     description:
       "Curated cohorts for small creators. Authentic content for brands.",
   },
@@ -60,10 +62,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fredoka.variable} ${manrope.variable} h-full scroll-smooth antialiased`}
+      className={`${plusJakarta.variable} ${manrope.variable} h-full antialiased bg-void text-silver`}
     >
-      <body className="min-h-full flex flex-col bg-cream text-ink font-body">
-        {children}
+      <body className="min-h-full flex flex-col bg-void text-silver font-body selection:bg-star-white selection:text-void relative overflow-x-hidden">
+        <Starfield />
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );

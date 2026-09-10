@@ -1,51 +1,64 @@
 "use client";
 
-import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function FounderStory() {
   return (
     <section
       id="story"
-      className="relative bg-cream-dim/50 px-6 py-24 sm:py-32 text-ink border-t border-ink/8"
+      className="relative bg-void/50 backdrop-blur-xs px-6 py-20 sm:py-28 text-silver border-t border-star-white/10 text-left"
     >
-      <div className="mx-auto max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="mx-auto max-w-2xl text-center sm:text-left"
-        >
-          <div className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-cream px-3.5 py-1 text-xs font-semibold text-ink/70">
-            Our Conviction
-          </div>
+      <div className="mx-auto max-w-2xl">
+        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-star-white leading-tight">
+          The content economy has
+          <br />
+          a matching problem.
+        </h2>
 
-          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl leading-[1.2]">
-            Why Clouterry exists, and why cohorts change the game.
-          </h2>
+        <div className="mt-8 space-y-6 text-base text-silver/90 leading-relaxed border-t border-star-white/10 pt-8">
+          <p>
+            Every week, millions of talented micro-creators produce magnetic short-form video. Yet most spend 70% of their creative energy cold-pitching brands through overflowing DMs, getting ghosted or pressured into lowball trade deals with zero creative sovereignty.
+          </p>
+          <p>
+            On the brand side, growth leaders are exhausted by SaaS directories that sell spreadsheets of 50,000 unvetted handles. Marketing teams end up acting as full-time logistics coordinators, wrangling dozens of one-off contracts, endless revision loops, and delayed payouts.
+          </p>
+          <p className="font-bold text-star-white">
+            Clouterry fixes this through cohort-based talent infrastructure.
+          </p>
+          <p>
+            We organize creators by genuine cultural category, giving independent voices collective bargaining power while providing brands with an operational roster they can trust on a guaranteed 14-day delivery cycle.
+          </p>
+        </div>
 
-          <div className="mt-8 space-y-5 text-base sm:text-lg text-ink/75 leading-relaxed">
-            <p>
-              The content economy has a structural matching problem. Millions of talented micro and small creators produce genuinely magnetic, high-converting video every week, yet spend hours cold-pitching brands with little leverage.
-            </p>
-            <p>
-              On the other side, growth marketers and brands are exhausted by impersonal software directories that dump thousands of unvetted handles into a spreadsheet, leaving them to manage 40 distinct contracts, creative briefs, and payout cycles.
-            </p>
-            <p>
-              Clouterry was built to bridge this disconnect through curated cohorts. We organize creators by genuine aesthetic category and cultural fit, giving small creators collective negotiating power while offering brands a streamlined, managed roster they can trust. When alignment comes first, content actually lands.
-            </p>
-          </div>
-
-          <div className="mt-8 pt-6 border-t border-ink/10 flex items-center gap-4">
-            <div className="h-10 w-10 rounded-full bg-red text-cream font-display font-bold flex items-center justify-center text-sm shadow-xs">
-              C
+        <div className="mt-10 pt-6 border-t border-star-white/10 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-md liquid-glass p-1.5 border border-star-white/15">
+              <Image
+                src="/clouterry-mark-white.png"
+                alt="Clouterry emblem"
+                fill
+                sizes="40px"
+                className="object-contain p-1"
+              />
             </div>
             <div>
-              <p className="text-sm font-semibold text-ink">The Founding Team</p>
-              <p className="text-xs text-ink/55">Clouterry • Built in public</p>
+              <div className="font-display text-xs font-bold text-star-white">
+                The Founding Team
+              </div>
+              <div className="text-[11px] text-silver/60">
+                Clouterry Agency, building the future of creator cohorts
+              </div>
             </div>
           </div>
-        </motion.div>
+
+          <Link
+            href="/about"
+            className="text-xs font-bold text-silver underline hover:text-star-white transition-colors"
+          >
+            Read full story
+          </Link>
+        </div>
       </div>
     </section>
   );

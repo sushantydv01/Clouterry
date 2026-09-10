@@ -1,15 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  --color-cream: #F5F1E6;
-  --color-cream-dim: #EDE6D3;
-  --color-ink: #1A1410;
-  --color-red: #C41E3A;
-  --color-red-deep: #8B1428;
+  --color-void: #0A0A0F;
+  --color-space-deep: #12121C;
+  --color-star-white: #F4F3F7;
+  --color-silver: #B8B8C4;
+  --color-ember: #D4A94A;
+
+  /* Aliases for graceful dark-space defaults */
+  --color-cream: #0A0A0F;
+  --color-cream-dim: #12121C;
+  --color-ink: #F4F3F7;
+  --color-red: #D4A94A;
+  --color-red-deep: #B88E33;
   --color-gold: #D4A94A;
 }
 
 @theme inline {
+  --color-void: var(--color-void);
+  --color-space-deep: var(--color-space-deep);
+  --color-star-white: var(--color-star-white);
+  --color-silver: var(--color-silver);
+  --color-ember: var(--color-ember);
+
   --color-cream: var(--color-cream);
   --color-cream-dim: var(--color-cream-dim);
   --color-ink: var(--color-ink);
@@ -17,27 +30,100 @@
   --color-red-deep: var(--color-red-deep);
   --color-gold: var(--color-gold);
 
-  --font-display: var(--font-fredoka);
+  --font-display: var(--font-plus-jakarta);
   --font-body: var(--font-manrope);
 }
 
+/* Essential Lenis Smooth Scroll Rules */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
 html {
-  scroll-behavior: smooth;
-  background-color: var(--color-cream);
-  color: var(--color-ink);
+  background-color: var(--color-void);
+  color: var(--color-silver);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background-color: var(--color-cream);
-  color: var(--color-ink);
+  background-color: var(--color-void);
+  color: var(--color-silver);
   font-family: var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
+  position: relative;
 }
 
 /* Accessible focus styling */
 :focus-visible {
-  outline: 2px solid var(--color-red);
+  outline: 2px solid var(--color-ember);
   outline-offset: 2px;
+}
+
+/* Liquid Glass Optical Surface Classes */
+.liquid-glass {
+  background: rgba(244, 243, 247, 0.05);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(244, 243, 247, 0.1);
+  border-top: 1px solid rgba(244, 243, 247, 0.3);
+  box-shadow: inset 0 -1px 2px 0 rgba(0, 0, 0, 0.4), 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+}
+
+.liquid-glass-interactive {
+  background: rgba(244, 243, 247, 0.05);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(244, 243, 247, 0.12);
+  border-top: 1px solid rgba(244, 243, 247, 0.32);
+  box-shadow: inset 0 -1px 2px 0 rgba(0, 0, 0, 0.35), 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.liquid-glass-interactive:hover {
+  background: rgba(244, 243, 247, 0.09);
+  border-top-color: rgba(244, 243, 247, 0.45);
+  border-color: rgba(244, 243, 247, 0.18);
+  box-shadow: inset 0 -1px 3px 0 rgba(0, 0, 0, 0.3), 0 12px 36px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Marquee Animations with GPU acceleration */
+@keyframes marquee {
+  0% { transform: translate3d(0%, 0, 0); }
+  100% { transform: translate3d(-100%, 0, 0); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translate3d(-100%, 0, 0); }
+  100% { transform: translate3d(0%, 0, 0); }
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 35s linear infinite;
+  will-change: transform;
 }
 
 /* Reduced motion preference */
