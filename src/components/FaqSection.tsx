@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { CaretDown } from "@phosphor-icons/react";
+import RevealOnScroll from "./RevealOnScroll";
 
 interface FaqItem {
   q: string;
@@ -49,62 +51,104 @@ export default function FaqSection() {
   const filtered = filter === "all" ? FAQS : FAQS.filter((f) => f.category === filter || f.category === "all");
 
   return (
-    <section className="relative border-t border-star-white/10 bg-void/35 backdrop-blur-xs px-6 py-28 sm:py-36 text-silver">
+    <section className="relative border-t border-star-white/8 bg-void/35 backdrop-blur-xs px-6 py-28 sm:py-36 text-silver">
       <div className="mx-auto max-w-4xl">
-        <div>
-          <h2 className="font-display text-3xl sm:text-5xl font-extrabold tracking-tight text-star-white leading-[1.05]">
-            Answers to common questions.
-          </h2>
+        <RevealOnScroll>
+          <div>
+            <h2 className="font-display text-3xl sm:text-5xl font-extrabold tracking-tight text-star-white leading-[1.05]">
+              Answers to common questions.
+            </h2>
 
-          <p className="mt-4 text-base text-silver/80">
-            Everything you need to know about joining or partnering with Clouterry cohorts.
-          </p>
+            <p className="mt-4 text-base text-silver/70">
+              Everything you need to know about joining or partnering with Clouterry cohorts.
+            </p>
 
-          <div className="mt-8 flex items-center gap-6 text-xs font-semibold border-b border-star-white/10 pb-4">
-            {(["all", "creators", "brands"] as const).map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setFilter(cat)}
-                className={`transition-colors pb-1 capitalize ${
-                  filter === cat
-                    ? "border-b-2 border-star-white text-star-white font-bold"
-                    : "text-silver/50 hover:text-silver"
-                }`}
-              >
-                {cat === "all" ? "All Questions" : `For ${cat}`}
-              </button>
-            ))}
+            <div className="mt-8 flex items-center gap-6 text-xs font-semibold border-b border-star-white/8 pb-4">
+              {(["all", "creators", "brands"] as const).map((cat) => (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => {
+                    setFilter(cat);
+                    setOpenIndex(null);
+                  }}
+                  className={`relative transition-colors duration-300 pb-1 capitalize ${
+                    filter === cat
+                      ? "text-star-white font-bold"
+                      : "text-silver/40 hover:text-silver"
+                  }`}
+                >
+                  {cat === "all" ? "All Questions" : `For ${cat}`}
+                  {filter === cat && (
+                    <motion.span
+                      layoutId="faqFilter"
+                      className="absolute -bottom-[5px] left-0 right-0 h-[2px] bg-vermillion rounded-full"
+                      transition={{ type: "spring", stiffness: 500, damping: 35 }}
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
+        </RevealOnScroll>
 
-        <div className="mt-10 space-y-4">
+        <div className="mt-10 space-y-0">
           {filtered.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
               <div
                 key={faq.q}
-                className="border-b border-star-white/10 pb-5 transition-colors"
+                className={`border-b border-star-white/8 transition-colors duration-300 ${
+                  isOpen ? "border-vermillion/20" : ""
+                }`}
               >
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="flex w-full items-center justify-between text-left py-2 text-base sm:text-lg font-bold text-star-white"
+                  aria-expanded={isOpen}
+                  className="flex w-full items-center justify-between text-left py-5 text-base sm:text-lg font-bold text-star-white group"
                 >
-                  <span>{faq.q}</span>
-                  <CaretDown
-                    size={16}
-                    weight="bold"
-                    className={`shrink-0 ml-4 transition-transform duration-200 ${
-                      isOpen ? "rotate-180 text-ember" : "text-silver/40"
-                    }`}
-                  />
+                  <span className="flex items-center gap-3">
+                    {/* Vermillion accent bar on open */}
+                    <span
+                      className={`w-[2px] h-5 rounded-full transition-all duration-300 ${
+                        isOpen ? "bg-vermillion" : "bg-transparent"
+                      }`}
+                    />
+                    <span className="group-hover:text-vermillion transition-colors duration-300">
+                      {faq.q}
+                    </span>
+                  </span>
+                  <motion.span
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    className="shrink-0 ml-4"
+                  >
+                    <CaretDown
+                      size={16}
+                      weight="bold"
+                      className={`transition-colors duration-300 ${
+                        isOpen ? "text-vermillion" : "text-silver/30"
+                      }`}
+                    />
+                  </motion.span>
                 </button>
-                {isOpen && (
-                  <div className="pt-2 pb-2 text-xs sm:text-sm text-silver/80 leading-relaxed">
-                    {faq.a}
-                  </div>
-                )}
+
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pl-5 pb-5 text-xs sm:text-sm text-silver/70 leading-relaxed max-w-2xl">
+                        {faq.a}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             );
           })}

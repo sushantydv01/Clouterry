@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { Check, Clock } from "@phosphor-icons/react";
+import { motion, AnimatePresence } from "framer-motion";
+import RevealOnScroll from "./RevealOnScroll";
 
 interface Step {
   stage: string;
@@ -72,97 +74,124 @@ export default function WorkflowSection() {
   const [activeStep, setActiveStep] = useState(0);
 
   return (
-    <section className="relative border-t border-star-white/10 bg-void/35 backdrop-blur-xs px-6 sm:px-10 lg:px-16 py-28 sm:py-36 text-silver">
+    <section className="relative border-t border-star-white/8 bg-void/35 backdrop-blur-xs px-6 sm:px-10 lg:px-16 py-28 sm:py-36 text-silver">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
-        <div className="max-w-3xl">
-          <div className="text-xs uppercase tracking-widest text-ember font-semibold mb-3">
-            Execution Velocity
+        <RevealOnScroll>
+          <div className="max-w-3xl">
+            <div className="text-xs uppercase tracking-widest text-vermillion font-semibold mb-3">
+              Execution Velocity
+            </div>
+            <h2 className="font-display text-3xl sm:text-5xl font-extrabold tracking-tight text-star-white leading-[1.05]">
+              From brief to live assets in 14 days.
+            </h2>
+
+            <p className="mt-4 text-base sm:text-lg text-silver/75 leading-relaxed">
+              A battle-tested production pipeline designed to eliminate agency bloat and deliver authentic creator content at velocity.
+            </p>
           </div>
-          <h2 className="font-display text-3xl sm:text-5xl font-extrabold tracking-tight text-star-white leading-[1.05]">
-            From brief to live assets in 14 days.
-          </h2>
+        </RevealOnScroll>
 
-          <p className="mt-4 text-base sm:text-lg text-silver/85 leading-relaxed">
-            A battle-tested production pipeline designed to eliminate agency bloat and deliver authentic creator content at velocity.
-          </p>
-        </div>
-
-        {/* Stage Selector */}
-        <div className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-4 border-b border-star-white/10 pb-6">
-          {STEPS.map((step, idx) => (
-            <button
-              key={step.stage}
-              type="button"
-              onClick={() => setActiveStep(idx)}
-              className={`rounded-lg border p-4 text-left transition-colors ${
-                activeStep === idx
-                  ? "liquid-glass border-b-2 border-b-ember text-star-white font-bold"
-                  : "border-star-white/10 text-silver/60 hover:border-star-white/25 hover:text-star-white"
-              }`}
-            >
-              <div className="flex items-center justify-between text-xs">
-                <span className="font-mono uppercase text-[11px] text-ember">
-                  {step.stage}
-                </span>
-                <span className={activeStep === idx ? "text-star-white" : "text-silver/50"}>
-                  {step.timeline}
-                </span>
-              </div>
-              <h3 className="mt-2 font-display text-xs sm:text-sm font-bold truncate">
-                {step.title.split("&")[0]}
-              </h3>
-            </button>
-          ))}
-        </div>
-
-        {/* Active Stage Details in Liquid Glass */}
-        <div className="mt-8 liquid-glass rounded-2xl p-8 sm:p-12 border border-star-white/15 shadow-2xl">
-          <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
-            {/* Left Column */}
-            <div className="lg:col-span-7">
-              <div className="text-xs font-semibold uppercase tracking-wider text-ember">
-                {STEPS[activeStep].timeline} • {STEPS[activeStep].stage}
-              </div>
-              <h3 className="mt-2 font-display text-2xl sm:text-3xl font-extrabold text-star-white tracking-tight">
-                {STEPS[activeStep].title}
-              </h3>
-
-              <p className="mt-5 text-sm sm:text-base text-silver/85 leading-relaxed">
-                {STEPS[activeStep].desc}
-              </p>
-
-              <div className="mt-6 border-l-2 border-ember pl-4 py-1 text-xs sm:text-sm font-medium text-star-white">
-                {STEPS[activeStep].highlight}
-              </div>
+        {/* Stage Selector with progress indicator */}
+        <RevealOnScroll delay={0.1}>
+          <div className="mt-14">
+            {/* Progress bar */}
+            <div className="h-[2px] bg-star-white/8 rounded-full mb-6 overflow-hidden">
+              <motion.div
+                className="h-full bg-vermillion rounded-full"
+                animate={{ width: `${((activeStep + 1) / STEPS.length) * 100}%` }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              />
             </div>
 
-            {/* Right Column: Deliverables Box */}
-            <div className="lg:col-span-5 border-t lg:border-t-0 lg:border-l border-star-white/10 pt-6 lg:pt-0 lg:pl-8">
-              <div className="flex items-center justify-between pb-3 border-b border-star-white/10">
-                <span className="text-xs font-bold uppercase tracking-wider text-star-white/80">
-                  Guaranteed Deliverables
-                </span>
-                <div className="flex items-center gap-1.5 text-xs text-silver/60">
-                  <Clock size={14} className="text-ember" />
-                  <span>{STEPS[activeStep].duration}</span>
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 pb-6">
+              {STEPS.map((step, idx) => (
+                <button
+                  key={step.stage}
+                  type="button"
+                  onClick={() => setActiveStep(idx)}
+                  className={`rounded-lg border p-4 text-left transition-all duration-400 ${
+                    activeStep === idx
+                      ? "liquid-glass border-vermillion/30 text-star-white font-bold shadow-[0_0_20px_rgba(255,61,46,0.08)]"
+                      : "border-star-white/8 text-silver/50 hover:border-star-white/20 hover:text-star-white"
+                  }`}
+                >
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="font-mono uppercase text-[11px] text-vermillion">
+                      {step.stage}
+                    </span>
+                    <span className={activeStep === idx ? "text-star-white" : "text-silver/40"}>
+                      {step.timeline}
+                    </span>
+                  </div>
+                  <h3 className="mt-2 font-display text-xs sm:text-sm font-bold truncate">
+                    {step.title.split("&")[0]}
+                  </h3>
+                </button>
+              ))}
+            </div>
+          </div>
+        </RevealOnScroll>
+
+        {/* Active Stage Details */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeStep}
+            initial={{ opacity: 0, y: 12, filter: "blur(4px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            exit={{ opacity: 0, y: -12, filter: "blur(4px)" }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="liquid-glass rounded-2xl p-8 sm:p-12 border border-star-white/10 shadow-2xl"
+          >
+            <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
+              {/* Left Column */}
+              <div className="lg:col-span-7">
+                <div className="text-xs font-semibold uppercase tracking-wider text-vermillion">
+                  {STEPS[activeStep].timeline} • {STEPS[activeStep].stage}
+                </div>
+                <h3 className="mt-2 font-display text-2xl sm:text-3xl font-extrabold text-star-white tracking-tight">
+                  {STEPS[activeStep].title}
+                </h3>
+
+                <p className="mt-5 text-sm sm:text-base text-silver/75 leading-relaxed">
+                  {STEPS[activeStep].desc}
+                </p>
+
+                <div className="mt-6 border-l-2 border-vermillion pl-4 py-1 text-xs sm:text-sm font-medium text-star-white">
+                  {STEPS[activeStep].highlight}
                 </div>
               </div>
 
-              <div className="mt-4 space-y-3">
-                {STEPS[activeStep].deliverables.map((item) => (
-                  <div
-                    key={item}
-                    className="flex items-start gap-2.5 text-xs sm:text-sm text-silver/90 leading-relaxed"
-                  >
-                    <Check size={14} weight="bold" className="text-ember shrink-0 mt-1" />
-                    <span>{item}</span>
+              {/* Right Column: Deliverables */}
+              <div className="lg:col-span-5 border-t lg:border-t-0 lg:border-l border-star-white/8 pt-6 lg:pt-0 lg:pl-8">
+                <div className="flex items-center justify-between pb-3 border-b border-star-white/8">
+                  <span className="text-xs font-bold uppercase tracking-wider text-star-white/70">
+                    Guaranteed Deliverables
+                  </span>
+                  <div className="flex items-center gap-1.5 text-xs text-silver/50">
+                    <Clock size={14} className="text-vermillion" />
+                    <span>{STEPS[activeStep].duration}</span>
                   </div>
-                ))}
+                </div>
+
+                <div className="mt-4 space-y-3">
+                  {STEPS[activeStep].deliverables.map((item, i) => (
+                    <motion.div
+                      key={item}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 + i * 0.08, duration: 0.3 }}
+                      className="flex items-start gap-2.5 text-xs sm:text-sm text-silver/80 leading-relaxed"
+                    >
+                      <Check size={14} weight="bold" className="text-vermillion shrink-0 mt-1" />
+                      <span>{item}</span>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );

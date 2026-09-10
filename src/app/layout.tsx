@@ -1,18 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, Manrope } from "next/font/google";
+import { Sora, Inter } from "next/font/google";
 import SmoothScroll from "@/components/SmoothScroll";
 import Starfield from "@/components/Starfield";
+import GrainOverlay from "@/components/GrainOverlay";
+import CustomCursor from "@/components/CustomCursor";
 import "./globals.css";
 
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
+const sora = Sora({
+  variable: "--font-sora",
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
 });
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
@@ -62,10 +64,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${plusJakarta.variable} ${manrope.variable} h-full antialiased bg-void text-silver`}
+      className={`${sora.variable} ${inter.variable} h-full antialiased bg-void text-silver`}
     >
-      <body className="min-h-full flex flex-col bg-void text-silver font-body selection:bg-star-white selection:text-void relative overflow-x-hidden">
+      <body className="min-h-full flex flex-col bg-void text-silver font-body selection:bg-vermillion selection:text-star-white relative overflow-x-hidden">
         <Starfield />
+        <div className="ambient-mesh" aria-hidden="true" />
+        <GrainOverlay />
+        <CustomCursor />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

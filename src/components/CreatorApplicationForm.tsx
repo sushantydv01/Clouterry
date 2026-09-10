@@ -28,6 +28,15 @@ export default function CreatorApplicationForm() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
 
+  // Field-level validation state
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
+
+  const markTouched = (field: string) => {
+    setTouched((prev) => ({ ...prev, [field]: true }));
+  };
+
+  const isValidEmail = (e: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage(null);
@@ -44,7 +53,7 @@ export default function CreatorApplicationForm() {
       setErrorMessage("Please select your follower tier.");
       return;
     }
-    if (!email.trim() || !email.includes("@")) {
+    if (!email.trim() || !isValidEmail(email)) {
       setErrorMessage("Please provide a valid contact email.");
       return;
     }
@@ -79,42 +88,55 @@ export default function CreatorApplicationForm() {
     setEmail("");
     setSubmitted(false);
     setErrorMessage(null);
+    setTouched({});
   };
 
   return (
-    /* Liquid Glass UI Panel: translucent, refractive, top-edge specular highlight */
-    <div className="w-full max-w-xl rounded-2xl liquid-glass p-8 sm:p-10 text-star-white relative">
+    <div className="w-full max-w-xl rounded-2xl liquid-glass p-8 sm:p-10 text-star-white relative overflow-hidden">
+      {/* Subtle vermillion glow top corner */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-16 -right-16 w-40 h-40 rounded-full bg-[radial-gradient(circle,_rgba(255,61,46,0.08),_transparent_70%)] blur-2xl"
+      />
+
       <AnimatePresence mode="wait">
         {!submitted ? (
           <motion.form
             key="form"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             onSubmit={handleSubmit}
-            className="flex flex-col gap-8"
+            className="flex flex-col gap-8 relative z-10"
           >
             <div>
-              <div className="text-xs uppercase tracking-widest text-silver/70 font-semibold">
+              <div className="text-xs uppercase tracking-widest text-silver/60 font-semibold">
                 Direct Cohort Application
               </div>
               <h3 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-star-white mt-1">
                 Apply to Join a Cohort
               </h3>
-              <p className="text-xs sm:text-sm text-silver/80 mt-1.5 leading-relaxed">
+              <p className="text-xs sm:text-sm text-silver/70 mt-1.5 leading-relaxed">
                 Reviewed weekly by our founding team. No spam, zero exclusive talent locks.
               </p>
             </div>
 
-            {errorMessage && (
-              <div
-                role="alert"
-                className="border-l-2 border-ember bg-space-deep/90 px-4 py-2.5 text-xs font-medium text-star-white"
-              >
-                {errorMessage}
-              </div>
-            )}
+            {/* Error message with shake animation */}
+            <AnimatePresence>
+              {errorMessage && (
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: [0, -4, 4, -2, 2, 0] }}
+                  exit={{ opacity: 0, x: -10 }}
+                  transition={{ duration: 0.4 }}
+                  role="alert"
+                  className="border-l-2 border-vermillion bg-space-deep/90 px-4 py-2.5 text-xs font-medium text-star-white"
+                >
+                  {errorMessage}
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             {/* Field 1: Handle */}
             <div className="flex flex-col gap-1.5">
@@ -124,8 +146,12 @@ export default function CreatorApplicationForm() {
               >
                 Your Handle
               </label>
-              <div className="relative flex items-center border-b border-star-white/20 focus-within:border-star-white transition-colors">
-                <span className="text-silver/50 font-medium text-base mr-2 select-none">
+              <div className={`relative flex items-center border-b transition-colors duration-300 ${
+                touched.handle && !handle.trim()
+                  ? "border-vermillion/60"
+                  : "border-star-white/15 focus-within:border-vermillion"
+              }`}>
+                <span className="text-silver/40 font-medium text-base mr-2 select-none">
                   @
                 </span>
                 <input
@@ -135,9 +161,20 @@ export default function CreatorApplicationForm() {
                   required
                   value={handle.replace(/^@/, "")}
                   onChange={(e) => setHandle(e.target.value)}
+                  onBlur={() => markTouched("handle")}
                   placeholder="instagram or tiktok handle"
-                  className="w-full bg-transparent py-2.5 text-base text-star-white placeholder:text-silver/40 outline-none"
+                  className="w-full bg-transparent py-2.5 text-base text-star-white placeholder:text-silver/30 outline-none"
                 />
+                {/* Inline valid check */}
+                {handle.trim().length > 2 && (
+                  <motion.span
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="text-vermillion"
+                  >
+                    <CheckCircle size={16} weight="bold" />
+                  </motion.span>
+                )}
               </div>
             </div>
 
@@ -150,31 +187,30 @@ export default function CreatorApplicationForm() {
                 >
                   Primary Vertical
                 </label>
-                <span className="text-[11px] text-silver/50">Select or enter below</span>
+                <span className="text-[11px] text-silver/40">Select or enter below</span>
               </div>
 
-              {/* Plainly-set text list */}
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs">
                 {NICHES.map((item, idx) => (
                   <button
                     key={item}
                     type="button"
                     onClick={() => setNiche(item)}
-                    className={`transition-colors text-left ${
+                    className={`transition-all duration-300 text-left ${
                       niche === item
-                        ? "text-star-white font-bold underline underline-offset-4"
-                        : "text-silver/70 hover:text-star-white"
+                        ? "text-vermillion font-bold underline underline-offset-4"
+                        : "text-silver/60 hover:text-star-white"
                     }`}
                   >
                     {item}
                     {idx < NICHES.length - 1 ? (
-                      <span className="ml-3 text-silver/30 select-none">/</span>
+                      <span className="ml-3 text-silver/20 select-none">/</span>
                     ) : null}
                   </button>
                 ))}
               </div>
 
-              <div className="border-b border-star-white/20 focus-within:border-star-white transition-colors mt-1">
+              <div className="border-b border-star-white/15 focus-within:border-vermillion transition-colors duration-300 mt-1">
                 <input
                   id="creator-niche"
                   name="niche"
@@ -183,7 +219,7 @@ export default function CreatorApplicationForm() {
                   value={niche}
                   onChange={(e) => setNiche(e.target.value)}
                   placeholder="Or enter custom niche..."
-                  className="w-full bg-transparent py-2 text-sm text-star-white placeholder:text-silver/40 outline-none"
+                  className="w-full bg-transparent py-2 text-sm text-star-white placeholder:text-silver/30 outline-none"
                 />
               </div>
             </div>
@@ -199,10 +235,10 @@ export default function CreatorApplicationForm() {
                     key={tier}
                     type="button"
                     onClick={() => setFollowers(tier)}
-                    className={`rounded-md border py-2 px-3 text-center text-xs font-medium transition-colors ${
+                    className={`rounded-md border py-2 px-3 text-center text-xs font-medium transition-all duration-300 ${
                       followers === tier
-                        ? "border-star-white bg-star-white text-void font-bold"
-                        : "border-star-white/15 text-silver hover:border-star-white/40 hover:text-star-white"
+                        ? "border-vermillion bg-vermillion/10 text-vermillion font-bold shadow-[0_0_12px_rgba(255,61,46,0.1)]"
+                        : "border-star-white/10 text-silver/60 hover:border-star-white/30 hover:text-star-white"
                     }`}
                   >
                     {tier}
@@ -219,7 +255,11 @@ export default function CreatorApplicationForm() {
               >
                 Direct Email
               </label>
-              <div className="border-b border-star-white/20 focus-within:border-star-white transition-colors">
+              <div className={`relative flex items-center border-b transition-colors duration-300 ${
+                touched.email && email && !isValidEmail(email)
+                  ? "border-vermillion/60"
+                  : "border-star-white/15 focus-within:border-vermillion"
+              }`}>
                 <input
                   id="creator-email"
                   name="email"
@@ -227,18 +267,40 @@ export default function CreatorApplicationForm() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  onBlur={() => markTouched("email")}
                   placeholder="you@domain.com"
-                  className="w-full bg-transparent py-2.5 text-base text-star-white placeholder:text-silver/40 outline-none"
+                  className="w-full bg-transparent py-2.5 text-base text-star-white placeholder:text-silver/30 outline-none"
                 />
+                {/* Inline valid check */}
+                {isValidEmail(email) && (
+                  <motion.span
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="text-vermillion"
+                  >
+                    <CheckCircle size={16} weight="bold" />
+                  </motion.span>
+                )}
               </div>
+              {/* Inline validation error */}
+              {touched.email && email && !isValidEmail(email) && (
+                <motion.span
+                  initial={{ opacity: 0, y: -4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-[11px] text-vermillion/80 mt-1"
+                >
+                  Please enter a valid email address
+                </motion.span>
+              )}
             </div>
 
             {/* Submit CTA */}
             <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <button
                 type="submit"
+                data-cursor="cta"
                 disabled={submitting}
-                className="rounded-md bg-star-white px-8 py-3.5 text-xs sm:text-sm font-bold text-void transition-colors hover:bg-star-white/90 disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-star-white"
+                className="rounded-md bg-vermillion px-8 py-3.5 text-xs sm:text-sm font-bold text-star-white transition-all duration-300 hover:bg-vermillion-deep hover:shadow-[0_0_24px_rgba(255,61,46,0.3)] disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-vermillion"
               >
                 {submitting ? (
                   <span className="inline-flex items-center gap-2">
@@ -250,35 +312,46 @@ export default function CreatorApplicationForm() {
                 )}
               </button>
 
-              <span className="text-[11px] text-silver/60">
+              <span className="text-[11px] text-silver/50">
                 Weekly review • Direct response
               </span>
             </div>
           </motion.form>
         ) : (
-          /* Confirmation State */
+          /* ── Success State ── */
           <motion.div
             key="confirmed"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="border-l-2 border-star-white pl-6 py-4 space-y-4"
+            initial={{ opacity: 0, scale: 0.95, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="py-4 space-y-5 relative z-10"
           >
-            <div className="flex items-center gap-2 text-star-white">
-              <CheckCircle size={22} weight="bold" />
-              <span className="text-xs uppercase tracking-widest font-bold">
-                Application Received
-              </span>
+            {/* Success check animation */}
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.1 }}
+              className="w-16 h-16 rounded-full bg-vermillion/10 border border-vermillion/30 flex items-center justify-center"
+            >
+              <CheckCircle size={32} weight="bold" className="text-vermillion" />
+            </motion.div>
+
+            <div>
+              <div className="flex items-center gap-2 text-star-white mb-2">
+                <span className="text-xs uppercase tracking-widest font-bold text-vermillion">
+                  Application Received
+                </span>
+              </div>
+
+              <h3 className="font-display text-2xl sm:text-3xl font-extrabold text-star-white leading-tight">
+                We received your submission for @{handle.replace(/^@/, "")}.
+              </h3>
             </div>
 
-            <h3 className="font-display text-2xl sm:text-3xl font-extrabold text-star-white leading-tight">
-              We received your submission for @{handle.replace(/^@/, "")}.
-            </h3>
-
-            <p className="text-sm text-silver leading-relaxed max-w-lg">
+            <p className="text-sm text-silver/70 leading-relaxed max-w-lg">
               Our team evaluates cohort fit weekly for the{" "}
-              <span className="text-star-white font-bold">{niche}</span> category. We
+              <span className="text-vermillion font-bold">{niche}</span> category. We
               will reach out to{" "}
               <span className="text-star-white font-bold">{email}</span> as soon as
               your vertical opens.
@@ -287,9 +360,12 @@ export default function CreatorApplicationForm() {
             <button
               type="button"
               onClick={resetForm}
-              className="text-xs font-semibold text-star-white underline underline-offset-4 hover:text-silver pt-2 block"
+              className="text-xs font-semibold text-silver/60 hover:text-star-white transition-colors duration-300 pt-2 block group"
             >
-              Submit another handle
+              <span className="relative">
+                Submit another handle
+                <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-vermillion group-hover:w-full transition-all duration-300" />
+              </span>
             </button>
           </motion.div>
         )}
