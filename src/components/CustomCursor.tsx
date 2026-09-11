@@ -1,121 +1,110 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
-  const dotRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
-  const pos = useRef({ x: 0, y: 0 });
-  const target = useRef({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
-  const [isCta, setIsCta] = useState(false);
-  const [visible, setVisible] = useState(false);
-  const [isTouchDevice, setIsTouchDevice] = useState(true);
+  const [mounted, setMounted] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
-  const handleMouseMove = useCallback((e: MouseEvent) => {
-    target.current = { x: e.clientX, y: e.clientY };
-    if (!visible) setVisible(true);
-  }, [visible]);
+  const mouseX = useMotionValue(-100);
+  const mouseY = useMotionValue(-100);
+
+  // Smooth springs with gentle physical weight
+  const springConfigInner = { damping: 45, stiffness: 700, mass: 0.1 };
+  const springConfigRing = { damping: 30, stiffness: 280, mass: 0.35 };
+
+  const cursorX = useSpring(mouseX, springConfigInner);
+  const cursorY = useSpring(mouseY, springConfigInner);
+
+  const ringX = useSpring(mouseX, springConfigRing);
+  const ringY = useSpring(mouseY, springConfigRing);
 
   useEffect(() => {
-    // Detect touch device
-    const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
-    setIsTouchDevice(isTouch);
-    if (isTouch) return;
+    // Only enable on desktop pointer devices, respect reduced motion
+    if (typeof window === "undefined") return;
+    const isFinePointer = window.matchMedia("(pointer: fine) and (hover: hover)").matches;
+    const isReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    // Check reduced motion
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    document.body.classList.add("has-custom-cursor");
-
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-
-    const handleEnter = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const isInteractive = target.closest("a, button, [role='button'], input, textarea, select, label");
-      const isCtaEl = target.closest("[data-cursor='cta']");
-      setIsHovering(!!isInteractive);
-      setIsCta(!!isCtaEl);
-    };
-
-    const handleLeave = () => {
-      setIsHovering(false);
-      setIsCta(false);
-    };
-
-    document.addEventListener("mouseover", handleEnter, { passive: true });
-    document.addEventListener("mouseout", handleLeave, { passive: true });
-
-    let animId: number;
-
-    function animate() {
-      const lerp = 0.15;
-      pos.current.x += (target.current.x - pos.current.x) * lerp;
-      pos.current.y += (target.current.y - pos.current.y) * lerp;
-
-      if (dotRef.current) {
-        dotRef.current.style.transform = `translate(${target.current.x}px, ${target.current.y}px) translate(-50%, -50%)`;
-      }
-      if (ringRef.current) {
-        ringRef.current.style.transform = `translate(${pos.current.x}px, ${pos.current.y}px) translate(-50%, -50%)`;
-      }
-
-      animId = requestAnimationFrame(animate);
+    if (!isFinePointer || isReducedMotion) {
+      return;
     }
 
-    animId = requestAnimationFrame(animate);
+    setMounted(true);
+
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+      if (!isVisible) setIsVisible(true);
+    };
+
+    const handleMouseLeave = () => {
+      setIsVisible(false);
+    };
+
+    const handleMouseEnter = () => {
+      setIsVisible(true);
+    };
+
+    // Detect hover over interactive elements
+    const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
+      const interactive = target.closest("a, button, input, textarea, select, [role='button'], .cursor-pointer, [data-cursor-hover]");
+      setIsHovered(!!interactive);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    document.addEventListener("mouseleave", handleMouseLeave);
+    document.addEventListener("mouseenter", handleMouseEnter);
+    window.addEventListener("mouseover", handleMouseOver, { passive: true });
 
     return () => {
-      cancelAnimationFrame(animId);
       window.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseover", handleEnter);
-      document.removeEventListener("mouseout", handleLeave);
-      document.body.classList.remove("has-custom-cursor");
+      document.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("mouseenter", handleMouseEnter);
+      window.removeEventListener("mouseover", handleMouseOver);
     };
-  }, [handleMouseMove]);
+  }, [mouseX, mouseY, isVisible]);
 
-  if (isTouchDevice) return null;
+  if (!mounted) return null;
 
   return (
-    <>
-      {/* Dot - instant follow */}
-      <div
-        ref={dotRef}
-        aria-hidden="true"
+    <div className="pointer-events-none fixed inset-0 z-[999] overflow-hidden select-none">
+      {/* Outer Follower Ring */}
+      <motion.div
         style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: isHovering ? "8px" : "6px",
-          height: isHovering ? "8px" : "6px",
-          borderRadius: "50%",
-          backgroundColor: isCta ? "#FF3D2E" : "#F4F3F7",
-          pointerEvents: "none",
-          zIndex: 99999,
-          opacity: visible ? 1 : 0,
-          transition: "width 0.3s cubic-bezier(0.16,1,0.3,1), height 0.3s cubic-bezier(0.16,1,0.3,1), background-color 0.3s ease, opacity 0.3s ease",
-          mixBlendMode: "difference",
+          x: ringX,
+          y: ringY,
+          translateX: "-50%",
+          translateY: "-50%",
         }}
+        animate={{
+          scale: isHovered ? 1.45 : 1,
+          opacity: isVisible ? (isHovered ? 0.85 : 0.4) : 0,
+          borderColor: isHovered ? "rgba(240, 192, 80, 0.6)" : "rgba(246, 241, 230, 0.35)",
+          backgroundColor: isHovered ? "rgba(240, 192, 80, 0.08)" : "transparent",
+        }}
+        transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+        className="h-7 w-7 rounded-full border border-cream/40"
       />
-      {/* Ring - spring-delayed follow */}
-      <div
-        ref={ringRef}
-        aria-hidden="true"
+
+      {/* Tiny Core Dot */}
+      <motion.div
         style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: isHovering ? "48px" : "32px",
-          height: isHovering ? "48px" : "32px",
-          borderRadius: "50%",
-          border: `1.5px solid ${isCta ? "rgba(255,61,46,0.6)" : "rgba(244,243,247,0.25)"}`,
-          pointerEvents: "none",
-          zIndex: 99998,
-          opacity: visible ? 1 : 0,
-          transition: "width 0.4s cubic-bezier(0.16,1,0.3,1), height 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.3s ease, opacity 0.3s ease",
-          boxShadow: isCta ? "0 0 15px rgba(255,61,46,0.15)" : "none",
+          x: cursorX,
+          y: cursorY,
+          translateX: "-50%",
+          translateY: "-50%",
         }}
+        animate={{
+          scale: isHovered ? 0.6 : 1,
+          opacity: isVisible ? 0.9 : 0,
+        }}
+        transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
+        className="h-1.5 w-1.5 rounded-full bg-yellow"
       />
-    </>
+    </div>
   );
 }

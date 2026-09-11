@@ -1,27 +1,33 @@
 import type { Metadata, Viewport } from "next";
-import { Sora, Inter } from "next/font/google";
+import { Syne, Manrope, Instrument_Serif } from "next/font/google";
 import SmoothScroll from "@/components/SmoothScroll";
-import Starfield from "@/components/Starfield";
-import GrainOverlay from "@/components/GrainOverlay";
 import CustomCursor from "@/components/CustomCursor";
 import "./globals.css";
 
-const sora = Sora({
-  variable: "--font-sora",
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["500", "600", "700", "800"],
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+});
+
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
 export const viewport: Viewport = {
-  themeColor: "#0A0A0F",
+  themeColor: "#C92C48",
   width: "device-width",
   initialScale: 1,
 };
@@ -40,7 +46,7 @@ export const metadata: Metadata = {
     "TikTok creators",
   ],
   openGraph: {
-    title: "Clouterry - Real creators. Real voice. Built into cohorts brands can trust.",
+    title: "Clouterry - Real creators. Real voice. Cohorts brands can trust.",
     description:
       "Pre-launch creator agency sourcing small creators into curated cohorts and connecting them with forward-thinking brands.",
     url: "https://clouterry.com",
@@ -64,12 +70,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sora.variable} ${inter.variable} h-full antialiased bg-void text-silver`}
+      suppressHydrationWarning
+      className={`${syne.variable} ${manrope.variable} ${instrumentSerif.variable} h-full antialiased bg-red text-cream`}
     >
-      <body className="min-h-full flex flex-col bg-void text-silver font-body selection:bg-vermillion selection:text-star-white relative overflow-x-hidden">
-        <Starfield />
-        <div className="ambient-mesh" aria-hidden="true" />
-        <GrainOverlay />
+      <body
+        suppressHydrationWarning
+        className="min-h-full flex flex-col bg-red text-cream font-body selection:bg-yellow selection:text-ink relative overflow-x-hidden"
+      >
         <CustomCursor />
         <SmoothScroll>{children}</SmoothScroll>
       </body>

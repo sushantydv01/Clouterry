@@ -1,9 +1,48 @@
 "use client";
 
-import React, { Component, ReactNode, useRef, useState, useEffect, useCallback } from "react";
+import React, {
+  Component,
+  ReactNode,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import Image from "next/image";
+
+const emptySubscribe = () => () => {};
+
+function checkWebGLSupport() {
+  if (typeof window === "undefined") return false;
+  try {
+    const canvas = document.createElement("canvas");
+    return !!(
+      canvas.getContext("webgl") || canvas.getContext("experimental-webgl")
+    );
+  } catch {
+    return false;
+  }
+}
+
+function useWebGLAvailable() {
+  return useSyncExternalStore(emptySubscribe, checkWebGLSupport, () => false);
+}
+
+function useIsMounted() {
+  return useSyncExternalStore(emptySubscribe, () => true, () => false);
+}
+
+function checkReducedMotion() {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function useReducedMotionPreference() {
+  return useSyncExternalStore(emptySubscribe, checkReducedMotion, () => false);
+}
 
 class WebGLErrorBoundary extends Component<
   { children: ReactNode; fallback: ReactNode },
@@ -30,204 +69,450 @@ class WebGLErrorBoundary extends Component<
   }
 }
 
-const STAR_WHITE = "#F4F3F7";
-const STAR_WHITE_DIM = "#E0DFEC";
-const EMBER = "#D4A94A";
+// Brand Colors
+const RED = "#C41E3A";
+const RED_DEEP = "#8B1428";
+const GOLD = "#D4A94A";
+const CREAM = "#F5F1E6";
 
-interface PlanetMeshProps {
-  onInteraction?: () => void;
+interface KineticEmblemMeshProps {
+  reducedMotion: boolean;
+  mousePos: { x: number; y: number };
 }
 
-function PlanetMesh({ onInteraction }: PlanetMeshProps) {
-  const group = useRef<THREE.Group>(null);
-  const ring = useRef<THREE.Mesh>(null);
+function KineticEmblemMesh({ reducedMotion, mousePos }: KineticEmblemMeshProps) {
+  const rootGroup = useRef<THREE.Group>(null);
+  const emblemGroup = useRef<THREE.Group>(null);
+  const outerRingGroup = useRef<THREE.Group>(null);
+  const innerRingGroup = useRef<THREE.Group>(null);
+
   const [hovered, setHovered] = useState(false);
   const isDragging = useRef(false);
-  const angularVelocity = useRef(0.36);
-  const lastPointerX = useRef(0);
-  const dragMomentum = useRef(0);
+  const lastPointer = useRef({ x: 0, y: 0 });
+  const dragMomentum = useRef({ x: 0, y: 0 });
+  const totalDragDistance = useRef(0);
 
-  // Wobble physics tracking
-  const totalDragAngle = useRef(0);
+  // Wobble physics tracking when spun vigorously
   const wobbleDuration = useRef(1.8);
-  const wobbleElapsed = useRef(99); // start inactive
+  const wobbleElapsed = useRef(99);
   const wobbleIntensity = useRef(0);
 
+  // Expansion animation lerp value for hover bloom
+  const expansionScale = useRef(1);
+
+  // 1. Procedural 3D Clouterry Emblem Central Ring
+  const ringGeometry = useMemo(() => {
+    const shape = new THREE.Shape();
+    const outerR = 1.32;
+    const innerR = 0.98;
+
+    // Outer circle
+    shape.absarc(0, 0, outerR, 0, Math.PI * 2, false);
+
+    // Inner cutout hole
+    const hole = new THREE.Path();
+    hole.absarc(0, 0, innerR, 0, Math.PI * 2, true);
+    shape.holes.push(hole);
+
+    const extrudeSettings: THREE.ExtrudeGeometryOptions = {
+      curveSegments: 64,
+      steps: 1,
+      depth: 0.18,
+      bevelEnabled: true,
+      bevelThickness: 0.04,
+      bevelSize: 0.03,
+      bevelSegments: 5,
+    };
+
+    const geom = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+    geom.center();
+    return geom;
+  }, []);
+
+  // 2. The Iconic Clouterry Orbital Swoosh (Tilted Saturn Loop)
+  const swooshGeometry = useMemo(() => {
+    const shape = new THREE.Shape();
+    const segments = 72;
+    const aOuter = 2.12;
+    const bOuter = 0.74;
+    const aInner = 1.74;
+    const bInner = 0.50;
+
+    // Outer ellipse with subtle aerodynamic taper matching the logo wings
+    for (let i = 0; i <= segments; i++) {
+      const angle = (i / segments) * Math.PI * 2;
+      // Slight taper to sharpen the top-right tip and round the bottom-left lobe
+      const taper = 1 + 0.09 * Math.cos(angle);
+      const x = Math.cos(angle) * aOuter * taper;
+      const y = Math.sin(angle) * bOuter;
+      if (i === 0) shape.moveTo(x, y);
+      else shape.lineTo(x, y);
+    }
+
+    // Inner cutout hole
+    const hole = new THREE.Path();
+    for (let i = segments; i >= 0; i--) {
+      const angle = (i / segments) * Math.PI * 2;
+      const x = Math.cos(angle) * aInner;
+      const y = Math.sin(angle) * bInner;
+      if (i === segments) hole.moveTo(x, y);
+      else hole.lineTo(x, y);
+    }
+    shape.holes.push(hole);
+
+    const extrudeSettings: THREE.ExtrudeGeometryOptions = {
+      curveSegments: 64,
+      steps: 1,
+      depth: 0.16,
+      bevelEnabled: true,
+      bevelThickness: 0.035,
+      bevelSize: 0.025,
+      bevelSegments: 4,
+    };
+
+    const geom = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+    geom.center();
+    return geom;
+  }, []);
+
+  // 3. Inner Crescent Accent (Top-left highlight curve inside the ring)
+  const crescentGeometry = useMemo(() => {
+    const shape = new THREE.Shape();
+    const rInner = 0.74;
+    const rOuter = 0.88;
+    const startAngle = Math.PI * 0.63; // ~113°
+    const endAngle = Math.PI * 0.89; // ~160°
+    const capR = (rOuter - rInner) / 2;
+    const midREnd = (rOuter + rInner) / 2;
+
+    // Outer arc
+    shape.absarc(0, 0, rOuter, startAngle, endAngle, false);
+
+    // End cap
+    const endX = Math.cos(endAngle);
+    const endY = Math.sin(endAngle);
+    shape.absarc(midREnd * endX, midREnd * endY, capR, endAngle, endAngle + Math.PI, false);
+
+    // Inner arc back
+    shape.absarc(0, 0, rInner, endAngle, startAngle, true);
+
+    // Start cap
+    const startX = Math.cos(startAngle);
+    const startY = Math.sin(startAngle);
+    shape.absarc(midREnd * startX, midREnd * startY, capR, startAngle + Math.PI, startAngle, false);
+
+    const extrudeSettings: THREE.ExtrudeGeometryOptions = {
+      curveSegments: 32,
+      steps: 1,
+      depth: 0.12,
+      bevelEnabled: true,
+      bevelThickness: 0.02,
+      bevelSize: 0.02,
+      bevelSegments: 3,
+    };
+
+    const geom = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+    geom.center();
+    return geom;
+  }, []);
+
+  // Shared Materials
+  const lacquerMaterial = useMemo(
+    () =>
+      new THREE.MeshStandardMaterial({
+        color: RED,
+        roughness: 0.28,
+        metalness: 0.16,
+        emissive: RED_DEEP,
+        emissiveIntensity: 0.18,
+      }),
+    []
+  );
+
+  const goldTrimMaterial = useMemo(
+    () =>
+      new THREE.MeshStandardMaterial({
+        color: GOLD,
+        roughness: 0.25,
+        metalness: 0.82,
+        emissive: "#4E3810",
+        emissiveIntensity: 0.18,
+      }),
+    []
+  );
+
   useFrame((_, delta) => {
-    if (!group.current) return;
+    if (!rootGroup.current || !emblemGroup.current) return;
 
+    // ── Expansion / Bloom on Hover ──
+    const targetExpansion = hovered ? 1.15 : 1.0;
+    expansionScale.current = THREE.MathUtils.lerp(
+      expansionScale.current,
+      targetExpansion,
+      delta * 4.5
+    );
+
+    if (outerRingGroup.current) {
+      outerRingGroup.current.scale.setScalar(expansionScale.current);
+    }
+    if (innerRingGroup.current) {
+      innerRingGroup.current.scale.setScalar(0.96 * expansionScale.current);
+    }
+
+    // ── Drag & Inertia vs. Parallax & Idle Spin ──
     if (isDragging.current) {
-      group.current.rotation.y += dragMomentum.current;
-      dragMomentum.current *= 0.92;
+      emblemGroup.current.rotation.y += dragMomentum.current.x;
+      emblemGroup.current.rotation.x += dragMomentum.current.y;
+      dragMomentum.current.x *= 0.93;
+      dragMomentum.current.y *= 0.93;
+    } else if (reducedMotion) {
+      // Settle dragging momentum only
+      if (
+        Math.abs(dragMomentum.current.x) > 0.0005 ||
+        Math.abs(dragMomentum.current.y) > 0.0005
+      ) {
+        emblemGroup.current.rotation.y += dragMomentum.current.x;
+        emblemGroup.current.rotation.x += dragMomentum.current.y;
+        dragMomentum.current.x *= 0.88;
+        dragMomentum.current.y *= 0.88;
+      }
     } else {
-      // Natural spin: faster on hover, confident default pace
-      const targetSpeed = hovered ? 1.05 : 0.36;
-      angularVelocity.current +=
-        (targetSpeed - angularVelocity.current) * Math.min(1, delta * 2.5);
+      // Mouse Parallax Tilt for the root group
+      const targetTiltX = -mousePos.y * 0.25;
+      const targetTiltY = mousePos.x * 0.38;
+      rootGroup.current.rotation.x = THREE.MathUtils.lerp(
+        rootGroup.current.rotation.x,
+        targetTiltX,
+        delta * 3.5
+      );
+      rootGroup.current.rotation.y = THREE.MathUtils.lerp(
+        rootGroup.current.rotation.y,
+        targetTiltY,
+        delta * 3.5
+      );
 
-      if (Math.abs(dragMomentum.current) > 0.001) {
-        group.current.rotation.y += dragMomentum.current;
-        dragMomentum.current *= 0.95;
+      // Settle residual drag momentum into idle spin
+      if (
+        Math.abs(dragMomentum.current.x) > 0.001 ||
+        Math.abs(dragMomentum.current.y) > 0.001
+      ) {
+        emblemGroup.current.rotation.y += dragMomentum.current.x;
+        emblemGroup.current.rotation.x += dragMomentum.current.y;
+        dragMomentum.current.x *= 0.94;
+        dragMomentum.current.y *= 0.94;
       } else {
-        group.current.rotation.y += angularVelocity.current * delta;
+        // Hypnotic idle rotation of the central emblem
+        const idleSpeed = hovered ? 0.75 : 0.26;
+        emblemGroup.current.rotation.y += idleSpeed * delta;
+        emblemGroup.current.rotation.x = THREE.MathUtils.lerp(
+          emblemGroup.current.rotation.x,
+          0.08,
+          delta * 2
+        );
+      }
+
+      // Continuous orbital motion for armillary rings
+      if (outerRingGroup.current) {
+        const speed = hovered ? 0.6 : 0.2;
+        outerRingGroup.current.rotation.z += speed * delta;
+        outerRingGroup.current.rotation.y += speed * 0.35 * delta;
+      }
+      if (innerRingGroup.current) {
+        const speed = hovered ? -0.75 : -0.28;
+        innerRingGroup.current.rotation.z += speed * delta;
+        innerRingGroup.current.rotation.x += speed * 0.45 * delta;
       }
     }
 
-    // Dizzy wobble physics after a full revolution or aggressive spin
-    if (wobbleElapsed.current < wobbleDuration.current) {
+    // ── Signature Dizzy-Wobble Oscillation after heavy spin ──
+    if (!reducedMotion && wobbleElapsed.current < wobbleDuration.current) {
       wobbleElapsed.current += delta;
       const progress = wobbleElapsed.current / wobbleDuration.current;
-      const decay = Math.exp(-progress * 4.5); // rapid exponential decay
-      const freq = 18;
-      const wobbleAngleX =
-        Math.sin(wobbleElapsed.current * freq) * 0.35 * decay * wobbleIntensity.current;
-      const wobbleAngleZ =
-        Math.cos(wobbleElapsed.current * (freq * 0.75)) * 0.28 * decay * wobbleIntensity.current;
-      group.current.rotation.x = wobbleAngleX;
-      group.current.rotation.z = wobbleAngleZ;
-    } else {
-      group.current.rotation.x = THREE.MathUtils.lerp(group.current.rotation.x, 0, delta * 8);
-      group.current.rotation.z = THREE.MathUtils.lerp(group.current.rotation.z, 0, delta * 8);
-    }
+      const decay = Math.exp(-progress * 4.2);
+      const freq = 16;
+      const wobbleX =
+        Math.sin(wobbleElapsed.current * freq) * 0.3 * decay * wobbleIntensity.current;
+      const wobbleZ =
+        Math.cos(wobbleElapsed.current * (freq * 0.8)) * 0.22 * decay * wobbleIntensity.current;
 
-    // Tilted ring dynamic reaction
-    if (ring.current) {
-      const targetTilt = hovered ? 0.72 : 0.54;
-      ring.current.rotation.z = THREE.MathUtils.lerp(
-        ring.current.rotation.z,
-        targetTilt,
-        delta * 3
+      emblemGroup.current.rotation.x += wobbleX;
+      emblemGroup.current.rotation.z = wobbleZ;
+    } else if (!reducedMotion) {
+      emblemGroup.current.rotation.z = THREE.MathUtils.lerp(
+        emblemGroup.current.rotation.z,
+        0,
+        delta * 6
       );
     }
   });
 
-  const handlePointerDown = (e: { clientX: number }) => {
+  const handlePointerDown = (e: { clientX: number; clientY: number }) => {
     isDragging.current = true;
-    lastPointerX.current = e.clientX;
-    dragMomentum.current = 0;
-    totalDragAngle.current = 0;
-    onInteraction?.();
+    lastPointer.current = { x: e.clientX, y: e.clientY };
+    dragMomentum.current = { x: 0, y: 0 };
+    totalDragDistance.current = 0;
   };
 
-  const handlePointerMove = (e: { clientX: number }) => {
-    if (!isDragging.current || !group.current) return;
-    const deltaX = e.clientX - lastPointerX.current;
-    const rotationDelta = deltaX * 0.012;
-    group.current.rotation.y += rotationDelta;
-    dragMomentum.current = rotationDelta;
-    totalDragAngle.current += Math.abs(rotationDelta);
-    lastPointerX.current = e.clientX;
+  const handlePointerMove = (e: { clientX: number; clientY: number }) => {
+    if (!isDragging.current || !emblemGroup.current) return;
+    const deltaX = e.clientX - lastPointer.current.x;
+    const deltaY = e.clientY - lastPointer.current.y;
+
+    const rotY = deltaX * 0.012;
+    const rotX = deltaY * 0.012;
+
+    emblemGroup.current.rotation.y += rotY;
+    emblemGroup.current.rotation.x += rotX;
+
+    dragMomentum.current = { x: rotY, y: rotX };
+    totalDragDistance.current += Math.hypot(rotY, rotX);
+
+    lastPointer.current = { x: e.clientX, y: e.clientY };
   };
 
   const handlePointerUp = () => {
     if (!isDragging.current) return;
     isDragging.current = false;
 
-    // Trigger dizzy wobble flourish if dragged past a full rotation or flicked fast
-    if (totalDragAngle.current >= Math.PI * 1.5 || Math.abs(dragMomentum.current) > 0.035) {
+    if (
+      !reducedMotion &&
+      (totalDragDistance.current >= Math.PI * 1.6 ||
+        Math.hypot(dragMomentum.current.x, dragMomentum.current.y) > 0.038)
+    ) {
       wobbleElapsed.current = 0;
       wobbleIntensity.current = Math.min(
-        1.25,
-        Math.max(0.65, totalDragAngle.current / (Math.PI * 2))
+        1.2,
+        Math.max(0.6, totalDragDistance.current / (Math.PI * 2))
       );
     }
-    totalDragAngle.current = 0;
+    totalDragDistance.current = 0;
   };
 
   return (
     <group
-      ref={group}
+      ref={rootGroup}
       onPointerOver={() => setHovered(true)}
       onPointerOut={() => {
         setHovered(false);
         if (isDragging.current) handlePointerUp();
       }}
-      onPointerDown={(e) => handlePointerDown(e)}
+      onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
-      onPointerMove={(e) => handlePointerMove(e)}
+      onPointerMove={handlePointerMove}
     >
-      {/* Central sphere: Star-white matte porcelain finish */}
-      <mesh>
-        <sphereGeometry args={[1.28, 64, 64]} />
-        <meshStandardMaterial
-          color={STAR_WHITE}
-          roughness={0.38}
-          metalness={0.12}
-          emissive={STAR_WHITE_DIM}
-          emissiveIntensity={0.05}
-        />
-      </mesh>
+      {/* ── Central 3D Clouterry Dimensional Sculptural Emblem ── */}
+      <group ref={emblemGroup}>
+        {/* Main Extruded Emblem Ring */}
+        <mesh geometry={ringGeometry} material={lacquerMaterial} castShadow receiveShadow />
 
-      {/* Signature diagonal slash bar */}
-      <mesh rotation={[0, 0, Math.PI / 5.4]}>
-        <boxGeometry args={[3.45, 0.22, 0.22]} />
-        <meshStandardMaterial
-          color={STAR_WHITE_DIM}
-          roughness={0.35}
-          metalness={0.15}
+        {/* Dynamic Sweeping Saturn Orbital Swoosh (Tilted 28° like Clouterry mark) */}
+        <mesh
+          geometry={swooshGeometry}
+          material={lacquerMaterial}
+          rotation={[0.22, 0.12, 0.488]}
+          position={[0, 0, 0.06]}
+          castShadow
+          receiveShadow
         />
-      </mesh>
 
-      {/* Tilted orbital ring */}
-      <mesh ref={ring} rotation={[Math.PI / 2.3, 0, 0.54]}>
-        <torusGeometry args={[2.02, 0.095, 24, 120]} />
-        <meshStandardMaterial
-          color={STAR_WHITE}
-          roughness={0.32}
-          metalness={0.16}
+        {/* Inner Crescent Highlight Accent */}
+        <mesh
+          geometry={crescentGeometry}
+          material={lacquerMaterial}
+          position={[0, 0, 0.08]}
+          castShadow
+          receiveShadow
         />
-      </mesh>
+
+        {/* Central Floating Gold Axis Bead */}
+        <mesh position={[0, 0, 0]}>
+          <sphereGeometry args={[0.15, 32, 32]} />
+          <primitive object={goldTrimMaterial} attach="material" />
+        </mesh>
+      </group>
+
+      {/* ── Outer Gimbal Armillary Ring ── */}
+      <group ref={outerRingGroup} rotation={[Math.PI / 3, 0, Math.PI / 6]}>
+        <mesh>
+          <torusGeometry args={[2.22, 0.026, 24, 128]} />
+          <primitive object={lacquerMaterial} attach="material" />
+        </mesh>
+        {/* Cardinal Gold Navigation Markers */}
+        {[0, Math.PI / 2, Math.PI, (3 * Math.PI) / 2].map((angle, idx) => (
+          <mesh
+            key={idx}
+            position={[Math.cos(angle) * 2.22, Math.sin(angle) * 2.22, 0]}
+          >
+            <sphereGeometry args={[0.055, 16, 16]} />
+            <primitive object={goldTrimMaterial} attach="material" />
+          </mesh>
+        ))}
+      </group>
+
+      {/* ── Inner Gimbal Armillary Ring ── */}
+      <group ref={innerRingGroup} rotation={[Math.PI / 4, 0, -Math.PI / 4]}>
+        <mesh>
+          <torusGeometry args={[1.92, 0.02, 24, 128]} />
+          <primitive object={lacquerMaterial} attach="material" />
+        </mesh>
+        {/* Micro Gold Node */}
+        <mesh position={[1.92, 0, 0]}>
+          <sphereGeometry args={[0.045, 16, 16]} />
+          <primitive object={goldTrimMaterial} attach="material" />
+        </mesh>
+        <mesh position={[-1.92, 0, 0]}>
+          <sphereGeometry args={[0.045, 16, 16]} />
+          <primitive object={goldTrimMaterial} attach="material" />
+        </mesh>
+      </group>
     </group>
   );
 }
 
 export default function Planet({ className = "" }: { className?: string }) {
-  const [mounted, setMounted] = useState(false);
-  const [hasInteracted, setHasInteracted] = useState(false);
-  const [webGLSupported, setWebGLSupported] = useState(true);
-
+  const isMounted = useIsMounted();
+  const webGLSupported = useWebGLAvailable();
+  const reducedMotion = useReducedMotionPreference();
   const containerRef = useRef<HTMLDivElement>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    setMounted(true);
-    try {
-      const canvas = document.createElement("canvas");
-      const supported = !!(
-        canvas.getContext("webgl") || canvas.getContext("experimental-webgl")
-      );
-      setWebGLSupported(supported);
-    } catch {
-      setWebGLSupported(false);
-    }
-  }, []);
+    const handleMouseMove = (e: MouseEvent) => {
+      const { innerWidth, innerHeight } = window;
+      if (innerWidth === 0 || innerHeight === 0) return;
+      // Normalized coordinates from -1 to 1
+      const x = (e.clientX / innerWidth) * 2 - 1;
+      const y = (e.clientY / innerHeight) * 2 - 1;
+      setMousePos({ x, y });
+    };
 
-  const handleInteraction = useCallback(() => {
-    if (!hasInteracted) setHasInteracted(true);
-  }, [hasInteracted]);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   const fallbackUi = (
     <div className={`relative flex items-center justify-center ${className}`}>
       <Image
-        src="/clouterry-mark-white.png"
-        alt="Clouterry logo emblem"
+        src="/clouterry-mark.png"
+        alt="Clouterry kinetic emblem"
         width={320}
         height={220}
         style={{ width: "auto", height: "auto" }}
-        className="max-h-full max-w-full object-contain drop-shadow-[0_0_24px_rgba(244,243,247,0.3)]"
+        className="max-h-full max-w-full object-contain"
         priority
       />
     </div>
   );
 
-  if (!mounted || !webGLSupported) {
+  if (!isMounted || !webGLSupported) {
     return fallbackUi;
   }
 
   return (
     <div
       ref={containerRef}
-      className={`relative select-none touch-none ${className}`}
-      aria-label="Interactive Clouterry star-white planetary emblem, drag to rotate"
+      className={`relative select-none touch-none cursor-grab active:cursor-grabbing ${className}`}
+      aria-label="Interactive 3D Clouterry kinetic sculpture, drag to rotate"
     >
       <WebGLErrorBoundary fallback={fallbackUi}>
         <Canvas
@@ -235,29 +520,37 @@ export default function Planet({ className = "" }: { className?: string }) {
           dpr={[1, 2]}
           gl={{ antialias: true, alpha: true, powerPreference: "default" }}
         >
-          {/* Cool space ambient fill */}
-          <ambientLight intensity={0.75} color="#DCDAF0" />
+          {/* Gallery studio lighting matched to cream canvas */}
+          <ambientLight intensity={0.9} color={CREAM} />
 
-          {/* Key star-white light from front-right */}
-          <directionalLight position={[3.5, 4.5, 5]} intensity={1.5} color={STAR_WHITE} />
-
-          {/* Soft ember rim-light on one edge (like a moon lit by a distant warm sun) */}
+          {/* Key directional light from upper right */}
           <directionalLight
-            position={[-4.5, 1.8, -2.5]}
-            intensity={2.8}
-            color={EMBER}
+            position={[3.8, 4.8, 5]}
+            intensity={1.45}
+            color="#FFFDF7"
           />
 
-          {/* Faint under-fill light */}
+          {/* Signature Gold Rim Light catching beveled chamfers */}
           <directionalLight
-            position={[0, -4, 2]}
+            position={[-4.2, 2.0, -2.8]}
+            intensity={1.9}
+            color={GOLD}
+          />
+
+          {/* Soft under-fill */}
+          <directionalLight
+            position={[0, -3.8, 2.2]}
             intensity={0.3}
-            color="#A5A5C0"
+            color="#EDE6D3"
           />
 
-          <PlanetMesh onInteraction={handleInteraction} />
+          <KineticEmblemMesh
+            reducedMotion={reducedMotion}
+            mousePos={mousePos}
+          />
         </Canvas>
       </WebGLErrorBoundary>
     </div>
   );
 }
+

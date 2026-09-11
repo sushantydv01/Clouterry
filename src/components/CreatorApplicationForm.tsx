@@ -12,12 +12,7 @@ const NICHES = [
   "Fashion & Style",
 ];
 
-const FOLLOWER_TIERS = [
-  "1k to 10k",
-  "10k to 50k",
-  "50k to 100k",
-  "100k+",
-];
+const FOLLOWER_TIERS = ["1k to 10k", "10k to 50k", "50k to 100k", "100k+"];
 
 export default function CreatorApplicationForm() {
   const [handle, setHandle] = useState("");
@@ -27,8 +22,6 @@ export default function CreatorApplicationForm() {
   const [submitting, setSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
-
-  // Field-level validation state
   const [touched, setTouched] = useState<Record<string, boolean>>({});
 
   const markTouched = (field: string) => {
@@ -73,9 +66,7 @@ export default function CreatorApplicationForm() {
 
       setSubmitted(true);
     } catch (err: unknown) {
-      setErrorMessage(
-        err instanceof Error ? err.message : "Something went wrong. Please try again."
-      );
+      setErrorMessage(err instanceof Error ? err.message : "Something went wrong. Please try again.");
     } finally {
       setSubmitting(false);
     }
@@ -92,68 +83,44 @@ export default function CreatorApplicationForm() {
   };
 
   return (
-    <div className="w-full max-w-xl rounded-2xl liquid-glass p-8 sm:p-10 text-star-white relative overflow-hidden">
-      {/* Subtle vermillion glow top corner */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -top-16 -right-16 w-40 h-40 rounded-full bg-[radial-gradient(circle,_rgba(255,61,46,0.08),_transparent_70%)] blur-2xl"
-      />
-
+    <div className="w-full max-w-xl text-cream">
       <AnimatePresence mode="wait">
         {!submitted ? (
           <motion.form
             key="form"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
             onSubmit={handleSubmit}
-            className="flex flex-col gap-8 relative z-10"
+            className="flex flex-col gap-8"
           >
             <div>
-              <div className="text-xs uppercase tracking-widest text-silver/60 font-semibold">
-                Direct Cohort Application
-              </div>
-              <h3 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-star-white mt-1">
-                Apply to Join a Cohort
+              <h3 className="font-display text-2xl font-bold tracking-tight text-cream sm:text-3xl">
+                Apply to join a cohort
               </h3>
-              <p className="text-xs sm:text-sm text-silver/70 mt-1.5 leading-relaxed">
-                Reviewed weekly by our founding team. No spam, zero exclusive talent locks.
+              <p className="mt-1.5 text-sm text-cream/75">
+                Reviewed weekly by our founding team. No spam, no exclusive locks.
               </p>
             </div>
 
-            {/* Error message with shake animation */}
-            <AnimatePresence>
-              {errorMessage && (
-                <motion.div
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: [0, -4, 4, -2, 2, 0] }}
-                  exit={{ opacity: 0, x: -10 }}
-                  transition={{ duration: 0.4 }}
-                  role="alert"
-                  className="border-l-2 border-vermillion bg-space-deep/90 px-4 py-2.5 text-xs font-medium text-star-white"
-                >
-                  {errorMessage}
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {errorMessage && (
+              <div role="alert" className="border-l-2 border-cream pl-4 text-sm text-cream">
+                {errorMessage}
+              </div>
+            )}
 
             {/* Field 1: Handle */}
             <div className="flex flex-col gap-1.5">
-              <label
-                htmlFor="creator-handle"
-                className="text-xs font-semibold uppercase tracking-wider text-silver"
-              >
-                Your Handle
+              <label htmlFor="creator-handle" className="text-sm text-cream/80">
+                Your handle
               </label>
-              <div className={`relative flex items-center border-b transition-colors duration-300 ${
-                touched.handle && !handle.trim()
-                  ? "border-vermillion/60"
-                  : "border-star-white/15 focus-within:border-vermillion"
-              }`}>
-                <span className="text-silver/40 font-medium text-base mr-2 select-none">
-                  @
-                </span>
+              <div
+                className={`flex items-center border-b transition-colors duration-200 ${
+                  touched.handle && !handle.trim() ? "border-cream" : "border-cream/35 focus-within:border-cream"
+                }`}
+              >
+                <span className="mr-2 select-none text-base text-cream/50">@</span>
                 <input
                   id="creator-handle"
                   name="handle"
@@ -163,54 +130,35 @@ export default function CreatorApplicationForm() {
                   onChange={(e) => setHandle(e.target.value)}
                   onBlur={() => markTouched("handle")}
                   placeholder="instagram or tiktok handle"
-                  className="w-full bg-transparent py-2.5 text-base text-star-white placeholder:text-silver/30 outline-none"
+                  className="w-full bg-transparent py-2.5 text-base text-cream placeholder:text-cream/35 outline-none"
                 />
-                {/* Inline valid check */}
-                {handle.trim().length > 2 && (
-                  <motion.span
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="text-vermillion"
-                  >
-                    <CheckCircle size={16} weight="bold" />
-                  </motion.span>
-                )}
+                {handle.trim().length > 2 && <CheckCircle size={16} weight="bold" className="text-cream" />}
               </div>
             </div>
 
             {/* Field 2: Content Niche */}
             <div className="flex flex-col gap-2">
-              <div className="flex items-baseline justify-between">
-                <label
-                  htmlFor="creator-niche"
-                  className="text-xs font-semibold uppercase tracking-wider text-silver"
-                >
-                  Primary Vertical
-                </label>
-                <span className="text-[11px] text-silver/40">Select or enter below</span>
-              </div>
+              <label htmlFor="creator-niche" className="text-sm text-cream/80">
+                Primary vertical
+              </label>
 
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs">
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-sm">
                 {NICHES.map((item, idx) => (
                   <button
                     key={item}
                     type="button"
                     onClick={() => setNiche(item)}
-                    className={`transition-all duration-300 text-left ${
-                      niche === item
-                        ? "text-vermillion font-bold underline underline-offset-4"
-                        : "text-silver/60 hover:text-star-white"
+                    className={`transition-colors duration-200 ${
+                      niche === item ? "font-semibold text-cream underline underline-offset-4" : "text-cream/60 hover:text-cream"
                     }`}
                   >
                     {item}
-                    {idx < NICHES.length - 1 ? (
-                      <span className="ml-3 text-silver/20 select-none">/</span>
-                    ) : null}
+                    {idx < NICHES.length - 1 ? <span className="ml-3 text-cream/25 select-none">/</span> : null}
                   </button>
                 ))}
               </div>
 
-              <div className="border-b border-star-white/15 focus-within:border-vermillion transition-colors duration-300 mt-1">
+              <div className="mt-1 border-b border-cream/35 transition-colors duration-200 focus-within:border-cream">
                 <input
                   id="creator-niche"
                   name="niche"
@@ -218,27 +166,25 @@ export default function CreatorApplicationForm() {
                   required
                   value={niche}
                   onChange={(e) => setNiche(e.target.value)}
-                  placeholder="Or enter custom niche..."
-                  className="w-full bg-transparent py-2 text-sm text-star-white placeholder:text-silver/30 outline-none"
+                  placeholder="Or enter your own"
+                  className="w-full bg-transparent py-2 text-sm text-cream placeholder:text-cream/35 outline-none"
                 />
               </div>
             </div>
 
             {/* Field 3: Follower Range */}
             <div className="flex flex-col gap-2">
-              <label className="text-xs font-semibold uppercase tracking-wider text-silver">
-                Audience Scale
-              </label>
+              <span className="text-sm text-cream/80">Audience scale</span>
               <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
                 {FOLLOWER_TIERS.map((tier) => (
                   <button
                     key={tier}
                     type="button"
                     onClick={() => setFollowers(tier)}
-                    className={`rounded-md border py-2 px-3 text-center text-xs font-medium transition-all duration-300 ${
+                    className={`btn-press rounded-md border py-2 px-3 text-center text-sm font-medium transition-colors duration-200 cursor-pointer ${
                       followers === tier
-                        ? "border-vermillion bg-vermillion/10 text-vermillion font-bold shadow-[0_0_12px_rgba(255,61,46,0.1)]"
-                        : "border-star-white/10 text-silver/60 hover:border-star-white/30 hover:text-star-white"
+                        ? "border-cream bg-cream text-red font-semibold"
+                        : "border-cream/30 text-cream/70 hover:border-cream/60 hover:text-cream"
                     }`}
                   >
                     {tier}
@@ -249,17 +195,14 @@ export default function CreatorApplicationForm() {
 
             {/* Field 4: Contact Email */}
             <div className="flex flex-col gap-1.5">
-              <label
-                htmlFor="creator-email"
-                className="text-xs font-semibold uppercase tracking-wider text-silver"
-              >
-                Direct Email
+              <label htmlFor="creator-email" className="text-sm text-cream/80">
+                Direct email
               </label>
-              <div className={`relative flex items-center border-b transition-colors duration-300 ${
-                touched.email && email && !isValidEmail(email)
-                  ? "border-vermillion/60"
-                  : "border-star-white/15 focus-within:border-vermillion"
-              }`}>
+              <div
+                className={`flex items-center border-b transition-colors duration-200 ${
+                  touched.email && email && !isValidEmail(email) ? "border-cream" : "border-cream/35 focus-within:border-cream"
+                }`}
+              >
                 <input
                   id="creator-email"
                   name="email"
@@ -269,103 +212,61 @@ export default function CreatorApplicationForm() {
                   onChange={(e) => setEmail(e.target.value)}
                   onBlur={() => markTouched("email")}
                   placeholder="you@domain.com"
-                  className="w-full bg-transparent py-2.5 text-base text-star-white placeholder:text-silver/30 outline-none"
+                  className="w-full bg-transparent py-2.5 text-base text-cream placeholder:text-cream/35 outline-none"
                 />
-                {/* Inline valid check */}
-                {isValidEmail(email) && (
-                  <motion.span
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="text-vermillion"
-                  >
-                    <CheckCircle size={16} weight="bold" />
-                  </motion.span>
-                )}
+                {isValidEmail(email) && <CheckCircle size={16} weight="bold" className="text-cream" />}
               </div>
-              {/* Inline validation error */}
               {touched.email && email && !isValidEmail(email) && (
-                <motion.span
-                  initial={{ opacity: 0, y: -4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-[11px] text-vermillion/80 mt-1"
-                >
-                  Please enter a valid email address
-                </motion.span>
+                <span className="mt-1 text-sm text-cream/80">Please enter a valid email address.</span>
               )}
             </div>
 
             {/* Submit CTA */}
-            <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex flex-col items-start gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
               <button
                 type="submit"
-                data-cursor="cta"
                 disabled={submitting}
-                className="rounded-md bg-vermillion px-8 py-3.5 text-xs sm:text-sm font-bold text-star-white transition-all duration-300 hover:bg-vermillion-deep hover:shadow-[0_0_24px_rgba(255,61,46,0.3)] disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-vermillion"
+                className="btn-press rounded-md bg-cream px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-red transition-colors duration-200 hover:bg-yellow hover:text-ink disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-yellow cursor-pointer shadow-sm"
               >
                 {submitting ? (
                   <span className="inline-flex items-center gap-2">
                     <SpinnerGap size={16} className="animate-spin" />
-                    <span>Submitting Profile...</span>
+                    <span>Submitting</span>
                   </span>
                 ) : (
-                  "Submit Profile for Cohort Review"
+                  "Submit for cohort review"
                 )}
               </button>
 
-              <span className="text-[11px] text-silver/50">
-                Weekly review • Direct response
-              </span>
+              <span className="text-sm text-cream/60">Weekly review, direct response</span>
             </div>
           </motion.form>
         ) : (
-          /* ── Success State ── */
+          /* Success State */
           <motion.div
             key="confirmed"
-            initial={{ opacity: 0, scale: 0.95, y: 10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="py-4 space-y-5 relative z-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4 }}
+            className="space-y-5 py-4"
           >
-            {/* Success check animation */}
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.1 }}
-              className="w-16 h-16 rounded-full bg-vermillion/10 border border-vermillion/30 flex items-center justify-center"
-            >
-              <CheckCircle size={32} weight="bold" className="text-vermillion" />
-            </motion.div>
+            <CheckCircle size={32} weight="bold" className="text-cream" />
 
-            <div>
-              <div className="flex items-center gap-2 text-star-white mb-2">
-                <span className="text-xs uppercase tracking-widest font-bold text-vermillion">
-                  Application Received
-                </span>
-              </div>
+            <h3 className="font-display text-2xl font-bold leading-tight text-cream sm:text-3xl">
+              We received your submission for @{handle.replace(/^@/, "")}.
+            </h3>
 
-              <h3 className="font-display text-2xl sm:text-3xl font-extrabold text-star-white leading-tight">
-                We received your submission for @{handle.replace(/^@/, "")}.
-              </h3>
-            </div>
-
-            <p className="text-sm text-silver/70 leading-relaxed max-w-lg">
-              Our team evaluates cohort fit weekly for the{" "}
-              <span className="text-vermillion font-bold">{niche}</span> category. We
-              will reach out to{" "}
-              <span className="text-star-white font-bold">{email}</span> as soon as
-              your vertical opens.
+            <p className="max-w-lg text-base leading-relaxed text-cream/80">
+              Our team evaluates cohort fit weekly for the {niche} category. We will reach out to{" "}
+              <span className="font-semibold text-cream">{email}</span> as soon as your vertical opens.
             </p>
 
             <button
               type="button"
               onClick={resetForm}
-              className="text-xs font-semibold text-silver/60 hover:text-star-white transition-colors duration-300 pt-2 block group"
+              className="block pt-2 text-sm font-medium text-cream/70 hover:text-cream hover:underline hover:underline-offset-4"
             >
-              <span className="relative">
-                Submit another handle
-                <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-vermillion group-hover:w-full transition-all duration-300" />
-              </span>
+              Submit another handle
             </button>
           </motion.div>
         )}

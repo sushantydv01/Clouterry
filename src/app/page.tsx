@@ -1,379 +1,277 @@
 "use client";
 
-import Image from "next/image";
+import { useRef } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Navigation from "@/components/Navigation";
-import HeroCohortTerminal from "@/components/HeroCohortTerminal";
-import BrandLogoCloud from "@/components/BrandLogoCloud";
-import WhatWeDoSection from "@/components/WhatWeDoSection";
-import WorkflowSection from "@/components/WorkflowSection";
+import HeroVisualDeck from "@/components/HeroVisualDeck";
+import AgencyTicker from "@/components/AgencyTicker";
+import CohortExhibition from "@/components/CohortExhibition";
+import TalentRoster from "@/components/TalentRoster";
+import AgencyProtocol from "@/components/AgencyProtocol";
 import CreatorSection from "@/components/CreatorSection";
 import BrandSection from "@/components/BrandSection";
-import CreatorShowcase from "@/components/CreatorShowcase";
-import StoriesSection from "@/components/StoriesSection";
-import FaqSection from "@/components/FaqSection";
 import Footer from "@/components/Footer";
-import MagneticButton from "@/components/MagneticButton";
-import AnimatedCounter from "@/components/AnimatedCounter";
-import RevealOnScroll from "@/components/RevealOnScroll";
-
-const COHORTS = [
-  {
-    name: "Beauty & Daily Rituals",
-    cadence: "Daily rituals, texture checks, aesthetic morning routines",
-    creatorsCount: "18 creators",
-    deliverables: "GRWM formats, authentic reviews, raw 4K vertical UGC",
-    metrics: "5.4% Avg ER",
-  },
-  {
-    name: "Food & Regional Culture",
-    cadence: "Artisanal culinary, regional tasting notes, kitchen ASMR",
-    creatorsCount: "14 creators",
-    deliverables: "Recipe walkthroughs, pantry integrations, venue visits",
-    metrics: "6.8% Avg ER",
-  },
-  {
-    name: "Movement & Conditioning",
-    cadence: "Form breakdowns, athletic recovery, intentional wellness",
-    creatorsCount: "16 creators",
-    deliverables: "Workout integrations, morning routines, gear tests",
-    metrics: "5.1% Avg ER",
-  },
-  {
-    name: "Workspaces & Tech EDC",
-    cadence: "Ergonomic setups, desk tours, workflow gear breakdowns",
-    creatorsCount: "16 creators",
-    deliverables: "Hardware reviews, software integrations, workspace tours",
-    metrics: "5.9% Avg ER",
-  },
-];
-
-const METRICS = [
-  { value: "64+", label: "Curated cohort creators", sub: "Hand-vetted for aesthetic" },
-  { value: "5.2%", label: "Average organic engagement", sub: "Verified retention rate" },
-  { value: "14", valueSuffix: " Days", label: "Guaranteed asset delivery", sub: "From brief to 4K delivery" },
-  { value: "100%", label: "Rights & Spark Ads cleared", sub: "Pre-cleared 90-day usage" },
-];
-
-/* ── Staggered entrance variants ── */
-const heroStagger = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.15,
-    },
-  },
-};
-
-const heroChild = {
-  hidden: { opacity: 0, y: 20, filter: "blur(6px)" },
-  visible: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
-  },
-} as const;
+import { ArrowDown, ArrowUpRight } from "@phosphor-icons/react";
+import { heroStagger, heroChild, motionEase } from "@/lib/motion";
 
 export default function Home() {
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Bounded, organic depth movement (15-38px across full hero exit)
+  const textY = useTransform(scrollYProgress, [0, 1], [0, 22]);
+  const deckY = useTransform(scrollYProgress, [0, 1], [0, 36]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.85], [1, 0.3]);
+
   return (
-    <div className="min-h-screen flex flex-col bg-transparent text-silver antialiased selection:bg-vermillion selection:text-star-white relative z-10">
+    <div className="flex min-h-screen flex-col bg-red text-cream selection:bg-yellow selection:text-ink">
       <Navigation />
 
       <main className="flex-1">
-        {/* ━━━━━━━━━━━ HERO SECTION ━━━━━━━━━━━ */}
+        {/* ── 01. Hero Section: Left-aligned bold editorial layout with live cohort deck on right ── */}
         <section
-          className="relative min-h-[92dvh] flex flex-col justify-center px-6 sm:px-10 lg:px-16 pt-36 pb-20 overflow-hidden"
-          aria-label="Clouterry Creative Agency"
+          ref={heroRef}
+          className="relative flex min-h-[calc(100dvh-4.5rem)] flex-col justify-center px-6 py-12 sm:px-10 sm:py-16 lg:px-16 overflow-hidden border-b border-cream/15"
+          aria-label="Clouterry Hero"
         >
-          <div className="mx-auto max-w-7xl w-full relative z-10">
-            {/* Staggered entrance animation */}
+          {/* Subtle editorial corner coordinates */}
+          <div className="hidden lg:flex absolute top-6 left-10 items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-cream/40">
+            <span>CLOUTERRY INC.</span>
+            <span>/</span>
+            <span>40.7128° N, 74.0060° W</span>
+          </div>
+
+          <div className="hidden lg:flex absolute top-6 right-10 items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-cream/50">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-yellow animate-pulse-subtle" />
+            <span>ACCEPTING COHORT APPLICANTS</span>
+          </div>
+
+          <motion.div style={{ opacity: heroOpacity }} className="mx-auto w-full max-w-7xl">
             <motion.div
               variants={heroStagger}
               initial="hidden"
               animate="visible"
+              className="grid gap-12 lg:grid-cols-12 lg:gap-14 items-center"
             >
-              {/* Live ecosystem pulse banner */}
-              <motion.div
-                variants={heroChild}
-                className="inline-flex items-center gap-2.5 rounded-md bg-star-white/[0.04] border border-star-white/[0.08] px-4 py-1.5 text-xs text-silver/70 mb-8 backdrop-blur-sm"
-              >
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full rounded-full bg-vermillion opacity-75 animate-ping" style={{ animationDuration: "2s" }} />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-vermillion" />
-                </span>
-                <span className="font-mono text-[11px] uppercase tracking-wider text-star-white font-semibold">
-                  Q3 Brand Briefings Open
-                </span>
-                <span className="text-silver/30">•</span>
-                <span className="text-silver/60 text-[11px] hidden sm:inline">
-                  4 Active Verticals • 64+ Creators
-                </span>
-              </motion.div>
-
-              {/* Wide 12-Column Grid */}
-              <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-                {/* Left Column: 7 Cols */}
-                <div className="lg:col-span-7 flex flex-col items-start text-left">
-                  {/* Clouterry Emblem */}
-                  <motion.div variants={heroChild} className="relative h-11 w-16 mb-6">
-                    <Image
-                      src="/clouterry-mark-white.png"
-                      alt="Clouterry emblem"
-                      fill
-                      sizes="64px"
-                      className="object-contain drop-shadow-[0_0_24px_rgba(255,61,46,0.2)]"
-                      priority
-                    />
-                  </motion.div>
-
-                  {/* Enormous Headline */}
-                  <motion.h1
-                    variants={heroChild}
-                    className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.4rem] font-extrabold tracking-[-0.04em] text-star-white leading-[0.96]"
-                  >
-                    Real creators.
-                    <br />
-                    Real voice.
-                    <br />
-                    <span className="relative inline-block">
-                      Cohorts brands can trust.
-                      {/* Vermillion accent dot */}
-                      <span
-                        aria-hidden="true"
-                        className="inline-block align-baseline ml-2 sm:ml-3 h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-vermillion shadow-[0_0_16px_4px_rgba(255,61,46,0.5)]"
-                      />
-                    </span>
-                  </motion.h1>
-
-                  {/* Supporting narrative */}
-                  <motion.p
-                    variants={heroChild}
-                    className="mt-8 text-base sm:text-lg md:text-xl text-silver/75 leading-relaxed max-w-xl"
-                  >
-                    Clouterry organizes high-retention micro-creators into curated vertical cohorts, connecting them directly with forward-thinking brands without agency drag, inflated retainers, or spreadsheet friction.
-                  </motion.p>
-
-                  {/* Dual CTAs with Magnetic wrappers */}
-                  <motion.div
-                    variants={heroChild}
-                    className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto"
-                  >
-                    <MagneticButton strength={0.25}>
-                      <Link
-                        href="/creators"
-                        data-cursor="cta"
-                        className="block rounded-md bg-vermillion px-8 py-3.5 text-xs sm:text-sm font-bold text-star-white transition-all duration-300 text-center shadow-[0_0_20px_rgba(255,61,46,0.25)] hover:shadow-[0_0_32px_rgba(255,61,46,0.4)] hover:bg-vermillion-deep focus-visible:outline-2 focus-visible:outline-vermillion"
-                      >
-                        For Creators: Join a Cohort
-                      </Link>
-                    </MagneticButton>
-
-                    <MagneticButton strength={0.25}>
-                      <Link
-                        href="/brands"
-                        data-cursor="cta"
-                        className="block rounded-md liquid-glass-interactive px-8 py-3.5 text-xs sm:text-sm font-semibold text-star-white text-center border-b-2 border-b-vermillion/60 hover:border-b-vermillion focus-visible:outline-2 focus-visible:outline-vermillion"
-                      >
-                        For Brands: Explore Cohorts
-                      </Link>
-                    </MagneticButton>
-                  </motion.div>
-                </div>
-
-                {/* Right Column: 5 Cols - Live Cohort Terminal */}
+              {/* ── Left Column: Left-aligned massive display headlines & agency thesis with subtle depth ── */}
+              <motion.div style={{ y: textY }} className="lg:col-span-7 flex flex-col items-start text-left">
+                {/* Micro Eyebrow */}
                 <motion.div
                   variants={heroChild}
-                  className="lg:col-span-5 w-full"
+                  className="inline-flex items-center gap-2 rounded-full border border-cream/20 bg-cream/10 px-3.5 py-1 text-xs font-mono tracking-wider text-cream/80"
                 >
-                  <HeroCohortTerminal />
+                  <span className="inline-block h-2 w-2 rounded-full bg-yellow animate-pulse-subtle" />
+                  <span>CURATED CREATOR COHORT AGENCY · 2026</span>
                 </motion.div>
-              </div>
-            </motion.div>
 
-            {/* Proof Metrics Bar with Animated Counters */}
-            <RevealOnScroll direction="up" delay={0.1}>
-              <div className="mt-20 pt-10 border-t border-star-white/8 grid grid-cols-2 sm:grid-cols-4 gap-8 text-left">
-                {METRICS.map((m, i) => (
-                  <div key={m.label} className="flex flex-col group">
-                    <div className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-star-white tabular-nums">
-                      <AnimatedCounter
-                        value={m.value}
-                        duration={2.5}
-                      />
-                      {m.valueSuffix && (
-                        <span className="text-silver/60 text-2xl sm:text-3xl lg:text-4xl font-semibold">
-                          {m.valueSuffix}
-                        </span>
-                      )}
-                    </div>
-                    <div className="mt-1.5 text-xs sm:text-sm font-semibold text-star-white/80">
-                      {m.label}
-                    </div>
-                    <div className="mt-0.5 text-[11px] text-silver/50">
-                      {m.sub}
-                    </div>
-                    {/* Subtle vermillion underline on hover */}
-                    <div className="mt-3 h-[1px] w-0 bg-vermillion/40 group-hover:w-full transition-all duration-500" />
-                  </div>
-                ))}
-              </div>
-            </RevealOnScroll>
-          </div>
-        </section>
-
-        {/* ━━━━━━━━━━━ TRUSTED BRANDS CLOUD ━━━━━━━━━━━ */}
-        <section className="relative border-y border-star-white/8 bg-void/40 backdrop-blur-xs py-6" aria-label="Brands & Cohort Partners">
-          <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16 mb-2 text-left text-xs text-silver/40">
-            Trusted by creators and brands who value genuine aesthetic discipline
-          </div>
-          <BrandLogoCloud />
-        </section>
-
-        {/* ━━━━━━━━━━━ WHAT WE DO ━━━━━━━━━━━ */}
-        <WhatWeDoSection />
-
-        {/* ━━━━━━━━━━━ ACTIVE COHORTS SHOWCASE ━━━━━━━━━━━ */}
-        <section className="bg-void/30 backdrop-blur-xs px-6 sm:px-10 lg:px-16 py-24 sm:py-32 text-left border-b border-star-white/8">
-          <div className="mx-auto max-w-7xl">
-            <RevealOnScroll>
-              <div className="mb-14 flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-star-white/8 pb-6">
-                <div>
-                  <div className="text-xs uppercase tracking-widest text-vermillion font-semibold mb-2">
-                    Active Verticals
-                  </div>
-                  <h2 className="font-display text-3xl sm:text-5xl font-extrabold tracking-tight text-star-white">
-                    Active Creator Cohorts
-                  </h2>
-                  <p className="text-xs sm:text-sm text-silver/60 mt-2 max-w-xl">
-                    Each cohort is capped at 18 members to preserve aesthetic parity, high retention benchmarks, and dedicated delivery coordination.
-                  </p>
-                </div>
-                <Link
-                  href="/brands"
-                  className="text-xs font-bold text-silver/70 hover:text-star-white transition-colors duration-300 group"
+                {/* Main Headline: Hand-set line breaks, massive editorial scale */}
+                <motion.h1
+                  variants={heroChild}
+                  className="mt-5 font-display text-4xl font-extrabold leading-[0.93] tracking-[-0.04em] text-cream sm:text-6xl md:text-7xl lg:text-[5.2rem] xl:text-[5.9rem]"
                 >
-                  <span className="relative">
-                    View full cohort deliverables & pricing
-                    <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-vermillion group-hover:w-full transition-all duration-300" />
-                  </span>
-                </Link>
-              </div>
-            </RevealOnScroll>
+                  Real creators.
+                  <br />
+                  Real voice.
+                  <br />
+                  <motion.span
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.45, delay: 0.28, ease: motionEase }}
+                    className="inline-block font-serif italic font-normal text-yellow"
+                  >
+                    Cohorts
+                  </motion.span>{" "}
+                  brands can trust.
+                </motion.h1>
 
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              {COHORTS.map((cohort, i) => (
-                <RevealOnScroll key={cohort.name} delay={i * 0.08}>
-                  <div className="rounded-xl liquid-glass p-6 flex flex-col justify-between border border-star-white/8 hover:border-vermillion/25 transition-all duration-400 group">
-                    <div>
-                      <div className="flex items-center justify-between text-xs text-silver/50 mb-3 font-mono">
-                        <span>{cohort.creatorsCount}</span>
-                        <span className="text-vermillion font-bold tabular-nums">{cohort.metrics}</span>
-                      </div>
+                {/* Unhurried Agency Thesis Statement */}
+                <motion.p
+                  variants={heroChild}
+                  className="mt-6 max-w-xl text-base leading-relaxed text-cream/85 sm:mt-7 sm:text-lg font-body"
+                >
+                  Clouterry organizes high-retention micro-creators into curated vertical cohorts, connecting
+                  them directly with forward-thinking brands on a guaranteed 14-day turnaround.
+                </motion.p>
 
-                      <h3 className="font-display text-xl font-bold text-star-white group-hover:text-vermillion transition-colors duration-300">
-                        {cohort.name}
-                      </h3>
-
-                      <p className="mt-3 text-xs sm:text-sm text-silver/70 leading-relaxed">
-                        {cohort.cadence}
-                      </p>
-                    </div>
-
-                    <div className="mt-6 pt-4 border-t border-star-white/8 text-xs text-silver/60">
-                      <span className="font-semibold text-star-white">Format:</span> {cohort.deliverables}
-                    </div>
-                  </div>
-                </RevealOnScroll>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ━━━━━━━━━━━ WORKFLOW PIPELINE ━━━━━━━━━━━ */}
-        <WorkflowSection />
-
-        {/* ━━━━━━━━━━━ FOR CREATORS ━━━━━━━━━━━ */}
-        <CreatorSection />
-
-        {/* ━━━━━━━━━━━ FOR BRANDS ━━━━━━━━━━━ */}
-        <BrandSection />
-
-        {/* ━━━━━━━━━━━ CREATOR ROSTER ━━━━━━━━━━━ */}
-        <CreatorShowcase />
-
-        {/* ━━━━━━━━━━━ STORIES & CASE STUDIES ━━━━━━━━━━━ */}
-        <StoriesSection />
-
-        {/* ━━━━━━━━━━━ ABOUT / THE STORY ━━━━━━━━━━━ */}
-        <section className="border-t border-star-white/8 bg-void/50 backdrop-blur-xs px-6 sm:px-10 lg:px-16 py-24 sm:py-32 text-left">
-          <RevealOnScroll>
-            <div className="mx-auto max-w-2xl">
-              <div className="text-xs uppercase tracking-widest text-vermillion font-semibold mb-3">
-                Founding Conviction
-              </div>
-              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-star-white leading-tight">
-                The content economy has
-                <br />
-                a matching problem.
-              </h2>
-
-              <div className="mt-8 space-y-6 text-base text-silver/80 leading-relaxed border-t border-star-white/8 pt-8">
-                <p>
-                  Every week, millions of talented micro-creators produce magnetic short-form video. Yet most spend 70% of their creative energy cold-pitching brands through overflowing DMs, getting ghosted or pressured into lowball trade deals with zero creative sovereignty.
-                </p>
-                <p>
-                  On the brand side, growth leaders are exhausted by SaaS directories that sell spreadsheets of 50,000 unvetted handles. Marketing teams end up acting as full-time logistics coordinators, wrangling dozens of one-off contracts, endless revision loops, and delayed payouts.
-                </p>
-                <p className="font-bold text-star-white">
-                  Clouterry fixes this through cohort-based talent infrastructure.
-                </p>
-                <p>
-                  We organize creators by genuine cultural category, giving independent voices collective bargaining power while providing brands with an operational roster they can trust on a guaranteed 14-day delivery cycle.
-                </p>
-              </div>
-
-              <div className="mt-10 pt-6 border-t border-star-white/8 flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-md liquid-glass p-1.5 border border-star-white/10">
-                    <Image
-                      src="/clouterry-mark-white.png"
-                      alt="Clouterry emblem"
-                      fill
-                      sizes="44px"
-                      className="object-contain p-1"
+                {/* CTAs: Crisp rectangular shape language with tactile response */}
+                <motion.div
+                  variants={heroChild}
+                  className="mt-8 flex flex-col items-stretch gap-3.5 sm:mt-9 sm:flex-row sm:items-center w-full sm:w-auto"
+                >
+                  <Link
+                    href="/creators"
+                    className="btn-press group inline-flex items-center justify-center gap-2 rounded-md bg-cream px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-red hover:bg-yellow hover:text-ink focus-visible:outline-2 focus-visible:outline-yellow shadow-sm"
+                  >
+                    <span>For Creators: Join a Cohort</span>
+                    <ArrowUpRight
+                      size={14}
+                      weight="bold"
+                      className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                     />
+                  </Link>
+
+                  <Link
+                    href="/brands"
+                    className="btn-press inline-flex items-center justify-center rounded-md border border-cream/80 px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-cream hover:bg-cream hover:text-red focus-visible:outline-2 focus-visible:outline-yellow"
+                  >
+                    For Brands: Explore Cohorts
+                  </Link>
+                </motion.div>
+
+                {/* Key Agency Telemetry Strip */}
+                <motion.div
+                  variants={heroChild}
+                  className="mt-10 grid grid-cols-3 gap-6 border-t border-cream/15 pt-6 w-full max-w-lg"
+                >
+                  <div>
+                    <div className="font-display text-2xl font-extrabold text-cream">14-Day</div>
+                    <div className="text-[11px] font-mono uppercase tracking-wider text-cream/60 mt-0.5">
+                      Delivery Cadence
+                    </div>
                   </div>
                   <div>
-                    <div className="font-display text-xs font-bold text-star-white">
-                      The Founding Team
-                    </div>
-                    <div className="text-[11px] text-silver/50">
-                      Clouterry Agency, building the future of creator cohorts
+                    <div className="font-display text-2xl font-extrabold text-cream">100%</div>
+                    <div className="text-[11px] font-mono uppercase tracking-wider text-cream/60 mt-0.5">
+                      Creator Voice
                     </div>
                   </div>
-                </div>
+                  <div>
+                    <div className="font-display text-2xl font-extrabold text-cream">0%</div>
+                    <div className="text-[11px] font-mono uppercase tracking-wider text-cream/60 mt-0.5">
+                      Exclusive Locks
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
 
-                <Link
-                  href="/about"
-                  className="text-xs font-bold text-silver/70 hover:text-star-white transition-colors duration-300 group"
-                >
-                  <span className="relative">
-                    Read full story
-                    <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-vermillion group-hover:w-full transition-all duration-300" />
-                  </span>
-                </Link>
-              </div>
-            </div>
-          </RevealOnScroll>
+              {/* ── Right Column: Interactive Live Cohort Deck with subtle scroll depth ── */}
+              <motion.div
+                style={{ y: deckY }}
+                variants={heroChild}
+                className="lg:col-span-5 flex flex-col items-center lg:items-end w-full"
+              >
+                <HeroVisualDeck />
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          {/* Scroll Indicator Micro Cue */}
+          <div className="mt-12 hidden lg:flex items-center gap-2 text-cream/40 pl-2">
+            <span className="font-mono text-[11px] uppercase tracking-widest">Scroll to Exhibition</span>
+            <ArrowDown size={12} weight="bold" className="animate-bounce" />
+          </div>
         </section>
 
-        {/* ━━━━━━━━━━━ FAQ ━━━━━━━━━━━ */}
-        <FaqSection />
+        {/* ── 02. Kinetic Agency Ticker: Crimson register ── */}
+        <AgencyTicker tone="red" />
+
+        {/* ── 03. Selected Cohorts Exhibition: Asymmetric art-directed gallery spread ── */}
+        <CohortExhibition />
+
+        {/* ── 04. Kinetic Agency Ticker: Dark transition into the talent roster ── */}
+        <AgencyTicker
+          tone="dark"
+          items={[
+            "FEATURED TALENT ROSTER",
+            "VERIFIED RETENTION METRICS",
+            "BEAUTY · CULINARY · TECH · MOVEMENT",
+            "GUARANTEED 14-DAY CADENCE",
+            "DIRECT COMMERCIAL RIGHTS",
+          ]}
+        />
+
+        {/* ── 05. The Talent Roster: Fashion-editorial creator contact sheet ── */}
+        <TalentRoster />
+
+        {/* ── 06. Operating Model & Capabilities: Architectural 4-step framework ── */}
+        <AgencyProtocol />
+
+        {/* ── 07. For Creators: Full-bleed explosive red register with bare underlined inputs ── */}
+        <CreatorSection />
+
+        {/* ── 08. For Brands: Restrained luxury register with active dossier & booking modal ── */}
+        <BrandSection />
+
+        {/* ── 09. The Manifesto / Editorial Letter: Narrow measure, high craft ── */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.65, ease: motionEase }}
+          className="border-t border-cream/15 bg-red-deep/60 px-6 py-24 text-left sm:px-10 sm:py-32 lg:px-16 text-cream"
+        >
+          <div className="mx-auto max-w-3xl">
+            <div className="flex items-center gap-3">
+              <span className="inline-block h-2 w-2 rounded-full bg-yellow" />
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-cream/60">
+                Studio Thesis · 2026
+              </span>
+            </div>
+
+            <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight tracking-tight text-cream sm:text-4xl md:text-5xl">
+              The content economy has
+              <br />
+              <motion.span
+                initial={{ opacity: 0, y: 4 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: 0.15, ease: motionEase }}
+                className="inline-block font-serif italic font-normal text-yellow"
+              >
+                a matching problem.
+              </motion.span>
+            </h2>
+
+            <div className="mt-8 space-y-6 border-t border-cream/15 pt-8 text-base leading-relaxed text-cream/85 font-body sm:text-lg">
+              <p>
+                Every week, millions of talented micro-creators produce magnetic short-form video. Yet most
+                spend 70% of their creative energy cold-pitching brands through overflowing DMs, getting ghosted
+                or pressured into lowball trade deals with zero creative sovereignty.
+              </p>
+              <p>
+                On the brand side, growth leaders are exhausted by directories that sell spreadsheets of
+                unvetted handles. Marketing teams end up acting as full-time logistics coordinators, wrangling
+                dozens of one-off contracts, shipping errors, and delayed payouts.
+              </p>
+              <p className="font-semibold text-cream font-display text-xl sm:text-2xl pt-2">
+                Clouterry fixes this through cohort-based talent infrastructure.
+              </p>
+              <p>
+                We organize creators by genuine cultural category, giving independent voices collective
+                bargaining power while providing brands with an operational roster they can trust on a
+                guaranteed 14-day delivery cycle.
+              </p>
+            </div>
+
+            <div className="mt-12 flex flex-col justify-between gap-4 border-t border-cream/15 pt-6 sm:flex-row sm:items-center">
+              <div>
+                <div className="font-display text-sm font-bold text-cream">The Founding Team</div>
+                <div className="text-xs text-cream/60 font-mono uppercase tracking-wider">
+                  Clouterry Talent Infrastructure Inc.
+                </div>
+              </div>
+
+              <Link
+                href="/about"
+                className="btn-press group inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-cream/80 hover:text-yellow transition-colors"
+              >
+                <span>Read Full Studio Story</span>
+                <ArrowUpRight
+                  size={14}
+                  weight="bold"
+                  className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </Link>
+            </div>
+          </div>
+        </motion.section>
       </main>
 
+      {/* ── 10. Footer: Enormous typographic statement, live timezones & direct contact ── */}
       <Footer />
     </div>
   );

@@ -1,114 +1,137 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import AgencyTicker from "@/components/AgencyTicker";
+import { ArrowUpRight, Sparkle } from "@phosphor-icons/react";
 
 const VALUES = [
   {
-    title: "Aesthetic Alignment First",
-    desc: "We never place a creator into a campaign that clashes with their natural style. If the visual fit is not organic, the campaign fails.",
+    num: "01",
+    title: "Aesthetic alignment first",
+    desc: "We never place a creator into a campaign that clashes with their natural style. If the visual fit is not organic, the campaign fails before it begins.",
   },
   {
-    title: "Collective Leverage",
-    desc: "Independent micro-creators are often taken advantage of by corporate procurement. Cohorts give independent voices collective bargaining power.",
+    num: "02",
+    title: "Collective leverage for soloists",
+    desc: "Independent micro-creators are routinely exploited by corporate procurement teams. Cohorts grant independent voices collective bargaining power and guaranteed 14-day terms.",
   },
   {
-    title: "Zero Operational Drag",
-    desc: "Growth marketers want converting short-form video without managing 40 individual invoices, contracts, and revision loops.",
+    num: "03",
+    title: "Zero operational drag for brands",
+    desc: "Growth marketers want magnetic short-form assets without managing dozens of individual invoices, missing NDAs, and unending revision loops.",
   },
   {
-    title: "Cultural Authenticity",
-    desc: "Audiences smell artificial influencer marketing from miles away. We curate creators who understand the short-form medium natively.",
+    num: "04",
+    title: "Cultural authenticity over canned hype",
+    desc: "Audiences can sniff out artificial influencer marketing from miles away. We curate creators who understand the short-form medium natively and speak directly to their peers.",
   },
 ];
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-transparent text-silver antialiased selection:bg-star-white selection:text-void relative z-10">
+    <div className="flex min-h-screen flex-col bg-red text-cream selection:bg-yellow selection:text-ink">
       <Navigation />
 
-      <main className="flex-1 pt-32 pb-24 sm:pt-40 sm:pb-28">
-        {/* Letter Container: Denser, tighter, reads like a real letter rather than a marketing block */}
-        <section className="px-6 sm:px-8">
-          <div className="mx-auto max-w-2xl">
-            <h1 className="font-display text-3xl sm:text-5xl font-extrabold tracking-tight text-star-white leading-tight">
+      <main className="flex-1 pb-24 text-left">
+        {/* Header Section */}
+        <section className="border-b border-cream/15 px-6 pt-16 pb-20 sm:px-10 sm:pt-24 sm:pb-28 lg:px-16">
+          <div className="mx-auto max-w-4xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-cream/20 bg-cream/10 px-3.5 py-1 text-xs font-mono uppercase tracking-wider text-cream/80">
+              <Sparkle size={12} weight="fill" className="text-yellow" />
+              <span>Studio Manifesto & Founding Letter · 2026</span>
+            </div>
+
+            <h1 className="mt-6 font-display text-4xl font-extrabold leading-[0.95] tracking-[-0.035em] text-cream sm:text-6xl md:text-7xl">
               The content economy has
               <br />
-              a matching problem.
+              <span className="font-serif italic font-normal text-yellow">a matching problem.</span>
             </h1>
 
-            {/* Letter Body */}
-            <div className="mt-10 space-y-6 text-base sm:text-lg text-silver/90 leading-relaxed border-t border-star-white/10 pt-8">
+            <div className="mt-10 space-y-6 border-t border-cream/15 pt-8 text-base leading-relaxed text-cream/85 font-body sm:text-lg">
               <p>
-                Every week, millions of talented micro and mid-tier creators produce magnetic, high-converting short-form video. Yet most spend 70% of their creative energy cold-pitching brands through overflowing DMs, getting ghosted or pressured into lowball trade deals with zero creative freedom.
+                Every week, millions of talented micro and mid-tier creators produce magnetic, high-converting
+                short-form video. Yet most spend 70% of their creative energy cold-pitching brands through
+                overflowing DMs, getting ghosted or pressured into lowball trade deals with zero creative
+                freedom.
               </p>
               <p>
-                On the brand side, growth leaders are exhausted by SaaS directories that sell spreadsheets of 50,000 unvetted handles. Marketing teams end up acting as full-time logistics coordinators, wrangling dozens of one-off contracts, endless revision loops, and delayed payout disputes.
+                On the brand side, growth leaders are exhausted by directories that sell spreadsheets of
+                unvetted handles. Marketing teams end up acting as full-time logistics coordinators, wrangling
+                dozens of one-off contracts, endless revision loops, and delayed payout disputes.
               </p>
-              <p className="font-bold text-star-white">
-                Clouterry fixes this through cohort-based talent infrastructure.
-              </p>
+              <div className="rounded-md border-l-4 border-yellow bg-red-deep/70 p-6 my-6 border border-cream/15">
+                <p className="font-display text-xl font-bold text-cream sm:text-2xl">
+                  Clouterry fixes this through cohort-based talent infrastructure.
+                </p>
+                <p className="mt-2 text-sm text-cream/70">
+                  One collective structure. Guaranteed 14-day turnaround. 100% creative sovereignty.
+                </p>
+              </div>
               <p>
-                We organize creators by genuine cultural category (Beauty, Food, Movement, Tech), allowing creators to maintain their distinct aesthetic while accessing collective agency benefits. For brands, cohorts offer a single, reliable point of contact for high-volume authentic content that actually lands.
+                We organize creators by genuine cultural category, allowing them to maintain their distinct
+                aesthetic while accessing collective agency benefits. For brands, cohorts offer a single,
+                reliable point of contact for high-volume authentic content that actually lands.
               </p>
             </div>
 
-            {/* Sign-off with Logo Mark */}
-            <div className="mt-12 pt-8 border-t border-star-white/10 flex items-center gap-4">
-              <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-md liquid-glass p-2 border border-star-white/15">
-                <Image
-                  src="/clouterry-mark-white.png"
-                  alt="Clouterry emblem"
-                  fill
-                  sizes="48px"
-                  className="object-contain p-1.5"
-                />
-              </div>
+            {/* Founder Signoff Block */}
+            <div className="mt-12 flex flex-col justify-between gap-4 border-t border-cream/15 pt-8 sm:flex-row sm:items-center">
               <div>
-                <div className="font-display text-sm font-bold text-star-white">
-                  The Founding Team
-                </div>
-                <div className="text-xs text-silver/60">
-                  Clouterry Agency, building the future of creator cohorts
+                <div className="font-display text-base font-bold text-cream">The Founding Team</div>
+                <div className="text-xs font-mono uppercase tracking-wider text-cream/60">
+                  Clouterry Studio & Talent Infrastructure
                 </div>
               </div>
+
+              <div className="rounded-md border border-cream/20 bg-cream/10 px-4 py-2 font-mono text-xs text-cream/80">
+                PROVENANCE: NYC · LON · TYO
+              </div>
             </div>
+          </div>
+        </section>
 
-            {/* Core Values: Clean, tight list */}
-            <div className="mt-16 border-t border-star-white/10 pt-12 space-y-8">
-              <h2 className="font-display text-xl font-bold text-star-white">
-                What We Stand For
-              </h2>
+        {/* Ticker */}
+        <AgencyTicker tone="dark" />
 
-              <div className="grid gap-6 sm:grid-cols-2">
-                {VALUES.map((val) => (
-                  <div key={val.title} className="space-y-1">
-                    <h3 className="font-display text-sm font-bold text-star-white">
-                      {val.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-silver/75 leading-relaxed">
-                      {val.desc}
-                    </p>
+        {/* Core Values / What We Stand For */}
+        <section className="bg-red-deep/40 px-6 py-20 sm:px-10 sm:py-28 lg:px-16 border-t border-cream/15 text-cream">
+          <div className="mx-auto max-w-4xl">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-yellow">Foundational Pillars</span>
+            <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-cream sm:text-4xl">
+              What we stand for.
+            </h2>
+
+            <div className="mt-10 divide-y divide-cream/10 border-t border-cream/15">
+              {VALUES.map((val) => (
+                <div key={val.title} className="py-8">
+                  <div className="grid gap-4 sm:grid-cols-12 sm:items-baseline">
+                    <span className="font-mono text-xl font-bold text-yellow sm:col-span-2">{val.num}</span>
+                    <div className="sm:col-span-10">
+                      <h3 className="font-display text-2xl font-bold text-cream">{val.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-cream/80 font-body sm:text-base">
+                        {val.desc}
+                      </p>
+                    </div>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
 
-            {/* Actions */}
-            <div className="mt-14 pt-8 border-t border-star-white/10 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <div className="mt-14 flex flex-col gap-4 border-t border-cream/15 pt-10 sm:flex-row sm:items-center">
               <Link
                 href="/creators"
-                className="rounded-md bg-star-white px-7 py-3 text-xs sm:text-sm font-bold text-void hover:bg-star-white/90 transition-colors"
+                className="btn-press inline-flex items-center justify-center gap-2 rounded-md bg-cream px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-red transition-all duration-200 hover:bg-yellow hover:text-ink shadow-sm"
               >
-                Join as a Creator
+                <span>Join as a creator</span>
+                <ArrowUpRight size={14} weight="bold" />
               </Link>
               <Link
                 href="/brands"
-                className="rounded-md liquid-glass-interactive px-7 py-3 text-xs sm:text-sm font-bold text-star-white border-b-2 border-b-ember/80"
+                className="btn-press inline-flex items-center justify-center rounded-md border border-cream/80 px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-cream transition-all duration-200 hover:bg-cream hover:text-red"
               >
-                Partner as a Brand
+                Partner as a brand
               </Link>
             </div>
           </div>

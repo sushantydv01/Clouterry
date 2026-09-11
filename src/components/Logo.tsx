@@ -3,26 +3,22 @@ import Image from "next/image";
 
 interface LogoProps {
   className?: string;
-  variant?: "full" | "mark" | "compact";
-  tone?: "cream" | "ink" | "red" | "white" | "star-white";
+  variant?: "full" | "mark";
+  /** "red" for the mark on cream/light surfaces, "cream" for the mark on red surfaces. */
+  tone?: "red" | "cream";
   size?: "sm" | "md" | "lg";
 }
 
 export default function Logo({
   className = "",
   variant = "full",
-  tone = "white",
+  tone = "red",
   size = "md",
 }: LogoProps) {
-  const isWhite = tone === "cream" || tone === "white" || tone === "star-white";
+  const onRed = tone === "cream";
 
-  const markSrc = isWhite
-    ? "/clouterry-mark-white.png"
-    : "/clouterry-mark.png";
-
-  const wordmarkSrc = isWhite
-    ? "/clouterry-wordmark-white.png"
-    : "/clouterry-wordmark.png";
+  const markSrc = onRed ? "/clouterry-mark-white.png" : "/clouterry-mark.png";
+  const wordmarkSrc = onRed ? "/clouterry-wordmark-white.png" : "/clouterry-wordmark.png";
 
   // Mark aspect ratio: 619 / 422 = ~1.467
   // Wordmark aspect ratio: 678 / 246 = ~2.756
@@ -37,10 +33,9 @@ export default function Logo({
       className={`inline-flex items-center gap-2 select-none ${className}`}
       aria-label="Clouterry logo"
     >
-      {/* Authentic Planetary Mark */}
       <div
         style={{ height: `${markHeight}px`, width: `${markWidth}px` }}
-        className="relative shrink-0 transition-transform duration-300 hover:rotate-6 active:scale-95"
+        className="relative shrink-0"
       >
         <Image
           src={markSrc}
@@ -52,7 +47,6 @@ export default function Logo({
         />
       </div>
 
-      {/* Authentic Retro Display Wordmark */}
       {variant !== "mark" && (
         <div
           style={{ height: `${wordmarkHeight}px`, width: `${wordmarkWidth}px` }}

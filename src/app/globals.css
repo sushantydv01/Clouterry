@@ -1,56 +1,73 @@
 @import "tailwindcss";
 
 /* ─────────────────────────────────────────────────
-   CLOUTERRY DESIGN SYSTEM — "Wow-Tier" Foundation
+   CLOUTERRY DESIGN SYSTEM
+   Fun yet elegant, one idea, executed with restraint.
+   Three colors do 95% of the work: cream, ink, red.
    ───────────────────────────────────────────────── */
 
 :root {
-  /* Core Dark Palette */
-  --color-void: #0A0A0F;
-  --color-space-deep: #12121C;
-  --color-star-white: #F4F3F7;
-  --color-silver: #B8B8C4;
+  /* Crimson Dominant Palette */
+  --color-red: #C92C48;
+  --color-red-deep: #8A1428;
+  --color-red-hover: #D43854;
+  --color-red-tint: rgba(201, 44, 72, 0.08);
+  --color-red-glow: rgba(201, 44, 72, 0.25);
 
-  /* Accent: Electric Vermillion — the one committed color */
-  --color-vermillion: #FF3D2E;
-  --color-vermillion-deep: #CC2E22;
-  --color-vermillion-glow: rgba(255, 61, 46, 0.35);
+  /* Warm Beige / Ivory Supporting Canvas */
+  --color-beige: #F6F1E6;
+  --color-beige-dim: #EFE6D3;
+  --color-beige-sand: #E5DBC7;
+  --color-cream: #F6F1E6;
+  --color-cream-dim: #EFE6D3;
 
-  /* Legacy ember — demoted to rare secondary */
-  --color-ember: #D4A94A;
+  /* Warm Off-Black Typography & Structure */
+  --color-ink: #171412;
+  --color-ink-muted: #5C544E;
 
-  /* Aliases (kept for backwards compat) */
-  --color-cream: #0A0A0F;
-  --color-cream-dim: #12121C;
-  --color-ink: #F4F3F7;
-  --color-red: #FF3D2E;
-  --color-red-deep: #CC2E22;
-  --color-gold: #D4A94A;
+  /* Restrained Warm Accent */
+  --color-gold: #E5B842;
+  --color-yellow: #F0C050;
 
-  /* Easing curves */
+  /* Contextual Accents (Muted & Restrained) */
+  --color-cobalt: #1E3FE3;
+  --color-acid: #D4F238;
+  --color-lilac: #D9D4F2;
+  --color-tangerine: #FF5524;
+
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-tactile: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 @theme inline {
-  --color-void: var(--color-void);
-  --color-space-deep: var(--color-space-deep);
-  --color-star-white: var(--color-star-white);
-  --color-silver: var(--color-silver);
-  --color-ember: var(--color-ember);
-  --color-vermillion: var(--color-vermillion);
-  --color-vermillion-deep: var(--color-vermillion-deep);
-
-  --color-cream: var(--color-cream);
-  --color-cream-dim: var(--color-cream-dim);
-  --color-ink: var(--color-ink);
   --color-red: var(--color-red);
   --color-red-deep: var(--color-red-deep);
-  --color-gold: var(--color-gold);
+  --color-red-hover: var(--color-red-hover);
+  --color-red-tint: var(--color-red-tint);
+  --color-red-glow: var(--color-red-glow);
 
-  --font-display: var(--font-sora);
-  --font-body: var(--font-inter);
+  --color-beige: var(--color-beige);
+  --color-beige-dim: var(--color-beige-dim);
+  --color-beige-sand: var(--color-beige-sand);
+  --color-cream: var(--color-cream);
+  --color-cream-dim: var(--color-cream-dim);
+
+  --color-ink: var(--color-ink);
+  --color-ink-muted: var(--color-ink-muted);
+  --color-gold: var(--color-gold);
+  --color-yellow: var(--color-yellow);
+
+  --color-cobalt: var(--color-cobalt);
+  --color-acid: var(--color-acid);
+  --color-lilac: var(--color-lilac);
+  --color-tangerine: var(--color-tangerine);
+
+  --font-display: var(--font-syne), sans-serif;
+  --font-serif: var(--font-serif), Georgia, serif;
+  --font-body: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 /* ── Essential Lenis Smooth Scroll ── */
@@ -75,211 +92,33 @@ html.lenis body {
   pointer-events: none;
 }
 
-/* ── Base Styles ── */
+/* ── Base Styles: Full-Bleed Crimson Red Canvas ── */
 html {
-  background-color: var(--color-void);
-  color: var(--color-silver);
+  background-color: var(--color-red);
+  color: var(--color-beige);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background-color: var(--color-void);
-  color: var(--color-silver);
+  background-color: var(--color-red);
+  color: var(--color-beige);
   font-family: var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
   position: relative;
 }
 
-/* Custom cursor: hide system cursor on non-touch when custom cursor is active */
-.has-custom-cursor,
-.has-custom-cursor * {
-  cursor: none !important;
-}
-
 /* ── Focus Styling ── */
 :focus-visible {
-  outline: 2px solid var(--color-vermillion);
+  outline: 2px solid var(--color-yellow);
   outline-offset: 2px;
-}
-
-/* ── Film Grain Overlay ── */
-.grain-overlay {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.032;
-  mix-blend-mode: overlay;
-}
-
-.grain-overlay::after {
-  content: "";
-  position: absolute;
-  inset: -200%;
-  width: 400%;
-  height: 400%;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-  background-size: 256px 256px;
-  animation: grain 0.8s steps(4) infinite;
-}
-
-@keyframes grain {
-  0%, 100% { transform: translate(0, 0); }
-  25% { transform: translate(-5%, -5%); }
-  50% { transform: translate(5%, 5%); }
-  75% { transform: translate(-2%, 7%); }
-}
-
-/* ── Gradient Mesh Ambient Layer ── */
-.ambient-mesh {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background:
-    radial-gradient(ellipse 60% 40% at 20% 20%, rgba(255, 61, 46, 0.04), transparent 60%),
-    radial-gradient(ellipse 50% 50% at 80% 80%, rgba(90, 30, 120, 0.03), transparent 55%),
-    radial-gradient(ellipse 70% 35% at 50% 60%, rgba(20, 20, 60, 0.05), transparent 65%);
-}
-
-/* ── Liquid Glass — Enhanced ── */
-.liquid-glass {
-  background: rgba(244, 243, 247, 0.04);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border: 1px solid rgba(244, 243, 247, 0.08);
-  border-top: 1px solid rgba(244, 243, 247, 0.2);
-  box-shadow:
-    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.4),
-    0 8px 32px 0 rgba(0, 0, 0, 0.45),
-    0 0 0 0.5px rgba(255, 61, 46, 0.05);
-}
-
-.liquid-glass-interactive {
-  background: rgba(244, 243, 247, 0.04);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border: 1px solid rgba(244, 243, 247, 0.1);
-  border-top: 1px solid rgba(244, 243, 247, 0.25);
-  box-shadow:
-    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.35),
-    0 8px 32px 0 rgba(0, 0, 0, 0.4);
-  transition: all 0.4s var(--ease-out-expo);
-}
-
-.liquid-glass-interactive:hover {
-  background: rgba(244, 243, 247, 0.08);
-  border-top-color: rgba(244, 243, 247, 0.4);
-  border-color: rgba(244, 243, 247, 0.15);
-  box-shadow:
-    inset 0 -1px 3px 0 rgba(0, 0, 0, 0.3),
-    0 12px 36px 0 rgba(0, 0, 0, 0.5),
-    0 0 20px rgba(255, 61, 46, 0.08);
-}
-
-/* ── Terminal Scanline Effect ── */
-.terminal-scanline {
-  position: relative;
-  overflow: hidden;
-}
-
-.terminal-scanline::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(255, 61, 46, 0.015) 2px,
-    rgba(255, 61, 46, 0.015) 4px
-  );
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* ── Vermillion Glow Pulse ── */
-@keyframes vermillion-pulse {
-  0%, 100% {
-    box-shadow: 0 0 4px var(--color-vermillion-glow),
-                0 0 12px rgba(255, 61, 46, 0.15);
-  }
-  50% {
-    box-shadow: 0 0 8px var(--color-vermillion-glow),
-                0 0 24px rgba(255, 61, 46, 0.25);
-  }
-}
-
-.vermillion-pulse {
-  animation: vermillion-pulse 2.5s ease-in-out infinite;
-}
-
-/* ── Typewriter Cursor Blink ── */
-@keyframes blink-cursor {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-.typewriter-cursor::after {
-  content: "▌";
-  display: inline;
-  color: var(--color-vermillion);
-  animation: blink-cursor 0.8s step-end infinite;
-  margin-left: 1px;
-  font-weight: 400;
-}
-
-/* ── Marquee Animations ── */
-@keyframes marquee {
-  0% { transform: translate3d(0%, 0, 0); }
-  100% { transform: translate3d(-100%, 0, 0); }
-}
-
-@keyframes marquee-reverse {
-  0% { transform: translate3d(-100%, 0, 0); }
-  100% { transform: translate3d(0%, 0, 0); }
-}
-
-.animate-marquee {
-  animation: marquee 35s linear infinite;
-  will-change: transform;
-}
-
-.animate-marquee-reverse {
-  animation: marquee-reverse 35s linear infinite;
-  will-change: transform;
-}
-
-/* ── Glow-follow on interactive elements ── */
-.glow-follow {
-  position: relative;
-  overflow: hidden;
-}
-
-.glow-follow::before {
-  content: "";
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 61, 46, 0.12), transparent 70%);
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 0;
-}
-
-.glow-follow:hover::before {
-  opacity: 1;
 }
 
 /* ── Selection Color ── */
 ::selection {
-  background: var(--color-vermillion);
-  color: var(--color-star-white);
+  background: var(--color-yellow);
+  color: var(--color-ink);
 }
 
 /* ── Scrollbar Styling ── */
@@ -288,16 +127,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-void);
+  background: var(--color-red-deep);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(244, 243, 247, 0.12);
+  background: rgba(246, 241, 230, 0.3);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(244, 243, 247, 0.2);
+  background: rgba(246, 241, 230, 0.5);
 }
 
 /* ── Reduced Motion ── */
@@ -308,13 +147,61 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
 
-  .grain-overlay::after {
-    animation: none !important;
+/* ── Tactile Physical Button Response ── */
+.btn-press {
+  transition: transform 180ms var(--ease-tactile), background-color 220ms var(--ease-smooth), color 220ms var(--ease-smooth), border-color 220ms var(--ease-smooth), box-shadow 220ms var(--ease-smooth);
+  will-change: transform;
+}
+
+.btn-press:hover {
+  transform: translateY(-1px) scale(1.008);
+}
+
+.btn-press:active {
+  transform: translateY(1px) scale(0.988);
+}
+
+/* ── Interactive Card Micro-Elevation ── */
+.card-interactive {
+  transition: transform 350ms var(--ease-editorial), border-color 300ms var(--ease-smooth), box-shadow 350ms var(--ease-smooth);
+  will-change: transform;
+}
+
+.card-interactive:hover {
+  transform: translateY(-2px);
+}
+
+/* ── Marquee Animation: Continuous Seamless Translation ── */
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
   }
-
-  .typewriter-cursor::after {
-    animation: none !important;
-    opacity: 1;
+  100% {
+    transform: translate3d(-50%, 0, 0);
   }
 }
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 34s linear infinite;
+  will-change: transform;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.88);
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2.6s ease-in-out infinite;
+}
+
