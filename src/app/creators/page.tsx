@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import CreatorApplicationForm from "@/components/CreatorApplicationForm";
 import AgencyTicker from "@/components/AgencyTicker";
@@ -99,11 +98,9 @@ export default function CreatorsPage() {
 
   return (
     <div className="flex min-h-screen flex-col bg-red text-cream selection:bg-gold selection:text-ink">
-      <Navigation tone="red" />
-
       <main className="flex-1">
         {/* Header + Application: Full bleed red register with high energy */}
-        <section className="relative bg-red px-6 pb-20 pt-12 text-cream sm:px-10 sm:pb-28 sm:pt-20 lg:px-16 overflow-hidden">
+        <section className="relative bg-red px-6 pb-20 pt-20 text-cream sm:px-10 sm:pb-28 sm:pt-28 lg:px-16 overflow-hidden">
           <div className="mx-auto max-w-4xl text-center">
             <div className="text-xs font-bold uppercase tracking-widest text-cream/60 mb-4">
               Creator Infrastructure

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Syne, Manrope } from "next/font/google";
 import SmoothScroll from "@/components/SmoothScroll";
+import Navigation from "@/components/Navigation";
 import "./globals.css";
 
 const syne = Syne({
@@ -104,7 +105,10 @@ export default function RootLayout({
         suppressHydrationWarning
         className="min-h-full flex flex-col bg-cream text-ink font-body selection:bg-gold selection:text-ink relative overflow-x-hidden"
       >
-        <SmoothScroll>{children}</SmoothScroll>
+        <SmoothScroll>
+          <Navigation />
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );

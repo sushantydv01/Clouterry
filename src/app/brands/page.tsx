@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import AgencyTicker from "@/components/AgencyTicker";
 import { X, ArrowUpRight, CalendarCheck, EnvelopeSimple, ShieldCheck, Check, Sparkle } from "@phosphor-icons/react";
@@ -72,11 +71,9 @@ export default function BrandsPage() {
 
   return (
     <div className="flex min-h-screen flex-col bg-cream text-ink selection:bg-gold selection:text-ink">
-      <Navigation tone="cream" />
-
       <main className="flex-1 pb-24 text-left">
         {/* Editorial Header */}
-        <section className="border-b border-ink/10 px-6 pt-16 pb-20 sm:px-10 sm:pt-24 sm:pb-28 lg:px-16">
+        <section className="border-b border-ink/10 px-6 pt-24 pb-20 sm:px-10 sm:pt-28 sm:pb-28 lg:px-16">
           <div className="mx-auto max-w-6xl">
             <div className="max-w-3xl">
               <div className="text-xs font-bold uppercase tracking-widest text-red mb-4">

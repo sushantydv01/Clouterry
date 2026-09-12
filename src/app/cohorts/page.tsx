@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import AgencyTicker from "@/components/AgencyTicker";
 import {
@@ -141,11 +140,9 @@ export default function CohortsPage() {
 
   return (
     <div className="flex min-h-screen flex-col bg-cream text-ink selection:bg-gold selection:text-ink">
-      <Navigation tone="cream" />
-
       <main className="flex-1">
         {/* Header */}
-        <section className="px-6 pt-16 pb-14 sm:px-10 sm:pt-24 sm:pb-20 lg:px-16 border-b border-ink/10">
+        <section className="px-6 pt-24 pb-14 sm:px-10 sm:pt-28 sm:pb-20 lg:px-16 border-b border-ink/10">
           <div className="mx-auto max-w-4xl text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-cream-dim/80 px-3.5 py-1 text-xs font-semibold text-ink mb-5">
               <Sparkle size={13} weight="fill" className="text-red" />

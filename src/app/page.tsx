@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import Navigation from "@/components/Navigation";
 import HeroCulturalMatrix from "@/components/HeroCulturalMatrix";
 import AgencyTicker from "@/components/AgencyTicker";
 import CohortExhibition from "@/components/CohortExhibition";
@@ -17,12 +16,10 @@ import { heroStagger, heroChild, heroHeadline } from "@/lib/motion";
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-cream text-ink selection:bg-gold selection:text-ink">
-      <Navigation tone="cream" />
-
       <main className="flex-1">
         {/* ── 01. Hero Section: Confident editorial lockup with interactive cultural matrix ── */}
         <section
-          className="relative flex min-h-[calc(100dvh-4rem)] flex-col items-center justify-center px-6 pt-14 pb-16 sm:px-10 sm:pt-20 sm:pb-24 lg:px-16 overflow-hidden border-b border-ink/10"
+          className="relative flex min-h-[calc(100dvh-4rem)] flex-col items-center justify-center px-6 pt-24 pb-16 sm:px-10 sm:pt-28 sm:pb-24 lg:px-16 overflow-hidden border-b border-ink/10"
           aria-label="Clouterry Hero"
         >
           <div className="mx-auto w-full max-w-5xl flex flex-col items-center text-center">
