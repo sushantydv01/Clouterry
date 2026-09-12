@@ -4,7 +4,7 @@ import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import AgencyTicker from "@/components/AgencyTicker";
-import { ArrowUpRight, Sparkle } from "@phosphor-icons/react";
+import { ArrowUpRight } from "@phosphor-icons/react";
 
 const VALUES = [
   {
@@ -31,25 +31,24 @@ const VALUES = [
 
 export default function AboutPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-red text-cream selection:bg-yellow selection:text-ink">
-      <Navigation />
+    <div className="flex min-h-screen flex-col bg-cream text-ink selection:bg-gold selection:text-ink">
+      <Navigation tone="cream" />
 
       <main className="flex-1 pb-24 text-left">
-        {/* Header Section */}
-        <section className="border-b border-cream/15 px-6 pt-16 pb-20 sm:px-10 sm:pt-24 sm:pb-28 lg:px-16">
-          <div className="mx-auto max-w-4xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-cream/20 bg-cream/10 px-3.5 py-1 text-xs font-mono uppercase tracking-wider text-cream/80">
-              <Sparkle size={12} weight="fill" className="text-yellow" />
-              <span>Studio Manifesto & Founding Letter · 2026</span>
+        {/* Header Section: Narrow measure, letter from founders */}
+        <section className="border-b border-ink/10 px-6 pt-16 pb-20 sm:px-10 sm:pt-24 sm:pb-28 lg:px-16">
+          <div className="mx-auto max-w-3xl">
+            <div className="text-xs font-bold uppercase tracking-widest text-red mb-4">
+              Studio Letter
             </div>
 
-            <h1 className="mt-6 font-display text-4xl font-extrabold leading-[0.95] tracking-[-0.035em] text-cream sm:text-6xl md:text-7xl">
+            <h1 className="font-display text-4xl font-extrabold leading-[0.95] tracking-[-0.035em] text-ink sm:text-6xl md:text-7xl">
               The content economy has
               <br />
-              <span className="font-serif italic font-normal text-yellow">a matching problem.</span>
+              a matching problem.
             </h1>
 
-            <div className="mt-10 space-y-6 border-t border-cream/15 pt-8 text-base leading-relaxed text-cream/85 font-body sm:text-lg">
+            <div className="mt-10 space-y-6 border-t border-ink/10 pt-8 text-base leading-relaxed text-ink/80 font-body sm:text-lg">
               <p>
                 Every week, millions of talented micro and mid-tier creators produce magnetic, high-converting
                 short-form video. Yet most spend 70% of their creative energy cold-pitching brands through
@@ -61,11 +60,11 @@ export default function AboutPage() {
                 unvetted handles. Marketing teams end up acting as full-time logistics coordinators, wrangling
                 dozens of one-off contracts, endless revision loops, and delayed payout disputes.
               </p>
-              <div className="rounded-md border-l-4 border-yellow bg-red-deep/70 p-6 my-6 border border-cream/15">
-                <p className="font-display text-xl font-bold text-cream sm:text-2xl">
+              <div className="border-l-2 border-red bg-cream-dim/70 py-5 pl-6 pr-6 my-6 rounded-r-md">
+                <p className="font-display text-xl font-bold text-ink sm:text-2xl">
                   Clouterry fixes this through cohort-based talent infrastructure.
                 </p>
-                <p className="mt-2 text-sm text-cream/70">
+                <p className="mt-2 text-sm text-ink/70 font-body">
                   One collective structure. Guaranteed 14-day turnaround. 100% creative sovereignty.
                 </p>
               </div>
@@ -77,40 +76,35 @@ export default function AboutPage() {
             </div>
 
             {/* Founder Signoff Block */}
-            <div className="mt-12 flex flex-col justify-between gap-4 border-t border-cream/15 pt-8 sm:flex-row sm:items-center">
-              <div>
-                <div className="font-display text-base font-bold text-cream">The Founding Team</div>
-                <div className="text-xs font-mono uppercase tracking-wider text-cream/60">
-                  Clouterry Studio & Talent Infrastructure
-                </div>
-              </div>
-
-              <div className="rounded-md border border-cream/20 bg-cream/10 px-4 py-2 font-mono text-xs text-cream/80">
-                PROVENANCE: NYC · LON · TYO
+            <div className="mt-12 border-t border-ink/10 pt-8">
+              <div className="font-display text-base font-bold text-ink">The Founding Team</div>
+              <div className="text-xs text-ink/60 font-body">
+                Clouterry Studio & Talent Infrastructure
               </div>
             </div>
           </div>
         </section>
 
         {/* Ticker */}
-        <AgencyTicker tone="dark" />
+        <AgencyTicker tone="cream" />
 
         {/* Core Values / What We Stand For */}
-        <section className="bg-red-deep/40 px-6 py-20 sm:px-10 sm:py-28 lg:px-16 border-t border-cream/15 text-cream">
-          <div className="mx-auto max-w-4xl">
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-yellow">Foundational Pillars</span>
-            <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-cream sm:text-4xl">
+        <section className="bg-cream-dim/40 px-6 py-20 sm:px-10 sm:py-28 lg:px-16 border-t border-ink/10 text-ink">
+          <div className="mx-auto max-w-3xl">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
               What we stand for.
             </h2>
 
-            <div className="mt-10 divide-y divide-cream/10 border-t border-cream/15">
+            <div className="mt-10 divide-y divide-ink/10 border-t border-ink/10">
               {VALUES.map((val) => (
                 <div key={val.title} className="py-8">
                   <div className="grid gap-4 sm:grid-cols-12 sm:items-baseline">
-                    <span className="font-mono text-xl font-bold text-yellow sm:col-span-2">{val.num}</span>
+                    <span className="font-display text-2xl font-extrabold text-red tabular-nums sm:col-span-2">
+                      {val.num}
+                    </span>
                     <div className="sm:col-span-10">
-                      <h3 className="font-display text-2xl font-bold text-cream">{val.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-cream/80 font-body sm:text-base">
+                      <h3 className="font-display text-2xl font-bold text-ink">{val.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-ink/80 font-body sm:text-base">
                         {val.desc}
                       </p>
                     </div>
@@ -119,17 +113,17 @@ export default function AboutPage() {
               ))}
             </div>
 
-            <div className="mt-14 flex flex-col gap-4 border-t border-cream/15 pt-10 sm:flex-row sm:items-center">
+            <div className="mt-14 flex flex-col gap-4 border-t border-ink/10 pt-10 sm:flex-row sm:items-center">
               <Link
                 href="/creators"
-                className="btn-press inline-flex items-center justify-center gap-2 rounded-md bg-cream px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-red transition-all duration-200 hover:bg-yellow hover:text-ink shadow-sm"
+                className="btn-press inline-flex items-center justify-center gap-2 rounded-md bg-red px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-cream transition-all duration-200 hover:bg-red-deep shadow-xs"
               >
                 <span>Join as a creator</span>
                 <ArrowUpRight size={14} weight="bold" />
               </Link>
               <Link
                 href="/brands"
-                className="btn-press inline-flex items-center justify-center rounded-md border border-cream/80 px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-cream transition-all duration-200 hover:bg-cream hover:text-red"
+                className="btn-press inline-flex items-center justify-center rounded-md border border-ink/40 px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-ink transition-all duration-200 hover:border-ink hover:bg-ink hover:text-cream"
               >
                 Partner as a brand
               </Link>

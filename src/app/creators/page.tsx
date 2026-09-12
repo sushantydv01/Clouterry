@@ -1,14 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import CreatorApplicationForm from "@/components/CreatorApplicationForm";
 import AgencyTicker from "@/components/AgencyTicker";
-import { CaretDown, Check, Sparkle } from "@phosphor-icons/react";
+import { CaretDown, Sparkle } from "@phosphor-icons/react";
 import { motion, AnimatePresence } from "framer-motion";
-import { accordionMotion, scrollReveal, staggerGroup, staggerChild, viewportOnce } from "@/lib/motion";
+import { accordionMotion } from "@/lib/motion";
 
 const CATEGORIES = [
   "Beauty & Morning Rituals",
@@ -41,6 +40,37 @@ const CREATOR_PERKS = [
   },
 ];
 
+const VERTICAL_STANDARDS = [
+  {
+    num: "01",
+    title: "Beauty & Daily Rituals",
+    signature: "Natural luminescence, unhurried routines, tactile skin evaluations",
+    retention: "46% avg hook retention",
+    cadence: "14-Day Delivery",
+  },
+  {
+    num: "02",
+    title: "Artisanal Culinary",
+    signature: "Cast-iron acoustics, regional terroir, farm-to-table technique",
+    retention: "52% avg hook retention",
+    cadence: "14-Day Delivery",
+  },
+  {
+    num: "03",
+    title: "Workspaces & Tech EDC",
+    signature: "Mechanical acoustics, walnut workspaces, clean industrial finish",
+    retention: "48% avg hook retention",
+    cadence: "14-Day Delivery",
+  },
+  {
+    num: "04",
+    title: "Movement & Conditioning",
+    signature: "Architectural conditioning, kinetic form, recovery science",
+    retention: "44% avg hook retention",
+    cadence: "14-Day Delivery",
+  },
+];
+
 const FAQS = [
   {
     question: "What follower count do I need to join?",
@@ -68,24 +98,21 @@ export default function CreatorsPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <div className="flex min-h-screen flex-col bg-red text-cream selection:bg-yellow selection:text-ink">
+    <div className="flex min-h-screen flex-col bg-red text-cream selection:bg-gold selection:text-ink">
       <Navigation tone="red" />
 
       <main className="flex-1">
         {/* Header + Application: Full bleed red register with high energy */}
         <section className="relative bg-red px-6 pb-20 pt-12 text-cream sm:px-10 sm:pb-28 sm:pt-20 lg:px-16 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.09),transparent_60%)] pointer-events-none" />
-
-          <div className="mx-auto max-w-4xl text-center relative z-10">
-            <div className="inline-flex items-center gap-2 rounded-full border border-cream/20 bg-cream/10 px-3.5 py-1 text-xs font-mono uppercase tracking-wider text-cream">
-              <Sparkle size={12} weight="fill" className="text-yellow" />
-              <span>Independent Creator Cohorts · 2026 Intake</span>
+          <div className="mx-auto max-w-4xl text-center">
+            <div className="text-xs font-bold uppercase tracking-widest text-cream/60 mb-4">
+              Creator Infrastructure
             </div>
 
-            <h1 className="mt-6 font-display text-4xl font-extrabold leading-[0.94] tracking-[-0.035em] text-cream sm:text-6xl md:text-7xl lg:text-[5.5rem]">
+            <h1 className="font-display text-4xl font-extrabold leading-[0.94] tracking-[-0.035em] text-cream sm:text-6xl md:text-7xl lg:text-[5.5rem]">
               Make what you love.
               <br />
-              <span className="font-serif italic font-normal text-yellow">Let cohorts</span> bring the deals.
+              Let cohorts bring the deals.
             </h1>
 
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-cream/85 sm:text-lg font-body">
@@ -93,18 +120,15 @@ export default function CreatorsPage() {
               cohort of like-minded creators and receive briefs matching your authentic voice.
             </p>
 
-            <div className="mx-auto mt-6 max-w-2xl border-t border-cream/20 pt-5 text-xs font-mono tracking-wider text-cream/70">
-              {CATEGORIES.join(" · ")}
+            <div className="mx-auto mt-6 max-w-2xl border-t border-cream/20 pt-5 text-sm text-cream/70 font-body">
+              {CATEGORIES.join(", ")}
             </div>
           </div>
 
-          <div className="mx-auto mt-16 max-w-6xl relative z-10">
+          <div id="apply" className="mx-auto mt-16 max-w-6xl relative z-10 scroll-mt-24">
             <div className="grid gap-16 lg:grid-cols-12 lg:items-start">
               <div className="lg:col-span-6">
-                <span className="font-mono text-xs uppercase tracking-[0.25em] text-yellow">
-                  Agency Disruption
-                </span>
-                <h2 className="mt-2 font-display text-3xl font-bold leading-[1.02] tracking-[-0.03em] text-cream sm:text-4xl md:text-5xl">
+                <h2 className="font-display text-3xl font-bold leading-[1.02] tracking-[-0.03em] text-cream sm:text-4xl md:text-5xl">
                   Everything an agency should do, minus the predatory cut.
                 </h2>
 
@@ -118,7 +142,7 @@ export default function CreatorsPage() {
                   {CREATOR_PERKS.map((perk) => (
                     <div key={perk.title} className="py-4.5 first:pt-6 last:pb-0">
                       <div className="flex items-baseline gap-3">
-                        <span className="font-mono text-xs font-bold text-yellow">{perk.num}</span>
+                        <span className="font-display text-sm font-bold text-cream/45 tabular-nums">{perk.num}</span>
                         <h3 className="font-display text-base font-bold text-cream">{perk.title}</h3>
                       </div>
                       <p className="mt-1 pl-7 text-sm leading-relaxed text-cream/75 font-body">{perk.desc}</p>
@@ -134,7 +158,7 @@ export default function CreatorsPage() {
           </div>
         </section>
 
-        {/* Ticker between Red and Tonal Deep Red */}
+        {/* Kinetic Ticker */}
         <AgencyTicker
           tone="dark"
           items={[
@@ -146,77 +170,93 @@ export default function CreatorsPage() {
           ]}
         />
 
-        {/* Real Creator Spotlight Strip on Deep Crimson Canvas */}
-        <section className="border-b border-cream/15 bg-red-deep/50 px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
+        {/* Active Vertical Standards (Pure Graphic & Typographic Architecture, Zero Stock Photos) */}
+        <section className="border-b border-cream/15 bg-red-deep/50 px-6 py-20 sm:px-10 sm:py-28 lg:px-16 text-cream">
           <div className="mx-auto max-w-6xl">
             <div className="flex flex-col justify-between gap-4 border-b border-cream/20 pb-6 sm:flex-row sm:items-end">
               <div>
-                <span className="font-mono text-xs uppercase tracking-widest text-cream/60">Current Cohort Voices</span>
-                <h3 className="font-display text-2xl font-bold text-cream">Independent minds. Collective power.</h3>
+                <h3 className="font-display text-3xl font-bold tracking-tight text-cream sm:text-4xl">
+                  Independent minds. Collective power.
+                </h3>
+                <p className="mt-2 text-sm text-cream/75 font-body">
+                  Active standards across our primary cohort verticals.
+                </p>
               </div>
-              <span className="font-mono text-xs text-cream/60">Selected Active Members</span>
+              <span className="text-xs text-cream/60 font-mono uppercase">Vetted Weekly</span>
             </div>
 
-            <div className="mt-8 grid gap-6 sm:grid-cols-3">
-              <div className="group border border-cream/20 bg-red-deep/70 p-4 transition-all hover:border-cream/40">
-                <div className="relative aspect-square w-full overflow-hidden">
-                  <Image
-                    src="/creators/maya.jpg"
-                    alt="Maya Lin"
-                    fill
-                    sizes="(max-width: 640px) 100vw, 33vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <span className="absolute top-2 left-2 rounded-sm bg-yellow px-2 py-0.5 font-mono text-[10px] font-bold text-ink">
-                    Beauty & Rituals
-                  </span>
-                </div>
-                <div className="mt-3 font-display font-bold text-cream">Maya Lin</div>
-                <div className="font-mono text-xs text-cream/60">@mayaskinritual · 48k</div>
-              </div>
+            <div className="mt-10 grid gap-6 sm:grid-cols-2">
+              {VERTICAL_STANDARDS.map((v) => (
+                <div
+                  key={v.num}
+                  className="rounded-md border border-cream/20 bg-red-deep/70 p-6 sm:p-8 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between border-b border-cream/15 pb-3">
+                      <span className="font-display text-xs font-bold uppercase tracking-widest text-cream/60">
+                        Vertical {v.num}
+                      </span>
+                      <span className="inline-flex items-center gap-1 text-xs font-semibold text-gold">
+                        <Sparkle size={12} weight="fill" />
+                        <span>{v.cadence}</span>
+                      </span>
+                    </div>
 
-              <div className="group border border-cream/20 bg-red-deep/70 p-4 transition-all hover:border-cream/40">
-                <div className="relative aspect-square w-full overflow-hidden">
-                  <Image
-                    src="/creators/kai.jpg"
-                    alt="Kai Tanaka"
-                    fill
-                    sizes="(max-width: 640px) 100vw, 33vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <span className="absolute top-2 left-2 rounded-sm bg-cream px-2 py-0.5 font-mono text-[10px] font-bold text-ink">
-                    Workspaces & EDC
-                  </span>
-                </div>
-                <div className="mt-3 font-display font-bold text-cream">Kai Tanaka</div>
-                <div className="font-mono text-xs text-cream/60">@kaicrafts · 72k</div>
-              </div>
+                    <h4 className="mt-4 font-display text-2xl font-bold text-cream">
+                      {v.title}
+                    </h4>
 
-              <div className="group border border-cream/20 bg-red-deep/70 p-4 transition-all hover:border-cream/40">
-                <div className="relative aspect-square w-full overflow-hidden">
-                  <Image
-                    src="/creators/elena.jpg"
-                    alt="Elena Rostova"
-                    fill
-                    sizes="(max-width: 640px) 100vw, 33vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <span className="absolute top-2 left-2 rounded-sm bg-yellow px-2 py-0.5 font-mono text-[10px] font-bold text-ink">
-                    Movement & Form
-                  </span>
+                    <p className="mt-3 text-sm leading-relaxed text-cream/80 font-body">
+                      {v.signature}
+                    </p>
+                  </div>
+
+                  <div className="mt-6 border-t border-cream/15 pt-4 text-xs font-semibold text-cream/70 font-mono">
+                    {v.retention}
+                  </div>
                 </div>
-                <div className="mt-3 font-display font-bold text-cream">Elena Rostova</div>
-                <div className="font-mono text-xs text-cream/60">@elenamovement · 34k</div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* The Creator Charter */}
+        <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16 bg-red border-b border-cream/15 text-cream">
+          <div className="mx-auto max-w-4xl">
+            <div className="rounded-md border border-cream/25 bg-red-deep/50 p-8 sm:p-10">
+              <span className="font-display text-xs font-bold uppercase tracking-widest text-gold block mb-2">
+                The Clouterry Creator Charter
+              </span>
+              <h3 className="font-display text-2xl font-bold text-cream sm:text-3xl">
+                Four rules we never break with talent.
+              </h3>
+
+              <div className="mt-8 grid gap-6 sm:grid-cols-2 text-sm leading-relaxed text-cream/80 font-body">
+                <div className="border-l-2 border-gold pl-4">
+                  <span className="font-bold text-cream block text-base font-display">01. Creative Sovereignty</span>
+                  If a brief or talking point doesn&apos;t feel natural to your channel, you decline it without penalty. We never force canned corporate copy.
+                </div>
+                <div className="border-l-2 border-gold pl-4">
+                  <span className="font-bold text-cream block text-base font-display">02. 14-Day Direct Wire</span>
+                  You are paid within 14 business days of deliverable signoff. No 60-day or 90-day accounting delays.
+                </div>
+                <div className="border-l-2 border-gold pl-4">
+                  <span className="font-bold text-cream block text-base font-display">03. Zero Exclusive Lock-Ins</span>
+                  You retain complete channel ownership. Clouterry takes zero commission on brand deals you source independently.
+                </div>
+                <div className="border-l-2 border-gold pl-4">
+                  <span className="font-bold text-cream block text-base font-display">04. Keep 100% of Product</span>
+                  All campaign items shipped to your studio remain your personal property. Never returned, never billed.
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Creator FAQ: Full Red & Warm Beige register */}
+        {/* Creator FAQ */}
         <section className="px-6 py-20 sm:px-10 sm:py-28 lg:px-16 bg-red text-cream">
           <div className="mx-auto max-w-3xl">
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-yellow">Questions & Answers</span>
-            <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-cream sm:text-4xl">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-cream sm:text-4xl">
               Everything you need to know about joining a cohort.
             </h2>
 
@@ -228,7 +268,7 @@ export default function CreatorsPage() {
                     <button
                       type="button"
                       onClick={() => setOpenFaq(isOpen ? null : index)}
-                      className="btn-press flex w-full items-center justify-between py-3 text-left font-display text-base font-bold text-cream transition-colors hover:text-yellow cursor-pointer"
+                      className="btn-press flex w-full items-center justify-between py-3 text-left font-display text-base font-bold text-cream transition-colors hover:text-cream cursor-pointer"
                       aria-expanded={isOpen}
                     >
                       <span>{faq.question}</span>
@@ -236,7 +276,7 @@ export default function CreatorsPage() {
                         size={16}
                         weight="bold"
                         className={`ml-4 shrink-0 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                          isOpen ? "rotate-180 text-yellow" : "text-cream/50"
+                          isOpen ? "rotate-180 text-cream" : "text-cream/50"
                         }`}
                       />
                     </button>

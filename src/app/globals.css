@@ -7,29 +7,29 @@
    ───────────────────────────────────────────────── */
 
 :root {
-  /* Crimson Dominant Palette */
-  --color-red: #C92C48;
-  --color-red-deep: #8A1428;
-  --color-red-hover: #D43854;
-  --color-red-tint: rgba(201, 44, 72, 0.08);
-  --color-red-glow: rgba(201, 44, 72, 0.25);
+  /* Crimson Dominant Palette (per DESIGN_BRIEF.md) */
+  --color-red: #C41E3A;
+  --color-red-deep: #8B1428;
+  --color-red-hover: #D62846;
+  --color-red-tint: rgba(196, 30, 58, 0.08);
+  --color-red-glow: rgba(196, 30, 58, 0.25);
 
-  /* Warm Beige / Ivory Supporting Canvas */
-  --color-beige: #F6F1E6;
-  --color-beige-dim: #EFE6D3;
-  --color-beige-sand: #E5DBC7;
-  --color-cream: #F6F1E6;
-  --color-cream-dim: #EFE6D3;
+  /* Warm Cream / Ivory Primary Canvas (per DESIGN_BRIEF.md) */
+  --color-cream: #F5F1E6;
+  --color-cream-dim: #EDE6D3;
+  --color-cream-sand: #E2D9C3;
+  --color-beige: #F5F1E6;
+  --color-beige-dim: #EDE6D3;
+  --color-beige-sand: #E2D9C3;
 
-  /* Warm Off-Black Typography & Structure */
-  --color-ink: #171412;
-  --color-ink-muted: #5C544E;
+  /* Warm Near-Black Typography & Structure (per DESIGN_BRIEF.md) */
+  --color-ink: #1A1410;
+  --color-ink-muted: #615951;
 
-  /* Restrained Warm Accent */
-  --color-gold: #E5B842;
-  --color-yellow: #F0C050;
+  /* Restrained Gold Flourish (max 1–2 per page) */
+  --color-gold: #D4A94A;
 
-  /* Contextual Accents (Muted & Restrained) */
+  /* Contextual Accents */
   --color-cobalt: #1E3FE3;
   --color-acid: #D4F238;
   --color-lilac: #D9D4F2;
@@ -49,16 +49,16 @@
   --color-red-tint: var(--color-red-tint);
   --color-red-glow: var(--color-red-glow);
 
+  --color-cream: var(--color-cream);
+  --color-cream-dim: var(--color-cream-dim);
+  --color-cream-sand: var(--color-cream-sand);
   --color-beige: var(--color-beige);
   --color-beige-dim: var(--color-beige-dim);
   --color-beige-sand: var(--color-beige-sand);
-  --color-cream: var(--color-cream);
-  --color-cream-dim: var(--color-cream-dim);
 
   --color-ink: var(--color-ink);
   --color-ink-muted: var(--color-ink-muted);
   --color-gold: var(--color-gold);
-  --color-yellow: var(--color-yellow);
 
   --color-cobalt: var(--color-cobalt);
   --color-acid: var(--color-acid);
@@ -66,7 +66,6 @@
   --color-tangerine: var(--color-tangerine);
 
   --font-display: var(--font-syne), sans-serif;
-  --font-serif: var(--font-serif), Georgia, serif;
   --font-body: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
@@ -92,18 +91,18 @@ html.lenis body {
   pointer-events: none;
 }
 
-/* ── Base Styles: Full-Bleed Crimson Red Canvas ── */
+/* ── Base Styles: Primary Cream Canvas with Tone-Forked Sections ── */
 html {
-  background-color: var(--color-red);
-  color: var(--color-beige);
+  background-color: var(--color-cream);
+  color: var(--color-ink);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background-color: var(--color-red);
-  color: var(--color-beige);
+  background-color: var(--color-cream);
+  color: var(--color-ink);
   font-family: var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
   position: relative;
@@ -111,13 +110,13 @@ body {
 
 /* ── Focus Styling ── */
 :focus-visible {
-  outline: 2px solid var(--color-yellow);
+  outline: 2px solid var(--color-gold);
   outline-offset: 2px;
 }
 
 /* ── Selection Color ── */
 ::selection {
-  background: var(--color-yellow);
+  background: var(--color-gold);
   color: var(--color-ink);
 }
 
@@ -127,16 +126,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-red-deep);
+  background: var(--color-cream-dim);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(246, 241, 230, 0.3);
+  background: rgba(26, 20, 16, 0.25);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(246, 241, 230, 0.5);
+  background: rgba(26, 20, 16, 0.45);
 }
 
 /* ── Reduced Motion ── */
@@ -149,28 +148,21 @@ body {
   }
 }
 
-/* ── Tactile Physical Button Response ── */
+/* ── Button response: hover shifts color only, press gives a single tactile cue ──
+   Hover, focus and press are intentionally the same family: color on hover,
+   the gold focus ring, and a small settle on press. No lift, no shadow-grow. */
 .btn-press {
-  transition: transform 180ms var(--ease-tactile), background-color 220ms var(--ease-smooth), color 220ms var(--ease-smooth), border-color 220ms var(--ease-smooth), box-shadow 220ms var(--ease-smooth);
-  will-change: transform;
-}
-
-.btn-press:hover {
-  transform: translateY(-1px) scale(1.008);
+  transition: transform 140ms var(--ease-tactile), background-color 200ms var(--ease-smooth), color 200ms var(--ease-smooth), border-color 200ms var(--ease-smooth);
 }
 
 .btn-press:active {
-  transform: translateY(1px) scale(0.988);
+  transform: scale(0.975);
 }
 
-/* ── Interactive Card Micro-Elevation ── */
-.card-interactive {
-  transition: transform 350ms var(--ease-editorial), border-color 300ms var(--ease-smooth), box-shadow 350ms var(--ease-smooth);
-  will-change: transform;
-}
-
-.card-interactive:hover {
-  transform: translateY(-2px);
+@media (prefers-reduced-motion: reduce) {
+  .btn-press:active {
+    transform: none;
+  }
 }
 
 /* ── Marquee Animation: Continuous Seamless Translation ── */
@@ -188,20 +180,5 @@ body {
   width: max-content;
   animation: marquee 34s linear infinite;
   will-change: transform;
-}
-
-@keyframes pulse-subtle {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.45;
-    transform: scale(0.88);
-  }
-}
-
-.animate-pulse-subtle {
-  animation: pulse-subtle 2.6s ease-in-out infinite;
 }
 

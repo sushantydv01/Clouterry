@@ -12,7 +12,6 @@ interface AgencyTickerProps {
 const DEFAULT_ITEMS = [
   "CLOUTERRY CREATIVE ROSTER",
   "CURATED VERTICAL COHORTS",
-  "PARIS · LONDON · NEW YORK · TOKYO",
   "100% AESTHETIC SOVEREIGNTY",
   "14-DAY CADENCE GUARANTEED",
   "ZERO VANITY METRICS",
@@ -40,7 +39,7 @@ export default function AgencyTicker({
       aria-hidden="true"
     >
       <div
-        className={`flex items-center gap-8 will-change-transform ${
+        className={`flex items-center gap-8 will-change-transform hover:[animation-play-state:paused] ${
           speed === "slow" ? "duration-[48s]" : ""
         } animate-marquee`}
       >

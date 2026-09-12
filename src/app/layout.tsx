@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Syne, Manrope, Instrument_Serif } from "next/font/google";
+import { Syne, Manrope } from "next/font/google";
 import SmoothScroll from "@/components/SmoothScroll";
-import CustomCursor from "@/components/CustomCursor";
 import "./globals.css";
 
 const syne = Syne({
@@ -18,16 +17,8 @@ const manrope = Manrope({
   display: "swap",
 });
 
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
 export const viewport: Viewport = {
-  themeColor: "#C92C48",
+  themeColor: "#F5F1E6",
   width: "device-width",
   initialScale: 1,
 };
@@ -67,17 +58,52 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://clouterry.com/#organization",
+        name: "Clouterry",
+        url: "https://clouterry.com",
+        logo: "https://clouterry.com/icon.svg",
+        description:
+          "Cohort-based talent infrastructure connecting high-retention micro-creators with authentic brands on a guaranteed 14-day turnaround.",
+        sameAs: ["https://instagram.com/clouterry"],
+        contactPoint: {
+          "@type": "ContactPoint",
+          email: "team@clouterry.com",
+          contactType: "customer service",
+        },
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://clouterry.com/#website",
+        url: "https://clouterry.com",
+        name: "Clouterry",
+        publisher: {
+          "@id": "https://clouterry.com/#organization",
+        },
+      },
+    ],
+  };
+
   return (
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${syne.variable} ${manrope.variable} ${instrumentSerif.variable} h-full antialiased bg-red text-cream`}
+      className={`${syne.variable} ${manrope.variable} h-full antialiased bg-cream text-ink`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         suppressHydrationWarning
-        className="min-h-full flex flex-col bg-red text-cream font-body selection:bg-yellow selection:text-ink relative overflow-x-hidden"
+        className="min-h-full flex flex-col bg-cream text-ink font-body selection:bg-gold selection:text-ink relative overflow-x-hidden"
       >
-        <CustomCursor />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

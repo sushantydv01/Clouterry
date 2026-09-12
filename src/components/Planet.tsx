@@ -221,10 +221,10 @@ function KineticEmblemMesh({ reducedMotion, mousePos }: KineticEmblemMeshProps) 
     () =>
       new THREE.MeshStandardMaterial({
         color: RED,
-        roughness: 0.28,
-        metalness: 0.16,
+        roughness: 0.68,
+        metalness: 0.02,
         emissive: RED_DEEP,
-        emissiveIntensity: 0.18,
+        emissiveIntensity: 0.22,
       }),
     []
   );

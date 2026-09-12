@@ -26,29 +26,87 @@ dist-ssr
 *.sw?
 *.tsbuildinfo
 
-# AI & Agent Tooling (prevent tracking Claude, Gemini, Cursor, and other AI tools)
-.claude
+# AI & Agent Tooling (Claude, Anthropic, Agents, Gemini, Cursor, Copilot, etc.)
+# Claude & Anthropic
 .claude/
+.claude
 .claude.json
+claude.json
 CLAUDE.md
-.agents
+CLAUDE.local.md
+.claudeignore
+.anthropic/
+.anthropic
+
+# AI Agents, Skills & Context
 .agents/
+.agents
 AGENTS.md
+AGENTS.local.md
 skills-lock.json
-.gemini
+.skills/
+.skills
+*.agent
+*.agent.md
+
+# Google Gemini & Antigravity
 .gemini/
+.gemini
 GEMINI.md
-.cursor
+GEMINI.local.md
+.antigravity/
+.antigravity
+
+# Cursor & Windsurf
 .cursor/
+.cursor
 .cursorrules
-.windsurf
+.cursorignore
+.cursorindexingignore
+.cursor-tutor
 .windsurf/
-.copilot
+.windsurf
+.windsurfrules
+.codeium/
+.codeium
+
+# GitHub Copilot & OpenAI / ChatGPT
 .copilot/
+.copilot
 copilot/
+.copilotignore
+.github/copilot-instructions.md
+.chatgpt/
 .chatgpt
-.cline
+
+# Cline, Roo Code, Aider, Devin, v0, Bolt, Lovable, Vibe
 .cline/
-.roo
+.cline
+.clinerules
 .roo/
+.roo
+.roorules
+.roomodes
+.aider*
+.aider.chat.history.md
+.aider.input.history
+.aider.tags.cache.*
+.devin/
+.devin
+.v0/
+.v0
+.bolt/
+.bolt
+.lovable/
+.lovable
+.vibe/
 .vibe
+
+# Prompts & AI Scratchpads
+prompts/
+.prompts/
+*.prompt
+*.prompt.md
+.llm/
+.llms/
+

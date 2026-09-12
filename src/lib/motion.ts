@@ -1,88 +1,46 @@
 /**
  * Clouterry Centralized Motion System
- * 
- * Philosophy:
- * - 70–80% of UI simply exists; 20–30% has deliberate, subtle motion.
- * - Restrained travel (10–20px max).
- * - Fast initial response with gentle deceleration.
- * - Always GPU-composited (transform, opacity).
+ *
+ * Philosophy (Emil Kowalski / DESIGN_BRIEF):
+ * - Motion is a budget, not a theme. Most of the UI simply exists.
+ * - The one orchestrated moment is the hero on-load sequence; nothing fires on scroll.
+ * - Interaction motion is reserved for real user actions.
+ * - Always GPU-composited (transform, opacity), short, and reduced-motion aware
+ *   (see <MotionConfig reducedMotion="user"> in SmoothScroll and the CSS block in globals.css).
  */
 
 export const motionEase = [0.16, 1, 0.3, 1] as const;
-export const motionEaseSmooth = [0.22, 1, 0.36, 1] as const;
-export const motionEaseTactile = [0.25, 1, 0.5, 1] as const;
 
-/** Standard scroll viewport trigger settings: triggers at ~18% viewport entry, plays strictly once */
-export const viewportOnce = {
-  once: true,
-  amount: 0.18,
-} as const;
-
-/** Fast, natural load sequence for the hero section (completed in < 600ms total) */
+/** The one orchestrated on-load sequence. Kept short so it never delays interaction. */
 export const heroStagger = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.08,
+      staggerChildren: 0.06,
       delayChildren: 0.02,
     },
   },
 };
 
 export const heroChild = {
-  hidden: { opacity: 0, y: 14 },
+  hidden: { opacity: 0, y: 10 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.55,
+      duration: 0.42,
       ease: motionEase,
     },
   },
 };
 
-/** Headline reveal: subtle upward settling */
-export const headlineReveal = {
-  hidden: { opacity: 0, y: 16 },
+/** Hero headline only: a touch more travel + a soft blur-in for a heavier settle. */
+export const heroHeadline = {
+  hidden: { opacity: 0, y: 16, filter: "blur(4px)" },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.65,
-      ease: motionEase,
-    },
-  },
-};
-
-/** Standard scroll entrance: 16px travel, unhurried ease */
-export const scrollReveal = {
-  hidden: { opacity: 0, y: 18 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: motionEase,
-    },
-  },
-};
-
-/** Stagger container for sequential lists / cards */
-export const staggerGroup = (stagger = 0.08, delay = 0.02) => ({
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: stagger,
-      delayChildren: delay,
-    },
-  },
-});
-
-export const staggerChild = {
-  hidden: { opacity: 0, y: 14 },
-  visible: {
-    opacity: 1,
-    y: 0,
+    filter: "blur(0px)",
     transition: {
       duration: 0.5,
       ease: motionEase,
@@ -90,7 +48,7 @@ export const staggerChild = {
   },
 };
 
-/** Modal dialog entrance & exit: physical settling */
+/** Modal dialog entrance & exit: a small physical settling tied to opening the dialog. */
 export const dialogMotion = {
   hidden: { opacity: 0, scale: 0.97, y: 8 },
   visible: {
@@ -113,7 +71,7 @@ export const dialogMotion = {
   },
 };
 
-/** Accordion / Collapsible height expansion */
+/** Accordion / collapsible height expansion, driven by a user toggle. */
 export const accordionMotion = {
   hidden: { height: 0, opacity: 0 },
   visible: {

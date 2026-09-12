@@ -8,22 +8,25 @@ import { List, X, ArrowUpRight } from "@phosphor-icons/react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
-  { href: "/creators", label: "For Creators", badge: "Cohorts Open" },
-  { href: "/brands", label: "For Brands", badge: "14-Day Cadence" },
-  { href: "/about", label: "Our Story", badge: "Manifesto" },
+  { href: "/cohorts", label: "Cohorts" },
+  { href: "/brands", label: "Brands" },
+  { href: "/creators", label: "Creators" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/about", label: "Story" },
+  { href: "/contact", label: "Contact" },
 ];
 
 interface NavigationProps {
   tone?: "cream" | "red";
 }
 
-export default function Navigation({ tone }: NavigationProps) {
+export default function Navigation({ tone = "cream" }: NavigationProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
-  // Default to red register across the website unless explicitly set to cream
-  const isRed = tone !== "cream";
+  // Default to cream register unless explicitly set to red (e.g. on /creators)
+  const isRed = tone === "red";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,33 +54,22 @@ export default function Navigation({ tone }: NavigationProps) {
           scrolled ? "h-14" : "h-16"
         }`}
       >
-        {/* Brand Logo + Live Agency Status Badge */}
+        {/* Brand Logo */}
         <div className="flex items-center gap-4 sm:gap-6">
           <Link
             href="/"
-            className="outline-none focus-visible:ring-2 focus-visible:ring-yellow rounded-sm"
+            className="outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm"
             aria-label="Clouterry Home"
           >
             <div className={`transition-transform duration-300 ${scrolled ? "scale-95" : "scale-100"}`}>
               <Logo size="sm" tone={isRed ? "cream" : "red"} />
             </div>
           </Link>
-
-          <div
-            className={`hidden xl:flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-mono tracking-wider uppercase transition-colors duration-300 ${
-              isRed
-                ? "border-cream/20 bg-cream/10 text-cream/80"
-                : "border-ink/10 bg-cream-dim/60 text-ink/70"
-            }`}
-          >
-            <span className={`inline-block h-1.5 w-1.5 rounded-full ${isRed ? "bg-yellow" : "bg-red"} animate-pulse-subtle`} />
-            <span>NYC · LON · TYO / COHORTS ACTIVE</span>
-          </div>
         </div>
 
         {/* Desktop Navigation Links */}
         <nav
-          className="hidden items-center gap-8 md:flex"
+          className="hidden items-center gap-6 lg:gap-8 md:flex"
           aria-label="Main Navigation"
         >
           {NAV_LINKS.map((link) => {
@@ -118,26 +110,26 @@ export default function Navigation({ tone }: NavigationProps) {
         </nav>
 
         {/* Desktop Actions: Crisp, rectangular geometry with tactile response */}
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-2.5 lg:flex">
           <Link
-            href="/brands"
-            className={`btn-press rounded-md border px-4 py-2 text-xs font-bold uppercase tracking-wider focus-visible:outline-none focus-visible:ring-2 ${
+            href="/contact"
+            className={`btn-press rounded-md border px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider focus-visible:outline-none focus-visible:ring-2 ${
               isRed
                 ? "border-cream/70 text-cream hover:bg-cream hover:text-red focus-visible:ring-cream"
                 : "border-ink/80 text-ink hover:bg-ink hover:text-cream focus-visible:ring-red"
             }`}
           >
-            Book a Call
+            Book Call
           </Link>
           <Link
-            href="/creators"
-            className={`btn-press rounded-md px-4 py-2 text-xs font-bold uppercase tracking-wider focus-visible:outline-none focus-visible:ring-2 shadow-xs ${
+            href="/creators#apply"
+            className={`btn-press rounded-md px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider focus-visible:outline-none focus-visible:ring-2 shadow-xs ${
               isRed
-                ? "bg-cream text-red hover:bg-yellow hover:text-ink focus-visible:ring-cream"
+                ? "bg-cream text-red hover:bg-cream-dim focus-visible:ring-cream"
                 : "bg-red text-cream hover:bg-red-deep focus-visible:ring-red"
             }`}
           >
-            Join a Cohort
+            Join Cohort
           </Link>
         </div>
 
@@ -181,7 +173,7 @@ export default function Navigation({ tone }: NavigationProps) {
                       className={`flex items-center justify-between py-2 font-display text-xl font-bold tracking-tight transition-colors duration-200 ${
                         isRed
                           ? isActive
-                            ? "text-yellow"
+                            ? "text-cream underline underline-offset-4 decoration-1"
                             : "text-cream/80 hover:text-cream"
                           : isActive
                             ? "text-red"
@@ -189,9 +181,6 @@ export default function Navigation({ tone }: NavigationProps) {
                       }`}
                     >
                       <span>{link.label}</span>
-                      <span className="font-mono text-xs uppercase tracking-wider opacity-60">
-                        {link.badge}
-                      </span>
                     </Link>
                   );
                 })}
@@ -206,7 +195,7 @@ export default function Navigation({ tone }: NavigationProps) {
                   href="/creators"
                   onClick={() => setMobileMenuOpen(false)}
                   className={`flex items-center justify-center gap-2 rounded-md py-3 text-center text-xs font-bold uppercase tracking-wider ${
-                    isRed ? "bg-cream text-red hover:bg-yellow" : "bg-red text-cream hover:bg-red-deep"
+                    isRed ? "bg-cream text-red hover:bg-cream-dim" : "bg-red text-cream hover:bg-red-deep"
                   }`}
                 >
                   <span>Join a Cohort</span>
@@ -226,17 +215,15 @@ export default function Navigation({ tone }: NavigationProps) {
                 </Link>
               </div>
 
-              {/* Status footer inside mobile nav */}
+              {/* Contact footer inside mobile nav */}
               <div
-                className={`flex items-center justify-between border-t pt-4 font-mono text-[11px] uppercase tracking-wider ${
+                className={`flex items-center justify-between border-t pt-4 text-xs ${
                   isRed ? "border-cream/15 text-cream/60" : "border-ink/10 text-ink/50"
                 }`}
               >
-                <div className="flex items-center gap-2">
-                  <span className={`h-1.5 w-1.5 rounded-full ${isRed ? "bg-yellow" : "bg-red"} animate-pulse-subtle`} />
-                  <span>Cohorts Active</span>
-                </div>
-                <span>hello@clouterry.com</span>
+                <a href="mailto:hello@clouterry.com" className="hover:underline underline-offset-4">
+                  hello@clouterry.com
+                </a>
               </div>
             </div>
           </motion.div>

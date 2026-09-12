@@ -1,11 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "@phosphor-icons/react";
-import { motion } from "framer-motion";
-import { scrollReveal, viewportOnce, motionEase } from "@/lib/motion";
+import { ArrowUpRight, Sparkle, FilmSlate, Waveform, ShieldCheck } from "@phosphor-icons/react";
 
 interface Cohort {
   id: string;
@@ -13,13 +10,12 @@ interface Cohort {
   name: string;
   tagline: string;
   description: string;
-  image: string;
   creatorsCount: string;
-  cadence: string;
+  audioSpec: string;
+  visualSpec: string;
+  deliveryCadence: string;
+  commercialRights: string;
   aesthetic: string[];
-  toneColor: string;
-  badgeBg: string;
-  badgeText: string;
 }
 
 const COHORTS: Cohort[] = [
@@ -27,248 +23,229 @@ const COHORTS: Cohort[] = [
     id: "beauty",
     num: "01",
     name: "Beauty & Daily Rituals",
-    tagline: "Natural luminescence, unhurried morning routines & tactile skincare.",
+    tagline: "Natural luminescence, unhurried morning routines, and tactile skincare.",
     description:
-      "Creators who treat beauty as a mindful personal ritual rather than a 10-step billboard. Texture-first filming, honest daylight evaluations, and genuine skin compatibility tests.",
-    image: "/cohorts/beauty.jpg",
-    creatorsCount: "18 Creators Active",
-    cadence: "14-Day Delivery",
-    aesthetic: ["Tactile Texture", "Golden Hour Daylight", "Morning ASMR", "Spark Ad Ready"],
-    toneColor: "hover:border-yellow",
-    badgeBg: "bg-cream",
-    badgeText: "text-red font-bold",
+      "Creators who treat beauty as a mindful personal ritual rather than a 10-step billboard. Texture-first filming, honest daylight skin evaluations, and zero canned teleprompter reads.",
+    creatorsCount: "18 creators active",
+    audioSpec: "Whisper-quiet morning acoustics & tactile ASMR",
+    visualSpec: "Golden-hour daylight, macro texture focus, 4K ProRes",
+    deliveryCadence: "14-day turnaround guaranteed",
+    commercialRights: "Pre-cleared 90-day Spark Ads & organic rights",
+    aesthetic: ["Tactile texture", "Natural daylight", "Morning ASMR", "Zero filter hype"],
   },
   {
     id: "food",
     num: "02",
     name: "Artisanal Culinary & Regional Culture",
-    tagline: "Farm-to-table technique, heritage recipes & immersive kitchen audio.",
+    tagline: "Farm-to-table technique, heritage recipes, and immersive kitchen audio.",
     description:
       "Culinary storytellers who cook with real passion. Sizzling cast iron, local market sourcing, fermentation rituals, and honest dining recommendations that move hungry audiences.",
-    image: "/cohorts/food.jpg",
-    creatorsCount: "14 Creators Active",
-    cadence: "14-Day Delivery",
-    aesthetic: ["Kitchen ASMR", "Regional Terroir", "Bistro Technique", "Macro Plating"],
-    toneColor: "hover:border-yellow",
-    badgeBg: "bg-yellow",
-    badgeText: "text-ink font-bold",
+    creatorsCount: "14 creators active",
+    audioSpec: "Crisp cast iron sizzle, knife-work rhythm, room ambience",
+    visualSpec: "Overhead prep, steam-catching backlight, macro plating",
+    deliveryCadence: "14-day turnaround guaranteed",
+    commercialRights: "Pre-cleared 90-day Spark Ads & organic rights",
+    aesthetic: ["Kitchen ASMR", "Regional terroir", "Bistro technique", "Honest taste"],
   },
   {
     id: "tech",
     num: "03",
     name: "Workspaces & Hardware EDC",
-    tagline: "Tactile industrial design, mechanical acoustics & ergonomic discipline.",
+    tagline: "Tactile industrial design, mechanical acoustics, and ergonomic discipline.",
     description:
       "Designers, engineers, and creators obsessive about their tools. High-fidelity macro videography, genuine everyday carry loadouts, and zero canned corporate tech-reviewer buzzwords.",
-    image: "/cohorts/tech.jpg",
-    creatorsCount: "16 Creators Active",
-    cadence: "14-Day Delivery",
-    aesthetic: ["Industrial Finish", "Desk Setup Tours", "EDC Macro", "ProRes Vertical"],
-    toneColor: "hover:border-yellow",
-    badgeBg: "bg-ink border border-cream/20",
-    badgeText: "text-cream",
+    creatorsCount: "16 creators active",
+    audioSpec: "Mechanical switch clatter, machined metal snaps, subtle loft tone",
+    visualSpec: "Matte surface contrast, macro gear tours, cinematic grading",
+    deliveryCadence: "14-day turnaround guaranteed",
+    commercialRights: "Pre-cleared 90-day Spark Ads & organic rights",
+    aesthetic: ["Industrial finish", "Desk tours", "EDC macro", "ProRes vertical"],
   },
   {
     id: "fitness",
     num: "04",
     name: "Mindful Movement & Conditioning",
-    tagline: "Athletic longevity, architectural form & intentional human recovery.",
+    tagline: "Athletic longevity, architectural form, and intentional human recovery.",
     description:
       "Movement specialists prioritizing sustainable athletic longevity and body awareness over toxic quick fixes. Clean spatial aesthetics, architectural gym interiors, and real conditioning.",
-    image: "/cohorts/fitness.jpg",
-    creatorsCount: "16 Creators Active",
-    cadence: "14-Day Delivery",
-    aesthetic: ["Kinetic Form", "Architectural Spaces", "Recovery Rituals", "Zero Hype"],
-    toneColor: "hover:border-yellow",
-    badgeBg: "bg-cream",
-    badgeText: "text-red font-bold",
+    creatorsCount: "16 creators active",
+    audioSpec: "Cadenced breathing, breath-pacing audio, minimal ambient synth",
+    visualSpec: "Architectural negative space, form biomechanics, honest sweat",
+    deliveryCadence: "14-day turnaround guaranteed",
+    commercialRights: "Pre-cleared 90-day Spark Ads & organic rights",
+    aesthetic: ["Kinetic form", "Architectural spaces", "Recovery rituals", "Zero hype"],
   },
 ];
 
 export default function CohortExhibition() {
-  const [activeCohort, setActiveCohort] = useState<string>("beauty");
+  const [activeId, setActiveId] = useState<string>("beauty");
+  const activeCohort = COHORTS.find((c) => c.id === activeId) || COHORTS[0];
 
   return (
     <section
-      id="exhibition"
-      className="relative bg-red text-cream border-t border-cream/15 px-6 py-20 sm:px-10 sm:py-28 lg:px-16 overflow-hidden"
+      id="cohorts"
+      className="relative bg-cream text-ink border-t border-ink/15 px-6 py-20 sm:px-10 sm:py-28 lg:px-16 overflow-hidden"
     >
       <div className="mx-auto max-w-7xl">
-        {/* Exhibition Header */}
-        <motion.div
-          variants={scrollReveal}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          className="flex flex-col justify-between gap-6 border-b border-cream/15 pb-8 md:flex-row md:items-end"
-        >
+        {/* Section Header */}
+        <div className="flex flex-col justify-between gap-6 border-b border-ink/15 pb-8 md:flex-row md:items-end">
           <div>
-            <div className="flex items-center gap-3">
-              <span className="inline-block h-2 w-2 rounded-full bg-yellow animate-pulse-subtle" />
-              <span className="font-mono text-xs uppercase tracking-[0.25em] text-cream/60">
-                Exhibition 01 · Curated Verticals
-              </span>
-            </div>
-            <h2 className="mt-3 font-display text-4xl font-extrabold tracking-[-0.035em] text-cream sm:text-5xl md:text-6xl">
-              Selected Cohorts.
+            <h2 className="font-display text-3xl font-extrabold tracking-[-0.035em] text-ink sm:text-4xl md:text-5xl">
+              Selected cohorts.
               <br />
-              <span className="font-serif italic font-normal text-yellow">High-retention</span> short-form.
+              High-retention short-form.
             </h2>
           </div>
 
-          <div className="flex flex-col items-start md:items-end gap-2 text-sm text-cream/80">
-            <span className="font-mono text-xs uppercase tracking-wider text-cream/50">Turnaround Guarantee</span>
-            <span className="font-semibold text-cream">14 Days · Direct Rights Cleared · Organic + Spark</span>
-          </div>
-        </motion.div>
+          <p className="max-w-sm text-sm leading-relaxed text-ink/75 font-body">
+            Curated by genuine cultural vertical. No unvetted databases or fake handles.
+            Turnaround guaranteed in 14 business days.
+          </p>
+        </div>
 
-        {/* Cohort Selector Tabs: Crisp, tactile, editorial tabs */}
-        <div className="mt-8 flex flex-wrap items-center gap-2 border-b border-cream/15 pb-6">
+        {/* Cohort Selector Tabs */}
+        <div className="mt-8 flex flex-wrap items-center gap-2 border-b border-ink/10 pb-6">
           {COHORTS.map((cohort) => {
-            const isActive = activeCohort === cohort.id;
+            const isActive = activeId === cohort.id;
             return (
               <button
                 key={cohort.id}
                 type="button"
-                onClick={() => setActiveCohort(cohort.id)}
-                className={`btn-press group flex items-center gap-2.5 rounded-md px-4 py-2.5 text-xs font-semibold uppercase tracking-wider cursor-pointer ${
+                onClick={() => setActiveId(cohort.id)}
+                className={`btn-press rounded-md px-4 py-2.5 text-xs font-bold uppercase tracking-wider cursor-pointer transition-colors duration-200 ${
                   isActive
-                    ? "bg-cream text-red shadow-sm font-bold"
-                    : "bg-red-deep/60 text-cream/75 hover:bg-red-deep hover:text-cream border border-cream/15"
+                    ? "bg-red text-cream"
+                    : "bg-cream-dim text-ink/70 hover:bg-cream-sand hover:text-ink border border-ink/10"
                 }`}
               >
-                <span className={`font-mono text-[11px] ${isActive ? "text-red-deep font-bold" : "text-yellow/75"}`}>
-                  {cohort.num}
-                </span>
+                <span className="opacity-50 mr-1.5">{cohort.num}</span>
                 <span>{cohort.name.split("&")[0].trim()}</span>
               </button>
             );
           })}
         </div>
 
-        {/* Asymmetric Exhibition Showcase: Varied Layout */}
-        <div className="mt-12 space-y-16 lg:space-y-24">
-          {COHORTS.map((cohort, index) => {
-            const isEven = index % 2 === 0;
-            const isHighlighted = activeCohort === cohort.id;
+        {/* Active Cohort Architectural Dossier */}
+        <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:items-stretch">
+          {/* Left Column: Editorial storytelling & aesthetic profile */}
+          <div className="lg:col-span-7 flex flex-col justify-between border border-ink/15 bg-cream-dim/60 p-8 sm:p-10 rounded-md">
+            <div>
+              <div className="flex items-center justify-between border-b border-ink/10 pb-4">
+                <span className="font-display text-xs font-bold uppercase tracking-widest text-red">
+                  Cohort {activeCohort.num} &bull; {activeCohort.creatorsCount}
+                </span>
+                <span className="text-xs text-ink/50 font-mono uppercase">Status: Active Roster</span>
+              </div>
 
-            return (
-              <motion.article
-                key={cohort.id}
-                id={`cohort-${cohort.id}`}
-                variants={scrollReveal}
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewportOnce}
-                className={`group relative transition-opacity duration-300 ${
-                  activeCohort && !isHighlighted ? "lg:opacity-85" : "opacity-100"
-                }`}
-                onMouseEnter={() => setActiveCohort(cohort.id)}
+              <h3 className="mt-6 font-display text-2xl font-extrabold tracking-tight text-ink sm:text-3xl md:text-4xl">
+                {activeCohort.name}
+              </h3>
+
+              <p className="mt-3 text-lg font-medium text-ink/90 font-display">
+                {activeCohort.tagline}
+              </p>
+
+              <p className="mt-5 text-sm leading-relaxed text-ink/75 font-body sm:text-base">
+                {activeCohort.description}
+              </p>
+
+              {/* Aesthetic Pillars */}
+              <div className="mt-8 border-t border-ink/10 pt-6">
+                <div className="text-xs font-bold uppercase tracking-wider text-ink/60 mb-3">
+                  Aesthetic Signatures
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {activeCohort.aesthetic.map((tag) => (
+                    <span
+                      key={tag}
+                      className="inline-flex items-center gap-1.5 rounded-sm bg-cream px-3 py-1.5 text-xs font-medium text-ink border border-ink/10"
+                    >
+                      <Sparkle size={12} weight="fill" className="text-red" />
+                      <span>{tag}</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* CTAs for this cohort */}
+            <div className="mt-10 flex flex-wrap items-center gap-4 border-t border-ink/10 pt-6">
+              <Link
+                href="/brands"
+                className="btn-press inline-flex items-center gap-2 rounded-md bg-red px-6 py-3 text-xs font-bold uppercase tracking-wider text-cream hover:bg-red-deep shadow-xs"
               >
-                <div
-                  className={`grid gap-8 lg:grid-cols-12 lg:items-center ${
-                    isEven ? "" : "lg:grid-flow-dense"
-                  }`}
-                >
-                  {/* Image Presentation Column: Asymmetric, dramatic, unrounded */}
-                  <div
-                    className={`relative overflow-hidden border border-cream/20 bg-red-deep shadow-md lg:col-span-7 ${
-                      isEven ? "lg:order-1" : "lg:col-start-6 lg:order-2"
-                    }`}
-                  >
-                    <div className="relative aspect-[16/10] w-full sm:aspect-[16/9] lg:aspect-[4/3] overflow-hidden">
-                      <Image
-                        src={cohort.image}
-                        alt={`${cohort.name} cohort showcase`}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 55vw"
-                        className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-                        priority={index === 0}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent opacity-70 pointer-events-none" />
+                <span>Book This Cohort</span>
+                <ArrowUpRight size={14} weight="bold" />
+              </Link>
 
-                      {/* Floating Micro-Badge */}
-                      <div className="absolute bottom-4 left-4 flex flex-wrap items-center gap-2">
-                        <span
-                          className={`rounded-sm px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider ${cohort.badgeBg} ${cohort.badgeText}`}
-                        >
-                          {cohort.creatorsCount}
-                        </span>
-                        <span className="rounded-sm bg-ink/80 px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-cream backdrop-blur-sm border border-cream/15">
-                          {cohort.cadence}
-                        </span>
-                      </div>
+              <Link
+                href="/creators"
+                className="btn-press inline-flex items-center gap-1.5 rounded-md border border-ink/30 px-5 py-3 text-xs font-bold uppercase tracking-wider text-ink hover:border-ink hover:bg-ink hover:text-cream transition-colors"
+              >
+                <span>Apply for this vertical</span>
+              </Link>
+            </div>
+          </div>
 
-                      {/* Corner Number */}
-                      <span className="absolute top-4 right-4 select-none font-mono text-3xl font-extrabold text-cream/90 drop-shadow-md">
-                        {cohort.num}
-                      </span>
-                    </div>
+          {/* Right Column: Technical Spec Sheet & Commercial Guarantees */}
+          <div className="lg:col-span-5 flex flex-col justify-between border border-ink/15 bg-cream-dim/30 p-8 sm:p-10 rounded-md">
+            <div>
+              <div className="border-b border-ink/10 pb-4">
+                <span className="font-display text-xs font-bold uppercase tracking-widest text-ink/60">
+                  Production & Rights Specifications
+                </span>
+              </div>
+
+              <div className="mt-6 space-y-6 divide-y divide-ink/10">
+                <div className="pt-2 first:pt-0">
+                  <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-red">
+                    <Waveform size={14} weight="bold" />
+                    <span>Acoustic Profile</span>
                   </div>
-
-                  {/* Editorial Dossier Column: Crisp typography, aesthetic tags */}
-                  <div
-                    className={`flex flex-col justify-between lg:col-span-5 ${
-                      isEven ? "lg:order-2 lg:pl-6" : "lg:col-start-1 lg:order-1 lg:pr-6"
-                    }`}
-                  >
-                    <div>
-                      <div className="flex items-center gap-3">
-                        <span className="font-mono text-xs font-bold text-yellow">
-                          VERTICAL / {cohort.num}
-                        </span>
-                        <span className="h-[1px] w-8 bg-cream/20" />
-                        <span className="font-mono text-xs uppercase tracking-wider text-cream/60">
-                          Curated Roster
-                        </span>
-                      </div>
-
-                      <h3 className="mt-2 font-display text-2xl font-bold tracking-tight text-cream sm:text-3xl md:text-4xl">
-                        {cohort.name}
-                      </h3>
-
-                      <p className="mt-2 font-serif text-lg italic text-cream/90">
-                        {cohort.tagline}
-                      </p>
-
-                      <p className="mt-4 text-sm leading-relaxed text-cream/80 sm:text-base">
-                        {cohort.description}
-                      </p>
-
-                      {/* Aesthetic Pill Matrix */}
-                      <div className="mt-6 flex flex-wrap items-center gap-1.5">
-                        {cohort.aesthetic.map((item) => (
-                          <span
-                            key={item}
-                            className="rounded-sm border border-cream/20 bg-red-deep/70 px-2.5 py-1 font-mono text-[11px] font-medium text-cream/90"
-                          >
-                            #{item}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="mt-8 flex items-center gap-4 border-t border-cream/15 pt-6">
-                      <Link
-                        href="/brands"
-                        className="btn-press inline-flex items-center gap-2 rounded-md bg-cream px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-red transition-all duration-200 hover:bg-yellow hover:text-ink"
-                      >
-                        <span>Explore Cohort Roster</span>
-                        <ArrowUpRight size={14} weight="bold" />
-                      </Link>
-
-                      <Link
-                        href="/creators"
-                        className="btn-press inline-flex items-center text-xs font-semibold uppercase tracking-wider text-cream/80 hover:text-yellow hover:underline hover:underline-offset-4"
-                      >
-                        Apply For This Cohort
-                      </Link>
-                    </div>
+                  <div className="mt-1 text-sm text-ink/85 font-medium">
+                    {activeCohort.audioSpec}
                   </div>
                 </div>
-              </motion.article>
-            );
-          })}
+
+                <div className="pt-5">
+                  <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-red">
+                    <FilmSlate size={14} weight="bold" />
+                    <span>Videography Standard</span>
+                  </div>
+                  <div className="mt-1 text-sm text-ink/85 font-medium">
+                    {activeCohort.visualSpec}
+                  </div>
+                </div>
+
+                <div className="pt-5">
+                  <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-red">
+                    <ShieldCheck size={14} weight="bold" />
+                    <span>Commercial Clearance</span>
+                  </div>
+                  <div className="mt-1 text-sm text-ink/85 font-medium">
+                    {activeCohort.commercialRights}
+                  </div>
+                </div>
+
+                <div className="pt-5">
+                  <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-red">
+                    <Sparkle size={14} weight="bold" />
+                    <span>Delivery SLA</span>
+                  </div>
+                  <div className="mt-1 text-sm text-ink/85 font-medium">
+                    {activeCohort.deliveryCadence}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 border-t border-ink/10 pt-6">
+              <p className="text-xs text-ink/60 leading-relaxed font-body">
+                All cohort deliverables include high-bitrate vertical ProRes masters, clean audio stems,
+                and raw cutdowns ready for immediate deployment.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
