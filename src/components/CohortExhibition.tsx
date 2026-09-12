@@ -86,7 +86,9 @@ export default function CohortExhibition() {
       id="cohorts"
       className="relative bg-cream text-ink border-t border-ink/15 px-6 py-20 sm:px-10 sm:py-28 lg:px-16 overflow-hidden"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="absolute inset-0 bg-ambient-grid opacity-35 pointer-events-none" />
+
+      <div className="relative z-10 mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="flex flex-col justify-between gap-6 border-b border-ink/15 pb-8 md:flex-row md:items-end">
           <div>
@@ -112,13 +114,13 @@ export default function CohortExhibition() {
                 key={cohort.id}
                 type="button"
                 onClick={() => setActiveId(cohort.id)}
-                className={`btn-press rounded-md px-4 py-2.5 text-xs font-bold uppercase tracking-wider cursor-pointer transition-colors duration-200 ${
+                className={`btn-press relative rounded-md px-4 py-2.5 text-xs font-bold uppercase tracking-wider cursor-pointer transition-all duration-200 ${
                   isActive
-                    ? "bg-red text-cream"
-                    : "bg-cream-dim text-ink/70 hover:bg-cream-sand hover:text-ink border border-ink/10"
+                    ? "bg-red text-cream shadow-xs"
+                    : "glass-cream-subtle text-ink/70 hover:text-ink hover:glass-cream-secondary border border-ink/10"
                 }`}
               >
-                <span className="opacity-50 mr-1.5">{cohort.num}</span>
+                <span className={`mr-1.5 ${isActive ? "text-cream/70" : "text-ink/40"}`}>{cohort.num}</span>
                 <span>{cohort.name.split("&")[0].trim()}</span>
               </button>
             );
@@ -128,13 +130,18 @@ export default function CohortExhibition() {
         {/* Active Cohort Architectural Dossier */}
         <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:items-stretch">
           {/* Left Column: Editorial storytelling & aesthetic profile */}
-          <div className="lg:col-span-7 flex flex-col justify-between border border-ink/15 bg-cream-dim/60 p-8 sm:p-10 rounded-md">
+          <div className="lg:col-span-7 flex flex-col justify-between glass-cream-primary p-8 sm:p-10 rounded-xl relative overflow-hidden shadow-xs">
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
+
             <div>
               <div className="flex items-center justify-between border-b border-ink/10 pb-4">
                 <span className="font-display text-xs font-bold uppercase tracking-widest text-red">
                   Cohort {activeCohort.num} &bull; {activeCohort.creatorsCount}
                 </span>
-                <span className="text-xs text-ink/50 font-mono uppercase">Status: Active Roster</span>
+                <span className="inline-flex items-center gap-1.5 text-xs text-ink/70 font-mono uppercase bg-white/60 px-2.5 py-1 rounded-md border border-white/80">
+                  <span className="h-1.5 w-1.5 rounded-full bg-red animate-pulse" />
+                  <span>Active Roster</span>
+                </span>
               </div>
 
               <h3 className="mt-6 font-display text-2xl font-extrabold tracking-tight text-ink sm:text-3xl md:text-4xl">
@@ -158,7 +165,7 @@ export default function CohortExhibition() {
                   {activeCohort.aesthetic.map((tag) => (
                     <span
                       key={tag}
-                      className="inline-flex items-center gap-1.5 rounded-sm bg-cream px-3 py-1.5 text-xs font-medium text-ink border border-ink/10"
+                      className="inline-flex items-center gap-1.5 rounded-md glass-cream-secondary px-3 py-1.5 text-xs font-medium text-ink border border-white/60 shadow-2xs hover:border-ink/25 transition-all"
                     >
                       <Sparkle size={12} weight="fill" className="text-red" />
                       <span>{tag}</span>
@@ -180,7 +187,7 @@ export default function CohortExhibition() {
 
               <Link
                 href="/creators"
-                className="btn-press inline-flex items-center gap-1.5 rounded-md border border-ink/30 px-5 py-3 text-xs font-bold uppercase tracking-wider text-ink hover:border-ink hover:bg-ink hover:text-cream transition-colors"
+                className="btn-press inline-flex items-center gap-1.5 rounded-md glass-cream-secondary px-5 py-3 text-xs font-bold uppercase tracking-wider text-ink hover:border-ink/50 hover:bg-white/80 transition-all shadow-2xs"
               >
                 <span>Apply for this vertical</span>
               </Link>
@@ -188,7 +195,9 @@ export default function CohortExhibition() {
           </div>
 
           {/* Right Column: Technical Spec Sheet & Commercial Guarantees */}
-          <div className="lg:col-span-5 flex flex-col justify-between border border-ink/15 bg-cream-dim/30 p-8 sm:p-10 rounded-md">
+          <div className="lg:col-span-5 flex flex-col justify-between glass-cream-secondary p-8 sm:p-10 rounded-xl relative overflow-hidden shadow-2xs">
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
+
             <div>
               <div className="border-b border-ink/10 pb-4">
                 <span className="font-display text-xs font-bold uppercase tracking-widest text-ink/60">
@@ -196,43 +205,51 @@ export default function CohortExhibition() {
                 </span>
               </div>
 
-              <div className="mt-6 space-y-6 divide-y divide-ink/10">
+              <div className="mt-6 space-y-5 divide-y divide-ink/10">
                 <div className="pt-2 first:pt-0">
                   <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-red">
-                    <Waveform size={14} weight="bold" />
+                    <div className="flex h-5 w-5 items-center justify-center rounded-full glass-cream-subtle text-red">
+                      <Waveform size={12} weight="bold" />
+                    </div>
                     <span>Acoustic Profile</span>
                   </div>
-                  <div className="mt-1 text-sm text-ink/85 font-medium">
+                  <div className="mt-1.5 text-sm text-ink/85 font-medium pl-7">
                     {activeCohort.audioSpec}
                   </div>
                 </div>
 
-                <div className="pt-5">
+                <div className="pt-4">
                   <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-red">
-                    <FilmSlate size={14} weight="bold" />
+                    <div className="flex h-5 w-5 items-center justify-center rounded-full glass-cream-subtle text-red">
+                      <FilmSlate size={12} weight="bold" />
+                    </div>
                     <span>Videography Standard</span>
                   </div>
-                  <div className="mt-1 text-sm text-ink/85 font-medium">
+                  <div className="mt-1.5 text-sm text-ink/85 font-medium pl-7">
                     {activeCohort.visualSpec}
                   </div>
                 </div>
 
-                <div className="pt-5">
+                <div className="pt-4">
                   <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-red">
-                    <ShieldCheck size={14} weight="bold" />
+                    <div className="flex h-5 w-5 items-center justify-center rounded-full glass-cream-subtle text-red">
+                      <ShieldCheck size={12} weight="bold" />
+                    </div>
                     <span>Commercial Clearance</span>
                   </div>
-                  <div className="mt-1 text-sm text-ink/85 font-medium">
+                  <div className="mt-1.5 text-sm text-ink/85 font-medium pl-7">
                     {activeCohort.commercialRights}
                   </div>
                 </div>
 
-                <div className="pt-5">
+                <div className="pt-4">
                   <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-red">
-                    <Sparkle size={14} weight="bold" />
+                    <div className="flex h-5 w-5 items-center justify-center rounded-full glass-cream-subtle text-red">
+                      <Sparkle size={12} weight="bold" />
+                    </div>
                     <span>Delivery SLA</span>
                   </div>
-                  <div className="mt-1 text-sm text-ink/85 font-medium">
+                  <div className="mt-1.5 text-sm text-ink/85 font-medium pl-7">
                     {activeCohort.deliveryCadence}
                   </div>
                 </div>

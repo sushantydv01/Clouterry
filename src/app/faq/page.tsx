@@ -108,9 +108,12 @@ export default function FAQPage() {
     <div className="flex min-h-screen flex-col bg-cream text-ink selection:bg-gold selection:text-ink">
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="px-6 pt-24 pb-14 sm:px-10 sm:pt-28 sm:pb-20 lg:px-16 border-b border-ink/10">
-          <div className="mx-auto max-w-4xl text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-cream-dim/80 px-3.5 py-1 text-xs font-semibold text-ink mb-5">
+        <section className="relative px-6 pt-24 pb-14 sm:px-10 sm:pt-28 sm:pb-20 lg:px-16 border-b border-ink/10 overflow-hidden">
+          <div className="absolute inset-0 bg-ambient-grid opacity-35 pointer-events-none" />
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 ambient-glow-hero pointer-events-none opacity-50" />
+
+          <div className="relative z-10 mx-auto max-w-4xl text-center">
+            <div className="inline-flex items-center gap-2 rounded-full glass-cream-subtle px-4 py-1.5 text-xs font-semibold text-ink mb-5 shadow-2xs">
               <Sparkle size={13} weight="fill" className="text-red" />
               <span>Commercial & Creative Transparency</span>
             </div>
@@ -126,28 +129,30 @@ export default function FAQPage() {
               and creator payment standards.
             </p>
 
-            {/* Filter Tabs */}
-            <div className="mt-10 flex flex-wrap justify-center gap-2">
-              {FILTER_TABS.map((tab) => {
-                const isActive = activeFilter === tab.id;
-                return (
-                  <button
-                    key={tab.id}
-                    type="button"
-                    onClick={() => {
-                      setActiveFilter(tab.id);
-                      setOpenIndex(null);
-                    }}
-                    className={`btn-press rounded-md px-5 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
-                      isActive
-                        ? "bg-red text-cream shadow-xs"
-                        : "border border-ink/20 bg-cream-dim/60 text-ink/70 hover:border-ink/50 hover:text-ink"
-                    }`}
-                  >
-                    {tab.label}
-                  </button>
-                );
-              })}
+            {/* Filter Tabs - Frosted Translucent Rail */}
+            <div className="mt-10 flex justify-center">
+              <div className="inline-flex flex-wrap items-center justify-center gap-1.5 rounded-xl glass-cream-subtle p-1.5 border border-white/80 shadow-2xs">
+                {FILTER_TABS.map((tab) => {
+                  const isActive = activeFilter === tab.id;
+                  return (
+                    <button
+                      key={tab.id}
+                      type="button"
+                      onClick={() => {
+                        setActiveFilter(tab.id);
+                        setOpenIndex(null);
+                      }}
+                      className={`btn-press rounded-lg px-5 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+                        isActive
+                          ? "bg-red text-cream shadow-xs"
+                          : "glass-cream-subtle text-ink/70 hover:text-ink hover:glass-cream-secondary"
+                      }`}
+                    >
+                      {tab.label}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </section>
@@ -197,7 +202,9 @@ export default function FAQPage() {
           </div>
 
           {/* Unanswered Question Card */}
-          <div className="mx-auto mt-16 max-w-3xl rounded-xl border border-ink/15 bg-cream-dim/80 p-8 text-center sm:p-10">
+          <div className="mx-auto mt-16 max-w-3xl rounded-2xl glass-cream-primary p-8 text-center sm:p-10 shadow-xs relative overflow-hidden border border-white/80">
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
+
             <span className="font-mono text-xs uppercase tracking-widest text-red font-bold block mb-2">
               Need Specific Advice?
             </span>
@@ -217,7 +224,7 @@ export default function FAQPage() {
               </Link>
               <a
                 href="mailto:hello@clouterry.com"
-                className="btn-press rounded-md border border-ink/30 px-6 py-3 text-xs font-bold uppercase tracking-wider text-ink hover:bg-ink hover:text-cream transition-colors"
+                className="btn-press rounded-md glass-cream-secondary px-6 py-3 text-xs font-bold uppercase tracking-wider text-ink hover:border-ink/50 hover:bg-white/80 transition-all shadow-2xs border border-white/80"
               >
                 hello@clouterry.com
               </a>

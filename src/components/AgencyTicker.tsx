@@ -26,16 +26,16 @@ export default function AgencyTicker({
   items = DEFAULT_ITEMS,
 }: AgencyTickerProps) {
   const toneClasses = {
-    cream: "bg-cream-dim text-ink border-y border-ink/10",
-    dark: "bg-ink text-cream border-y border-cream/10",
-    red: "bg-red text-cream border-y border-cream/20",
-    cobalt: "bg-red text-cream border-y border-cream/20",
-    acid: "bg-cream-dim text-ink border-y border-ink/15 font-semibold",
+    cream: "glass-cream-subtle text-ink border-y border-ink/10 shadow-xs",
+    dark: "glass-dark-primary text-cream border-y border-cream/15 shadow-sm",
+    red: "glass-red-primary text-cream border-y border-cream/25 shadow-sm",
+    cobalt: "glass-red-primary text-cream border-y border-cream/25 shadow-sm",
+    acid: "glass-cream-secondary text-ink border-y border-ink/15 font-semibold shadow-xs",
   }[tone];
 
   return (
     <div
-      className={`relative w-full overflow-hidden select-none py-3 text-xs tracking-[0.18em] uppercase ${toneClasses} ${className}`}
+      className={`relative w-full overflow-hidden select-none py-3.5 text-xs tracking-[0.18em] uppercase backdrop-blur-md ${toneClasses} ${className}`}
       aria-hidden="true"
     >
       <div

@@ -51,7 +51,7 @@ export default function Footer() {
         <div className="border-b border-cream/15 pb-16 lg:pb-20">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10">
             <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 rounded-full border border-cream/20 bg-cream/5 px-3 py-1 text-xs font-mono font-semibold uppercase tracking-wider text-gold mb-6">
+              <div className="inline-flex items-center gap-2 rounded-full glass-dark-primary px-3.5 py-1 text-xs font-mono font-semibold uppercase tracking-wider text-gold mb-6 border border-white/10 shadow-2xs">
                 <Sparkle size={13} weight="fill" />
                 <span>Next Cohort Sprint Opens Monday</span>
               </div>
@@ -84,7 +84,7 @@ export default function Footer() {
 
               <Link
                 href="/creators"
-                className="btn-press inline-flex items-center justify-center gap-2 rounded-md border border-cream/40 px-8 py-4 font-display text-sm font-bold uppercase tracking-wider text-cream hover:bg-cream hover:text-ink transition-all duration-200"
+                className="btn-press inline-flex items-center justify-center gap-2 rounded-md glass-dark-primary px-8 py-4 font-display text-sm font-bold uppercase tracking-wider text-cream hover:bg-white/15 transition-all duration-200 border border-white/20"
               >
                 <span>Join Creator Cohort</span>
               </Link>
@@ -92,36 +92,40 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Studio Real-time Status & World Clocks */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-8 border-b border-cream/15 text-xs font-mono">
-          <div className="space-y-1">
-            <span className="text-cream/40 uppercase tracking-widest block text-[10px]">Studio Status</span>
-            <div className="flex items-center gap-1.5 text-cream font-semibold">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Accepting Cycle 03 Sprints</span>
+        {/* Studio Real-time Status & World Clocks - Liquid-Glass Capsules */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5 py-8 border-b border-cream/15 text-xs font-mono">
+          <div className="glass-dark-primary rounded-xl p-4 border border-white/10 space-y-1.5 shadow-2xs relative overflow-hidden">
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
+            <span className="text-cream/45 uppercase tracking-widest block text-[10px]">Studio Status</span>
+            <div className="flex items-center gap-2 text-cream font-semibold">
+              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
+              <span>Accepting Cycle 03</span>
             </div>
           </div>
 
-          <div className="space-y-1">
-            <span className="text-cream/40 uppercase tracking-widest block text-[10px]">London (GMT)</span>
-            <div className="flex items-center gap-1.5 text-cream font-semibold">
-              <Clock size={12} className="text-gold" />
+          <div className="glass-dark-primary rounded-xl p-4 border border-white/10 space-y-1.5 shadow-2xs relative overflow-hidden">
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
+            <span className="text-cream/45 uppercase tracking-widest block text-[10px]">London (GMT)</span>
+            <div className="flex items-center gap-2 text-cream font-semibold">
+              <Clock size={13} className="text-gold" />
               <span>{times.london}</span>
             </div>
           </div>
 
-          <div className="space-y-1">
-            <span className="text-cream/40 uppercase tracking-widest block text-[10px]">New York (EST)</span>
-            <div className="flex items-center gap-1.5 text-cream font-semibold">
-              <Clock size={12} className="text-gold" />
+          <div className="glass-dark-primary rounded-xl p-4 border border-white/10 space-y-1.5 shadow-2xs relative overflow-hidden">
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
+            <span className="text-cream/45 uppercase tracking-widest block text-[10px]">New York (EST)</span>
+            <div className="flex items-center gap-2 text-cream font-semibold">
+              <Clock size={13} className="text-gold" />
               <span>{times.newYork}</span>
             </div>
           </div>
 
-          <div className="space-y-1">
-            <span className="text-cream/40 uppercase tracking-widest block text-[10px]">Tokyo (JST)</span>
-            <div className="flex items-center gap-1.5 text-cream font-semibold">
-              <Clock size={12} className="text-gold" />
+          <div className="glass-dark-primary rounded-xl p-4 border border-white/10 space-y-1.5 shadow-2xs relative overflow-hidden">
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
+            <span className="text-cream/45 uppercase tracking-widest block text-[10px]">Tokyo (JST)</span>
+            <div className="flex items-center gap-2 text-cream font-semibold">
+              <Clock size={13} className="text-gold" />
               <span>{times.tokyo}</span>
             </div>
           </div>
@@ -246,7 +250,7 @@ export default function Footer() {
             </p>
 
             {!subscribed ? (
-              <form onSubmit={handleNewsletter} className="flex items-center rounded-md border border-cream/25 bg-cream/5 p-1 focus-within:border-gold">
+              <form onSubmit={handleNewsletter} className="flex items-center rounded-xl glass-dark-primary p-1.5 border border-white/15 focus-within:border-white/40 transition-all shadow-2xs">
                 <input
                   type="email"
                   required
@@ -257,13 +261,13 @@ export default function Footer() {
                 />
                 <button
                   type="submit"
-                  className="btn-press rounded-md bg-cream px-4 py-2 text-xs font-bold uppercase tracking-wider text-ink hover:bg-cream-dim transition-colors shrink-0"
+                  className="btn-press rounded-lg bg-cream px-4 py-2 text-xs font-bold uppercase tracking-wider text-ink hover:bg-cream-dim transition-colors shrink-0 cursor-pointer shadow-xs"
                 >
                   Join
                 </button>
               </form>
             ) : (
-              <div className="flex items-center gap-2 text-xs font-mono text-gold bg-cream/10 p-3 rounded-md">
+              <div className="flex items-center gap-2 text-xs font-mono text-gold glass-dark-primary p-3 rounded-xl border border-white/15">
                 <CheckCircle size={16} weight="fill" />
                 <span>Subscribed to Dispatch. Welcome.</span>
               </div>
@@ -279,7 +283,7 @@ export default function Footer() {
         <div className="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 text-xs text-cream/50 font-body">
           <div className="flex items-center gap-4">
             <Logo size="sm" tone="cream" />
-            <span className="font-mono text-[11px]">
+            <span className="font-mono text-[11px]" suppressHydrationWarning>
               &copy; {new Date().getFullYear()} Clouterry Talent Infrastructure. All rights reserved.
             </span>
           </div>

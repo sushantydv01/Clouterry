@@ -74,8 +74,10 @@ export default function AgencyProtocol() {
   const [activeStage, setActiveStage] = useState<number>(0);
 
   return (
-    <section className="bg-cream text-ink border-t border-ink/15 px-6 py-20 sm:px-10 sm:py-28 lg:px-16 overflow-hidden">
-      <div className="mx-auto max-w-7xl">
+    <section className="relative bg-cream text-ink border-t border-ink/15 px-6 py-20 sm:px-10 sm:py-28 lg:px-16 overflow-hidden">
+      <div className="absolute inset-0 bg-ambient-grid opacity-35 pointer-events-none" />
+
+      <div className="relative z-10 mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="flex flex-col justify-between gap-6 border-b border-ink/15 pb-8 md:flex-row md:items-end">
           <div>
@@ -105,10 +107,10 @@ export default function AgencyProtocol() {
                 key={s.stage}
                 type="button"
                 onClick={() => setActiveStage(idx)}
-                className={`btn-press flex flex-col justify-between rounded-md border p-5 text-left cursor-pointer transition-all duration-200 ${
+                className={`btn-press flex flex-col justify-between rounded-xl p-5 text-left cursor-pointer transition-all duration-200 ${
                   isActive
-                    ? "border-red bg-cream-dim shadow-sm"
-                    : "border-ink/10 bg-cream hover:border-ink/25 hover:bg-cream-dim/50"
+                    ? "glass-cream-primary border-red ring-1 ring-red/20 shadow-sm"
+                    : "glass-cream-subtle border-white/60 hover:glass-cream-secondary hover:border-ink/25 shadow-2xs"
                 }`}
               >
                 <div>
@@ -121,7 +123,7 @@ export default function AgencyProtocol() {
                   <h3 className="mt-3 font-display text-sm font-bold text-ink leading-snug">{s.title}</h3>
                 </div>
 
-                <div className="mt-6 border-t border-ink/10 pt-3 text-[11px] text-ink/60 font-body">
+                <div className="mt-6 border-t border-ink/10 pt-3 text-[11px] text-ink/65 font-mono">
                   {s.deliverable}
                 </div>
               </button>
@@ -130,15 +132,17 @@ export default function AgencyProtocol() {
         </div>
 
         {/* Deep Stage Focus Card */}
-        <div className="mt-8 rounded-md border border-ink/15 bg-cream-dim/50 p-8 sm:p-10">
+        <div className="mt-8 rounded-xl glass-cream-primary p-8 sm:p-10 relative overflow-hidden shadow-xs">
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
+
           <div className="grid gap-6 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-8">
               <div className="flex items-center gap-3">
                 <span className="font-display text-xs font-bold uppercase tracking-widest text-red">
                   Detailed Protocol // {STAGES[activeStage].days}
                 </span>
-                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-ink/60 font-mono">
-                  <Sparkle size={12} weight="fill" className="text-red" />
+                <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-ink/70 font-mono bg-white/60 px-2.5 py-1 rounded-md border border-white/80">
+                  <span className="h-1.5 w-1.5 rounded-full bg-red animate-pulse" />
                   <span>Verified Cadence</span>
                 </span>
               </div>
@@ -156,17 +160,19 @@ export default function AgencyProtocol() {
             </div>
 
             <div className="lg:col-span-4 border-t border-ink/10 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
-              <span className="text-xs font-bold uppercase tracking-wider text-ink/60 block mb-2">
-                Guaranteed Milestone Output
-              </span>
-              <div className="flex items-start gap-2 text-sm font-semibold text-ink font-body">
-                <Check size={16} weight="bold" className="text-red shrink-0 mt-0.5" />
-                <span>{STAGES[activeStage].deliverable}</span>
-              </div>
+              <div className="rounded-lg glass-cream-secondary p-5 border border-white/70 shadow-2xs">
+                <span className="text-xs font-bold uppercase tracking-wider text-ink/60 block mb-2 font-mono">
+                  Guaranteed Milestone Output
+                </span>
+                <div className="flex items-start gap-2 text-sm font-semibold text-ink font-body">
+                  <Check size={16} weight="bold" className="text-red shrink-0 mt-0.5" />
+                  <span>{STAGES[activeStage].deliverable}</span>
+                </div>
 
-              <div className="mt-6 flex items-center gap-2 text-xs text-ink/60 font-body">
-                <ShieldCheck size={16} className="text-red" weight="bold" />
-                <span>14-day delivery SLA guaranteed or 100% refund.</span>
+                <div className="mt-4 flex items-center gap-2 text-xs text-ink/65 font-body pt-3 border-t border-ink/10">
+                  <ShieldCheck size={15} className="text-red" weight="bold" />
+                  <span>14-day SLA guaranteed or 100% refund.</span>
+                </div>
               </div>
             </div>
           </div>

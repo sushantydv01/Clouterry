@@ -57,11 +57,11 @@ export default function AboutPage() {
                 unvetted handles. Marketing teams end up acting as full-time logistics coordinators, wrangling
                 dozens of one-off contracts, endless revision loops, and delayed payout disputes.
               </p>
-              <div className="border-l-2 border-red bg-cream-dim/70 py-5 pl-6 pr-6 my-6 rounded-r-md">
+              <div className="rounded-xl glass-cream-secondary py-6 px-7 my-8 border-l-4 border-red shadow-2xs">
                 <p className="font-display text-xl font-bold text-ink sm:text-2xl">
                   Clouterry fixes this through cohort-based talent infrastructure.
                 </p>
-                <p className="mt-2 text-sm text-ink/70 font-body">
+                <p className="mt-2 text-sm text-ink/75 font-body">
                   One collective structure. Guaranteed 14-day turnaround. 100% creative sovereignty.
                 </p>
               </div>

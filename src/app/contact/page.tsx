@@ -50,9 +50,12 @@ export default function ContactPage() {
     <div className="flex min-h-screen flex-col bg-cream text-ink selection:bg-gold selection:text-ink">
       <main className="flex-1">
         {/* Header */}
-        <section className="px-6 pt-24 pb-12 sm:px-10 sm:pt-28 sm:pb-16 lg:px-16 border-b border-ink/10">
-          <div className="mx-auto max-w-4xl text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-cream-dim/80 px-3.5 py-1 text-xs font-semibold text-ink mb-5">
+        <section className="relative px-6 pt-24 pb-12 sm:px-10 sm:pt-28 sm:pb-16 lg:px-16 border-b border-ink/10 overflow-hidden">
+          <div className="absolute inset-0 bg-ambient-grid opacity-35 pointer-events-none" />
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 ambient-glow-hero pointer-events-none opacity-50" />
+
+          <div className="relative z-10 mx-auto max-w-4xl text-center">
+            <div className="inline-flex items-center gap-2 rounded-full glass-cream-subtle px-4 py-1.5 text-xs font-semibold text-ink mb-5 shadow-2xs">
               <Sparkle size={13} weight="fill" className="text-red" />
               <span>Direct Studio Access</span>
             </div>
@@ -71,8 +74,10 @@ export default function ContactPage() {
         </section>
 
         {/* Main Content Grid: Form + Studio Details */}
-        <section className="px-6 py-16 sm:px-10 sm:py-24 lg:px-16">
-          <div className="mx-auto max-w-6xl grid gap-16 lg:grid-cols-12 lg:items-start">
+        <section className="relative px-6 py-16 sm:px-10 sm:py-24 lg:px-16 overflow-hidden">
+          <div className="absolute inset-0 bg-ambient-grid opacity-20 pointer-events-none" />
+
+          <div className="relative z-10 mx-auto max-w-6xl grid gap-16 lg:grid-cols-12 lg:items-start">
             {/* Left Column: Direct Studio Information */}
             <div className="lg:col-span-5 space-y-8">
               <div>
@@ -89,9 +94,11 @@ export default function ContactPage() {
               </div>
 
               {/* Service Level Guarantees */}
-              <div className="rounded-xl border border-ink/15 bg-cream-dim/70 p-6 space-y-4">
+              <div className="rounded-2xl glass-cream-secondary p-6 space-y-4 border border-white/70 shadow-2xs relative overflow-hidden">
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
+
                 <div className="flex items-center gap-3">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-md bg-red/10 text-red shrink-0">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg glass-cream-subtle text-red shrink-0 shadow-2xs">
                     <Clock size={20} weight="bold" />
                   </div>
                   <div>
@@ -101,7 +108,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-center gap-3 border-t border-ink/10 pt-4">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-md bg-red/10 text-red shrink-0">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg glass-cream-subtle text-red shrink-0 shadow-2xs">
                     <EnvelopeSimple size={20} weight="bold" />
                   </div>
                   <div>
@@ -116,7 +123,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-center gap-3 border-t border-ink/10 pt-4">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-md bg-red/10 text-red shrink-0">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg glass-cream-subtle text-red shrink-0 shadow-2xs">
                     <CalendarCheck size={20} weight="bold" />
                   </div>
                   <div>
@@ -146,7 +153,9 @@ export default function ContactPage() {
 
             {/* Right Column: Interactive Inquiry Form */}
             <div className="lg:col-span-7">
-              <div className="rounded-2xl border border-ink/20 bg-cream-dim/60 p-7 sm:p-10 shadow-sm backdrop-blur-xs">
+              <div className="rounded-2xl glass-cream-primary p-7 sm:p-10 shadow-xs border border-white/80 relative overflow-hidden">
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
+
                 {!submitted ? (
                   <form onSubmit={handleSubmit} className="space-y-6">
                     {/* Inquiry Type Radio / Segmented buttons */}
@@ -162,10 +171,10 @@ export default function ContactPage() {
                               key={type.id}
                               type="button"
                               onClick={() => setInquiryType(type.id)}
-                              className={`btn-press flex flex-col p-3 rounded-lg border text-left transition-all duration-200 cursor-pointer ${
+                              className={`btn-press flex flex-col p-3 rounded-xl border text-left transition-all duration-200 cursor-pointer ${
                                 isSelected
                                   ? "border-red bg-red text-cream shadow-xs"
-                                  : "border-ink/20 bg-cream text-ink hover:border-ink/50"
+                                  : "glass-cream-subtle text-ink hover:glass-cream-secondary border-white/70"
                               }`}
                             >
                               <span className="font-display text-xs font-bold">{type.label}</span>
@@ -191,7 +200,7 @@ export default function ContactPage() {
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                           placeholder="e.g. Jordan Hayes"
-                          className="w-full rounded-md border border-ink/25 bg-cream px-3.5 py-2.5 text-sm font-body text-ink outline-none focus:border-red focus:ring-1 focus:ring-red"
+                          className="w-full rounded-lg border border-ink/20 bg-white/70 px-3.5 py-2.5 text-sm font-body text-ink outline-none focus:border-red focus:bg-white transition-colors"
                         />
                       </div>
 
@@ -206,7 +215,7 @@ export default function ContactPage() {
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                           placeholder="jordan@brand.com"
-                          className="w-full rounded-md border border-ink/25 bg-cream px-3.5 py-2.5 text-sm font-body text-ink outline-none focus:border-red focus:ring-1 focus:ring-red"
+                          className="w-full rounded-lg border border-ink/20 bg-white/70 px-3.5 py-2.5 text-sm font-body text-ink outline-none focus:border-red focus:bg-white transition-colors"
                         />
                       </div>
                     </div>
@@ -224,7 +233,7 @@ export default function ContactPage() {
                             value={company}
                             onChange={(e) => setCompany(e.target.value)}
                             placeholder="e.g. Ritual Skincare"
-                            className="w-full rounded-md border border-ink/25 bg-cream px-3.5 py-2.5 text-sm font-body text-ink outline-none focus:border-red focus:ring-1 focus:ring-red"
+                            className="w-full rounded-lg border border-ink/20 bg-white/70 px-3.5 py-2.5 text-sm font-body text-ink outline-none focus:border-red focus:bg-white transition-colors"
                           />
                         </div>
 
@@ -236,7 +245,7 @@ export default function ContactPage() {
                             id="contact-budget"
                             value={budget}
                             onChange={(e) => setBudget(e.target.value)}
-                            className="w-full rounded-md border border-ink/25 bg-cream px-3.5 py-2.5 text-sm font-body text-ink outline-none focus:border-red focus:ring-1 focus:ring-red"
+                            className="w-full rounded-lg border border-ink/20 bg-white/70 px-3.5 py-2.5 text-sm font-body text-ink outline-none focus:border-red focus:bg-white transition-colors"
                           >
                             {BUDGET_RANGES.map((b) => (
                               <option key={b} value={b}>
@@ -260,7 +269,7 @@ export default function ContactPage() {
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         placeholder="Tell us what you want to create, target deliverables, or specific cohort verticals..."
-                        className="w-full rounded-md border border-ink/25 bg-cream px-3.5 py-2.5 text-sm font-body text-ink outline-none focus:border-red focus:ring-1 focus:ring-red resize-none"
+                        className="w-full rounded-lg border border-ink/20 bg-white/70 px-3.5 py-2.5 text-sm font-body text-ink outline-none focus:border-red focus:bg-white transition-colors resize-none"
                       />
                     </div>
 

@@ -22,7 +22,11 @@ export default function Home() {
           className="relative flex min-h-[calc(100dvh-4rem)] flex-col items-center justify-center px-6 pt-24 pb-16 sm:px-10 sm:pt-28 sm:pb-24 lg:px-16 overflow-hidden border-b border-ink/10"
           aria-label="Clouterry Hero"
         >
-          <div className="mx-auto w-full max-w-5xl flex flex-col items-center text-center">
+          {/* Atmospheric background layers */}
+          <div className="absolute inset-0 bg-ambient-grid opacity-60 pointer-events-none" />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 ambient-glow-hero pointer-events-none" />
+
+          <div className="relative z-10 mx-auto w-full max-w-5xl flex flex-col items-center text-center">
             <motion.div
               variants={heroStagger}
               initial="hidden"
@@ -32,7 +36,7 @@ export default function Home() {
               {/* Clear Initial Positioning Badge */}
               <motion.div
                 variants={heroChild}
-                className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-cream-dim/80 px-3.5 py-1 text-xs font-semibold text-ink mb-5 sm:mb-6"
+                className="inline-flex items-center gap-2 rounded-full glass-cream-subtle px-4 py-1.5 text-xs font-semibold text-ink mb-5 sm:mb-6 shadow-2xs"
               >
                 <span className="inline-block h-1.5 w-1.5 rounded-full bg-red animate-pulse" />
                 <span>Cohort-Based Talent Infrastructure // 14-Day Delivery Cadence</span>
@@ -66,7 +70,7 @@ export default function Home() {
               >
                 <Link
                   href="/creators"
-                  className="btn-press group inline-flex items-center justify-center gap-2 rounded-md bg-red px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-cream hover:bg-red-deep focus-visible:outline-2 focus-visible:outline-gold shadow-xs"
+                  className="btn-press group inline-flex items-center justify-center gap-2 rounded-md bg-red px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-cream hover:bg-red-deep focus-visible:outline-2 focus-visible:outline-gold shadow-xs transition-all duration-200"
                 >
                   <span>For Creators: Join a Cohort</span>
                   <ArrowUpRight
@@ -78,7 +82,7 @@ export default function Home() {
 
                 <Link
                   href="/brands"
-                  className="btn-press inline-flex items-center justify-center rounded-md border border-ink/40 px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-ink hover:border-ink hover:bg-ink hover:text-cream focus-visible:outline-2 focus-visible:outline-gold transition-colors"
+                  className="btn-press inline-flex items-center justify-center rounded-md glass-cream-secondary px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-ink hover:border-ink/50 hover:bg-white/80 focus-visible:outline-2 focus-visible:outline-gold transition-all duration-200 shadow-2xs"
                 >
                   For Brands: Explore Cohorts
                 </Link>
@@ -120,9 +124,10 @@ export default function Home() {
 
         {/* ── 08. The Manifesto / Editorial Letter: Narrow measure, rich letter craft ── */}
         <section
-          className="border-t border-ink/15 bg-cream-dim/50 px-6 py-24 text-left sm:px-10 sm:py-32 lg:px-16 text-ink"
+          className="relative border-t border-ink/15 bg-cream-dim/40 px-6 py-24 text-left sm:px-10 sm:py-32 lg:px-16 text-ink overflow-hidden"
         >
-          <div className="mx-auto max-w-3xl">
+          <div className="absolute inset-0 bg-ambient-grid opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-3xl glass-cream-subtle p-8 sm:p-12 md:p-14 rounded-xl shadow-xs">
             <div className="text-xs font-bold uppercase tracking-widest text-red mb-4">
               Studio Manifesto
             </div>

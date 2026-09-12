@@ -115,8 +115,10 @@ export default function CreatorApplicationForm() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.3 }}
-            className="rounded-2xl border border-cream/25 bg-red-deep/75 p-6 sm:p-8 backdrop-blur-md shadow-xl"
+            className="rounded-2xl glass-red-primary p-6 sm:p-8 relative overflow-hidden shadow-2xl"
           >
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none" />
+
             {/* Header with status badge */}
             <div className="flex items-center justify-between border-b border-cream/15 pb-5">
               <div>
@@ -128,7 +130,7 @@ export default function CreatorApplicationForm() {
                   Apply for the Next Cycle
                 </h3>
               </div>
-              <span className="rounded-md border border-cream/20 bg-cream/10 px-2.5 py-1 text-[11px] font-mono text-cream/80">
+              <span className="rounded-md glass-red-subtle px-2.5 py-1 text-[11px] font-mono text-cream/90 border border-white/20">
                 14-Day Wire
               </span>
             </div>
@@ -160,7 +162,7 @@ export default function CreatorApplicationForm() {
                         className={`btn-press flex items-center justify-center gap-2 rounded-lg border py-2.5 px-3 text-xs font-semibold transition-all duration-200 cursor-pointer ${
                           isSelected
                             ? "border-cream bg-cream text-red shadow-sm"
-                            : "border-cream/20 bg-red/30 text-cream/80 hover:border-cream/50 hover:text-cream"
+                            : "glass-red-subtle border-white/15 text-cream/80 hover:border-white/40 hover:text-cream"
                         }`}
                       >
                         <Icon size={16} weight="bold" />
@@ -171,19 +173,19 @@ export default function CreatorApplicationForm() {
                 </div>
               </div>
 
-              {/* 02. Handle Input with Live Preview Card */}
+              {/* 02. Handle Input - Bare Underlined Directly on Red */}
               <div>
-                <label htmlFor="creator-handle" className="text-xs font-mono font-semibold uppercase tracking-wider text-cream/70 block mb-2">
+                <label htmlFor="creator-handle" className="text-xs font-mono font-semibold uppercase tracking-wider text-cream/70 block mb-1">
                   02 / Creator Handle
                 </label>
                 <div
-                  className={`flex items-center rounded-lg border bg-red/40 px-3.5 py-2.5 transition-all duration-200 focus-within:border-gold focus-within:ring-1 focus-within:ring-gold ${
+                  className={`flex items-center border-b pb-2 pt-1 transition-colors duration-200 ${
                     touched.handle && !handle.trim()
-                      ? "border-cream ring-1 ring-cream"
-                      : "border-cream/25"
+                      ? "border-cream ring-b-2 ring-cream"
+                      : "border-cream/35 focus-within:border-cream"
                   }`}
                 >
-                  <span className="mr-1.5 select-none font-mono text-sm text-cream/50">@</span>
+                  <span className="mr-1.5 select-none font-mono text-base text-cream/50">@</span>
                   <input
                     id="creator-handle"
                     name="handle"
@@ -193,10 +195,10 @@ export default function CreatorApplicationForm() {
                     onChange={(e) => setHandle(e.target.value)}
                     onBlur={() => markTouched("handle")}
                     placeholder="e.g. alex.visuals"
-                    className="w-full bg-transparent text-sm font-semibold text-cream placeholder:text-cream/35 outline-none font-body"
+                    className="w-full bg-transparent text-base font-semibold text-cream placeholder:text-cream/35 outline-none font-body"
                   />
                   {handle.trim().length > 2 && (
-                    <CheckCircle size={16} weight="fill" className="text-gold shrink-0" />
+                    <CheckCircle size={18} weight="fill" className="text-gold shrink-0" />
                   )}
                 </div>
 
@@ -225,7 +227,7 @@ export default function CreatorApplicationForm() {
                         className={`btn-press inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-xs transition-all duration-200 cursor-pointer ${
                           isSelected
                             ? "border-gold bg-gold/20 text-cream font-bold"
-                            : "border-cream/20 bg-red/20 text-cream/75 hover:border-cream/50 hover:text-cream"
+                            : "glass-red-subtle border-white/15 text-cream/75 hover:border-white/35 hover:text-cream"
                         }`}
                       >
                         {isSelected && <Check size={12} weight="bold" className="text-gold" />}
@@ -252,7 +254,7 @@ export default function CreatorApplicationForm() {
                         className={`btn-press flex flex-col p-2.5 rounded-lg border text-left transition-all duration-200 cursor-pointer ${
                           isSelected
                             ? "border-cream bg-cream text-red font-bold shadow-sm"
-                            : "border-cream/20 bg-red/20 text-cream/75 hover:border-cream/50 hover:text-cream"
+                            : "glass-red-subtle border-white/15 text-cream/75 hover:border-white/35 hover:text-cream"
                         }`}
                       >
                         <span className="font-display text-xs font-bold">{tier.range}</span>
@@ -265,13 +267,13 @@ export default function CreatorApplicationForm() {
                 </div>
               </div>
 
-              {/* 05. Sample Video or Reel URL (Optional but High-Craft) */}
+              {/* 05. Sample Video or Reel URL - Bare Underlined Directly on Red */}
               <div>
-                <label htmlFor="creator-sample" className="text-xs font-mono font-semibold uppercase tracking-wider text-cream/70 block mb-2">
+                <label htmlFor="creator-sample" className="text-xs font-mono font-semibold uppercase tracking-wider text-cream/70 block mb-1">
                   05 / Best Sample Video or Reel Link <span className="text-cream/40 normal-case">(optional)</span>
                 </label>
-                <div className="flex items-center rounded-lg border border-cream/25 bg-red/40 px-3.5 py-2.5 focus-within:border-gold focus-within:ring-1 focus-within:ring-gold">
-                  <LinkSimple size={15} className="mr-2 text-cream/50 shrink-0" />
+                <div className="flex items-center border-b border-cream/35 pb-2 pt-1 focus-within:border-cream transition-colors duration-200">
+                  <LinkSimple size={16} className="mr-2 text-cream/50 shrink-0" />
                   <input
                     id="creator-sample"
                     name="sampleLink"
@@ -279,21 +281,21 @@ export default function CreatorApplicationForm() {
                     value={sampleLink}
                     onChange={(e) => setSampleLink(e.target.value)}
                     placeholder="https://tiktok.com/@... or instagram.com/reel/..."
-                    className="w-full bg-transparent text-xs text-cream placeholder:text-cream/35 outline-none font-body"
+                    className="w-full bg-transparent text-sm text-cream placeholder:text-cream/35 outline-none font-body"
                   />
                 </div>
               </div>
 
-              {/* 06. Contact Email */}
+              {/* 06. Contact Email - Bare Underlined Directly on Red */}
               <div>
-                <label htmlFor="creator-email" className="text-xs font-mono font-semibold uppercase tracking-wider text-cream/70 block mb-2">
+                <label htmlFor="creator-email" className="text-xs font-mono font-semibold uppercase tracking-wider text-cream/70 block mb-1">
                   06 / Contact Email <span className="text-cream/40 normal-case">(for brief notifications)</span>
                 </label>
                 <div
-                  className={`flex items-center rounded-lg border bg-red/40 px-3.5 py-2.5 transition-all duration-200 focus-within:border-gold focus-within:ring-1 focus-within:ring-gold ${
+                  className={`flex items-center border-b pb-2 pt-1 transition-colors duration-200 ${
                     touched.email && email && !isValidEmail(email)
-                      ? "border-cream ring-1 ring-cream"
-                      : "border-cream/25"
+                      ? "border-cream ring-b-2 ring-cream"
+                      : "border-cream/35 focus-within:border-cream"
                   }`}
                 >
                   <input
@@ -305,10 +307,10 @@ export default function CreatorApplicationForm() {
                     onChange={(e) => setEmail(e.target.value)}
                     onBlur={() => markTouched("email")}
                     placeholder="creator@studio.com"
-                    className="w-full bg-transparent text-sm font-semibold text-cream placeholder:text-cream/35 outline-none font-body"
+                    className="w-full bg-transparent text-base font-semibold text-cream placeholder:text-cream/35 outline-none font-body"
                   />
                   {isValidEmail(email) && (
-                    <CheckCircle size={16} weight="fill" className="text-gold shrink-0" />
+                    <CheckCircle size={18} weight="fill" className="text-gold shrink-0" />
                   )}
                 </div>
               </div>
@@ -344,9 +346,11 @@ export default function CreatorApplicationForm() {
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4 }}
-            className="rounded-2xl border border-gold/40 bg-red-deep/90 p-8 sm:p-10 shadow-2xl space-y-6"
+            className="rounded-2xl glass-red-primary p-8 sm:p-10 shadow-2xl space-y-6 relative overflow-hidden"
           >
-            <div className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-gold/20 text-gold mb-2">
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none" />
+
+            <div className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-cream/15 text-gold mb-2">
               <CheckCircle size={28} weight="fill" />
             </div>
 
@@ -364,12 +368,12 @@ export default function CreatorApplicationForm() {
               We will send your cohort invitation and campaign terms to <strong className="text-cream">{email}</strong>.
             </p>
 
-            <div className="rounded-lg border border-cream/20 bg-red/40 p-4 space-y-2 text-xs text-cream/80 font-body">
+            <div className="rounded-xl glass-red-subtle p-4 space-y-2 text-xs text-cream/85 font-body border border-white/15">
               <div className="flex items-center gap-2 text-gold font-bold font-mono">
                 <ShieldCheck size={14} weight="bold" />
                 <span>WHAT TO EXPECT NEXT</span>
               </div>
-              <ul className="space-y-1 pl-4 list-disc text-cream/75">
+              <ul className="space-y-1 pl-4 list-disc text-cream/80">
                 <li>Review takes place this Friday by our founding partners.</li>
                 <li>When an aligned brand brief opens, you receive a direct invitation with fixed upfront compensation.</li>
                 <li>14-day guaranteed payment upon deliverable signoff. Zero exclusive lock-ins.</li>

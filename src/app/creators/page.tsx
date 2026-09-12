@@ -101,8 +101,10 @@ export default function CreatorsPage() {
       <main className="flex-1">
         {/* Header + Application: Full bleed red register with high energy */}
         <section className="relative bg-red px-6 pb-20 pt-20 text-cream sm:px-10 sm:pb-28 sm:pt-28 lg:px-16 overflow-hidden">
-          <div className="mx-auto max-w-4xl text-center">
-            <div className="text-xs font-bold uppercase tracking-widest text-cream/60 mb-4">
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 ambient-glow-crimson pointer-events-none opacity-60" />
+
+          <div className="relative z-10 mx-auto max-w-4xl text-center">
+            <div className="text-xs font-bold uppercase tracking-widest text-cream/75 mb-4 font-mono">
               Creator Infrastructure
             </div>
 
@@ -139,7 +141,7 @@ export default function CreatorsPage() {
                   {CREATOR_PERKS.map((perk) => (
                     <div key={perk.title} className="py-4.5 first:pt-6 last:pb-0">
                       <div className="flex items-baseline gap-3">
-                        <span className="font-display text-sm font-bold text-cream/45 tabular-nums">{perk.num}</span>
+                        <span className="font-display text-sm font-bold text-cream/60 tabular-nums">{perk.num}</span>
                         <h3 className="font-display text-base font-bold text-cream">{perk.title}</h3>
                       </div>
                       <p className="mt-1 pl-7 text-sm leading-relaxed text-cream/75 font-body">{perk.desc}</p>
@@ -168,7 +170,7 @@ export default function CreatorsPage() {
         />
 
         {/* Active Vertical Standards (Pure Graphic & Typographic Architecture, Zero Stock Photos) */}
-        <section className="border-b border-cream/15 bg-red-deep/50 px-6 py-20 sm:px-10 sm:py-28 lg:px-16 text-cream">
+        <section className="border-b border-cream/15 bg-red-deep/50 px-6 py-20 sm:px-10 sm:py-28 lg:px-16 text-cream relative overflow-hidden">
           <div className="mx-auto max-w-6xl">
             <div className="flex flex-col justify-between gap-4 border-b border-cream/20 pb-6 sm:flex-row sm:items-end">
               <div>
@@ -186,15 +188,17 @@ export default function CreatorsPage() {
               {VERTICAL_STANDARDS.map((v) => (
                 <div
                   key={v.num}
-                  className="rounded-md border border-cream/20 bg-red-deep/70 p-6 sm:p-8 flex flex-col justify-between"
+                  className="rounded-xl glass-red-primary p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden shadow-lg border border-white/20"
                 >
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none" />
+
                   <div>
                     <div className="flex items-center justify-between border-b border-cream/15 pb-3">
-                      <span className="font-display text-xs font-bold uppercase tracking-widest text-cream/60">
+                      <span className="font-display text-xs font-bold uppercase tracking-widest text-cream/70 font-mono">
                         Vertical {v.num}
                       </span>
-                      <span className="inline-flex items-center gap-1 text-xs font-semibold text-gold">
-                        <Sparkle size={12} weight="fill" />
+                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-cream bg-black/20 px-2.5 py-1 rounded-md border border-white/20 font-mono">
+                        <Sparkle size={12} weight="fill" className="text-gold" />
                         <span>{v.cadence}</span>
                       </span>
                     </div>
@@ -203,12 +207,12 @@ export default function CreatorsPage() {
                       {v.title}
                     </h4>
 
-                    <p className="mt-3 text-sm leading-relaxed text-cream/80 font-body">
+                    <p className="mt-3 text-sm leading-relaxed text-cream/85 font-body">
                       {v.signature}
                     </p>
                   </div>
 
-                  <div className="mt-6 border-t border-cream/15 pt-4 text-xs font-semibold text-cream/70 font-mono">
+                  <div className="mt-6 border-t border-cream/15 pt-4 text-xs font-semibold text-cream/75 font-mono">
                     {v.retention}
                   </div>
                 </div>
@@ -218,17 +222,19 @@ export default function CreatorsPage() {
         </section>
 
         {/* The Creator Charter */}
-        <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16 bg-red border-b border-cream/15 text-cream">
+        <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16 bg-red border-b border-cream/15 text-cream relative overflow-hidden">
           <div className="mx-auto max-w-4xl">
-            <div className="rounded-md border border-cream/25 bg-red-deep/50 p-8 sm:p-10">
-              <span className="font-display text-xs font-bold uppercase tracking-widest text-gold block mb-2">
+            <div className="rounded-2xl glass-red-primary p-8 sm:p-10 relative overflow-hidden shadow-xl border border-white/20">
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none" />
+
+              <span className="font-display text-xs font-bold uppercase tracking-widest text-gold block mb-2 font-mono">
                 The Clouterry Creator Charter
               </span>
               <h3 className="font-display text-2xl font-bold text-cream sm:text-3xl">
                 Four rules we never break with talent.
               </h3>
 
-              <div className="mt-8 grid gap-6 sm:grid-cols-2 text-sm leading-relaxed text-cream/80 font-body">
+              <div className="mt-8 grid gap-6 sm:grid-cols-2 text-sm leading-relaxed text-cream/85 font-body">
                 <div className="border-l-2 border-gold pl-4">
                   <span className="font-bold text-cream block text-base font-display">01. Creative Sovereignty</span>
                   If a brief or talking point doesn&apos;t feel natural to your channel, you decline it without penalty. We never force canned corporate copy.

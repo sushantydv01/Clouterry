@@ -142,9 +142,12 @@ export default function CohortsPage() {
     <div className="flex min-h-screen flex-col bg-cream text-ink selection:bg-gold selection:text-ink">
       <main className="flex-1">
         {/* Header */}
-        <section className="px-6 pt-24 pb-14 sm:px-10 sm:pt-28 sm:pb-20 lg:px-16 border-b border-ink/10">
-          <div className="mx-auto max-w-4xl text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-cream-dim/80 px-3.5 py-1 text-xs font-semibold text-ink mb-5">
+        <section className="relative px-6 pt-24 pb-14 sm:px-10 sm:pt-28 sm:pb-20 lg:px-16 border-b border-ink/10 overflow-hidden">
+          <div className="absolute inset-0 bg-ambient-grid opacity-35 pointer-events-none" />
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 ambient-glow-hero pointer-events-none opacity-50" />
+
+          <div className="relative z-10 mx-auto max-w-4xl text-center">
+            <div className="inline-flex items-center gap-2 rounded-full glass-cream-subtle px-4 py-1.5 text-xs font-semibold text-ink mb-5 shadow-2xs">
               <Sparkle size={13} weight="fill" className="text-red" />
               <span>Talent Infrastructure // Active Directory</span>
             </div>
@@ -162,47 +165,53 @@ export default function CohortsPage() {
 
             {/* Filter Toggle */}
             <div className="mt-8 flex justify-center gap-2">
-              <button
-                type="button"
-                onClick={() => setFilter("all")}
-                className={`btn-press rounded-md px-5 py-2 text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer ${
-                  filter === "all"
-                    ? "bg-red text-cream"
-                    : "border border-ink/20 bg-cream text-ink hover:border-ink/50"
-                }`}
-              >
-                All 6 Cohorts
-              </button>
-              <button
-                type="button"
-                onClick={() => setFilter("active")}
-                className={`btn-press rounded-md px-5 py-2 text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer ${
-                  filter === "active"
-                    ? "bg-red text-cream"
-                    : "border border-ink/20 bg-cream text-ink hover:border-ink/50"
-                }`}
-              >
-                Active Sprints Only
-              </button>
+              <div className="inline-flex items-center gap-1.5 rounded-xl glass-cream-subtle p-1.5 border border-white/80 shadow-2xs">
+                <button
+                  type="button"
+                  onClick={() => setFilter("all")}
+                  className={`btn-press rounded-lg px-5 py-2 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                    filter === "all"
+                      ? "bg-red text-cream shadow-xs"
+                      : "glass-cream-subtle text-ink/70 hover:text-ink"
+                  }`}
+                >
+                  All 6 Cohorts
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setFilter("active")}
+                  className={`btn-press rounded-lg px-5 py-2 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                    filter === "active"
+                      ? "bg-red text-cream shadow-xs"
+                      : "glass-cream-subtle text-ink/70 hover:text-ink"
+                  }`}
+                >
+                  Active Sprints Only
+                </button>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Cohort Grid */}
-        <section className="px-6 py-16 sm:px-10 sm:py-24 lg:px-16">
-          <div className="mx-auto max-w-7xl grid gap-10 md:grid-cols-2">
+        <section className="relative px-6 py-16 sm:px-10 sm:py-24 lg:px-16 overflow-hidden">
+          <div className="absolute inset-0 bg-ambient-grid opacity-25 pointer-events-none" />
+
+          <div className="relative z-10 mx-auto max-w-7xl grid gap-10 md:grid-cols-2">
             {filteredCohorts.map((cohort) => (
               <div
                 key={cohort.id}
-                className="rounded-xl border border-ink/20 bg-cream-dim/60 p-7 sm:p-9 flex flex-col justify-between shadow-xs transition-all duration-300 hover:border-ink/40"
+                className="rounded-2xl glass-cream-primary p-7 sm:p-9 flex flex-col justify-between shadow-xs transition-all duration-300 border border-white/80 relative overflow-hidden"
               >
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
+
                 <div>
                   {/* Top Bar */}
                   <div className="flex items-center justify-between border-b border-ink/10 pb-4">
                     <span className="font-mono text-xs font-bold uppercase tracking-widest text-red">
                       Cohort {cohort.num}
                     </span>
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-cream px-2.5 py-0.5 text-[10px] font-mono font-semibold uppercase tracking-wider text-ink/80">
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-white/80 bg-white/70 px-2.5 py-0.5 text-[10px] font-mono font-semibold uppercase tracking-wider text-ink/80 shadow-2xs">
                       <span
                         className={`h-1.5 w-1.5 rounded-full ${
                           cohort.status === "Active Sprint"
@@ -230,7 +239,7 @@ export default function CohortsPage() {
                   </p>
 
                   {/* Technical Specifications HUD */}
-                  <div className="mt-6 space-y-2.5 rounded-lg border border-ink/10 bg-cream/70 p-4 text-xs font-body">
+                  <div className="mt-6 space-y-2.5 rounded-xl glass-cream-secondary p-4 text-xs font-body border border-white/70 shadow-2xs">
                     <div className="flex items-start gap-2">
                       <VideoCamera size={14} className="text-red shrink-0 mt-0.5" />
                       <div>
@@ -287,7 +296,7 @@ export default function CohortsPage() {
                 <div className="mt-8 border-t border-ink/10 pt-5 flex items-center justify-between gap-3">
                   <Link
                     href="/brands"
-                    className="btn-press inline-flex items-center gap-1.5 rounded-md bg-ink px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-cream hover:bg-red transition-colors"
+                    className="btn-press inline-flex items-center gap-1.5 rounded-md bg-ink px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-cream hover:bg-red transition-colors shadow-xs"
                   >
                     <span>Book This Cohort</span>
                     <ArrowUpRight size={13} weight="bold" />

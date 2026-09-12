@@ -17,7 +17,9 @@ export default function BrandSection() {
 
   return (
     <section id="brands" className="relative border-t border-ink/15 bg-cream px-6 py-16 text-ink sm:px-10 sm:py-24 lg:px-16 overflow-hidden">
-      <div className="mx-auto max-w-7xl">
+      <div className="absolute inset-0 bg-ambient-grid opacity-30 pointer-events-none" />
+
+      <div className="relative z-10 mx-auto max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-start">
           {/* Left Column: Restrained, confident editorial */}
           <div className="lg:col-span-7">
@@ -53,22 +55,36 @@ export default function BrandSection() {
             </div>
 
             {/* What Arrives in the Delivery Folder */}
-            <div className="mt-10 rounded-md border border-ink/10 bg-cream-dim/50 p-5 max-w-xl">
-              <span className="text-xs font-bold uppercase tracking-wider text-red block mb-2 font-mono">
+            <div className="mt-10 rounded-xl glass-cream-secondary p-6 max-w-xl border border-white/70 shadow-2xs relative overflow-hidden">
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
+
+              <span className="text-xs font-bold uppercase tracking-wider text-red block mb-3 font-mono">
                 Standard 14-Day Delivery Kit
               </span>
-              <div className="grid grid-cols-2 gap-3 text-xs text-ink/80 font-body">
-                <div>&bull; 4K 9:16 ProRes Video Masters</div>
-                <div>&bull; 90-Day Spark Ads Code</div>
-                <div>&bull; Raw B-Roll & Clean Audio Stems</div>
-                <div>&bull; 1 Refinement Round Included</div>
+              <div className="grid grid-cols-2 gap-3 text-xs text-ink/85 font-body">
+                <div className="flex items-center gap-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-red" />
+                  <span>4K 9:16 ProRes Masters</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-red" />
+                  <span>90-Day Spark Ads Code</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-red" />
+                  <span>Raw B-Roll & Clean Stems</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-red" />
+                  <span>1 Refinement Round Included</span>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Right Column: Quiet active cohort verticals index */}
           <div className="lg:col-span-5 border-t border-ink/15 pt-8 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
-            <span className="text-xs font-bold uppercase tracking-wider text-ink/60">
+            <span className="text-xs font-bold uppercase tracking-wider text-ink/60 font-mono">
               Active cohort verticals
             </span>
 
@@ -76,13 +92,13 @@ export default function BrandSection() {
               {CATEGORIES.map((cat, idx) => (
                 <div
                   key={cat.name}
-                  className="group flex items-center justify-between py-3.5 text-sm font-medium text-ink cursor-default"
+                  className="group flex items-center justify-between py-3.5 px-3 -mx-3 rounded-lg hover:glass-cream-subtle text-sm font-medium text-ink transition-all cursor-default"
                 >
                   <div className="flex items-baseline gap-3">
                     <span className="text-xs text-red font-mono tabular-nums">0{idx + 1}</span>
                     <span className="font-display font-semibold tracking-tight">{cat.name}</span>
                   </div>
-                  <span className="text-xs text-ink/55">{cat.count}</span>
+                  <span className="text-xs text-ink/55 font-mono">{cat.count}</span>
                 </div>
               ))}
             </div>
@@ -94,7 +110,7 @@ export default function BrandSection() {
         </div>
       </div>
 
-      {/* Booking Modal with physical settling motion */}
+      {/* Booking Modal with physical settling motion and liquid-glass polish */}
       <AnimatePresence>
         {showCallModal && (
           <motion.div
@@ -104,15 +120,17 @@ export default function BrandSection() {
             transition={{ duration: 0.2 }}
             role="dialog"
             aria-modal="true"
-            className="fixed inset-0 z-50 flex items-center justify-center bg-ink/75 backdrop-blur-sm p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-ink/60 backdrop-blur-md p-4"
           >
             <motion.div
               variants={dialogMotion}
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="w-full max-w-md rounded-md border border-ink/20 bg-cream p-8 text-ink shadow-2xl will-change-transform"
+              className="w-full max-w-md rounded-2xl glass-cream-primary p-8 text-ink shadow-2xl relative overflow-hidden will-change-transform border border-white/80"
             >
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/90 to-transparent pointer-events-none" />
+
               <div className="flex items-center justify-between border-b border-ink/10 pb-4">
                 <div>
                   <h4 className="font-display text-xl font-bold text-ink">Schedule a brand consultation</h4>
@@ -134,7 +152,7 @@ export default function BrandSection() {
                   targets, campaign timelines, and cohort requirements.
                 </p>
 
-                <div className="rounded-md border border-ink/10 bg-cream-dim p-4 space-y-2 text-xs">
+                <div className="rounded-xl glass-cream-secondary p-4 space-y-2 text-xs border border-white/70 shadow-2xs">
                   <div className="flex items-center gap-2 font-semibold text-ink">
                     <CalendarCheck size={16} className="text-red" weight="bold" />
                     <span>Direct scheduling available via Calendly</span>

@@ -95,16 +95,14 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${syne.variable} ${manrope.variable} h-full antialiased bg-cream text-ink`}
     >
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </head>
       <body
         suppressHydrationWarning
         className="min-h-full flex flex-col bg-cream text-ink font-body selection:bg-gold selection:text-ink relative overflow-x-hidden"
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <SmoothScroll>
           <Navigation />
           {children}

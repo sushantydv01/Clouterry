@@ -77,9 +77,11 @@ export default function SampleCampaign() {
   return (
     <section
       id="sample-campaign"
-      className="relative bg-cream-dim/60 text-ink border-t border-ink/15 px-6 py-20 sm:px-10 sm:py-28 lg:px-16 overflow-hidden"
+      className="relative bg-cream-dim/50 text-ink border-t border-ink/15 px-6 py-20 sm:px-10 sm:py-28 lg:px-16 overflow-hidden"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="absolute inset-0 bg-ambient-grid opacity-30 pointer-events-none" />
+
+      <div className="relative z-10 mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="flex flex-col justify-between gap-6 border-b border-ink/15 pb-8 md:flex-row md:items-end">
           <div>
@@ -100,46 +102,48 @@ export default function SampleCampaign() {
           </p>
         </div>
 
-        {/* Phase Navigation Tabs */}
-        <div className="mt-8 flex flex-wrap items-center gap-3 border-b border-ink/10 pb-6">
-          <button
-            type="button"
-            onClick={() => setActiveTab("brief")}
-            className={`btn-press flex items-center gap-2 rounded-md px-5 py-2.5 text-xs font-bold uppercase tracking-wider cursor-pointer transition-colors duration-200 ${
-              activeTab === "brief"
-                ? "bg-red text-cream"
-                : "bg-cream text-ink/70 hover:bg-cream-sand hover:text-ink border border-ink/10"
-            }`}
-          >
-            <FileText size={16} weight="bold" />
-            <span>01. The Brand Brief</span>
-          </button>
+        {/* Phase Navigation Tabs - Translucent Frosted Rail */}
+        <div className="mt-8 border-b border-ink/10 pb-6">
+          <div className="inline-flex flex-wrap items-center gap-2 rounded-xl glass-cream-subtle p-1.5 border border-white/80 shadow-2xs">
+            <button
+              type="button"
+              onClick={() => setActiveTab("brief")}
+              className={`btn-press flex items-center gap-2 rounded-lg px-5 py-2.5 text-xs font-bold uppercase tracking-wider cursor-pointer transition-all duration-200 ${
+                activeTab === "brief"
+                  ? "bg-red text-cream shadow-xs"
+                  : "glass-cream-subtle text-ink/70 hover:glass-cream-secondary hover:text-ink"
+              }`}
+            >
+              <FileText size={16} weight="bold" />
+              <span>01. The Brand Brief</span>
+            </button>
 
-          <button
-            type="button"
-            onClick={() => setActiveTab("cohort")}
-            className={`btn-press flex items-center gap-2 rounded-md px-5 py-2.5 text-xs font-bold uppercase tracking-wider cursor-pointer transition-colors duration-200 ${
-              activeTab === "cohort"
-                ? "bg-red text-cream"
-                : "bg-cream text-ink/70 hover:bg-cream-sand hover:text-ink border border-ink/10"
-            }`}
-          >
-            <UsersThree size={16} weight="bold" />
-            <span>02. The Cohort Matching</span>
-          </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab("cohort")}
+              className={`btn-press flex items-center gap-2 rounded-lg px-5 py-2.5 text-xs font-bold uppercase tracking-wider cursor-pointer transition-all duration-200 ${
+                activeTab === "cohort"
+                  ? "bg-red text-cream shadow-xs"
+                  : "glass-cream-subtle text-ink/70 hover:glass-cream-secondary hover:text-ink"
+              }`}
+            >
+              <UsersThree size={16} weight="bold" />
+              <span>02. The Cohort Matching</span>
+            </button>
 
-          <button
-            type="button"
-            onClick={() => setActiveTab("delivery")}
-            className={`btn-press flex items-center gap-2 rounded-md px-5 py-2.5 text-xs font-bold uppercase tracking-wider cursor-pointer transition-colors duration-200 ${
-              activeTab === "delivery"
-                ? "bg-red text-cream"
-                : "bg-cream text-ink/70 hover:bg-cream-sand hover:text-ink border border-ink/10"
-            }`}
-          >
-            <Package size={16} weight="bold" />
-            <span>03. The 14-Day Delivery Kit</span>
-          </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab("delivery")}
+              className={`btn-press flex items-center gap-2 rounded-lg px-5 py-2.5 text-xs font-bold uppercase tracking-wider cursor-pointer transition-all duration-200 ${
+                activeTab === "delivery"
+                  ? "bg-red text-cream shadow-xs"
+                  : "glass-cream-subtle text-ink/70 hover:glass-cream-secondary hover:text-ink"
+              }`}
+            >
+              <Package size={16} weight="bold" />
+              <span>03. The 14-Day Delivery Kit</span>
+            </button>
+          </div>
         </div>
 
         {/* Content Panels */}
@@ -147,12 +151,17 @@ export default function SampleCampaign() {
           {/* TAB 1: THE BRAND BRIEF */}
           {activeTab === "brief" && (
             <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
-              <div className="lg:col-span-7 rounded-md border border-ink/15 bg-cream p-8 sm:p-10">
+              <div className="lg:col-span-7 rounded-xl glass-cream-primary p-8 sm:p-10 relative overflow-hidden shadow-xs">
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
+
                 <div className="flex items-baseline justify-between border-b border-ink/10 pb-4">
                   <span className="font-display text-xs font-bold uppercase tracking-widest text-red">
                     Example Master Brief // Single Contract
                   </span>
-                  <span className="text-xs text-ink/50 font-mono">Turnaround: 14 Days Guaranteed</span>
+                  <span className="inline-flex items-center gap-1.5 text-xs text-ink/65 font-mono uppercase bg-white/60 px-2.5 py-1 rounded-md border border-white/80">
+                    <span className="h-1.5 w-1.5 rounded-full bg-red animate-pulse" />
+                    <span>14 Days Guaranteed</span>
+                  </span>
                 </div>
 
                 <h3 className="mt-6 font-display text-2xl font-bold text-ink sm:text-3xl">
@@ -160,7 +169,7 @@ export default function SampleCampaign() {
                 </h3>
 
                 <div className="mt-6 space-y-5 text-sm leading-relaxed text-ink/80 font-body">
-                  <div className="rounded-sm border-l-2 border-red bg-cream-dim p-4">
+                  <div className="rounded-lg border-l-2 border-red glass-cream-secondary p-4 shadow-2xs">
                     <span className="block text-xs font-bold uppercase tracking-wider text-red mb-1">
                       Objective
                     </span>
@@ -189,7 +198,9 @@ export default function SampleCampaign() {
                 </div>
               </div>
 
-              <div className="lg:col-span-5 rounded-md border border-ink/15 bg-cream p-8 flex flex-col justify-between">
+              <div className="lg:col-span-5 rounded-xl glass-cream-secondary p-8 relative overflow-hidden shadow-2xs flex flex-col justify-between">
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
+
                 <div>
                   <h4 className="font-display text-lg font-bold text-ink border-b border-ink/10 pb-3">
                     Why the Single Brief Model Wins
@@ -243,10 +254,10 @@ export default function SampleCampaign() {
                       key={angle.id}
                       type="button"
                       onClick={() => setSelectedAngle(angle.id)}
-                      className={`btn-press rounded-md border p-4 text-left transition-all duration-200 cursor-pointer ${
+                      className={`btn-press rounded-xl p-4 text-left transition-all duration-200 cursor-pointer ${
                         isSelected
-                          ? "border-red bg-cream shadow-sm"
-                          : "border-ink/15 bg-cream/60 hover:bg-cream hover:border-ink/30"
+                          ? "glass-cream-primary border-red ring-1 ring-red/20 shadow-sm"
+                          : "glass-cream-subtle hover:glass-cream-secondary border-white/60 hover:border-ink/20"
                       }`}
                     >
                       <div className="flex items-center justify-between">
@@ -260,13 +271,15 @@ export default function SampleCampaign() {
               </div>
 
               {/* Right Column: Deep Angle Specification */}
-              <div className="lg:col-span-7 rounded-md border border-ink/15 bg-cream p-8 sm:p-10 flex flex-col justify-between">
+              <div className="lg:col-span-7 rounded-xl glass-cream-primary p-8 sm:p-10 relative overflow-hidden shadow-xs flex flex-col justify-between">
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
+
                 <div>
                   <div className="flex items-baseline justify-between border-b border-ink/10 pb-4">
                     <span className="font-display text-xs font-bold uppercase tracking-widest text-red">
                       Creative Direction Breakdown // {currentAngle.creatorHandle}
                     </span>
-                    <span className="text-xs text-ink/50 font-mono">100% Creative Sovereignty</span>
+                    <span className="text-xs text-ink/60 font-mono">100% Creative Sovereignty</span>
                   </div>
 
                   <h3 className="mt-5 font-display text-2xl font-bold text-ink sm:text-3xl">
@@ -276,26 +289,32 @@ export default function SampleCampaign() {
                   <div className="mt-6 space-y-4 text-sm font-body text-ink/80 divide-y divide-ink/10">
                     <div className="pt-2 first:pt-0">
                       <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-red">
-                        <FilmSlate size={14} weight="bold" />
+                        <div className="flex h-5 w-5 items-center justify-center rounded-full glass-cream-subtle text-red">
+                          <FilmSlate size={12} weight="bold" />
+                        </div>
                         <span>Visual Camera Setup</span>
                       </div>
-                      <p className="mt-1 text-sm text-ink/85 font-medium">{currentAngle.visualSetup}</p>
+                      <p className="mt-1 text-sm text-ink/85 font-medium pl-7">{currentAngle.visualSetup}</p>
                     </div>
 
                     <div className="pt-4">
                       <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-red">
-                        <Waveform size={14} weight="bold" />
+                        <div className="flex h-5 w-5 items-center justify-center rounded-full glass-cream-subtle text-red">
+                          <Waveform size={12} weight="bold" />
+                        </div>
                         <span>Acoustic Profile</span>
                       </div>
-                      <p className="mt-1 text-sm text-ink/85 font-medium">{currentAngle.audioSpec}</p>
+                      <p className="mt-1 text-sm text-ink/85 font-medium pl-7">{currentAngle.audioSpec}</p>
                     </div>
 
                     <div className="pt-4">
                       <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-red">
-                        <ShieldCheck size={14} weight="bold" />
+                        <div className="flex h-5 w-5 items-center justify-center rounded-full glass-cream-subtle text-red">
+                          <ShieldCheck size={12} weight="bold" />
+                        </div>
                         <span>Strategic Commercial Role</span>
                       </div>
-                      <p className="mt-1 text-sm text-ink/85 font-medium">{currentAngle.commercialValue}</p>
+                      <p className="mt-1 text-sm text-ink/85 font-medium pl-7">{currentAngle.commercialValue}</p>
                     </div>
                   </div>
                 </div>
@@ -310,7 +329,9 @@ export default function SampleCampaign() {
 
           {/* TAB 3: THE 14-DAY DELIVERY KIT */}
           {activeTab === "delivery" && (
-            <div className="rounded-md border border-ink/15 bg-cream p-8 sm:p-10">
+            <div className="rounded-xl glass-cream-primary p-8 sm:p-10 relative overflow-hidden shadow-xs">
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
+
               <div className="flex flex-col justify-between gap-4 border-b border-ink/10 pb-6 sm:flex-row sm:items-baseline">
                 <div>
                   <span className="font-display text-xs font-bold uppercase tracking-widest text-red">
@@ -320,14 +341,14 @@ export default function SampleCampaign() {
                     What arrives in the brand folder on Day 14.
                   </h3>
                 </div>
-                <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-red bg-cream-dim px-3 py-1.5 rounded-sm border border-ink/10">
+                <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-red glass-cream-secondary px-3.5 py-1.5 rounded-md border border-white/80 shadow-2xs">
                   <ShieldCheck size={16} weight="bold" />
                   <span>Guaranteed Delivery SLA or Full Refund</span>
                 </div>
               </div>
 
               <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                <div className="rounded-md border border-ink/10 bg-cream-dim/40 p-5">
+                <div className="rounded-xl glass-cream-secondary p-6 relative overflow-hidden shadow-2xs hover:border-ink/25 transition-all">
                   <span className="font-display text-2xl font-extrabold text-red tabular-nums">01</span>
                   <h4 className="mt-2 font-display text-base font-bold text-ink">4K ProRes Masters</h4>
                   <p className="mt-2 text-xs leading-relaxed text-ink/75 font-body">
@@ -335,7 +356,7 @@ export default function SampleCampaign() {
                   </p>
                 </div>
 
-                <div className="rounded-md border border-ink/10 bg-cream-dim/40 p-5">
+                <div className="rounded-xl glass-cream-secondary p-6 relative overflow-hidden shadow-2xs hover:border-ink/25 transition-all">
                   <span className="font-display text-2xl font-extrabold text-red tabular-nums">02</span>
                   <h4 className="mt-2 font-display text-base font-bold text-ink">Spark Ads Codes</h4>
                   <p className="mt-2 text-xs leading-relaxed text-ink/75 font-body">
@@ -343,7 +364,7 @@ export default function SampleCampaign() {
                   </p>
                 </div>
 
-                <div className="rounded-md border border-ink/10 bg-cream-dim/40 p-5">
+                <div className="rounded-xl glass-cream-secondary p-6 relative overflow-hidden shadow-2xs hover:border-ink/25 transition-all">
                   <span className="font-display text-2xl font-extrabold text-red tabular-nums">03</span>
                   <h4 className="mt-2 font-display text-base font-bold text-ink">Raw B-Roll & Stems</h4>
                   <p className="mt-2 text-xs leading-relaxed text-ink/75 font-body">
@@ -351,7 +372,7 @@ export default function SampleCampaign() {
                   </p>
                 </div>
 
-                <div className="rounded-md border border-ink/10 bg-cream-dim/40 p-5">
+                <div className="rounded-xl glass-cream-secondary p-6 relative overflow-hidden shadow-2xs hover:border-ink/25 transition-all">
                   <span className="font-display text-2xl font-extrabold text-red tabular-nums">04</span>
                   <h4 className="mt-2 font-display text-base font-bold text-ink">Commercial Clearance</h4>
                   <p className="mt-2 text-xs leading-relaxed text-ink/75 font-body">

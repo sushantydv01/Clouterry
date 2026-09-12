@@ -73,10 +73,13 @@ export default function BrandsPage() {
     <div className="flex min-h-screen flex-col bg-cream text-ink selection:bg-gold selection:text-ink">
       <main className="flex-1 pb-24 text-left">
         {/* Editorial Header */}
-        <section className="border-b border-ink/10 px-6 pt-24 pb-20 sm:px-10 sm:pt-28 sm:pb-28 lg:px-16">
-          <div className="mx-auto max-w-6xl">
+        <section className="relative border-b border-ink/10 px-6 pt-24 pb-20 sm:px-10 sm:pt-28 sm:pb-28 lg:px-16 overflow-hidden">
+          <div className="absolute inset-0 bg-ambient-grid opacity-35 pointer-events-none" />
+          <div className="absolute top-1/3 left-1/3 ambient-glow-hero pointer-events-none opacity-50" />
+
+          <div className="relative z-10 mx-auto max-w-6xl">
             <div className="max-w-3xl">
-              <div className="text-xs font-bold uppercase tracking-widest text-red mb-4">
+              <div className="text-xs font-bold uppercase tracking-widest text-red mb-4 font-mono">
                 Brand Infrastructure
               </div>
 
@@ -115,8 +118,10 @@ export default function BrandsPage() {
         </section>
 
         {/* Live Cohort Dossier Gallery (Zero Stock Photos, Architectural Layout) */}
-        <section className="px-6 py-20 sm:px-10 sm:py-28 lg:px-16">
-          <div className="mx-auto max-w-6xl">
+        <section className="relative px-6 py-20 sm:px-10 sm:py-28 lg:px-16 overflow-hidden">
+          <div className="absolute inset-0 bg-ambient-grid opacity-25 pointer-events-none" />
+
+          <div className="relative z-10 mx-auto max-w-6xl">
             <div className="flex flex-col justify-between gap-4 border-b border-ink/15 pb-6 md:flex-row md:items-end">
               <div>
                 <h2 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
@@ -133,14 +138,18 @@ export default function BrandsPage() {
               {COHORTS.map((cohort) => (
                 <div
                   key={cohort.num}
-                  className="rounded-md border border-ink/15 bg-cream-dim/50 p-7 sm:p-8 flex flex-col justify-between"
+                  className="rounded-xl glass-cream-primary p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden shadow-xs border border-white/80"
                 >
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
+
                   <div>
                     <div className="flex items-baseline justify-between border-b border-ink/10 pb-3">
                       <span className="font-display text-xs font-bold uppercase tracking-widest text-red">
                         Cohort {cohort.num}
                       </span>
-                      <span className="text-xs text-ink/55 font-mono">{cohort.creatorsCount}</span>
+                      <span className="text-xs text-ink/65 font-mono bg-white/60 px-2 py-0.5 rounded-md border border-white/80">
+                        {cohort.creatorsCount}
+                      </span>
                     </div>
 
                     <h3 className="mt-4 font-display text-2xl font-bold text-ink">{cohort.name}</h3>
@@ -158,7 +167,7 @@ export default function BrandsPage() {
                       {cohort.specs.map((spec) => (
                         <span
                           key={spec}
-                          className="inline-flex items-center gap-1 text-[11px] font-medium text-ink/75 bg-cream px-2.5 py-1 rounded-sm border border-ink/10"
+                          className="inline-flex items-center gap-1 text-[11px] font-medium text-ink/80 glass-cream-secondary px-2.5 py-1 rounded-md border border-white/70 shadow-2xs"
                         >
                           <Sparkle size={10} weight="fill" className="text-red" />
                           <span>{spec}</span>
@@ -176,8 +185,10 @@ export default function BrandsPage() {
         <AgencyTicker tone="cream" />
 
         {/* Engagement Models */}
-        <section className="bg-cream-dim/60 px-6 py-20 sm:px-10 sm:py-28 lg:px-16 border-t border-ink/15 text-ink">
-          <div className="mx-auto max-w-6xl">
+        <section className="relative bg-cream-dim/50 px-6 py-20 sm:px-10 sm:py-28 lg:px-16 border-t border-ink/15 text-ink overflow-hidden">
+          <div className="absolute inset-0 bg-ambient-grid opacity-30 pointer-events-none" />
+
+          <div className="relative z-10 mx-auto max-w-6xl">
             <div className="max-w-2xl">
               <h2 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
                 Choose your partnership cadence.
@@ -191,20 +202,22 @@ export default function BrandsPage() {
               {MODELS.map((model) => (
                 <div
                   key={model.num}
-                  className="flex flex-col justify-between border border-ink/15 bg-cream p-7 rounded-md"
+                  className="flex flex-col justify-between glass-cream-secondary p-7 rounded-xl relative overflow-hidden shadow-2xs border border-white/70"
                 >
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
+
                   <div>
                     <div className="flex items-baseline justify-between border-b border-ink/10 pb-4">
                       <h3 className="font-display text-2xl font-bold tracking-tight text-ink">
                         {model.name}
                       </h3>
-                      <span className="text-xs font-bold text-red uppercase tracking-wider">{model.cadence}</span>
+                      <span className="text-xs font-bold text-red uppercase tracking-wider font-mono">{model.cadence}</span>
                     </div>
 
                     <p className="mt-4 text-sm leading-relaxed text-ink/80 font-body">{model.desc}</p>
 
                     <div className="mt-6 space-y-2 border-t border-ink/10 pt-4">
-                      <span className="mb-2 block text-xs uppercase tracking-wider text-ink/50 font-bold">
+                      <span className="mb-2 block text-xs uppercase tracking-wider text-ink/50 font-bold font-mono">
                         Included deliverables
                       </span>
                       {model.deliverables.map((item) => (
@@ -242,15 +255,17 @@ export default function BrandsPage() {
             transition={{ duration: 0.2 }}
             role="dialog"
             aria-modal="true"
-            className="fixed inset-0 z-50 flex items-center justify-center bg-ink/75 backdrop-blur-sm p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-ink/60 backdrop-blur-md p-4"
           >
             <motion.div
               variants={dialogMotion}
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="w-full max-w-md rounded-md border border-ink/20 bg-cream p-8 text-ink shadow-2xl will-change-transform"
+              className="w-full max-w-md rounded-2xl glass-cream-primary p-8 text-ink shadow-2xl relative overflow-hidden will-change-transform border border-white/80"
             >
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/90 to-transparent pointer-events-none" />
+
               <div className="flex items-center justify-between border-b border-ink/10 pb-4">
                 <div>
                   <h3 className="font-display text-xl font-bold text-ink">Schedule a brand consultation</h3>
@@ -272,7 +287,7 @@ export default function BrandsPage() {
                   targets, campaign timelines, and cohort requirements.
                 </p>
 
-                <div className="rounded-md border border-ink/10 bg-cream-dim p-4 space-y-2 text-xs">
+                <div className="rounded-xl glass-cream-secondary p-4 space-y-2 text-xs border border-white/70 shadow-2xs">
                   <div className="flex items-center gap-2 font-semibold text-ink">
                     <CalendarCheck size={16} className="text-red" weight="bold" />
                     <span>Direct scheduling available via Calendly</span>
