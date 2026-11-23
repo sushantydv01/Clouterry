@@ -1,29 +1,40 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────────────────────
+   FIRM DESIGN SYSTEM — ATELIER BLUEPRINT
+   Digital Presence & Growth Firm
+   Warm architectural unbleached parchment, drafting ink, terracotta
+   ───────────────────────────────────────────────────────────────── */
+
 :root {
-  /* Unslop Warm Light Ramp */
-  --bg-page: #f7f4ee;
-  --bg-surface: #ffffff;
-  --bg-subtle: #fdfbf7;
-  --bg-raised: #efe9df;
-  
+  /* Atelier Blueprint Canvas & Surfaces */
+  --bg-page: #F7F4EE;
+  --bg-surface: #FFFFFF;
+  --bg-subtle: #FDFBF7;
+  --bg-raised: #EFE9DF;
+
+  /* Structural Hairlines (6-16% opacity) */
   --border-hairline: rgba(31, 27, 22, 0.08);
-  --border-subtle: rgba(31, 27, 22, 0.14);
+  --border-subtle: rgba(31, 27, 22, 0.16);
   --border-strong: rgba(31, 27, 22, 0.28);
-  
-  --text-primary: #1f1b16;
-  --text-secondary: #5e554a;
-  --text-muted: #7b7266;
 
-  /* Deliberate Clouterry Accent (Used with intention) */
-  --accent: #c22c38;
-  --accent-hover: #a8242f;
-  --accent-subtle: rgba(194, 44, 56, 0.08);
-  --accent-contrast: #ffffff;
+  /* Drafting Ink Roles */
+  --text-primary: #1F1B16;
+  --text-secondary: #5E554A;
+  --text-muted: #7B7266;
+  --text-inverted: #FFFFFF;
 
-  /* Semantic markers */
-  --positive: #16a34a;
-  --positive-subtle: rgba(22, 163, 74, 0.08);
+  /* Architectural Terracotta Accent */
+  --accent: #B84A29;
+  --accent-hover: #9B3D21;
+  --accent-subtle: rgba(184, 74, 41, 0.08);
+  --accent-contrast: #FFFFFF;
+
+  /* Semantic State Markers */
+  --positive: #1E6B42;
+  --positive-subtle: rgba(30, 107, 66, 0.08);
+  --warning: #B5681E;
+  --danger: #BA2D2D;
 }
 
 @theme inline {
@@ -47,6 +58,8 @@
 
   --color-positive: var(--positive);
   --color-positive-subtle: var(--positive-subtle);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
 
   --font-display: var(--font-newsreader), Georgia, serif;
   --font-body: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -68,12 +81,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Tabular figures for data, metrics, cohorts */
+/* Tabular figures for data, metrics, timelines */
 .tabular-nums {
   font-variant-numeric: tabular-nums;
 }
 
-/* Hairline borders as specified in unslop tokens */
+/* Structural Hairlines */
 .hairline {
   border: 1px solid var(--border-hairline);
 }
@@ -86,7 +99,21 @@ body {
   border-top: 1px solid var(--border-hairline);
 }
 
-/* Accessible focus styling adhering to unslop */
+/* FIRM Signature: The Ruled Baseline */
+.ruled-baseline {
+  position: relative;
+}
+
+.ruled-baseline::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: var(--border-hairline);
+  margin-top: 1.5rem;
+}
+
+/* Accessible focus styling adhering to Unslop */
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
