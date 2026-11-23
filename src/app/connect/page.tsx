@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import PageHeader from "@/components/layout/PageHeader";
 import Section from "@/components/layout/Section";
 import Container from "@/components/layout/Container";
-import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 
 const DIVISIONS = [
   "Complete Digital Presence (All Divisions)",
@@ -31,7 +31,7 @@ export default function ConnectPage() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-[#F4F4F0]">
       <Container>
         <PageHeader
           badge="CONNECT"
@@ -41,37 +41,37 @@ export default function ConnectPage() {
         />
       </Container>
 
-      <Section background="subtle">
+      <Section background="surface">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-start max-w-5xl mx-auto">
           {/* Left Column: Direct Inquiries */}
           <div className="lg:col-span-5 text-left">
-            <span className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] font-medium">
+            <span className="inline-block border border-black bg-[#FF90E8] px-3 py-0.5 font-mono text-xs uppercase tracking-wider text-black font-bold shadow-[2px_2px_0_0_#000]">
               Direct Contact
             </span>
-            <h2 className="mt-2 font-display text-2xl font-medium text-[var(--text-primary)]">
+            <h2 className="mt-2 font-display text-2xl sm:text-3xl font-bold text-black">
               Executive Office
             </h2>
-            <p className="mt-3 text-xs text-[var(--text-secondary)] leading-relaxed">
+            <p className="mt-3 text-xs sm:text-sm text-[#2D2A26] leading-relaxed">
               For direct partner inquiries, press correspondence, or institutional RFP invitations, contact our executive office directly.
             </p>
 
-            <div className="mt-6 p-4 rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] space-y-2 text-xs">
+            <div className="mt-6 p-5 border border-black bg-white shadow-[4px_4px_0_0_#000] space-y-3 text-xs">
               <div>
-                <span className="font-mono text-[10px] text-[var(--text-muted)] block uppercase">Direct Email</span>
+                <span className="font-mono text-[10px] font-bold text-black block uppercase tracking-wider">Direct Email</span>
                 <a
                   href="mailto:inquiries@firm.agency"
-                  className="font-mono text-sm font-medium text-[var(--text-primary)] hover:text-[var(--accent)]"
+                  className="font-mono text-sm font-bold text-black hover:underline"
                 >
                   inquiries@firm.agency
                 </a>
               </div>
-              <div className="pt-2 border-t border-[var(--border-hairline)]">
-                <span className="font-mono text-[10px] text-[var(--text-muted)] block uppercase">Location</span>
-                <span className="text-[var(--text-secondary)]">New York Studio & Remote Delivery</span>
+              <div className="pt-3 border-t border-black">
+                <span className="font-mono text-[10px] font-bold text-black block uppercase tracking-wider">Location</span>
+                <span className="text-black font-medium">New York Studio &amp; Remote Delivery</span>
               </div>
-              <div className="pt-2 border-t border-[var(--border-hairline)]">
-                <span className="font-mono text-[10px] text-[var(--text-muted)] block uppercase">Turnaround</span>
-                <span className="text-[var(--text-secondary)]">Partner review within 24 business hours</span>
+              <div className="pt-3 border-t border-black">
+                <span className="font-mono text-[10px] font-bold text-black block uppercase tracking-wider">Turnaround</span>
+                <span className="text-black font-medium">Partner review within 24 business hours</span>
               </div>
             </div>
           </div>
@@ -79,20 +79,20 @@ export default function ConnectPage() {
           {/* Right Column: Briefing Form */}
           <div className="lg:col-span-7">
             {submitted ? (
-              <div className="rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-8 text-center shadow-xs">
-                <div className="h-10 w-10 rounded-full bg-[var(--positive-subtle)] text-[var(--positive)] flex items-center justify-center mx-auto mb-3">
-                  <CheckCircle2 size={20} />
+              <div className="border border-black bg-[#55D6BE] p-8 sm:p-10 text-center shadow-[6px_6px_0_0_#000]">
+                <div className="h-12 w-12 rounded-none border border-black bg-white text-black flex items-center justify-center mx-auto mb-4 shadow-[2px_2px_0_0_#000]">
+                  <Check size={24} className="text-black stroke-[3]" />
                 </div>
-                <h3 className="font-display text-2xl font-medium text-[var(--text-primary)]">
+                <h3 className="font-display text-2xl sm:text-3xl font-bold text-black">
                   Briefing Received
                 </h3>
-                <p className="mt-2 text-xs text-[var(--text-secondary)] leading-relaxed max-w-md mx-auto">
-                  Thank you, {name}. We have logged your briefing for <span className="font-medium text-[var(--text-primary)]">{organization || "your organization"}</span>. A senior partner will review your inquiry and follow up at <span className="font-mono font-medium text-[var(--text-primary)]">{email}</span> within 24 hours.
+                <p className="mt-3 text-xs sm:text-sm text-black font-medium leading-relaxed max-w-md mx-auto">
+                  Thank you, {name}. We have logged your briefing for <span className="font-bold underline">{organization || "your organization"}</span>. A senior partner will review your inquiry and follow up at <span className="font-mono font-bold">{email}</span> within 24 hours.
                 </p>
                 <button
                   type="button"
                   onClick={() => setSubmitted(false)}
-                  className="mt-6 text-xs font-medium text-[var(--accent)] hover:underline"
+                  className="mt-6 neo-btn text-xs px-5 py-2.5"
                 >
                   Submit another briefing
                 </button>
@@ -100,10 +100,10 @@ export default function ConnectPage() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-6 sm:p-8 shadow-xs text-left space-y-4"
+                className="border border-black bg-white p-6 sm:p-8 shadow-[6px_6px_0_0_#000] text-left space-y-5"
               >
                 <div>
-                  <label htmlFor="name" className="block font-mono text-[11px] text-[var(--text-muted)] uppercase tracking-wider mb-1">
+                  <label htmlFor="name" className="block font-mono text-xs font-bold text-black uppercase tracking-wider mb-1.5">
                     Your Name
                   </label>
                   <input
@@ -113,12 +113,12 @@ export default function ConnectPage() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Jane Doe"
-                    className="w-full rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-subtle)] px-3.5 py-2.5 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:border-[var(--accent)] focus:bg-[var(--bg-surface)] focus:outline-none"
+                    className="w-full border border-black bg-[#F4F4F0] px-3.5 py-2.5 text-sm text-black placeholder:text-neutral-500 font-sans focus:bg-white focus:outline-none focus:shadow-[2px_2px_0_0_#000]"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block font-mono text-[11px] text-[var(--text-muted)] uppercase tracking-wider mb-1">
+                  <label htmlFor="email" className="block font-mono text-xs font-bold text-black uppercase tracking-wider mb-1.5">
                     Official Email
                   </label>
                   <input
@@ -128,12 +128,12 @@ export default function ConnectPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="jane@organization.com"
-                    className="w-full rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-subtle)] px-3.5 py-2.5 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:border-[var(--accent)] focus:bg-[var(--bg-surface)] focus:outline-none"
+                    className="w-full border border-black bg-[#F4F4F0] px-3.5 py-2.5 text-sm text-black placeholder:text-neutral-500 font-sans focus:bg-white focus:outline-none focus:shadow-[2px_2px_0_0_#000]"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="org" className="block font-mono text-[11px] text-[var(--text-muted)] uppercase tracking-wider mb-1">
+                  <label htmlFor="org" className="block font-mono text-xs font-bold text-black uppercase tracking-wider mb-1.5">
                     Organization / Institution
                   </label>
                   <input
@@ -142,19 +142,19 @@ export default function ConnectPage() {
                     value={organization}
                     onChange={(e) => setOrganization(e.target.value)}
                     placeholder="e.g. Saint Jude Academy or Acme Labs"
-                    className="w-full rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-subtle)] px-3.5 py-2.5 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:border-[var(--accent)] focus:bg-[var(--bg-surface)] focus:outline-none"
+                    className="w-full border border-black bg-[#F4F4F0] px-3.5 py-2.5 text-sm text-black placeholder:text-neutral-500 font-sans focus:bg-white focus:outline-none focus:shadow-[2px_2px_0_0_#000]"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="division" className="block font-mono text-[11px] text-[var(--text-muted)] uppercase tracking-wider mb-1">
+                  <label htmlFor="division" className="block font-mono text-xs font-bold text-black uppercase tracking-wider mb-1.5">
                     Primary Service Focus
                   </label>
                   <select
                     id="division"
                     value={division}
                     onChange={(e) => setDivision(e.target.value)}
-                    className="w-full rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-subtle)] px-3.5 py-2.5 text-sm text-[var(--text-primary)] focus:border-[var(--accent)] focus:bg-[var(--bg-surface)] focus:outline-none"
+                    className="w-full border border-black bg-[#F4F4F0] px-3.5 py-2.5 text-sm text-black font-medium focus:bg-white focus:outline-none focus:shadow-[2px_2px_0_0_#000]"
                   >
                     {DIVISIONS.map((d) => (
                       <option key={d} value={d}>
@@ -165,8 +165,8 @@ export default function ConnectPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block font-mono text-[11px] text-[var(--text-muted)] uppercase tracking-wider mb-1">
-                    Project Summary & Objectives
+                  <label htmlFor="message" className="block font-mono text-xs font-bold text-black uppercase tracking-wider mb-1.5">
+                    Project Summary &amp; Objectives
                   </label>
                   <textarea
                     id="message"
@@ -174,13 +174,13 @@ export default function ConnectPage() {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Briefly describe your current digital presence, goals, and target launch timeframe..."
-                    className="w-full rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-subtle)] p-3 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:border-[var(--accent)] focus:bg-[var(--bg-surface)] focus:outline-none"
+                    className="w-full border border-black bg-[#F4F4F0] p-3 text-sm text-black placeholder:text-neutral-500 font-sans focus:bg-white focus:outline-none focus:shadow-[2px_2px_0_0_#000]"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="mt-2 flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-[var(--accent)] px-4 text-xs font-medium text-white transition-colors hover:bg-[var(--accent-hover)]"
+                  className="neo-btn text-xs px-6 py-3 w-full shadow-[4px_4px_0_0_#000]"
                 >
                   <span>Submit project briefing</span>
                   <ArrowUpRight size={13} />

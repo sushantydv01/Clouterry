@@ -17,7 +17,7 @@ export default function StartupsIndustryPage() {
   const sector = INDUSTRIES.find((i) => i.slug === "startups") || INDUSTRIES[4];
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-[#F4F4F0]">
       <Container>
         <PageHeader
           badge={sector.eyebrow}
@@ -28,14 +28,14 @@ export default function StartupsIndustryPage() {
           <div className="flex flex-wrap items-center gap-3">
             <Link
               href="/connect"
-              className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-[var(--accent)] px-6 text-xs font-medium text-white transition-colors hover:bg-[var(--accent-hover)]"
+              className="neo-btn text-xs px-5 py-2.5"
             >
               <span>Inquire about 4-week sprint</span>
               <ArrowUpRight size={13} />
             </Link>
             <Link
               href="/capabilities/brand-identity"
-              className="inline-flex h-11 items-center justify-center rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-6 text-xs font-medium text-[var(--text-primary)] hover:border-[var(--border-strong)]"
+              className="neo-btn-white text-xs px-5 py-2.5"
             >
               Explore Brand Identity
             </Link>
@@ -44,29 +44,35 @@ export default function StartupsIndustryPage() {
       </Container>
 
       {/* Challenges & Solutions */}
-      <Section background="subtle">
+      <Section background="surface">
         <div className="max-w-4xl mx-auto text-left">
-          <span className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] font-medium">
+          <span className="inline-block border border-black bg-[#FF90E8] px-3 py-0.5 font-mono text-xs uppercase tracking-wider text-black font-bold shadow-[2px_2px_0_0_#000]">
             Venture Challenges
           </span>
-          <h2 className="mt-2 font-display text-2xl sm:text-3xl font-medium tracking-tight text-[var(--text-primary)] mb-8">
+          <h2 className="mt-2 font-display text-2xl sm:text-3xl font-bold tracking-tight text-black mb-8">
             Looking like a market leader before your next capital round
           </h2>
 
           <div className="grid gap-6 sm:grid-cols-2">
-            {sector.challenges.map((c) => (
-              <div
-                key={c.title}
-                className="p-6 rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)]"
-              >
-                <h3 className="text-sm font-semibold text-[var(--text-primary)]">
-                  {c.title}
-                </h3>
-                <p className="mt-2 text-xs text-[var(--text-secondary)] leading-relaxed">
-                  {c.description}
-                </p>
-              </div>
-            ))}
+            {sector.challenges.map((c, idx) => {
+              const tagColors = ["bg-[#FF90E8]", "bg-[#F1F333]"];
+              return (
+                <div
+                  key={c.title}
+                  className="neo-card p-6 shadow-[4px_4px_0_0_#000]"
+                >
+                  <span className={`inline-block border border-black ${tagColors[idx % tagColors.length]} px-2 py-0.5 font-mono text-[10px] text-black font-bold uppercase mb-3`}>
+                    Venture Hurdle 0{idx + 1}
+                  </span>
+                  <h3 className="font-display text-base font-bold text-black">
+                    {c.title}
+                  </h3>
+                  <p className="mt-2 text-xs sm:text-sm text-[#2D2A26] leading-relaxed">
+                    {c.description}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </Section>
@@ -74,10 +80,10 @@ export default function StartupsIndustryPage() {
       {/* Deliverables */}
       <Section background="page">
         <div className="max-w-4xl mx-auto text-left">
-          <span className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] font-medium">
+          <span className="inline-block border border-black bg-[#F1F333] px-3 py-0.5 font-mono text-xs uppercase tracking-wider text-black font-bold shadow-[2px_2px_0_0_#000]">
             FIRM Venture Framework
           </span>
-          <h2 className="mt-2 font-display text-2xl sm:text-3xl font-medium tracking-tight text-[var(--text-primary)] mb-8">
+          <h2 className="mt-2 font-display text-2xl sm:text-3xl font-bold tracking-tight text-black mb-8">
             Deliverables for high-growth startups
           </h2>
 
@@ -85,9 +91,11 @@ export default function StartupsIndustryPage() {
             {sector.deliverables.map((deliv) => (
               <div
                 key={deliv}
-                className="p-4 rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] flex items-center gap-3 text-xs font-medium text-[var(--text-primary)]"
+                className="p-4 border border-black bg-white shadow-[3px_3px_0_0_#000] flex items-center gap-3 text-xs sm:text-sm font-semibold text-black"
               >
-                <Check size={14} className="text-[var(--positive)] shrink-0" />
+                <div className="w-6 h-6 rounded-none border border-black bg-[#55D6BE] flex items-center justify-center shrink-0">
+                  <Check size={14} className="text-black stroke-[3]" />
+                </div>
                 <span>{deliv}</span>
               </div>
             ))}
@@ -96,29 +104,29 @@ export default function StartupsIndustryPage() {
       </Section>
 
       {/* CTA */}
-      <Section background="subtle">
-        <div className="max-w-3xl mx-auto text-center rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-8 sm:p-12 shadow-xs">
-          <span className="font-mono text-xs font-semibold text-[var(--accent)]">
+      <Section background="surface">
+        <div className="max-w-3xl mx-auto text-center border border-black bg-[#FF90E8] p-8 sm:p-12 shadow-[8px_8px_0_0_#000]">
+          <span className="inline-block border border-black bg-white px-3 py-1 font-mono text-xs font-bold text-black shadow-[2px_2px_0_0_#000]">
             VENTURE INTAKE
           </span>
-          <h2 className="mt-3 font-display text-3xl font-medium text-[var(--text-primary)]">
+          <h2 className="mt-3 font-display text-3xl sm:text-4xl font-bold text-black leading-tight">
             Ship your brand and web platform in 4 weeks
           </h2>
-          <p className="mt-3 text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed max-w-lg mx-auto">
+          <p className="mt-3 text-xs sm:text-sm text-[#2D2A26] font-medium leading-relaxed max-w-lg mx-auto">
             Our startup sprint gives founders an enterprise-grade digital flagship without the bloated 4-month agency overhead.
           </p>
 
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5">
             <Link
               href="/connect"
-              className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-[var(--accent)] px-6 text-xs font-medium text-white transition-colors hover:bg-[var(--accent-hover)]"
+              className="neo-btn text-xs px-6 py-3 w-full sm:w-auto"
             >
               <span>Initiate venture sprint</span>
               <ArrowUpRight size={13} />
             </Link>
             <Link
               href="/industries"
-              className="inline-flex h-11 items-center justify-center rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-6 text-xs font-medium text-[var(--text-primary)] hover:border-[var(--border-strong)]"
+              className="neo-btn-white text-xs px-6 py-3 w-full sm:w-auto"
             >
               View all industry sectors
             </Link>

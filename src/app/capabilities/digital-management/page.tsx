@@ -5,7 +5,7 @@ import PageHeader from "@/components/layout/PageHeader";
 import Section from "@/components/layout/Section";
 import Container from "@/components/layout/Container";
 import { SERVICES } from "@/data/services";
-import { ArrowUpRight, Check } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Digital Management & Consulting — Platform Stewardship | FIRM",
@@ -17,7 +17,7 @@ export default function DigitalManagementPage() {
   const service = SERVICES.find((s) => s.slug === "digital-management") || SERVICES[4];
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-[#F4F4F0]">
       {/* 01. Editorial Hero */}
       <Container>
         <PageHeader
@@ -29,12 +29,12 @@ export default function DigitalManagementPage() {
           <div className="flex flex-wrap items-center gap-3">
             <Link
               href="/connect"
-              className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-[var(--accent)] px-6 text-xs font-medium text-white transition-colors hover:bg-[var(--accent-hover)]"
+              className="neo-btn text-xs px-5 py-2.5"
             >
               <span>Explore stewardship retainers</span>
               <ArrowUpRight size={13} />
             </Link>
-            <span className="font-mono text-xs text-[var(--text-muted)]">
+            <span className="border border-black bg-white px-3 py-1 font-mono text-xs font-bold text-black shadow-[2px_2px_0_0_#000]">
               Cadence: {service.timeframe}
             </span>
           </div>
@@ -42,15 +42,15 @@ export default function DigitalManagementPage() {
       </Container>
 
       {/* 02. Core Proposition */}
-      <Section background="subtle" withRuledBaseline={true}>
-        <div className="max-w-3xl mx-auto text-left">
-          <span className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] font-medium">
+      <Section background="surface">
+        <div className="max-w-4xl mx-auto text-left border border-black bg-[#F4F4F0] p-6 sm:p-10 shadow-[6px_6px_0_0_#000]">
+          <span className="inline-block border border-black bg-[#55D6BE] px-3 py-0.5 font-mono text-xs uppercase tracking-wider text-black font-bold shadow-[2px_2px_0_0_#000]">
             Stewardship Proposition
           </span>
-          <h2 className="mt-2 font-display text-3xl font-medium tracking-tight text-[var(--text-primary)] sm:text-4xl">
+          <h2 className="mt-3 font-display text-3xl sm:text-4xl font-bold tracking-tight text-black leading-tight">
             Launching a digital platform is not the finish line. It is day one.
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
+          <p className="mt-4 text-base text-[#2D2A26] leading-relaxed font-sans">
             {service.proposition} Unattended software platforms decay in performance, accumulate security vulnerabilities, and fall behind evolving browser and accessibility standards. We provide the disciplined fractional governance required to protect your digital flagship.
           </p>
         </div>
@@ -59,45 +59,51 @@ export default function DigitalManagementPage() {
       {/* 03. Visual Demonstration: Live Stewardship Board Specimen */}
       <Section background="page">
         <div className="max-w-4xl mx-auto text-left">
-          <span className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] font-medium">
+          <span className="inline-block border border-black bg-[#F1F333] px-3 py-0.5 font-mono text-xs uppercase tracking-wider text-black font-bold shadow-[2px_2px_0_0_#000]">
             Operational Dashboard
           </span>
-          <h2 className="mt-2 font-display text-2xl sm:text-3xl font-medium tracking-tight text-[var(--text-primary)] mb-8">
-            Continuous platform monitoring & SLA oversight
+          <h2 className="mt-2 font-display text-2xl sm:text-3xl font-bold tracking-tight text-black mb-8">
+            Continuous platform monitoring &amp; SLA oversight
           </h2>
 
-          <div className="rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-6 sm:p-8 shadow-xs">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-6 border-b border-[var(--border-hairline)] gap-2">
-              <span className="font-mono text-xs font-semibold text-[var(--text-primary)]">
+          <div className="border border-black bg-white p-6 sm:p-8 shadow-[6px_6px_0_0_#000]">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-6 border-b border-black gap-2">
+              <span className="font-mono text-xs font-bold text-black">
                 STEWARDSHIP STATUS // INSTITUTIONAL FLEET
               </span>
-              <span className="inline-flex items-center gap-1.5 font-mono text-[11px] text-[var(--positive)]">
-                <span className="h-2 w-2 rounded-full bg-[var(--positive)]" />
+              <span className="inline-flex items-center gap-2 border border-black bg-[#55D6BE] px-3 py-1 font-mono text-xs font-bold text-black shadow-[2px_2px_0_0_#000]">
+                <span className="h-2 w-2 rounded-full bg-black" />
                 <span>All Managed Systems Operational</span>
               </span>
             </div>
 
             <div className="pt-6 grid gap-4 sm:grid-cols-3">
-              <div className="p-4 rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-subtle)]">
-                <span className="font-mono text-[10px] text-[var(--text-muted)] block">Edge Uptime (Last 90 Days)</span>
-                <span className="font-mono text-2xl font-medium text-[var(--positive)] tabular-nums mt-1 block">
+              <div className="p-4 border border-black bg-[#F4F4F0] shadow-[3px_3px_0_0_#000]">
+                <span className="font-mono text-[10px] text-[#605C56] font-bold block">Edge Uptime (Last 90 Days)</span>
+                <span className="font-mono text-2xl font-bold text-black tabular-nums mt-1 block">
                   99.98%
                 </span>
-                <span className="text-[10px] text-[var(--text-muted)]">Global CDN Monitored</span>
+                <span className="border border-black bg-white px-1.5 py-0.5 text-[9px] font-mono font-bold text-black inline-block mt-1">
+                  Global CDN Monitored
+                </span>
               </div>
-              <div className="p-4 rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-subtle)]">
-                <span className="font-mono text-[10px] text-[var(--text-muted)] block">Security Patch Cadence</span>
-                <span className="font-mono text-2xl font-medium text-[var(--text-primary)] tabular-nums mt-1 block">
+              <div className="p-4 border border-black bg-[#F4F4F0] shadow-[3px_3px_0_0_#000]">
+                <span className="font-mono text-[10px] text-[#605C56] font-bold block">Security Patch Cadence</span>
+                <span className="font-mono text-2xl font-bold text-black tabular-nums mt-1 block">
                   Monthly
                 </span>
-                <span className="text-[10px] text-[var(--text-muted)]">Next.js & Node.js Dependencies</span>
+                <span className="border border-black bg-white px-1.5 py-0.5 text-[9px] font-mono font-bold text-black inline-block mt-1">
+                  Next.js &amp; Node.js
+                </span>
               </div>
-              <div className="p-4 rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-subtle)]">
-                <span className="font-mono text-[10px] text-[var(--text-muted)] block">Support SLA Response</span>
-                <span className="font-mono text-2xl font-medium text-[var(--accent)] tabular-nums mt-1 block">
+              <div className="p-4 border border-black bg-[#F4F4F0] shadow-[3px_3px_0_0_#000]">
+                <span className="font-mono text-[10px] text-[#605C56] font-bold block">Support SLA Response</span>
+                <span className="font-mono text-2xl font-bold text-black tabular-nums mt-1 block">
                   &lt; 24h
                 </span>
-                <span className="text-[10px] text-[var(--text-muted)]">Direct Senior Partner Access</span>
+                <span className="border border-black bg-[#FF90E8] px-1.5 py-0.5 text-[9px] font-mono font-bold text-black inline-block mt-1">
+                  Senior Partner Access
+                </span>
               </div>
             </div>
           </div>
@@ -105,12 +111,12 @@ export default function DigitalManagementPage() {
       </Section>
 
       {/* 04. Problems Solved */}
-      <Section background="subtle">
+      <Section background="surface">
         <div className="max-w-4xl mx-auto text-left">
-          <span className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] font-medium">
+          <span className="inline-block border border-black bg-[#DC341E] text-white px-3 py-0.5 font-mono text-xs uppercase tracking-wider font-bold shadow-[2px_2px_0_0_#000]">
             Operational Failures Prevented
           </span>
-          <h2 className="mt-2 font-display text-2xl sm:text-3xl font-medium tracking-tight text-[var(--text-primary)] mb-8">
+          <h2 className="mt-2 font-display text-2xl sm:text-3xl font-bold tracking-tight text-black mb-8">
             The hidden risks of unattended digital platforms
           </h2>
 
@@ -118,13 +124,13 @@ export default function DigitalManagementPage() {
             {service.problems.map((prob) => (
               <div
                 key={prob.title}
-                className="p-6 rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] flex flex-col justify-between"
+                className="neo-card p-6 flex flex-col justify-between shadow-[4px_4px_0_0_#000]"
               >
                 <div>
-                  <h3 className="text-sm font-semibold text-[var(--text-primary)]">
+                  <h3 className="text-base font-display font-bold text-black">
                     {prob.title}
                   </h3>
-                  <p className="mt-2 text-xs text-[var(--text-secondary)] leading-relaxed">
+                  <p className="mt-2 text-xs sm:text-sm text-[#2D2A26] leading-relaxed">
                     {prob.description}
                   </p>
                 </div>
@@ -137,10 +143,10 @@ export default function DigitalManagementPage() {
       {/* 05. Methodology */}
       <Section background="page">
         <div className="max-w-4xl mx-auto text-left">
-          <span className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] font-medium">
+          <span className="inline-block border border-black bg-[#55D6BE] px-3 py-0.5 font-mono text-xs uppercase tracking-wider text-black font-bold shadow-[2px_2px_0_0_#000]">
             Stewardship Methodology
           </span>
-          <h2 className="mt-2 font-display text-2xl sm:text-3xl font-medium tracking-tight text-[var(--text-primary)] mb-8">
+          <h2 className="mt-2 font-display text-2xl sm:text-3xl font-bold tracking-tight text-black mb-8">
             The continuous governance cycle
           </h2>
 
@@ -148,16 +154,16 @@ export default function DigitalManagementPage() {
             {service.methodology.map((m) => (
               <div
                 key={m.step}
-                className="flex items-start gap-4 p-5 rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-surface)]"
+                className="flex items-start gap-4 p-5 border border-black bg-white shadow-[4px_4px_0_0_#000]"
               >
-                <span className="font-mono text-sm font-semibold text-[var(--accent)] mt-0.5">
+                <span className="border border-black bg-[#55D6BE] font-mono text-xs font-bold text-black px-2.5 py-1 shrink-0 shadow-[1px_1px_0_0_#000]">
                   {m.step}
                 </span>
                 <div>
-                  <h3 className="text-sm font-medium text-[var(--text-primary)]">
+                  <h3 className="text-base font-display font-bold text-black">
                     {m.title}
                   </h3>
-                  <p className="mt-1 text-xs text-[var(--text-secondary)] leading-relaxed">
+                  <p className="mt-1 text-xs sm:text-sm text-[#2D2A26] leading-relaxed">
                     {m.description}
                   </p>
                 </div>
@@ -168,12 +174,12 @@ export default function DigitalManagementPage() {
       </Section>
 
       {/* 06. Deliverables */}
-      <Section background="subtle">
+      <Section background="surface">
         <div className="max-w-4xl mx-auto text-left">
-          <span className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] font-medium">
+          <span className="inline-block border border-black bg-[#F1F333] px-3 py-0.5 font-mono text-xs uppercase tracking-wider text-black font-bold shadow-[2px_2px_0_0_#000]">
             Contractual SLA Assets
           </span>
-          <h2 className="mt-2 font-display text-2xl sm:text-3xl font-medium tracking-tight text-[var(--text-primary)] mb-8">
+          <h2 className="mt-2 font-display text-2xl sm:text-3xl font-bold tracking-tight text-black mb-8">
             Annual stewardship deliverables
           </h2>
 
@@ -181,17 +187,19 @@ export default function DigitalManagementPage() {
             {service.deliverables.map((deliv) => (
               <div
                 key={deliv.category}
-                className="p-6 rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] flex flex-col justify-between"
+                className="p-6 border border-black bg-white shadow-[4px_4px_0_0_#000] flex flex-col justify-between"
               >
                 <div>
-                  <h3 className="text-xs font-mono text-[var(--accent)] uppercase font-semibold">
+                  <h3 className="text-xs font-mono text-black uppercase font-bold pb-2 border-b border-black">
                     {deliv.category}
                   </h3>
-                  <ul className="mt-4 space-y-2.5 text-xs text-[var(--text-secondary)]">
+                  <ul className="mt-4 space-y-2.5 text-xs text-[#2D2A26]">
                     {deliv.items.map((it) => (
                       <li key={it} className="flex items-start gap-2">
-                        <Check size={13} className="text-[var(--positive)] mt-0.5 shrink-0" />
-                        <span>{it}</span>
+                        <span className="h-4 w-4 bg-[#55D6BE] border border-black flex items-center justify-center text-black font-bold text-[10px] mt-0.5 shrink-0">
+                          ✓
+                        </span>
+                        <span className="font-medium text-black">{it}</span>
                       </li>
                     ))}
                   </ul>
@@ -205,10 +213,10 @@ export default function DigitalManagementPage() {
       {/* 07. Cross Connections */}
       <Section background="page">
         <div className="max-w-4xl mx-auto text-left">
-          <span className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] font-medium">
+          <span className="inline-block border border-black bg-[#FF90E8] px-3 py-0.5 font-mono text-xs uppercase tracking-wider text-black font-bold shadow-[2px_2px_0_0_#000]">
             System Coherence
           </span>
-          <h2 className="mt-2 font-display text-2xl sm:text-3xl font-medium tracking-tight text-[var(--text-primary)] mb-6">
+          <h2 className="mt-2 font-display text-2xl sm:text-3xl font-bold tracking-tight text-black mb-6">
             How Digital Management connects with other divisions
           </h2>
 
@@ -216,16 +224,16 @@ export default function DigitalManagementPage() {
             {service.crossConnections.map((conn) => (
               <div
                 key={conn.division}
-                className="p-5 rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-surface)]"
+                className="p-5 border border-black bg-white shadow-[3px_3px_0_0_#000]"
               >
                 <Link
                   href={`/capabilities/${conn.slug}`}
-                  className="font-display text-base font-medium text-[var(--text-primary)] hover:text-[var(--accent)] inline-flex items-center gap-1"
+                  className="font-display text-base font-bold text-black hover:text-[#DC341E] hover:underline inline-flex items-center gap-1"
                 >
                   <span>{conn.division}</span>
-                  <ArrowUpRight size={12} />
+                  <ArrowUpRight size={13} />
                 </Link>
-                <p className="mt-2 text-xs text-[var(--text-secondary)] leading-relaxed">
+                <p className="mt-2 text-xs sm:text-sm text-[#2D2A26] leading-relaxed">
                   {conn.relationship}
                 </p>
               </div>
@@ -235,12 +243,12 @@ export default function DigitalManagementPage() {
       </Section>
 
       {/* 08. FAQ */}
-      <Section background="subtle">
+      <Section background="surface">
         <div className="max-w-3xl mx-auto text-left">
-          <span className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] font-medium">
+          <span className="inline-block border border-black bg-[#F1F333] px-3 py-0.5 font-mono text-xs uppercase tracking-wider text-black font-bold shadow-[2px_2px_0_0_#000]">
             Frequently Asked
           </span>
-          <h2 className="mt-2 font-display text-2xl sm:text-3xl font-medium tracking-tight text-[var(--text-primary)] mb-8">
+          <h2 className="mt-2 font-display text-2xl sm:text-3xl font-bold tracking-tight text-black mb-8">
             Questions regarding our Digital Management practice
           </h2>
 
@@ -248,12 +256,12 @@ export default function DigitalManagementPage() {
             {service.faqs.map((faq) => (
               <div
                 key={faq.question}
-                className="p-5 rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-surface)]"
+                className="p-5 border border-black bg-white shadow-[3px_3px_0_0_#000]"
               >
-                <h3 className="text-sm font-medium text-[var(--text-primary)]">
+                <h3 className="text-base font-display font-bold text-black">
                   {faq.question}
                 </h3>
-                <p className="mt-2 text-xs text-[var(--text-secondary)] leading-relaxed">
+                <p className="mt-2 text-xs sm:text-sm text-[#2D2A26] leading-relaxed">
                   {faq.answer}
                 </p>
               </div>
@@ -264,28 +272,28 @@ export default function DigitalManagementPage() {
 
       {/* 09. CTA */}
       <Section background="page">
-        <div className="max-w-3xl mx-auto text-center rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-8 sm:p-12 shadow-xs">
-          <span className="font-mono text-xs font-semibold text-[var(--accent)]">
+        <div className="max-w-3xl mx-auto text-center border border-black bg-[#55D6BE] p-8 sm:p-12 shadow-[8px_8px_0_0_#000]">
+          <span className="inline-block border border-black bg-white px-3 py-1 font-mono text-xs font-bold text-black shadow-[2px_2px_0_0_#000]">
             STEWARDSHIP INTAKE // 05 GOVERNANCE
           </span>
-          <h2 className="mt-3 font-display text-3xl font-medium text-[var(--text-primary)]">
+          <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-black leading-tight">
             Protect your organization’s digital investment
           </h2>
-          <p className="mt-3 text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed max-w-lg mx-auto">
+          <p className="mt-3 text-sm text-[#2D2A26] font-medium leading-relaxed max-w-lg mx-auto">
             Discuss an ongoing fractional stewardship retainer with our partners to ensure continuous security, speed, and content governance.
           </p>
 
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5">
             <Link
               href="/connect"
-              className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-[var(--accent)] px-6 text-xs font-medium text-white transition-colors hover:bg-[var(--accent-hover)]"
+              className="neo-btn text-xs px-6 py-3 w-full sm:w-auto"
             >
               <span>Inquire about stewardship retainers</span>
               <ArrowUpRight size={13} />
             </Link>
             <Link
               href="/capabilities"
-              className="inline-flex h-11 items-center justify-center rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-6 text-xs font-medium text-[var(--text-primary)] hover:border-[var(--border-strong)]"
+              className="neo-btn-white text-xs px-6 py-3 w-full sm:w-auto"
             >
               Explore all capabilities
             </Link>

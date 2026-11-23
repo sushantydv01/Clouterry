@@ -8,83 +8,108 @@ import SchoolBlueprint from "@/components/interactive/SchoolBlueprint";
 import BrowserFrame from "@/components/ui/BrowserFrame";
 import { PROJECTS } from "@/data/projects";
 import { ARTICLES } from "@/data/articles";
-import { ArrowUpRight, BookOpen, Clock } from "lucide-react";
+import { ArrowUpRight, BookOpen, Clock, Sparkles } from "lucide-react";
 
 export default function Home() {
   const latestArticles = ARTICLES.slice(0, 3);
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* ── 01. Hero Section: Asymmetric Atelier Lockup with Cinematic Scene ── */}
+    <div className="flex flex-col min-h-screen bg-[#F4F4F0]">
+      {/* ── 01. Hero Section: Cheerful Neo-Brutalist Hero Lockup ── */}
       <section
-        className="relative pt-32 pb-16 sm:pt-40 sm:pb-24 border-b border-[var(--border-hairline)]"
+        className="relative pt-28 pb-16 sm:pt-36 sm:pb-24 border-b border-black bg-[#F4F4F0] overflow-hidden"
         aria-label="FIRM Introduction"
       >
         <Container>
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-            {/* Left Column: Thesis & Actions */}
+            {/* Left Column: Bold Headline & Actions */}
             <div className="lg:col-span-7 text-left">
-              <div className="inline-flex items-center gap-2 rounded-md border border-[var(--border-hairline)] bg-[var(--bg-surface)] px-2.5 py-1 text-xs mb-6">
-                <span className="h-1.5 w-1.5 rounded-full bg-[var(--positive)]" />
-                <span className="font-mono text-[11px] text-[var(--text-secondary)]">
-                  DIGITAL PRESENCE &amp; GROWTH FIRM // EST. 2026
-                </span>
+              {/* Playful Floating Badges */}
+              <div className="flex flex-wrap items-center gap-2.5 mb-6">
+                <div className="inline-flex items-center gap-2 border border-black bg-[#FF90E8] px-3 py-1 text-xs font-mono font-bold text-black shadow-[2px_2px_0_0_#000] -rotate-1 hover:rotate-0 transition-transform">
+                  <span className="h-2 w-2 rounded-full bg-black" />
+                  <span>DIGITAL PRESENCE &amp; GROWTH FIRM</span>
+                </div>
+
+                <div className="inline-flex items-center border border-black bg-[#F1F333] px-2.5 py-1 text-xs font-mono font-bold text-black shadow-[2px_2px_0_0_#000] rotate-2 hover:rotate-0 transition-transform">
+                  <span>EST. 2026</span>
+                </div>
+
+                <div className="hidden sm:inline-flex items-center gap-1 border border-black bg-[#55D6BE] px-2.5 py-1 text-xs font-mono font-bold text-black shadow-[2px_2px_0_0_#000]">
+                  <Sparkles size={11} />
+                  <span>BUILT FOR SCALE</span>
+                </div>
               </div>
 
-              <h1 className="font-display text-4xl font-normal tracking-tight text-[var(--text-primary)] sm:text-5xl md:text-6xl leading-[1.06]">
+              {/* Oversized Space Grotesk Headline */}
+              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-bold tracking-tight text-black leading-[1.02]">
                 We engineer enduring digital presence for ambitious organizations.
               </h1>
 
-              <p className="mt-6 text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed max-w-xl">
+              <p className="mt-6 text-base sm:text-lg text-[#2D2A26] leading-relaxed max-w-xl font-sans">
                 Unifying brand identity, bespoke Next.js platforms, documentary editorial content, and systematic visibility under one disciplined architectural standard.
               </p>
 
-              <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              {/* High-Contrast Interactive Action Buttons */}
+              <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
                 <Link
                   href="/connect"
-                  className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-[var(--accent)] px-6 text-sm font-medium text-white transition-colors hover:bg-[var(--accent-hover)] shadow-xs"
+                  className="neo-btn text-sm px-6 py-3"
                 >
                   <span>Start a project briefing</span>
-                  <ArrowUpRight size={14} />
+                  <ArrowUpRight size={16} />
                 </Link>
                 <Link
                   href="/capabilities"
-                  className="inline-flex h-11 items-center justify-center rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-6 text-sm font-medium text-[var(--text-primary)] transition-colors hover:border-[var(--border-strong)]"
+                  className="neo-btn-white text-sm px-6 py-3"
                 >
                   Explore capabilities
                 </Link>
               </div>
 
-              {/* Monospace Architectural Tagline */}
-              <div className="mt-10 pt-6 border-t border-[var(--border-hairline)] flex flex-wrap items-center gap-2 sm:gap-6 text-[10px] sm:text-[11px] font-mono text-[var(--text-muted)]">
-                <span>01 BRAND</span>
-                <span>•</span>
-                <span>02 WEB</span>
-                <span>•</span>
-                <span>03 CONTENT</span>
-                <span>•</span>
-                <span>04 GROWTH</span>
-                <span>•</span>
-                <span>05 STEWARDSHIP</span>
+              {/* Monospace Neo-Brutalist Division Pills */}
+              <div className="mt-10 pt-6 border-t border-black flex flex-wrap items-center gap-2 text-xs font-mono font-bold text-black">
+                <span className="border border-black bg-white px-2.5 py-1 shadow-[2px_2px_0_0_#000] hover:bg-[#FF90E8] transition-colors">
+                  01 BRAND
+                </span>
+                <span className="border border-black bg-white px-2.5 py-1 shadow-[2px_2px_0_0_#000] hover:bg-[#55D6BE] transition-colors">
+                  02 WEB
+                </span>
+                <span className="border border-black bg-white px-2.5 py-1 shadow-[2px_2px_0_0_#000] hover:bg-[#F1F333] transition-colors">
+                  03 CONTENT
+                </span>
+                <span className="border border-black bg-white px-2.5 py-1 shadow-[2px_2px_0_0_#000] hover:bg-[#FF90E8] transition-colors">
+                  04 GROWTH
+                </span>
+                <span className="border border-black bg-white px-2.5 py-1 shadow-[2px_2px_0_0_#000] hover:bg-[#55D6BE] transition-colors">
+                  05 STEWARDSHIP
+                </span>
               </div>
             </div>
 
-            {/* Right Column: Sunlit Atelier Photography Visual */}
+            {/* Right Column: Hero Visual in Neo-Brutalist Framing */}
             <div className="lg:col-span-5">
-              <div className="relative overflow-hidden rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-2 shadow-sm group">
-                <div className="overflow-hidden rounded-xl">
+              <div className="relative border border-black bg-white p-3 shadow-[8px_8px_0_0_#000] group">
+                {/* Playful Floating Gumroad-Style Decorative Badges */}
+                <div className="absolute -top-3.5 -right-3.5 z-10 border border-black bg-[#F1F333] text-black font-display font-bold text-xs px-3 py-1 shadow-[3px_3px_0_0_#000] rotate-6">
+                  AUTHENTIC CRAFT
+                </div>
+
+                <div className="overflow-hidden border border-black">
                   <Image
                     src="/images/editorial/atelier-hero.webp"
                     alt="FIRM Architectural Drafting Atelier — Blueprints, unbleached paper, brass rules, and drafting ink"
                     width={1792}
                     height={1024}
                     priority
-                    className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                   />
                 </div>
-                <div className="p-3 text-left flex items-center justify-between font-mono text-[10px] text-[var(--text-muted)]">
-                  <span>ATELIER BLUEPRINT // 40.7128° N, 74.0060° W</span>
-                  <span className="text-[var(--accent)] font-semibold">STUDIO SPEC 01</span>
+                <div className="p-3 text-left flex items-center justify-between font-mono text-[11px] text-black border-t border-black mt-2 bg-[#F4F4F0]">
+                  <span className="font-semibold">ATELIER BLUEPRINT // 40.7128° N</span>
+                  <span className="bg-[#FF90E8] text-black border border-black px-2 py-0.5 font-bold">
+                    SPEC 01
+                  </span>
                 </div>
               </div>
             </div>
@@ -92,17 +117,17 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* ── 02. The Firm Thesis: Ruled Narrow Measure ── */}
-      <Section background="subtle" withRuledBaseline={true}>
-        <div className="mx-auto max-w-3xl text-left">
-          <p className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] font-medium">
+      {/* ── 02. The Firm Thesis: Bold Callout Block ── */}
+      <Section background="surface">
+        <div className="mx-auto max-w-4xl border border-black bg-[#F4F4F0] p-6 sm:p-10 shadow-[6px_6px_0_0_#000] text-left">
+          <span className="inline-block border border-black bg-[#F1F333] px-3 py-0.5 font-mono text-xs uppercase tracking-wider text-black font-bold shadow-[2px_2px_0_0_#000]">
             The Problem of Fragmentation
-          </p>
-          <h2 className="mt-2 font-display text-3xl font-medium tracking-tight text-[var(--text-primary)] sm:text-4xl">
+          </span>
+          <h2 className="mt-3 font-display text-3xl sm:text-4xl font-bold tracking-tight text-black leading-tight">
             Modern organizations do not lack digital tools. They lack cohesion.
           </h2>
 
-          <div className="mt-6 space-y-4 text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
+          <div className="mt-6 space-y-4 text-base text-[#2D2A26] leading-relaxed font-sans">
             <p>
               Most organizations manage digital presence as an accidental collection of disconnected vendors. A graphic designer builds the logo; a development contractor writes the website; a social media agency posts generic clips; a growth specialist runs ads to pages that fail to convert.
             </p>
@@ -118,21 +143,21 @@ export default function Home() {
         <PresenceMatrix />
       </Section>
 
-      {/* ── 04. Selected Work Exhibition with Browser Previews ── */}
-      <Section id="work" background="subtle">
+      {/* ── 04. Selected Work Exhibition with Neo-Brutalist Browser Previews ── */}
+      <Section id="work" background="surface">
         <div className="max-w-5xl mx-auto text-left">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8 gap-3">
             <div>
-              <span className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] font-medium">
+              <span className="inline-block border border-black bg-[#55D6BE] px-3 py-0.5 font-mono text-xs uppercase tracking-wider text-black font-bold shadow-[2px_2px_0_0_#000]">
                 Selected Work &amp; Retrospectives
               </span>
-              <h2 className="mt-1 font-display text-3xl font-medium tracking-tight text-[var(--text-primary)] sm:text-4xl">
+              <h2 className="mt-2 font-display text-3xl sm:text-4xl font-bold tracking-tight text-black">
                 Demonstrated digital architecture
               </h2>
             </div>
             <Link
               href="/work"
-              className="text-xs font-medium text-[var(--accent)] hover:underline inline-flex items-center gap-1 self-start sm:self-auto"
+              className="neo-btn text-xs px-4 py-2 self-start sm:self-auto"
             >
               <span>View complete work archive</span>
               <ArrowUpRight size={13} />
@@ -140,14 +165,14 @@ export default function Home() {
           </div>
 
           {/* Transparent Credibility Ribbon */}
-          <div className="mb-8 p-3.5 rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] flex items-center justify-between text-xs">
-            <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-[var(--accent)]" />
-              <span className="font-mono text-[11px] text-[var(--text-secondary)]">
+          <div className="mb-8 p-4 border border-black bg-[#F1F333] flex items-center justify-between text-xs shadow-[3px_3px_0_0_#000]">
+            <div className="flex items-center gap-2.5">
+              <span className="h-2.5 w-2.5 rounded-full bg-black shrink-0" />
+              <span className="font-mono text-xs font-bold text-black">
                 PORTFOLIO INTEGRITY: All featured studies are classified transparently with zero fabricated metrics.
               </span>
             </div>
-            <span className="font-mono text-[10px] text-[var(--text-muted)] hidden sm:block">
+            <span className="font-mono text-[10px] text-black font-bold uppercase hidden sm:block border-l border-black pl-3 ml-3">
               Strategic Concepts &amp; Retrospectives
             </span>
           </div>
@@ -157,32 +182,32 @@ export default function Home() {
             {PROJECTS.map((proj) => (
               <div
                 key={proj.slug}
-                className="rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-4 sm:p-8 shadow-xs"
+                className="border border-black bg-white p-6 sm:p-8 shadow-[6px_6px_0_0_#000]"
               >
                 <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
                   {/* Left: Case Context */}
                   <div className="lg:col-span-5 space-y-4">
                     <div>
-                      <span className="font-mono text-[10px] text-[var(--accent)] font-semibold uppercase tracking-wider block break-words">
+                      <span className="border border-black bg-[#FF90E8] px-2.5 py-0.5 font-mono text-[10px] text-black font-bold uppercase tracking-wider inline-block break-words shadow-[1px_1px_0_0_#000]">
                         {proj.industry} {"//"} {proj.classification}
                       </span>
-                      <h3 className="mt-1.5 font-display text-2xl font-medium text-[var(--text-primary)]">
+                      <h3 className="mt-2 font-display text-2xl sm:text-3xl font-bold text-black">
                         {proj.title}
                       </h3>
-                      <p className="mt-2 text-xs text-[var(--text-secondary)] leading-relaxed">
+                      <p className="mt-2 text-xs sm:text-sm text-[#2D2A26] leading-relaxed">
                         {proj.summary}
                       </p>
                     </div>
 
-                    <div className="pt-3 border-t border-[var(--border-hairline)] space-y-1.5">
-                      <span className="font-mono text-[10px] uppercase text-[var(--text-muted)] block">
+                    <div className="pt-3 border-t border-black space-y-2">
+                      <span className="font-mono text-[10px] uppercase font-bold text-black block">
                         Scope of Engagement
                       </span>
                       <div className="flex flex-wrap gap-1.5">
                         {proj.divisions.map((div) => (
                           <span
                             key={div}
-                            className="rounded-md bg-[var(--bg-subtle)] border border-[var(--border-hairline)] px-2 py-0.5 font-mono text-[10px] text-[var(--text-secondary)]"
+                            className="bg-[#F4F4F0] border border-black px-2 py-0.5 font-mono text-[10px] font-bold text-black"
                           >
                             {div}
                           </span>
@@ -193,10 +218,10 @@ export default function Home() {
                     <div className="pt-2">
                       <Link
                         href={`/work/${proj.slug}`}
-                        className="inline-flex h-9 items-center justify-center gap-1.5 rounded-lg bg-[var(--accent)] px-4 text-xs font-medium text-white hover:bg-[var(--accent-hover)] transition-colors"
+                        className="neo-btn text-xs px-4 py-2"
                       >
                         <span>Read case retrospective</span>
-                        <ArrowUpRight size={12} />
+                        <ArrowUpRight size={13} />
                       </Link>
                     </div>
                   </div>
@@ -204,7 +229,7 @@ export default function Home() {
                   {/* Right: Realistic Browser Frame Preview */}
                   <div className="lg:col-span-7">
                     <BrowserFrame url={proj.heroMockup.urlText}>
-                      <div className="relative overflow-hidden bg-[var(--bg-page)] text-left">
+                      <div className="relative overflow-hidden bg-[#F4F4F0] text-left">
                         <Image
                           src={proj.image}
                           alt={proj.title}
@@ -228,21 +253,21 @@ export default function Home() {
       </Section>
 
       {/* ── 06. Featured Publications & Insights ── */}
-      <Section background="subtle">
+      <Section background="surface">
         <div className="max-w-5xl mx-auto text-left">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8 gap-3">
             <div>
-              <span className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] font-semibold flex items-center gap-1.5">
+              <span className="inline-flex items-center gap-1.5 border border-black bg-[#F1F333] px-3 py-0.5 font-mono text-xs uppercase tracking-wider text-black font-bold shadow-[2px_2px_0_0_#000]">
                 <BookOpen size={13} />
                 <span>FIELD MONOGRAPHS &amp; PERSPECTIVES</span>
               </span>
-              <h2 className="mt-1 font-display text-3xl font-medium tracking-tight text-[var(--text-primary)] sm:text-4xl">
+              <h2 className="mt-2 font-display text-3xl sm:text-4xl font-bold tracking-tight text-black">
                 Perspectives on presence &amp; craft
               </h2>
             </div>
             <Link
               href="/insights"
-              className="text-xs font-medium text-[var(--accent)] hover:underline inline-flex items-center gap-1 self-start sm:self-auto"
+              className="neo-btn text-xs px-4 py-2 self-start sm:self-auto"
             >
               <span>Explore all publications</span>
               <ArrowUpRight size={13} />
@@ -250,84 +275,89 @@ export default function Home() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
-            {latestArticles.map((art) => (
-              <article
-                key={art.slug}
-                className="rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-5 flex flex-col justify-between transition-colors hover:border-[var(--border-strong)] group"
-              >
-                <div>
-                  <div className="overflow-hidden rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-page)] mb-3">
-                    <Link href={`/insights/${art.slug}`}>
-                      <Image
-                        src={art.heroImage}
-                        alt={art.title}
-                        width={1200}
-                        height={675}
-                        className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                      />
-                    </Link>
+            {latestArticles.map((art, idx) => {
+              const badgeColors = ["bg-[#FF90E8]", "bg-[#F1F333]", "bg-[#55D6BE]"];
+              return (
+                <article
+                  key={art.slug}
+                  className="neo-card p-5 flex flex-col justify-between group"
+                >
+                  <div>
+                    <div className="overflow-hidden border border-black mb-3">
+                      <Link href={`/insights/${art.slug}`}>
+                        <Image
+                          src={art.heroImage}
+                          alt={art.title}
+                          width={1200}
+                          height={675}
+                          className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                        />
+                      </Link>
+                    </div>
+
+                    <div className="flex items-center gap-2 font-mono text-[10px] text-black mb-2">
+                      <span className={`border border-black ${badgeColors[idx % badgeColors.length]} px-2 py-0.5 font-bold uppercase`}>
+                        {art.category}
+                      </span>
+                      <span>•</span>
+                      <span className="inline-flex items-center gap-1 font-medium">
+                        <Clock size={10} />
+                        <span>{art.readingTime}</span>
+                      </span>
+                    </div>
+
+                    <h3 className="font-display text-lg font-bold text-black group-hover:text-[#DC341E] transition-colors leading-snug">
+                      <Link href={`/insights/${art.slug}`}>
+                        {art.title}
+                      </Link>
+                    </h3>
+
+                    <p className="mt-2 text-xs text-[#2D2A26] line-clamp-2 leading-relaxed">
+                      {art.excerpt}
+                    </p>
                   </div>
 
-                  <div className="flex items-center gap-2 font-mono text-[9px] text-[var(--text-muted)] mb-1.5">
-                    <span className="text-[var(--accent)] font-semibold uppercase">{art.category}</span>
-                    <span>•</span>
-                    <span className="inline-flex items-center gap-0.5">
-                      <Clock size={9} />
-                      <span>{art.readingTime}</span>
-                    </span>
-                  </div>
-
-                  <h3 className="font-display text-lg font-medium text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors leading-snug">
-                    <Link href={`/insights/${art.slug}`}>
-                      {art.title}
+                  <div className="mt-4 pt-3 border-t border-black flex items-center justify-between text-xs">
+                    <span className="font-mono text-[10px] text-[#605C56] font-semibold">{art.date}</span>
+                    <Link
+                      href={`/insights/${art.slug}`}
+                      className="font-display font-bold text-black hover:text-[#DC341E] hover:underline inline-flex items-center gap-1"
+                    >
+                      <span>Read</span>
+                      <ArrowUpRight size={12} />
                     </Link>
-                  </h3>
-
-                  <p className="mt-2 text-xs text-[var(--text-secondary)] line-clamp-2 leading-relaxed">
-                    {art.excerpt}
-                  </p>
-                </div>
-
-                <div className="mt-4 pt-3 border-t border-[var(--border-hairline)] flex items-center justify-between text-xs">
-                  <span className="font-mono text-[10px] text-[var(--text-muted)]">{art.date}</span>
-                  <Link
-                    href={`/insights/${art.slug}`}
-                    className="font-medium text-[var(--accent)] hover:underline inline-flex items-center gap-1"
-                  >
-                    <span>Read</span>
-                    <ArrowUpRight size={11} />
-                  </Link>
-                </div>
-              </article>
-            ))}
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </Section>
 
       {/* ── 07. Call to Action: Direct Intake ── */}
       <Section background="page">
-        <div className="mx-auto max-w-3xl rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-8 sm:p-12 text-center shadow-xs">
-          <span className="font-mono text-xs font-semibold text-[var(--accent)] tracking-tight">
+        <div className="mx-auto max-w-3xl border border-black bg-[#FF90E8] p-8 sm:p-12 text-center shadow-[8px_8px_0_0_#000]">
+          <span className="inline-block border border-black bg-white px-3 py-1 font-mono text-xs font-bold text-black tracking-tight shadow-[2px_2px_0_0_#000]">
             COMMISSION BRIEFING // 2026
           </span>
-          <h2 className="mt-3 font-display text-3xl font-normal tracking-tight text-[var(--text-primary)] sm:text-4xl">
+          <h2 className="mt-4 font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-black leading-tight">
             Ready to unify your digital presence?
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed max-w-xl mx-auto">
+          <p className="mt-4 text-sm sm:text-base text-[#2D2A26] font-medium leading-relaxed max-w-xl mx-auto">
             We partner with ambitious brands, independent academies, healthcare clinics, and professional firms seeking an enduring digital presence.
           </p>
 
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5">
             <Link
               href="/connect"
-              className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-[var(--accent)] px-6 text-sm font-medium text-white transition-colors hover:bg-[var(--accent-hover)]"
+              className="neo-btn text-sm px-6 py-3 w-full sm:w-auto"
             >
               <span>Submit a project brief</span>
-              <ArrowUpRight size={14} />
+              <ArrowUpRight size={15} />
             </Link>
             <a
               href="mailto:inquiries@firm.agency"
-              className="inline-flex h-11 items-center justify-center rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-6 text-sm font-medium text-[var(--text-primary)] hover:border-[var(--border-strong)]"
+              className="neo-btn-white text-sm px-6 py-3 w-full sm:w-auto"
             >
               inquiries@firm.agency
             </a>

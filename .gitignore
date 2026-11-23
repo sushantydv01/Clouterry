@@ -8,6 +8,7 @@ CLAUDE.md
 .cursor/
 .cursorrules
 .vscode/
+.codex/
 *.claude*
 *.copilot*
 .ai/

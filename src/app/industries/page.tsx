@@ -15,8 +15,13 @@ export const metadata: Metadata = {
 };
 
 export default function IndustriesDirectoryPage() {
+  const getAccentBadge = (idx: number) => {
+    const colors = ["bg-[#FF90E8]", "bg-[#55D6BE]", "bg-[#F1F333]", "bg-[#FF90E8]", "bg-[#55D6BE]"];
+    return colors[idx % colors.length];
+  };
+
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-[#F4F4F0]">
       <Container>
         <PageHeader
           badge="INDUSTRIES"
@@ -27,54 +32,54 @@ export default function IndustriesDirectoryPage() {
       </Container>
 
       {/* Primary Specialization Spotlight: Education & Schools with School Blueprint */}
-      <Section background="subtle">
+      <Section background="surface">
         <SchoolBlueprint />
       </Section>
 
       {/* Industry Sector Directory Cards */}
       <Section background="page">
         <div className="max-w-5xl mx-auto text-left">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8 gap-2">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8 gap-3">
             <div>
-              <span className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] font-medium">
+              <span className="inline-block border border-black bg-[#F1F333] px-3 py-0.5 font-mono text-xs uppercase tracking-wider text-black font-bold shadow-[2px_2px_0_0_#000]">
                 Sector Practice Guides
               </span>
-              <h2 className="mt-1 font-display text-2xl sm:text-3xl font-medium text-[var(--text-primary)]">
+              <h2 className="mt-2 font-display text-2xl sm:text-3xl font-bold text-black">
                 Explore individual industry frameworks
               </h2>
             </div>
-            <span className="font-mono text-xs text-[var(--text-muted)]">
+            <span className="border border-black bg-white px-3 py-1 font-mono text-xs font-bold text-black shadow-[2px_2px_0_0_#000]">
               5 Core Sectors
             </span>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
-            {INDUSTRIES.map((s) => (
+            {INDUSTRIES.map((s, idx) => (
               <div
                 key={s.slug}
-                className="rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-6 flex flex-col justify-between text-left transition-colors hover:border-[var(--border-strong)]"
+                className="neo-card p-6 sm:p-8 flex flex-col justify-between text-left shadow-[4px_4px_0_0_#000]"
               >
                 <div>
-                  <span className="font-mono text-[10px] text-[var(--accent)] font-semibold uppercase tracking-wider block">
+                  <span className={`border border-black ${getAccentBadge(idx)} px-2.5 py-0.5 font-mono text-[10px] text-black font-bold uppercase tracking-wider inline-block shadow-[1px_1px_0_0_#000]`}>
                     {s.eyebrow}
                   </span>
-                  <h3 className="mt-2 font-display text-xl font-medium text-[var(--text-primary)]">
+                  <h3 className="mt-2 font-display text-2xl font-bold text-black">
                     {s.title}
                   </h3>
-                  <p className="mt-2 text-xs text-[var(--text-secondary)] leading-relaxed">
+                  <p className="mt-2 text-xs sm:text-sm text-[#2D2A26] leading-relaxed">
                     {s.tagline}
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-[var(--border-hairline)] flex items-center justify-between text-xs">
-                  <span className="font-mono text-[11px] text-[var(--text-muted)]">
-                    {s.deliverables.length} Deliverables
+                <div className="mt-6 pt-4 border-t border-black flex items-center justify-between text-xs">
+                  <span className="font-mono text-xs font-bold text-[#605C56]">
+                    {s.deliverables.length} Deliverables Included
                   </span>
                   <Link
                     href={`/industries/${s.slug}`}
-                    className="font-medium text-[var(--accent)] hover:underline inline-flex items-center gap-1"
+                    className="neo-btn text-xs px-3.5 py-1.5"
                   >
-                    <span>Read sector practice</span>
+                    <span>Read practice</span>
                     <ArrowUpRight size={12} />
                   </Link>
                 </div>

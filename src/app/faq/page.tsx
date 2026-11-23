@@ -74,7 +74,7 @@ export default function FAQPage() {
     : FAQ_ITEMS.filter((item) => item.category === selectedCategory);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-[#F4F4F0]">
       <Container>
         <PageHeader
           badge="OPERATIONAL FAQ"
@@ -84,12 +84,12 @@ export default function FAQPage() {
         />
       </Container>
 
-      <Section background="subtle">
+      <Section background="surface">
         <div className="max-w-4xl mx-auto text-left">
           {/* Category Tabs */}
-          <div className="flex flex-wrap items-center gap-2 mb-8 pb-4 border-b border-[var(--border-hairline)]">
-            <span className="font-mono text-xs text-[var(--text-muted)] mr-2 flex items-center gap-1">
-              <Tag size={12} />
+          <div className="flex flex-wrap items-center gap-2 mb-8 pb-4 border-b border-black">
+            <span className="font-mono text-xs font-bold text-black mr-2 flex items-center gap-1.5">
+              <Tag size={13} className="stroke-[2.5]" />
               <span>Topic:</span>
             </span>
             {CATEGORIES.map((cat) => {
@@ -98,10 +98,10 @@ export default function FAQPage() {
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
+                  className={`px-3 py-1.5 text-xs font-mono border border-black transition-all ${
                     active
-                      ? "bg-[var(--accent)] text-white shadow-2xs"
-                      : "border border-[var(--border-hairline)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-strong)]"
+                      ? "bg-[#F1F333] text-black font-bold shadow-[3px_3px_0_0_#000] -translate-x-0.5 -translate-y-0.5"
+                      : "bg-white text-black font-medium shadow-[2px_2px_0_0_#000] hover:bg-[#F4F4F0]"
                   }`}
                 >
                   {cat}
@@ -117,33 +117,33 @@ export default function FAQPage() {
               return (
                 <div
                   key={item.q}
-                  className="rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] overflow-hidden transition-colors hover:border-[var(--border-strong)]"
+                  className="border border-black bg-white shadow-[4px_4px_0_0_#000] overflow-hidden"
                 >
                   <button
                     type="button"
                     onClick={() => toggleItem(idx)}
                     aria-expanded={isOpen}
-                    className="w-full p-6 text-left flex items-center justify-between gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                    className="w-full p-6 text-left flex items-center justify-between gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
                   >
                     <div>
-                      <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--accent)] font-semibold block mb-1">
+                      <span className="inline-block border border-black bg-[#FF90E8] px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-black font-bold shadow-[1px_1px_0_0_#000] mb-2">
                         {item.category}
                       </span>
-                      <h3 className="font-display text-lg sm:text-xl font-medium text-[var(--text-primary)]">
+                      <h3 className="font-display text-lg sm:text-xl font-bold text-black">
                         {item.q}
                       </h3>
                     </div>
                     <div
-                      className={`h-8 w-8 rounded-full bg-[var(--bg-subtle)] flex items-center justify-center text-[var(--text-secondary)] shrink-0 transition-transform duration-200 ${
-                        isOpen ? "rotate-180 text-[var(--accent)]" : ""
+                      className={`h-8 w-8 rounded-none border border-black bg-[#F1F333] flex items-center justify-center text-black shrink-0 shadow-[2px_2px_0_0_#000] transition-transform duration-200 ${
+                        isOpen ? "rotate-180 bg-[#55D6BE]" : ""
                       }`}
                     >
-                      <ChevronDown size={16} />
+                      <ChevronDown size={16} className="stroke-[2.5]" />
                     </div>
                   </button>
 
                   {isOpen && (
-                    <div className="px-6 pb-6 pt-2 text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed border-t border-[var(--border-hairline)] bg-[var(--bg-subtle)]">
+                    <div className="px-6 pb-6 pt-3 text-xs sm:text-sm text-[#2D2A26] leading-relaxed border-t border-black bg-[#F4F4F0] font-sans">
                       <p>{item.a}</p>
                     </div>
                   )}
@@ -153,25 +153,27 @@ export default function FAQPage() {
           </div>
 
           {/* Executive Contact Prompt */}
-          <div className="mt-14 p-8 rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] text-center shadow-xs">
-            <HelpCircle size={24} className="text-[var(--accent)] mx-auto mb-3" />
-            <h4 className="font-display text-xl font-medium text-[var(--text-primary)]">
+          <div className="mt-14 p-8 border border-black bg-[#FF90E8] text-center shadow-[6px_6px_0_0_#000]">
+            <div className="h-10 w-10 border border-black bg-white text-black flex items-center justify-center mx-auto mb-3 shadow-[2px_2px_0_0_#000]">
+              <HelpCircle size={22} className="stroke-[2.5]" />
+            </div>
+            <h4 className="font-display text-2xl font-bold text-black">
               Have a specific institutional question?
             </h4>
-            <p className="mt-2 text-xs sm:text-sm text-[var(--text-secondary)] max-w-md mx-auto">
+            <p className="mt-2 text-xs sm:text-sm text-[#2D2A26] font-medium max-w-md mx-auto">
               Our partners are available for confidential consultations regarding admissions systems, brand architecture, or digital stewardship.
             </p>
-            <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3.5">
               <Link
                 href="/connect"
-                className="inline-flex h-10 items-center justify-center gap-1.5 rounded-lg bg-[var(--accent)] px-5 text-xs font-medium text-white hover:bg-[var(--accent-hover)] transition-colors"
+                className="neo-btn text-xs px-6 py-3 w-full sm:w-auto"
               >
                 <span>Initiate a project briefing</span>
                 <ArrowUpRight size={13} />
               </Link>
               <a
                 href="mailto:inquiries@firm.agency"
-                className="inline-flex h-10 items-center justify-center rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-5 text-xs font-medium text-[var(--text-primary)] hover:border-[var(--border-strong)]"
+                className="neo-btn-white text-xs px-6 py-3 w-full sm:w-auto"
               >
                 inquiries@firm.agency
               </a>

@@ -1,14 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Newsreader, Inter, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
-  style: ["normal", "italic"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -27,7 +26,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#F7F4EE",
+  themeColor: "#FF90E8",
   width: "device-width",
   initialScale: 1,
 };
@@ -90,7 +89,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${newsreader.variable} ${inter.variable} ${jetbrainsMono.variable} h-full scroll-smooth antialiased`}
+      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} h-full scroll-smooth antialiased`}
     >
       <head>
         <script
@@ -98,7 +97,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[var(--bg-page)] text-[var(--text-primary)] font-body antialiased selection:bg-[var(--accent)] selection:text-white">
+      <body className="min-h-full flex flex-col bg-[#F4F4F0] text-black font-sans antialiased selection:bg-[#FF90E8] selection:text-black">
         <Navigation />
         <main className="flex-1">{children}</main>
         <Footer />

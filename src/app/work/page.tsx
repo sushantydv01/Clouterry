@@ -26,7 +26,7 @@ export default function WorkArchivePage() {
       : PROJECTS.filter((p) => p.industry === selectedCategory);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-[#F4F4F0]">
       <Container>
         <PageHeader
           badge="OUR WORK"
@@ -37,32 +37,34 @@ export default function WorkArchivePage() {
       </Container>
 
       {/* 3-Tier Credibility Notice Ribbon */}
-      <Section background="subtle">
+      <Section background="surface">
         <div className="max-w-5xl mx-auto space-y-6 text-left">
-          <div className="p-4 sm:p-5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-xs">
+          <div className="p-5 border border-black bg-white shadow-[4px_4px_0_0_#000] flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-xs">
             <div className="flex items-start gap-3">
-              <ShieldCheck size={18} className="text-[var(--accent)] shrink-0 mt-0.5" />
+              <div className="w-8 h-8 rounded-none border border-black bg-[#F1F333] flex items-center justify-center shrink-0">
+                <ShieldCheck size={18} className="text-black stroke-[2.5]" />
+              </div>
               <div>
-                <span className="font-mono text-xs font-semibold text-[var(--accent)] uppercase tracking-wider block">
+                <span className="font-mono text-xs font-bold text-black uppercase tracking-wider block">
                   The Three-Tier Credibility Standard
                 </span>
-                <p className="mt-1 text-[var(--text-secondary)] leading-relaxed">
+                <p className="mt-1 text-[#2D2A26] leading-relaxed">
                   FIRM never fabricates client testimonials or invents fake revenue statistics. All projects are clearly classified into:
-                  <strong className="text-[var(--text-primary)]"> 01 Client Commissions</strong>,
-                  <strong className="text-[var(--text-primary)]"> 02 Strategic Concepts & Studies</strong>, or
-                  <strong className="text-[var(--text-primary)]"> 03 Studio Initiatives</strong>.
+                  <strong className="text-black"> 01 Client Commissions</strong>,
+                  <strong className="text-black"> 02 Strategic Concepts &amp; Studies</strong>, or
+                  <strong className="text-black"> 03 Studio Initiatives</strong>.
                 </p>
               </div>
             </div>
-            <span className="font-mono text-[10px] text-[var(--text-muted)] shrink-0">
+            <span className="border border-black bg-[#55D6BE] px-2.5 py-1 font-mono text-[10px] font-bold text-black uppercase shrink-0 shadow-[2px_2px_0_0_#000]">
               100% Intellectual Honesty
             </span>
           </div>
 
           {/* Interactive Category Filter Tabs */}
           <div className="flex flex-wrap items-center gap-2 pt-2">
-            <span className="font-mono text-xs text-[var(--text-muted)] mr-2 flex items-center gap-1">
-              <Filter size={12} />
+            <span className="font-mono text-xs font-bold text-black mr-2 flex items-center gap-1.5">
+              <Filter size={13} className="stroke-[2.5]" />
               <span>Filter Sector:</span>
             </span>
             {CATEGORIES.map((cat) => {
@@ -72,10 +74,10 @@ export default function WorkArchivePage() {
                   key={cat}
                   type="button"
                   onClick={() => setSelectedCategory(cat)}
-                  className={`rounded-lg px-3.5 py-1.5 text-xs font-mono transition-colors ${
+                  className={`px-3.5 py-1.5 text-xs font-mono border border-black transition-all ${
                     isActive
-                      ? "bg-[var(--accent)] text-white font-medium shadow-2xs"
-                      : "bg-[var(--bg-surface)] border border-[var(--border-hairline)] text-[var(--text-secondary)] hover:border-[var(--border-subtle)] hover:text-[var(--text-primary)]"
+                      ? "bg-[#F1F333] text-black font-bold shadow-[3px_3px_0_0_#000] -translate-x-0.5 -translate-y-0.5"
+                      : "bg-white text-black font-medium shadow-[2px_2px_0_0_#000] hover:bg-[#F4F4F0]"
                   }`}
                 >
                   {cat}
@@ -89,70 +91,75 @@ export default function WorkArchivePage() {
       {/* Project Exhibition Gallery */}
       <Section background="page">
         <div className="max-w-5xl mx-auto space-y-12 text-left">
-          {filteredProjects.map((proj) => (
-            <article
-              key={proj.slug}
-              className="rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-6 sm:p-10 shadow-xs"
-            >
-              <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
-                {/* Left: Case Narrative */}
-                <div className="lg:col-span-5 space-y-4">
-                  <div>
-                    <span className="font-mono text-[10px] text-[var(--accent)] font-semibold uppercase tracking-wider block break-words">
-                      {proj.industry} {"//"} {proj.classification}
-                    </span>
-                    <h2 className="mt-1 font-display text-2xl sm:text-3xl font-medium text-[var(--text-primary)]">
-                      {proj.title}
-                    </h2>
-                    <p className="mt-2 text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
-                      {proj.summary}
-                    </p>
-                  </div>
+          {filteredProjects.map((proj, pIdx) => {
+            const tagColors = ["bg-[#FF90E8]", "bg-[#F1F333]", "bg-[#55D6BE]"];
+            const tagColor = tagColors[pIdx % tagColors.length];
 
-                  <div className="pt-3 border-t border-[var(--border-hairline)] space-y-2">
-                    <span className="font-mono text-[10px] uppercase text-[var(--text-muted)] block">
-                      Connected Capabilities
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {proj.divisions.map((div) => (
-                        <span
-                          key={div}
-                          className="rounded-md bg-[var(--bg-subtle)] border border-[var(--border-hairline)] px-2.5 py-0.5 font-mono text-[10px] text-[var(--text-secondary)]"
-                        >
-                          {div}
-                        </span>
-                      ))}
+            return (
+              <article
+                key={proj.slug}
+                className="border border-black bg-white p-6 sm:p-10 shadow-[6px_6px_0_0_#000]"
+              >
+                <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
+                  {/* Left: Case Narrative */}
+                  <div className="lg:col-span-5 space-y-4">
+                    <div>
+                      <span className={`inline-block border border-black ${tagColor} px-2.5 py-0.5 font-mono text-[10px] font-bold text-black uppercase tracking-wider mb-2 shadow-[2px_2px_0_0_#000]`}>
+                        {proj.industry} {"//"} {proj.classification}
+                      </span>
+                      <h2 className="mt-1 font-display text-2xl sm:text-3xl font-bold text-black">
+                        {proj.title}
+                      </h2>
+                      <p className="mt-2 text-xs sm:text-sm text-[#2D2A26] leading-relaxed">
+                        {proj.summary}
+                      </p>
+                    </div>
+
+                    <div className="pt-3 border-t border-black space-y-2">
+                      <span className="font-mono text-[10px] font-bold uppercase text-black block">
+                        Connected Capabilities
+                      </span>
+                      <div className="flex flex-wrap gap-1.5">
+                        {proj.divisions.map((div) => (
+                          <span
+                            key={div}
+                            className="border border-black bg-[#F4F4F0] px-2 py-0.5 font-mono text-[10px] font-medium text-black"
+                          >
+                            {div}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="pt-2">
+                      <Link
+                        href={`/work/${proj.slug}`}
+                        className="neo-btn text-xs px-5 py-2.5"
+                      >
+                        <span>Read complete retrospective</span>
+                        <ArrowUpRight size={13} />
+                      </Link>
                     </div>
                   </div>
 
-                  <div className="pt-2">
-                    <Link
-                      href={`/work/${proj.slug}`}
-                      className="inline-flex h-10 items-center justify-center gap-1.5 rounded-lg bg-[var(--accent)] px-5 text-xs font-medium text-white hover:bg-[var(--accent-hover)] transition-colors"
-                    >
-                      <span>Read complete retrospective</span>
-                      <ArrowUpRight size={13} />
-                    </Link>
+                  {/* Right: High-Craft Browser Frame Mockup */}
+                  <div className="lg:col-span-7">
+                    <BrowserFrame url={proj.heroMockup.urlText}>
+                      <div className="relative overflow-hidden bg-[#F4F4F0] text-left">
+                        <Image
+                          src={proj.image}
+                          alt={proj.title}
+                          width={1200}
+                          height={675}
+                          className="w-full h-auto object-cover"
+                        />
+                      </div>
+                    </BrowserFrame>
                   </div>
                 </div>
-
-                {/* Right: High-Craft Browser Frame Mockup */}
-                <div className="lg:col-span-7">
-                  <BrowserFrame url={proj.heroMockup.urlText}>
-                    <div className="relative overflow-hidden bg-[var(--bg-page)] text-left">
-                      <Image
-                        src={proj.image}
-                        alt={proj.title}
-                        width={1200}
-                        height={675}
-                        className="w-full h-auto object-cover"
-                      />
-                    </div>
-                  </BrowserFrame>
-                </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </Section>
     </div>

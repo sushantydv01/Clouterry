@@ -14,21 +14,21 @@ export default function BrowserFrame({
 }: BrowserFrameProps) {
   return (
     <div
-      className={`rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] shadow-xs overflow-hidden ${className}`}
+      className={`border border-black bg-white shadow-[4px_4px_0_0_#000] overflow-hidden ${className}`}
     >
-      {/* Browser Chrome Header */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border-hairline)] bg-[var(--bg-subtle)]">
-        {/* Window Traffic Lights */}
-        <div className="flex items-center gap-1.5">
-          <span className="h-2.5 w-2.5 rounded-full bg-[#E56B6F] opacity-75" />
-          <span className="h-2.5 w-2.5 rounded-full bg-[#F4A261] opacity-75" />
-          <span className="h-2.5 w-2.5 rounded-full bg-[#2A9D8F] opacity-75" />
+      {/* Browser Chrome Header with Solid Black Border */}
+      <div className="flex items-center justify-between px-4 py-2.5 border-b border-black bg-[#F4F4F0]">
+        {/* Window Traffic Lights with Black Outlines */}
+        <div className="flex items-center gap-2">
+          <span className="h-3 w-3 rounded-full bg-[#DC341E] border border-black" />
+          <span className="h-3 w-3 rounded-full bg-[#F1F333] border border-black" />
+          <span className="h-3 w-3 rounded-full bg-[#55D6BE] border border-black" />
         </div>
 
-        {/* Address Bar */}
-        <div className="flex items-center gap-2 rounded-md border border-[var(--border-hairline)] bg-[var(--bg-surface)] px-3 py-1 text-[11px] font-mono text-[var(--text-muted)] max-w-xs sm:max-w-md w-full justify-center">
-          <Lock size={10} className="text-[var(--positive)] shrink-0" />
-          <span className="truncate">{url}</span>
+        {/* Address Bar with Solid Black Border */}
+        <div className="flex items-center gap-2 border border-black bg-white px-3 py-1 text-[11px] font-mono text-black max-w-xs sm:max-w-md w-full justify-center shadow-[1px_1px_0_0_#000]">
+          <Lock size={11} className="text-black shrink-0" />
+          <span className="truncate font-semibold">{url}</span>
         </div>
 
         {/* Spacer to balance traffic lights */}
@@ -36,7 +36,7 @@ export default function BrowserFrame({
       </div>
 
       {/* Browser Viewport Content */}
-      <div className="relative w-full overflow-hidden bg-[var(--bg-page)]">
+      <div className="relative w-full overflow-hidden bg-[#F4F4F0]">
         {children}
       </div>
     </div>

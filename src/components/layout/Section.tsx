@@ -5,7 +5,7 @@ interface SectionProps {
   children: React.ReactNode;
   id?: string;
   className?: string;
-  background?: "page" | "surface" | "subtle" | "raised";
+  background?: "page" | "surface" | "subtle" | "pink" | "yellow" | "teal" | "dark";
   withRuledBaseline?: boolean;
   padding?: "tight" | "normal" | "spacious";
   ariaLabel?: string;
@@ -16,30 +16,30 @@ export default function Section({
   id,
   className = "",
   background = "page",
-  withRuledBaseline = false,
   padding = "normal",
   ariaLabel,
 }: SectionProps) {
   const bgClasses = {
-    page: "bg-[var(--bg-page)]",
-    surface: "bg-[var(--bg-surface)]",
-    subtle: "bg-[var(--bg-subtle)]",
-    raised: "bg-[var(--bg-raised)]",
+    page: "bg-[#F4F4F0]",
+    surface: "bg-white",
+    subtle: "bg-[#FAFAF7]",
+    pink: "bg-[#FF90E8]",
+    yellow: "bg-[#F1F333]",
+    teal: "bg-[#55D6BE]",
+    dark: "bg-black text-white",
   };
 
   const padClasses = {
-    tight: "py-12 sm:py-16",
-    normal: "py-20 sm:py-24",
-    spacious: "py-24 sm:py-32",
+    tight: "py-10 sm:py-14",
+    normal: "py-16 sm:py-20",
+    spacious: "py-20 sm:py-28",
   };
 
   return (
     <section
       id={id}
       aria-label={ariaLabel}
-      className={`relative w-full border-t border-[var(--border-hairline)] ${bgClasses[background]} ${padClasses[padding]} ${
-        withRuledBaseline ? "ruled-baseline" : ""
-      } ${className}`}
+      className={`relative w-full border-t border-black ${bgClasses[background]} ${padClasses[padding]} ${className}`}
     >
       <Container>{children}</Container>
     </section>

@@ -18,31 +18,31 @@ export default function PageHeader({
   className = "",
 }: PageHeaderProps) {
   return (
-    <div className={`pt-28 pb-16 sm:pt-36 sm:pb-20 max-w-4xl ${className}`}>
-      {/* Eyebrow / Category Tag */}
+    <div className={`pt-28 pb-12 sm:pt-36 sm:pb-16 max-w-4xl text-left ${className}`}>
+      {/* Neo-Brutalist Eyebrow / Category Tag */}
       {(eyebrow || badge) && (
-        <div className="flex items-center gap-2 mb-4">
+        <div className="flex flex-wrap items-center gap-2 mb-5">
           {badge && (
-            <span className="inline-flex items-center rounded-md border border-[var(--border-hairline)] bg-[var(--bg-surface)] px-2.5 py-0.5 font-mono text-[11px] text-[var(--accent)] font-medium">
+            <span className="inline-flex items-center border border-black bg-[#FF90E8] px-3 py-1 font-mono text-xs font-bold text-black shadow-[2px_2px_0_0_#000]">
               {badge}
             </span>
           )}
           {eyebrow && (
-            <span className="font-mono text-xs uppercase tracking-wider text-[var(--text-muted)] font-medium">
+            <span className="inline-flex items-center border border-black bg-white px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider text-black shadow-[2px_2px_0_0_#000]">
               {eyebrow}
             </span>
           )}
         </div>
       )}
 
-      {/* Main Editorial Headline */}
-      <h1 className="font-display text-4xl font-normal tracking-tight text-[var(--text-primary)] sm:text-5xl md:text-6xl leading-[1.08]">
+      {/* Main Neo-Brutalist Headline */}
+      <h1 className="font-display text-4xl font-bold tracking-tight text-black sm:text-5xl md:text-6xl leading-[1.04]">
         {title}
       </h1>
 
       {/* Narrative Thesis Subhead */}
       {description && (
-        <p className="mt-5 text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl">
+        <p className="mt-6 text-base sm:text-lg text-[#2D2A26] leading-relaxed max-w-2xl font-sans">
           {description}
         </p>
       )}
