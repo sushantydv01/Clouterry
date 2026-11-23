@@ -1,0 +1,47 @@
+# AI Agents & IDE Artifacts (Keep contributors clean)
+AGENTS.md
+CLAUDE.md
+.agent/
+.agents/
+.gemini/
+.antigravity/
+.cursor/
+.cursorrules
+.vscode/
+*.claude*
+*.copilot*
+.ai/
+unslop/
+unslop-story/
+brain/
+.system_generated/
+*.log
+
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Next.js & Turbopack
+/.next/
+/out/
+/build
+/dist
+.turbo
+
+# Environment Variables
+.env*
+!.env.example
+
+# Testing & Coverage
+/coverage
+
+# System & OS
+.DS_Store
+*.pem
+Thumbs.db
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts

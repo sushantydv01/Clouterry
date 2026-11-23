@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+:root {
+  /* Unslop Warm Light Ramp */
+  --bg-page: #f7f4ee;
+  --bg-surface: #ffffff;
+  --bg-subtle: #fdfbf7;
+  --bg-raised: #efe9df;
+  
+  --border-hairline: rgba(31, 27, 22, 0.08);
+  --border-subtle: rgba(31, 27, 22, 0.14);
+  --border-strong: rgba(31, 27, 22, 0.28);
+  
+  --text-primary: #1f1b16;
+  --text-secondary: #5e554a;
+  --text-muted: #7b7266;
+
+  /* Deliberate Clouterry Accent (Used with intention) */
+  --accent: #c22c38;
+  --accent-hover: #a8242f;
+  --accent-subtle: rgba(194, 44, 56, 0.08);
+  --accent-contrast: #ffffff;
+
+  /* Semantic markers */
+  --positive: #16a34a;
+  --positive-subtle: rgba(22, 163, 74, 0.08);
+}
+
+@theme inline {
+  --color-page: var(--bg-page);
+  --color-surface: var(--bg-surface);
+  --color-subtle: var(--bg-subtle);
+  --color-raised: var(--bg-raised);
+
+  --color-border-hairline: var(--border-hairline);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
+
+  --color-ink-primary: var(--text-primary);
+  --color-ink-secondary: var(--text-secondary);
+  --color-ink-muted: var(--text-muted);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-subtle: var(--accent-subtle);
+  --color-accent-contrast: var(--accent-contrast);
+
+  --color-positive: var(--positive);
+  --color-positive-subtle: var(--positive-subtle);
+
+  --font-display: var(--font-newsreader), Georgia, serif;
+  --font-body: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-mono), monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tabular figures for data, metrics, cohorts */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Hairline borders as specified in unslop tokens */
+.hairline {
+  border: 1px solid var(--border-hairline);
+}
+
+.hairline-b {
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.hairline-t {
+  border-top: 1px solid var(--border-hairline);
+}
+
+/* Accessible focus styling adhering to unslop */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
