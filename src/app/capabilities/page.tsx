@@ -16,12 +16,12 @@ export const metadata: Metadata = {
 
 export default function CapabilitiesDirectoryPage() {
   const getAccentBadge = (idx: number) => {
-    const colors = ["bg-[#FF90E8]", "bg-[#55D6BE]", "bg-[#F1F333]", "bg-[#FF90E8]", "bg-[#55D6BE]"];
+    const colors = ["bg-[#ED83A8]", "bg-[#A6D8A1]", "bg-[#F4CF55]", "bg-[#ED83A8]", "bg-[#A6D8A1]"];
     return colors[idx % colors.length];
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#F4F4F0]">
+    <div className="flex flex-col min-h-screen bg-[#F8F6EF]">
       <Container>
         <PageHeader
           badge="CAPABILITIES"
@@ -32,46 +32,46 @@ export default function CapabilitiesDirectoryPage() {
       </Container>
 
       {/* Signature Interactive Tool: The Presence Matrix */}
-      <Section background="surface">
+      <Section background="white">
         <PresenceMatrix />
       </Section>
 
       {/* Division Directory Cards */}
-      <Section background="page">
+      <Section background="cream">
         <div className="max-w-5xl mx-auto text-left">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8 gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8 gap-4">
             <div>
-              <span className="inline-block border border-black bg-[#F1F333] px-3 py-0.5 font-mono text-xs uppercase tracking-wider text-black font-bold shadow-[2px_2px_0_0_#000]">
+              <span className="inline-block border border-[#171717] bg-[#F4CF55] px-3.5 py-1 font-mono text-xs uppercase tracking-wider text-[#171717] font-bold shadow-[2px_2px_0_0_#171717]">
                 Detailed Division Guides
               </span>
-              <h2 className="mt-2 font-display text-2xl sm:text-3xl font-bold text-black">
+              <h2 className="mt-2.5 font-display text-3xl sm:text-4xl font-bold text-[#171717]">
                 Explore individual capability specifications
               </h2>
             </div>
-            <span className="border border-black bg-white px-3 py-1 font-mono text-xs font-bold text-black shadow-[2px_2px_0_0_#000]">
+            <span className="border border-[#171717] bg-white px-3.5 py-1.5 font-mono text-xs font-bold text-[#171717] shadow-[2px_2px_0_0_#171717]">
               5 Dedicated Practices
             </span>
           </div>
 
-          <div className="space-y-5">
+          <div className="space-y-6">
             {SERVICES.map((s, idx) => (
               <div
                 key={s.slug}
-                className="neo-card p-6 sm:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6 shadow-[4px_4px_0_0_#000]"
+                className="neo-card p-6 sm:p-9 flex flex-col md:flex-row md:items-center md:justify-between gap-6 shadow-[5px_5px_0_0_#171717]"
               >
                 <div className="max-w-2xl">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className={`border border-black ${getAccentBadge(idx)} px-2.5 py-0.5 font-mono text-xs font-bold text-black shadow-[1px_1px_0_0_#000]`}>
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
+                    <span className={`border border-[#171717] ${getAccentBadge(idx)} px-3 py-0.5 font-mono text-xs font-bold text-[#171717] shadow-[1px_1px_0_0_#171717]`}>
                       {s.code}
                     </span>
-                    <span className="border border-black bg-[#F4F4F0] px-2 py-0.5 font-mono text-xs text-black font-medium">
+                    <span className="border border-[#171717] bg-[#F8F6EF] px-2.5 py-0.5 font-mono text-xs text-[#171717] font-medium">
                       {s.timeframe}
                     </span>
                   </div>
-                  <h3 className="mt-2 font-display text-2xl font-bold text-black">
+                  <h3 className="mt-2 font-display text-2xl sm:text-3xl font-bold text-[#171717]">
                     {s.title}
                   </h3>
-                  <p className="mt-2 text-xs sm:text-sm text-[#2D2A26] leading-relaxed">
+                  <p className="mt-2 text-xs sm:text-sm text-[#3A3835] leading-relaxed font-sans">
                     {s.subtitle}
                   </p>
                 </div>

@@ -21,23 +21,23 @@ export default function Navigation() {
   const closeMenu = () => setMobileMenuOpen(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-black">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 md:px-8">
-        {/* Brand Wordmark */}
-        <Logo />
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#171717] border-b border-[#171717] text-[#F8F6EF]">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 sm:px-8 md:px-10">
+        {/* Brand Wordmark with dark theme styling */}
+        <Logo theme="dark" withDescriptor={false} />
 
-        {/* Neo-Brutalist Desktop Navigation Links */}
-        <nav className="hidden items-center gap-1.5 md:flex" aria-label="Primary Navigation">
+        {/* Center Desktop Navigation Links */}
+        <nav className="hidden items-center gap-2 md:flex" aria-label="Primary Navigation">
           {NAV_LINKS.map((link) => {
             const isActive = pathname === link.href || pathname.startsWith(link.href + "/");
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3.5 py-1.5 text-xs font-medium font-display transition-all duration-150 ${
+                className={`px-4 py-2 text-sm font-semibold font-display tracking-tight transition-all duration-150 ${
                   isActive
-                    ? "bg-[#F1F333] text-black border border-black shadow-[2px_2px_0_0_#000]"
-                    : "text-black hover:bg-[#FF90E8] hover:border hover:border-black hover:shadow-[2px_2px_0_0_#000]"
+                    ? "bg-[#F4CF55] text-[#171717] border border-[#171717] shadow-[2px_2px_0_0_#ED83A8] -translate-x-0.5 -translate-y-0.5"
+                    : "text-[#F8F6EF] hover:bg-[#ED83A8] hover:text-[#171717] hover:border hover:border-[#171717] hover:shadow-[2px_2px_0_0_#F8F6EF]"
                 }`}
               >
                 {link.label}
@@ -46,14 +46,14 @@ export default function Navigation() {
           })}
         </nav>
 
-        {/* Desktop CTA Action Button */}
+        {/* Right CTA Action Button */}
         <div className="hidden items-center gap-3 md:flex">
           <Link
             href="/connect"
-            className="neo-btn text-xs px-4 py-2"
+            className="neo-btn-pink text-xs px-5 py-2.5 shadow-[3px_3px_0_0_#F8F6EF]"
           >
             <span>Start a project</span>
-            <ArrowUpRight size={13} />
+            <ArrowUpRight size={14} className="stroke-[2.5]" />
           </Link>
         </div>
 
@@ -61,18 +61,18 @@ export default function Navigation() {
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="flex h-9 w-9 items-center justify-center border border-black bg-white text-black transition-all hover:bg-[#F1F333] hover:shadow-[2px_2px_0_0_#000] active:translate-x-0 active:translate-y-0 md:hidden"
+          className="flex h-10 w-10 items-center justify-center border border-[#F8F6EF] bg-[#171717] text-[#F8F6EF] transition-all hover:bg-[#ED83A8] hover:text-[#171717] hover:border-[#171717] md:hidden"
           aria-expanded={mobileMenuOpen}
           aria-label="Toggle navigation menu"
         >
-          {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+          {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
       {/* Mobile Dropdown Drawer */}
       {mobileMenuOpen && (
-        <div className="border-b border-black bg-white px-4 py-4 md:hidden">
-          <nav className="flex flex-col gap-2 font-display">
+        <div className="border-t border-[#3A3835] bg-[#171717] px-6 py-6 md:hidden">
+          <nav className="flex flex-col gap-2.5 font-display">
             {NAV_LINKS.map((link) => {
               const isActive = pathname === link.href || pathname.startsWith(link.href + "/");
               return (
@@ -80,10 +80,10 @@ export default function Navigation() {
                   key={link.href}
                   href={link.href}
                   onClick={closeMenu}
-                  className={`p-2.5 text-sm font-medium border border-black transition-all ${
+                  className={`p-3 text-base font-bold border transition-all ${
                     isActive
-                      ? "bg-[#F1F333] text-black shadow-[2px_2px_0_0_#000]"
-                      : "bg-[#F4F4F0] text-black hover:bg-[#FF90E8]"
+                      ? "bg-[#F4CF55] text-[#171717] border-[#171717] shadow-[3px_3px_0_0_#ED83A8]"
+                      : "border-[#3A3835] bg-[#222222] text-[#F8F6EF] hover:bg-[#ED83A8] hover:text-[#171717]"
                   }`}
                 >
                   {link.label}
@@ -91,19 +91,19 @@ export default function Navigation() {
               );
             })}
 
-            <div className="mt-2 pt-3 border-t border-black flex flex-col gap-2">
+            <div className="mt-4 pt-4 border-t border-[#3A3835] flex flex-col gap-2.5">
               <Link
                 href="/connect"
                 onClick={closeMenu}
-                className="neo-btn text-xs py-2.5 w-full justify-center"
+                className="neo-btn-pink text-xs py-3 w-full justify-center"
               >
                 <span>Start a project</span>
-                <ArrowUpRight size={13} />
+                <ArrowUpRight size={14} className="stroke-[2.5]" />
               </Link>
               <Link
                 href="/faq"
                 onClick={closeMenu}
-                className="neo-btn-white text-xs py-2 w-full justify-center"
+                className="neo-btn-cream text-xs py-2.5 w-full justify-center"
               >
                 Operational FAQ
               </Link>

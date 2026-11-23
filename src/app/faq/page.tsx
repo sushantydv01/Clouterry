@@ -74,7 +74,7 @@ export default function FAQPage() {
     : FAQ_ITEMS.filter((item) => item.category === selectedCategory);
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#F4F4F0]">
+    <div className="flex flex-col min-h-screen bg-[#F8F6EF]">
       <Container>
         <PageHeader
           badge="OPERATIONAL FAQ"
@@ -84,11 +84,11 @@ export default function FAQPage() {
         />
       </Container>
 
-      <Section background="surface">
+      <Section background="cream">
         <div className="max-w-4xl mx-auto text-left">
           {/* Category Tabs */}
-          <div className="flex flex-wrap items-center gap-2 mb-8 pb-4 border-b border-black">
-            <span className="font-mono text-xs font-bold text-black mr-2 flex items-center gap-1.5">
+          <div className="flex flex-wrap items-center gap-2 mb-8 pb-4 border-b border-[#171717]">
+            <span className="font-mono text-xs font-bold text-[#171717] mr-2 flex items-center gap-1.5">
               <Tag size={13} className="stroke-[2.5]" />
               <span>Topic:</span>
             </span>
@@ -98,10 +98,10 @@ export default function FAQPage() {
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-3 py-1.5 text-xs font-mono border border-black transition-all ${
+                  className={`px-3 py-1.5 text-xs font-mono border border-[#171717] transition-all ${
                     active
-                      ? "bg-[#F1F333] text-black font-bold shadow-[3px_3px_0_0_#000] -translate-x-0.5 -translate-y-0.5"
-                      : "bg-white text-black font-medium shadow-[2px_2px_0_0_#000] hover:bg-[#F4F4F0]"
+                      ? "bg-[#F4CF55] text-[#171717] font-bold shadow-[3px_3px_0_0_#171717] -translate-x-0.5 -translate-y-0.5"
+                      : "bg-[#FFFFFF] text-[#171717] font-medium shadow-[2px_2px_0_0_#171717] hover:bg-[#F8F6EF]"
                   }`}
                 >
                   {cat}
@@ -117,25 +117,25 @@ export default function FAQPage() {
               return (
                 <div
                   key={item.q}
-                  className="border border-black bg-white shadow-[4px_4px_0_0_#000] overflow-hidden"
+                  className="border border-[#171717] bg-[#FFFFFF] shadow-[4px_4px_0_0_#171717] overflow-hidden"
                 >
                   <button
                     type="button"
                     onClick={() => toggleItem(idx)}
                     aria-expanded={isOpen}
-                    className="w-full p-6 text-left flex items-center justify-between gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
+                    className="w-full p-6 text-left flex items-center justify-between gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#171717]"
                   >
                     <div>
-                      <span className="inline-block border border-black bg-[#FF90E8] px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-black font-bold shadow-[1px_1px_0_0_#000] mb-2">
+                      <span className="inline-block border border-[#171717] bg-[#ED83A8] px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-[#171717] font-bold shadow-[1px_1px_0_0_#171717] mb-2">
                         {item.category}
                       </span>
-                      <h3 className="font-display text-lg sm:text-xl font-bold text-black">
+                      <h3 className="font-display text-lg sm:text-xl font-bold text-[#171717]">
                         {item.q}
                       </h3>
                     </div>
                     <div
-                      className={`h-8 w-8 rounded-none border border-black bg-[#F1F333] flex items-center justify-center text-black shrink-0 shadow-[2px_2px_0_0_#000] transition-transform duration-200 ${
-                        isOpen ? "rotate-180 bg-[#55D6BE]" : ""
+                      className={`h-8 w-8 rounded-none border border-[#171717] bg-[#F4CF55] flex items-center justify-center text-[#171717] shrink-0 shadow-[2px_2px_0_0_#171717] transition-transform duration-200 ${
+                        isOpen ? "rotate-180 bg-[#A6D8A1]" : ""
                       }`}
                     >
                       <ChevronDown size={16} className="stroke-[2.5]" />
@@ -143,7 +143,7 @@ export default function FAQPage() {
                   </button>
 
                   {isOpen && (
-                    <div className="px-6 pb-6 pt-3 text-xs sm:text-sm text-[#2D2A26] leading-relaxed border-t border-black bg-[#F4F4F0] font-sans">
+                    <div className="px-6 pb-6 pt-3 text-xs sm:text-sm text-[#404040] leading-relaxed border-t border-[#171717] bg-[#F8F6EF] font-sans">
                       <p>{item.a}</p>
                     </div>
                   )}
@@ -153,14 +153,14 @@ export default function FAQPage() {
           </div>
 
           {/* Executive Contact Prompt */}
-          <div className="mt-14 p-8 border border-black bg-[#FF90E8] text-center shadow-[6px_6px_0_0_#000]">
-            <div className="h-10 w-10 border border-black bg-white text-black flex items-center justify-center mx-auto mb-3 shadow-[2px_2px_0_0_#000]">
+          <div className="mt-14 p-8 border border-[#171717] bg-[#ED83A8] text-center shadow-[6px_6px_0_0_#171717]">
+            <div className="h-10 w-10 border border-[#171717] bg-[#FFFFFF] text-[#171717] flex items-center justify-center mx-auto mb-3 shadow-[2px_2px_0_0_#171717]">
               <HelpCircle size={22} className="stroke-[2.5]" />
             </div>
-            <h4 className="font-display text-2xl font-bold text-black">
+            <h4 className="font-display text-2xl font-bold text-[#171717]">
               Have a specific institutional question?
             </h4>
-            <p className="mt-2 text-xs sm:text-sm text-[#2D2A26] font-medium max-w-md mx-auto">
+            <p className="mt-2 text-xs sm:text-sm text-[#171717] font-medium max-w-md mx-auto">
               Our partners are available for confidential consultations regarding admissions systems, brand architecture, or digital stewardship.
             </p>
             <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3.5">

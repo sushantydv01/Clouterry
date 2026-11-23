@@ -5,8 +5,7 @@ interface SectionProps {
   children: React.ReactNode;
   id?: string;
   className?: string;
-  background?: "page" | "surface" | "subtle" | "pink" | "yellow" | "teal" | "dark";
-  withRuledBaseline?: boolean;
+  background?: "cream" | "white" | "dark" | "pink" | "green" | "yellow" | "page" | "surface" | "subtle";
   padding?: "tight" | "normal" | "spacious";
   ariaLabel?: string;
 }
@@ -15,31 +14,33 @@ export default function Section({
   children,
   id,
   className = "",
-  background = "page",
+  background = "cream",
   padding = "normal",
   ariaLabel,
 }: SectionProps) {
-  const bgClasses = {
-    page: "bg-[#F4F4F0]",
-    surface: "bg-white",
-    subtle: "bg-[#FAFAF7]",
-    pink: "bg-[#FF90E8]",
-    yellow: "bg-[#F1F333]",
-    teal: "bg-[#55D6BE]",
-    dark: "bg-black text-white",
+  const bgClasses: Record<string, string> = {
+    cream: "bg-[#F8F6EF] text-[#171717]",
+    page: "bg-[#F8F6EF] text-[#171717]",
+    subtle: "bg-[#F2EFE6] text-[#171717]",
+    white: "bg-white text-[#171717]",
+    surface: "bg-white text-[#171717]",
+    dark: "bg-[#171717] text-[#F8F6EF]",
+    pink: "bg-[#ED83A8] text-[#171717]",
+    green: "bg-[#A6D8A1] text-[#171717]",
+    yellow: "bg-[#F4CF55] text-[#171717]",
   };
 
   const padClasses = {
-    tight: "py-10 sm:py-14",
-    normal: "py-16 sm:py-20",
-    spacious: "py-20 sm:py-28",
+    tight: "py-12 sm:py-16",
+    normal: "py-20 sm:py-24",
+    spacious: "py-24 sm:py-32",
   };
 
   return (
     <section
       id={id}
       aria-label={ariaLabel}
-      className={`relative w-full border-t border-black ${bgClasses[background]} ${padClasses[padding]} ${className}`}
+      className={`relative w-full border-t border-[#171717] ${bgClasses[background] || bgClasses.cream} ${padClasses[padding]} ${className}`}
     >
       <Container>{children}</Container>
     </section>

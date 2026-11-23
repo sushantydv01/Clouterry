@@ -37,8 +37,8 @@ Commercial organizations, institutional admissions, corporate leadership, and pr
 ## Brand Commitments
 
 - Name: FIRM
-- Visual identity: Cheerful Neo-Brutalism (Gumroad-inspired: bold, flat, playful, confident, solid 1px black outlines, candy-coloured surfaces, Space Grotesk typography)
-- Distinctive architectural keystone mark and bold uppercase wordmark.
+- Visual identity: Pop Garden (Professional × Playful) — Midnight Black (`#171717`), Warm Cream (`#F8F6EF`), Rose Pink (`#ED83A8`), Fresh Garden Green (`#A6D8A1`), Butter Yellow (`#F4CF55`).
+- Space Grotesk display typography, crisp 1px borders, solid offset shadows, confident editorial rhythm.
 - Strictly human Git authorship (Sushant Yadav).
 
 ## Evidence on Hand
@@ -50,10 +50,11 @@ Commercial organizations, institutional admissions, corporate leadership, and pr
 
 ## Product Principles
 
-1. Cohesion over fragmentation: Unify brand, code, and distribution.
-2. Honesty in representation: Real retrospective analysis; zero fabricated metrics or fictional testimonials.
-3. Performance and accessibility as commercial prerequisites, not afterthoughts.
-4. Editorial depth: Demonstrate deep industry knowledge through authoritative monographs.
+1. Professional at first glance. Playful on closer inspection. Memorable throughout.
+2. Cohesion over fragmentation: Unify brand, code, and distribution.
+3. Honesty in representation: Real retrospective analysis; zero fabricated metrics or fictional testimonials.
+4. Performance and accessibility as commercial prerequisites, not afterthoughts.
+5. Editorial depth: Demonstrate deep industry knowledge through authoritative monographs.
 
 ## Accessibility & Inclusion
 

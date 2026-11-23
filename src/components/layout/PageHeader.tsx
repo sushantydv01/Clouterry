@@ -18,37 +18,37 @@ export default function PageHeader({
   className = "",
 }: PageHeaderProps) {
   return (
-    <div className={`pt-28 pb-12 sm:pt-36 sm:pb-16 max-w-4xl text-left ${className}`}>
-      {/* Neo-Brutalist Eyebrow / Category Tag */}
+    <div className={`pt-32 pb-14 sm:pt-40 sm:pb-20 max-w-5xl text-left ${className}`}>
+      {/* Pop Garden Eyebrow & Badge Tags */}
       {(eyebrow || badge) && (
-        <div className="flex flex-wrap items-center gap-2 mb-5">
+        <div className="flex flex-wrap items-center gap-2.5 mb-6">
           {badge && (
-            <span className="inline-flex items-center border border-black bg-[#FF90E8] px-3 py-1 font-mono text-xs font-bold text-black shadow-[2px_2px_0_0_#000]">
+            <span className="inline-flex items-center border border-[#171717] bg-[#ED83A8] px-3.5 py-1 font-mono text-xs font-bold text-[#171717] shadow-[2px_2px_0_0_#171717]">
               {badge}
             </span>
           )}
           {eyebrow && (
-            <span className="inline-flex items-center border border-black bg-white px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider text-black shadow-[2px_2px_0_0_#000]">
+            <span className="inline-flex items-center border border-[#171717] bg-white px-3.5 py-1 font-mono text-xs font-bold uppercase tracking-wider text-[#171717] shadow-[2px_2px_0_0_#171717]">
               {eyebrow}
             </span>
           )}
         </div>
       )}
 
-      {/* Main Neo-Brutalist Headline */}
-      <h1 className="font-display text-4xl font-bold tracking-tight text-black sm:text-5xl md:text-6xl leading-[1.04]">
+      {/* Main Confident Space Grotesk Headline */}
+      <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#171717] leading-[1.02]">
         {title}
       </h1>
 
       {/* Narrative Thesis Subhead */}
       {description && (
-        <p className="mt-6 text-base sm:text-lg text-[#2D2A26] leading-relaxed max-w-2xl font-sans">
+        <p className="mt-6 text-lg sm:text-xl text-[#3A3835] leading-relaxed max-w-3xl font-sans">
           {description}
         </p>
       )}
 
       {/* Optional CTAs or meta elements */}
-      {children && <div className="mt-8">{children}</div>}
+      {children && <div className="mt-9">{children}</div>}
     </div>
   );
 }

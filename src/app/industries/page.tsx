@@ -16,12 +16,12 @@ export const metadata: Metadata = {
 
 export default function IndustriesDirectoryPage() {
   const getAccentBadge = (idx: number) => {
-    const colors = ["bg-[#FF90E8]", "bg-[#55D6BE]", "bg-[#F1F333]", "bg-[#FF90E8]", "bg-[#55D6BE]"];
+    const colors = ["bg-[#ED83A8]", "bg-[#A6D8A1]", "bg-[#F4CF55]", "bg-[#ED83A8]", "bg-[#A6D8A1]"];
     return colors[idx % colors.length];
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#F4F4F0]">
+    <div className="flex flex-col min-h-screen bg-[#F8F6EF]">
       <Container>
         <PageHeader
           badge="INDUSTRIES"
@@ -32,23 +32,23 @@ export default function IndustriesDirectoryPage() {
       </Container>
 
       {/* Primary Specialization Spotlight: Education & Schools with School Blueprint */}
-      <Section background="surface">
+      <Section background="cream">
         <SchoolBlueprint />
       </Section>
 
       {/* Industry Sector Directory Cards */}
-      <Section background="page">
+      <Section background="white">
         <div className="max-w-5xl mx-auto text-left">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8 gap-3">
             <div>
-              <span className="inline-block border border-black bg-[#F1F333] px-3 py-0.5 font-mono text-xs uppercase tracking-wider text-black font-bold shadow-[2px_2px_0_0_#000]">
+              <span className="inline-block border border-[#171717] bg-[#F4CF55] px-3 py-0.5 font-mono text-xs uppercase tracking-wider text-[#171717] font-bold shadow-[2px_2px_0_0_#171717]">
                 Sector Practice Guides
               </span>
-              <h2 className="mt-2 font-display text-2xl sm:text-3xl font-bold text-black">
+              <h2 className="mt-2 font-display text-2xl sm:text-3xl font-bold text-[#171717]">
                 Explore individual industry frameworks
               </h2>
             </div>
-            <span className="border border-black bg-white px-3 py-1 font-mono text-xs font-bold text-black shadow-[2px_2px_0_0_#000]">
+            <span className="border border-[#171717] bg-[#FFFFFF] px-3 py-1 font-mono text-xs font-bold text-[#171717] shadow-[2px_2px_0_0_#171717]">
               5 Core Sectors
             </span>
           </div>
@@ -57,22 +57,22 @@ export default function IndustriesDirectoryPage() {
             {INDUSTRIES.map((s, idx) => (
               <div
                 key={s.slug}
-                className="neo-card p-6 sm:p-8 flex flex-col justify-between text-left shadow-[4px_4px_0_0_#000]"
+                className="neo-card p-6 sm:p-8 flex flex-col justify-between text-left shadow-[4px_4px_0_0_#171717]"
               >
                 <div>
-                  <span className={`border border-black ${getAccentBadge(idx)} px-2.5 py-0.5 font-mono text-[10px] text-black font-bold uppercase tracking-wider inline-block shadow-[1px_1px_0_0_#000]`}>
+                  <span className={`border border-[#171717] ${getAccentBadge(idx)} px-2.5 py-0.5 font-mono text-[10px] text-[#171717] font-bold uppercase tracking-wider inline-block shadow-[1px_1px_0_0_#171717]`}>
                     {s.eyebrow}
                   </span>
-                  <h3 className="mt-2 font-display text-2xl font-bold text-black">
+                  <h3 className="mt-2 font-display text-2xl font-bold text-[#171717]">
                     {s.title}
                   </h3>
-                  <p className="mt-2 text-xs sm:text-sm text-[#2D2A26] leading-relaxed">
+                  <p className="mt-2 text-xs sm:text-sm text-[#404040] leading-relaxed">
                     {s.tagline}
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-black flex items-center justify-between text-xs">
-                  <span className="font-mono text-xs font-bold text-[#605C56]">
+                <div className="mt-6 pt-4 border-t border-[#171717] flex items-center justify-between text-xs">
+                  <span className="font-mono text-xs font-bold text-[#666666]">
                     {s.deliverables.length} Deliverables Included
                   </span>
                   <Link
