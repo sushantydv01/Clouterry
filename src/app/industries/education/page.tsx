@@ -1,5 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import PageHeader from "@/components/layout/PageHeader";
 import Section from "@/components/layout/Section";
@@ -67,6 +68,15 @@ export default function EducationPracticePage() {
 
       {/* 03. Signature Interactive Tool: The School Digital Blueprint */}
       <Section background="page">
+        <div className="max-w-5xl mx-auto mb-10 overflow-hidden rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] shadow-xs">
+          <Image
+            src="/images/education/school-blueprint-specimen.webp"
+            alt="The 4-Layer Institutional Architecture for Independent Schools"
+            width={1200}
+            height={675}
+            className="w-full h-auto object-cover"
+          />
+        </div>
         <SchoolBlueprint />
       </Section>
 

@@ -75,11 +75,29 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "FIRM",
+    url: "https://firm.agency",
+    logo: "https://firm.agency/images/brand/brand-identity-specimen.webp",
+    description:
+      "Digital Presence & Growth Firm unifying brand identity, bespoke web platforms, editorial content, and systematic visibility.",
+    email: "inquiries@firm.agency",
+    sameAs: ["https://github.com/sushantydv01/Clouterry"],
+  };
+
   return (
     <html
       lang="en"
       className={`${newsreader.variable} ${inter.variable} ${jetbrainsMono.variable} h-full scroll-smooth antialiased`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-[var(--bg-page)] text-[var(--text-primary)] font-body antialiased selection:bg-[var(--accent)] selection:text-white">
         <Navigation />
         <main className="flex-1">{children}</main>

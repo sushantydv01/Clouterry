@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import Section from "@/components/layout/Section";
 import Container from "@/components/layout/Container";
@@ -6,44 +7,44 @@ import PresenceMatrix from "@/components/interactive/PresenceMatrix";
 import SchoolBlueprint from "@/components/interactive/SchoolBlueprint";
 import BrowserFrame from "@/components/ui/BrowserFrame";
 import { PROJECTS } from "@/data/projects";
-import { ArrowUpRight } from "lucide-react";
+import { ARTICLES } from "@/data/articles";
+import { ArrowUpRight, BookOpen, Clock } from "lucide-react";
 
 export default function Home() {
+  const latestArticles = ARTICLES.slice(0, 3);
+
   return (
     <div className="flex flex-col min-h-screen">
-      {/* ── 01. Hero Section: Asymmetric Editorial Lockup ── */}
+      {/* ── 01. Hero Section: Asymmetric Atelier Lockup with Cinematic Scene ── */}
       <section
-        className="relative pt-32 pb-20 sm:pt-40 sm:pb-28"
+        className="relative pt-32 pb-16 sm:pt-40 sm:pb-24 border-b border-[var(--border-hairline)]"
         aria-label="FIRM Introduction"
       >
         <Container>
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
-            <div className="lg:col-span-8">
-              {/* Eyebrow Status Marker */}
-              <div className="inline-flex items-center gap-2 rounded-md border border-[var(--border-hairline)] bg-[var(--bg-surface)] px-2.5 py-1 text-xs mb-5">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+            {/* Left Column: Thesis & Actions */}
+            <div className="lg:col-span-7 text-left">
+              <div className="inline-flex items-center gap-2 rounded-md border border-[var(--border-hairline)] bg-[var(--bg-surface)] px-2.5 py-1 text-xs mb-6">
                 <span className="h-1.5 w-1.5 rounded-full bg-[var(--positive)]" />
                 <span className="font-mono text-[11px] text-[var(--text-secondary)]">
-                  DIGITAL PRESENCE & GROWTH FIRM // EST. 2026
+                  DIGITAL PRESENCE &amp; GROWTH FIRM // EST. 2026
                 </span>
               </div>
 
-              {/* Massive Newsreader Headline */}
-              <h1 className="font-display text-4xl font-normal tracking-tight text-[var(--text-primary)] sm:text-5xl md:text-6xl lg:text-[4rem] leading-[1.06]">
+              <h1 className="font-display text-4xl font-normal tracking-tight text-[var(--text-primary)] sm:text-5xl md:text-6xl leading-[1.06]">
                 We engineer enduring digital presence for ambitious organizations.
               </h1>
 
-              {/* Thesis Statement */}
-              <p className="mt-6 text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl">
-                From brand identity and bespoke web infrastructure to editorial content and systematic visibility. We eliminate digital fragmentation, unifying your complete digital surface under one disciplined standard.
+              <p className="mt-6 text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed max-w-xl">
+                Unifying brand identity, bespoke Next.js platforms, documentary editorial content, and systematic visibility under one disciplined architectural standard.
               </p>
 
-              {/* Dual Action CTAs */}
               <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <Link
                   href="/connect"
                   className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-[var(--accent)] px-6 text-sm font-medium text-white transition-colors hover:bg-[var(--accent-hover)] shadow-xs"
                 >
-                  <span>Start a project</span>
+                  <span>Start a project briefing</span>
                   <ArrowUpRight size={14} />
                 </Link>
                 <Link
@@ -53,41 +54,38 @@ export default function Home() {
                   Explore capabilities
                 </Link>
               </div>
+
+              {/* Monospace Architectural Tagline */}
+              <div className="mt-10 pt-6 border-t border-[var(--border-hairline)] flex flex-wrap items-center gap-2 sm:gap-6 text-[10px] sm:text-[11px] font-mono text-[var(--text-muted)]">
+                <span>01 BRAND</span>
+                <span>•</span>
+                <span>02 WEB</span>
+                <span>•</span>
+                <span>03 CONTENT</span>
+                <span>•</span>
+                <span>04 GROWTH</span>
+                <span>•</span>
+                <span>05 STEWARDSHIP</span>
+              </div>
             </div>
 
-            {/* Right Column: Strategic Metric Ribbon */}
-            <div className="lg:col-span-4 rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-6 shadow-xs">
-              <span className="font-mono text-xs font-semibold text-[var(--accent)] tracking-tight block">
-                ATELIER BLUEPRINT // 01
-              </span>
-              <p className="mt-2 text-sm font-medium text-[var(--text-primary)]">
-                Unified Presence Architecture
-              </p>
-              <p className="mt-1 text-xs text-[var(--text-secondary)] leading-relaxed">
-                Five connected capabilities working as one continuous system to compound long-term brand equity.
-              </p>
-
-              <div className="mt-5 space-y-2.5 pt-4 border-t border-[var(--border-hairline)] text-xs text-[var(--text-secondary)]">
-                <Link href="/capabilities/brand-identity" className="flex items-center justify-between hover:text-[var(--accent)] transition-colors">
-                  <span>Brand & Identity</span>
-                  <span className="font-mono text-[11px] text-[var(--text-muted)]">Division 01 →</span>
-                </Link>
-                <Link href="/capabilities/web-technology" className="flex items-center justify-between hover:text-[var(--accent)] transition-colors">
-                  <span>Web & Technology</span>
-                  <span className="font-mono text-[11px] text-[var(--text-muted)]">Division 02 →</span>
-                </Link>
-                <Link href="/capabilities/social-content" className="flex items-center justify-between hover:text-[var(--accent)] transition-colors">
-                  <span>Social & Content</span>
-                  <span className="font-mono text-[11px] text-[var(--text-muted)]">Division 03 →</span>
-                </Link>
-                <Link href="/capabilities/marketing-growth" className="flex items-center justify-between hover:text-[var(--accent)] transition-colors">
-                  <span>Marketing & Growth</span>
-                  <span className="font-mono text-[11px] text-[var(--text-muted)]">Division 04 →</span>
-                </Link>
-                <Link href="/capabilities/digital-management" className="flex items-center justify-between hover:text-[var(--accent)] transition-colors">
-                  <span>Digital Management</span>
-                  <span className="font-mono text-[11px] text-[var(--text-muted)]">Division 05 →</span>
-                </Link>
+            {/* Right Column: Sunlit Atelier Photography Visual */}
+            <div className="lg:col-span-5">
+              <div className="relative overflow-hidden rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-2 shadow-sm group">
+                <div className="overflow-hidden rounded-xl">
+                  <Image
+                    src="/images/editorial/atelier-hero.webp"
+                    alt="FIRM Architectural Drafting Atelier — Blueprints, unbleached paper, brass rules, and drafting ink"
+                    width={1792}
+                    height={1024}
+                    priority
+                    className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                  />
+                </div>
+                <div className="p-3 text-left flex items-center justify-between font-mono text-[10px] text-[var(--text-muted)]">
+                  <span>ATELIER BLUEPRINT // 40.7128° N, 74.0060° W</span>
+                  <span className="text-[var(--accent)] font-semibold">STUDIO SPEC 01</span>
+                </div>
               </div>
             </div>
           </div>
@@ -104,7 +102,7 @@ export default function Home() {
             Modern organizations do not lack digital tools. They lack cohesion.
           </h2>
 
-          <div className="mt-6 space-y-4 text-sm text-[var(--text-secondary)] leading-relaxed">
+          <div className="mt-6 space-y-4 text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
             <p>
               Most organizations manage digital presence as an accidental collection of disconnected vendors. A graphic designer builds the logo; a development contractor writes the website; a social media agency posts generic clips; a growth specialist runs ads to pages that fail to convert.
             </p>
@@ -123,10 +121,10 @@ export default function Home() {
       {/* ── 04. Selected Work Exhibition with Browser Previews ── */}
       <Section id="work" background="subtle">
         <div className="max-w-5xl mx-auto text-left">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-10 gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8 gap-3">
             <div>
               <span className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] font-medium">
-                Selected Work & Studies
+                Selected Work &amp; Retrospectives
               </span>
               <h2 className="mt-1 font-display text-3xl font-medium tracking-tight text-[var(--text-primary)] sm:text-4xl">
                 Demonstrated digital architecture
@@ -150,22 +148,22 @@ export default function Home() {
               </span>
             </div>
             <span className="font-mono text-[10px] text-[var(--text-muted)] hidden sm:block">
-              Strategic Concepts & Retrospectives
+              Strategic Concepts &amp; Retrospectives
             </span>
           </div>
 
           {/* Exhibition Project Cards */}
-          <div className="space-y-8">
+          <div className="space-y-10">
             {PROJECTS.map((proj) => (
               <div
                 key={proj.slug}
-                className="rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-6 sm:p-8 shadow-xs"
+                className="rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-4 sm:p-8 shadow-xs"
               >
                 <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
                   {/* Left: Case Context */}
                   <div className="lg:col-span-5 space-y-4">
                     <div>
-                      <span className="font-mono text-[10px] text-[var(--accent)] font-semibold uppercase tracking-wider block">
+                      <span className="font-mono text-[10px] text-[var(--accent)] font-semibold uppercase tracking-wider block break-words">
                         {proj.industry} {"//"} {proj.classification}
                       </span>
                       <h3 className="mt-1.5 font-display text-2xl font-medium text-[var(--text-primary)]">
@@ -206,25 +204,14 @@ export default function Home() {
                   {/* Right: Realistic Browser Frame Preview */}
                   <div className="lg:col-span-7">
                     <BrowserFrame url={proj.heroMockup.urlText}>
-                      <div className="p-6 bg-[var(--bg-page)] text-left">
-                        <span className="font-mono text-[9px] uppercase tracking-wider text-[var(--accent)] font-medium">
-                          {proj.clientType}
-                        </span>
-                        <h4 className="mt-1 font-display text-xl font-medium text-[var(--text-primary)]">
-                          {proj.heroMockup.screenTitle}
-                        </h4>
-                        <p className="mt-1 text-[11px] text-[var(--text-secondary)] leading-relaxed">
-                          {proj.heroMockup.screenSubtitle}
-                        </p>
-
-                        <div className="mt-5 grid grid-cols-3 gap-2 pt-4 border-t border-[var(--border-hairline)]">
-                          {proj.heroMockup.metrics.map((m) => (
-                            <div key={m.label} className="p-2 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-hairline)]">
-                              <span className="font-mono text-[9px] text-[var(--text-muted)] block">{m.label}</span>
-                              <span className="font-mono text-xs font-medium text-[var(--text-primary)] mt-0.5 block">{m.value}</span>
-                            </div>
-                          ))}
-                        </div>
+                      <div className="relative overflow-hidden bg-[var(--bg-page)] text-left">
+                        <Image
+                          src={proj.image}
+                          alt={proj.title}
+                          width={1200}
+                          height={675}
+                          className="w-full h-auto object-cover"
+                        />
                       </div>
                     </BrowserFrame>
                   </div>
@@ -240,8 +227,85 @@ export default function Home() {
         <SchoolBlueprint />
       </Section>
 
-      {/* ── 06. Call to Action: Direct Intake ── */}
+      {/* ── 06. Featured Publications & Insights ── */}
       <Section background="subtle">
+        <div className="max-w-5xl mx-auto text-left">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8 gap-3">
+            <div>
+              <span className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] font-semibold flex items-center gap-1.5">
+                <BookOpen size={13} />
+                <span>FIELD MONOGRAPHS &amp; PERSPECTIVES</span>
+              </span>
+              <h2 className="mt-1 font-display text-3xl font-medium tracking-tight text-[var(--text-primary)] sm:text-4xl">
+                Perspectives on presence &amp; craft
+              </h2>
+            </div>
+            <Link
+              href="/insights"
+              className="text-xs font-medium text-[var(--accent)] hover:underline inline-flex items-center gap-1 self-start sm:self-auto"
+            >
+              <span>Explore all publications</span>
+              <ArrowUpRight size={13} />
+            </Link>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {latestArticles.map((art) => (
+              <article
+                key={art.slug}
+                className="rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-5 flex flex-col justify-between transition-colors hover:border-[var(--border-strong)] group"
+              >
+                <div>
+                  <div className="overflow-hidden rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-page)] mb-3">
+                    <Link href={`/insights/${art.slug}`}>
+                      <Image
+                        src={art.heroImage}
+                        alt={art.title}
+                        width={1200}
+                        height={675}
+                        className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                      />
+                    </Link>
+                  </div>
+
+                  <div className="flex items-center gap-2 font-mono text-[9px] text-[var(--text-muted)] mb-1.5">
+                    <span className="text-[var(--accent)] font-semibold uppercase">{art.category}</span>
+                    <span>•</span>
+                    <span className="inline-flex items-center gap-0.5">
+                      <Clock size={9} />
+                      <span>{art.readingTime}</span>
+                    </span>
+                  </div>
+
+                  <h3 className="font-display text-lg font-medium text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors leading-snug">
+                    <Link href={`/insights/${art.slug}`}>
+                      {art.title}
+                    </Link>
+                  </h3>
+
+                  <p className="mt-2 text-xs text-[var(--text-secondary)] line-clamp-2 leading-relaxed">
+                    {art.excerpt}
+                  </p>
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-[var(--border-hairline)] flex items-center justify-between text-xs">
+                  <span className="font-mono text-[10px] text-[var(--text-muted)]">{art.date}</span>
+                  <Link
+                    href={`/insights/${art.slug}`}
+                    className="font-medium text-[var(--accent)] hover:underline inline-flex items-center gap-1"
+                  >
+                    <span>Read</span>
+                    <ArrowUpRight size={11} />
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* ── 07. Call to Action: Direct Intake ── */}
+      <Section background="page">
         <div className="mx-auto max-w-3xl rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-8 sm:p-12 text-center shadow-xs">
           <span className="font-mono text-xs font-semibold text-[var(--accent)] tracking-tight">
             COMMISSION BRIEFING // 2026
@@ -250,7 +314,7 @@ export default function Home() {
             Ready to unify your digital presence?
           </h2>
           <p className="mt-4 text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed max-w-xl mx-auto">
-            We work with a limited roster of organizations each quarter to ensure senior, unhurried execution on every engagement.
+            We partner with ambitious brands, independent academies, healthcare clinics, and professional firms seeking an enduring digital presence.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import PageHeader from "@/components/layout/PageHeader";
 import Section from "@/components/layout/Section";
@@ -97,7 +98,7 @@ export default function WorkArchivePage() {
                 {/* Left: Case Narrative */}
                 <div className="lg:col-span-5 space-y-4">
                   <div>
-                    <span className="font-mono text-[10px] text-[var(--accent)] font-semibold uppercase tracking-wider block">
+                    <span className="font-mono text-[10px] text-[var(--accent)] font-semibold uppercase tracking-wider block break-words">
                       {proj.industry} {"//"} {proj.classification}
                     </span>
                     <h2 className="mt-1 font-display text-2xl sm:text-3xl font-medium text-[var(--text-primary)]">
@@ -138,25 +139,14 @@ export default function WorkArchivePage() {
                 {/* Right: High-Craft Browser Frame Mockup */}
                 <div className="lg:col-span-7">
                   <BrowserFrame url={proj.heroMockup.urlText}>
-                    <div className="p-6 bg-[var(--bg-page)] text-left">
-                      <span className="font-mono text-[9px] uppercase tracking-wider text-[var(--accent)] font-medium">
-                        {proj.clientType}
-                      </span>
-                      <h3 className="mt-1 font-display text-xl sm:text-2xl font-medium text-[var(--text-primary)]">
-                        {proj.heroMockup.screenTitle}
-                      </h3>
-                      <p className="mt-1 text-xs text-[var(--text-secondary)] leading-relaxed">
-                        {proj.heroMockup.screenSubtitle}
-                      </p>
-
-                      <div className="mt-5 grid grid-cols-3 gap-2 pt-4 border-t border-[var(--border-hairline)]">
-                        {proj.heroMockup.metrics.map((m) => (
-                          <div key={m.label} className="p-2.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-hairline)]">
-                            <span className="font-mono text-[9px] text-[var(--text-muted)] block">{m.label}</span>
-                            <span className="font-mono text-xs font-medium text-[var(--text-primary)] mt-0.5 block">{m.value}</span>
-                          </div>
-                        ))}
-                      </div>
+                    <div className="relative overflow-hidden bg-[var(--bg-page)] text-left">
+                      <Image
+                        src={proj.image}
+                        alt={proj.title}
+                        width={1200}
+                        height={675}
+                        className="w-full h-auto object-cover"
+                      />
                     </div>
                   </BrowserFrame>
                 </div>

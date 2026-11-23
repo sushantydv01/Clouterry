@@ -39,7 +39,7 @@ export default function Navigation() {
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 sm:px-8">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 md:px-8">
         {/* Brand Wordmark */}
         <Logo />
 

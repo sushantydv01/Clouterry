@@ -1,5 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import PageHeader from "@/components/layout/PageHeader";
 import Section from "@/components/layout/Section";
@@ -72,6 +73,16 @@ export default function WebTechnologyPage() {
             <span className="font-mono text-xs text-[var(--text-muted)]">
               Next.js 16 App Router + Turbopack
             </span>
+          </div>
+
+          <div className="mb-8 overflow-hidden rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] shadow-xs">
+            <Image
+              src="/images/web/web-technology-specimen.webp"
+              alt="Next.js 16 App Router Server Component Hierarchy"
+              width={1200}
+              height={675}
+              className="w-full h-auto object-cover"
+            />
           </div>
 
           <BrowserFrame url="firm.agency/architecture">

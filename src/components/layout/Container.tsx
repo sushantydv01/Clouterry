@@ -18,7 +18,7 @@ export default function Container({
   };
 
   return (
-    <div className={`mx-auto px-6 sm:px-8 w-full ${sizeClasses[size]} ${className}`}>
+    <div className={`mx-auto px-4 sm:px-6 md:px-8 w-full ${sizeClasses[size]} ${className}`}>
       {children}
     </div>
   );

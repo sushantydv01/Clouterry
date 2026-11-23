@@ -1,0 +1,67 @@
+
+      <svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(31, 27, 22, 0.12)" stroke-width="0.75"/>
+          </pattern>
+        </defs>
+
+        <rect width="1200" height="675" fill="#F7F4EE" />
+        <rect width="1200" height="675" fill="url(#grid)" />
+
+        <g transform="translate(80, 60)">
+          <text x="0" y="16" font-family="monospace" font-size="12" fill="#B84A29" font-weight="600" letter-spacing="1.5">ESSAY 03 // ENGINEERING STANDARDS</text>
+          <text x="0" y="58" font-family="serif" font-size="34" fill="#1F1B16" font-weight="500">Why Website Performance Is a Business Requirement</text>
+          <text x="0" y="90" font-family="sans-serif" font-size="14" fill="#5E554A">Core Web Vitals, App Router Speed, and Conversion Economics</text>
+          <line x1="0" y1="110" x2="1040" y2="110" stroke="rgba(31, 27, 22, 0.12)" stroke-width="1.5" />
+        </g>
+
+        
+        <g transform="translate(80, 200)">
+          <rect x="0" y="0" width="235" height="180" rx="12" fill="#FFFFFF" stroke="rgba(31, 27, 22, 0.12)" />
+          <text x="24" y="36" font-family="monospace" font-size="11" fill="#7B7266">LARGEST CONTENTFUL PAINT</text>
+          <text x="24" y="90" font-family="serif" font-size="44" fill="#1E6B42" font-weight="600">0.78s</text>
+          <rect x="24" y="115" width="90" height="22" rx="4" fill="rgba(30,107,66,0.1)" />
+          <text x="32" y="130" font-family="monospace" font-size="10" fill="#1E6B42">GOOD (&lt; 1.2s)</text>
+          <text x="24" y="156" font-family="sans-serif" font-size="11" fill="#7B7266">Turbopack Static SSG</text>
+
+          <rect x="260" y="0" width="235" height="180" rx="12" fill="#FFFFFF" stroke="rgba(31, 27, 22, 0.12)" />
+          <text x="24" y="36" font-family="monospace" font-size="11" fill="#7B7266">INTERACTION TO NEXT PAINT</text>
+          <text x="24" y="90" font-family="serif" font-size="44" fill="#1E6B42" font-weight="600">38ms</text>
+          <rect x="24" y="115" width="90" height="22" rx="4" fill="rgba(30,107,66,0.1)" />
+          <text x="32" y="130" font-family="monospace" font-size="10" fill="#1E6B42">GOOD (&lt; 200ms)</text>
+          <text x="24" y="156" font-family="sans-serif" font-size="11" fill="#7B7266">React 19 Zero-Jank</text>
+
+          <rect x="520" y="0" width="235" height="180" rx="12" fill="#FFFFFF" stroke="rgba(31, 27, 22, 0.12)" />
+          <text x="24" y="36" font-family="monospace" font-size="11" fill="#7B7266">CUMULATIVE LAYOUT SHIFT</text>
+          <text x="24" y="90" font-family="serif" font-size="44" fill="#1E6B42" font-weight="600">0.000</text>
+          <rect x="24" y="115" width="70" height="22" rx="4" fill="rgba(30,107,66,0.1)" />
+          <text x="32" y="130" font-family="monospace" font-size="10" fill="#1E6B42">PERFECT</text>
+          <text x="24" y="156" font-family="sans-serif" font-size="11" fill="#7B7266">Strict Sizing Tokens</text>
+
+          <rect x="780" y="0" width="260" height="180" rx="12" fill="#FFFFFF" stroke="#B84A29" stroke-width="2" />
+          <text x="24" y="36" font-family="monospace" font-size="11" fill="#B84A29">LIGHTHOUSE SCORE</text>
+          <text x="24" y="90" font-family="serif" font-size="48" fill="#1F1B16" font-weight="600">100/100</text>
+          <text x="24" y="125" font-family="sans-serif" font-size="12" fill="#5E554A">Perf: 100 • A11y: 100 • SEO: 100</text>
+          <text x="24" y="154" font-family="monospace" font-size="10" fill="#1E6B42">● ZERO RUNTIME PENALTY</text>
+
+          <g transform="translate(0, 205)">
+            <rect x="0" y="0" width="1040" height="160" rx="12" fill="#FFFFFF" stroke="rgba(31, 27, 22, 0.12)" />
+            <text x="28" y="36" font-family="monospace" font-size="11" fill="#5E554A">SERVER RESPONSE TIME (TTFB) UNDER CONCURRENT CONVERSION PEAK</text>
+            <line x1="28" y1="120" x2="1012" y2="120" stroke="rgba(31, 27, 22, 0.12)" />
+            <line x1="28" y1="70" x2="1012" y2="70" stroke="rgba(31, 27, 22, 0.12)" stroke-dasharray="3,3" />
+            
+            <polyline fill="none" stroke="#B84A29" stroke-width="2.5" points="
+              28,110 150,105 280,108 410,75 540,78 670,72 800,74 930,71 1012,70
+            " />
+            <text x="920" y="60" font-family="monospace" font-size="11" fill="#B84A29" font-weight="600">32ms Global Edge</text>
+          </g>
+        </g>
+      
+
+        <g transform="translate(80, 630)">
+          <text x="0" y="0" font-family="monospace" font-size="10" fill="#7B7266">FIRM ATELIER ARCHIVE // SPECIFICATION REF: 40.7128° N, 74.0060° W</text>
+          <text x="920" y="0" font-family="monospace" font-size="10" fill="#7B7266">APPROVED // PRODUCTION</text>
+        </g>
+      </svg>
+    

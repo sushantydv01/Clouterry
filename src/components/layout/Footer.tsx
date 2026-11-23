@@ -6,11 +6,11 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-[var(--border-hairline)] bg-[var(--bg-page)] px-6 pt-16 pb-12 text-[var(--text-primary)]">
+    <footer className="border-t border-[var(--border-hairline)] bg-[var(--bg-page)] px-4 sm:px-6 md:px-8 pt-16 pb-12 text-[var(--text-primary)]">
       <div className="mx-auto max-w-6xl">
-        <div className="grid gap-10 md:grid-cols-12 pb-12 border-b border-[var(--border-hairline)]">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8 pb-12 border-b border-[var(--border-hairline)]">
           {/* Col 1: Wordmark & Purpose Statement */}
-          <div className="md:col-span-4 flex flex-col items-start gap-4">
+          <div className="sm:col-span-2 lg:col-span-4 flex flex-col items-start gap-4">
             <Logo withDescriptor={true} />
             <p className="mt-2 text-xs text-[var(--text-secondary)] leading-relaxed max-w-sm">
               FIRM is a digital presence and growth consultancy. We engineer cohesive brand identities, modern web infrastructure, and systematic visibility for organizations where reputation matters.
@@ -22,7 +22,7 @@ export default function Footer() {
           </div>
 
           {/* Col 2: The Firm */}
-          <div className="md:col-span-2 flex flex-col gap-2.5 text-xs">
+          <div className="lg:col-span-2 flex flex-col gap-2.5 text-xs">
             <p className="font-mono text-[11px] uppercase tracking-wider text-[var(--text-muted)] font-medium mb-1">
               The Firm
             </p>
@@ -36,26 +36,26 @@ export default function Footer() {
               Our Approach
             </Link>
             <Link href="/firm#team" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
-              Leadership & Team
+              Leadership &amp; Team
             </Link>
           </div>
 
           {/* Col 3: Capabilities */}
-          <div className="md:col-span-2 flex flex-col gap-2.5 text-xs">
+          <div className="lg:col-span-2 flex flex-col gap-2.5 text-xs">
             <p className="font-mono text-[11px] uppercase tracking-wider text-[var(--text-muted)] font-medium mb-1">
               Capabilities
             </p>
             <Link href="/capabilities#brand" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
-              Brand & Identity
+              Brand &amp; Identity
             </Link>
             <Link href="/capabilities#web" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
-              Web & Technology
+              Web &amp; Technology
             </Link>
             <Link href="/capabilities#social" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
-              Social Media & Content
+              Social Media &amp; Content
             </Link>
             <Link href="/capabilities#marketing" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
-              Marketing & Growth
+              Marketing &amp; Growth
             </Link>
             <Link href="/capabilities#management" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
               Digital Management
@@ -63,29 +63,29 @@ export default function Footer() {
           </div>
 
           {/* Col 4: Industries */}
-          <div className="md:col-span-2 flex flex-col gap-2.5 text-xs">
+          <div className="lg:col-span-2 flex flex-col gap-2.5 text-xs">
             <p className="font-mono text-[11px] uppercase tracking-wider text-[var(--text-muted)] font-medium mb-1">
               Industries
             </p>
             <Link href="/industries#education" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
-              Education & Schools
+              Education &amp; Schools
             </Link>
             <Link href="/industries#healthcare" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
-              Healthcare & Medical
+              Healthcare &amp; Medical
             </Link>
             <Link href="/industries#professional" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
               Professional Services
             </Link>
             <Link href="/industries#retail" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
-              Retail & E-commerce
+              Retail &amp; E-commerce
             </Link>
             <Link href="/industries#startups" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
-              Startups & Ventures
+              Startups &amp; Ventures
             </Link>
           </div>
 
           {/* Col 5: Connect & Legal */}
-          <div className="md:col-span-2 flex flex-col gap-2.5 text-xs">
+          <div className="lg:col-span-2 flex flex-col gap-2.5 text-xs">
             <p className="font-mono text-[11px] uppercase tracking-wider text-[var(--text-muted)] font-medium mb-1">
               Connect
             </p>

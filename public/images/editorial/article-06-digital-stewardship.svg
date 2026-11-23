@@ -1,0 +1,61 @@
+
+      <svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(31, 27, 22, 0.12)" stroke-width="0.75"/>
+          </pattern>
+        </defs>
+
+        <rect width="1200" height="675" fill="#F7F4EE" />
+        <rect width="1200" height="675" fill="url(#grid)" />
+
+        <g transform="translate(80, 60)">
+          <text x="0" y="16" font-family="monospace" font-size="12" fill="#B84A29" font-weight="600" letter-spacing="1.5">ESSAY 06 // LONG-TERM STEWARDSHIP</text>
+          <text x="0" y="58" font-family="serif" font-size="34" fill="#1F1B16" font-weight="500">Digital Stewardship: What Happens After a Website Launch?</text>
+          <text x="0" y="90" font-family="sans-serif" font-size="14" fill="#5E554A">Preventing Technical Debt, Security Degradation, and Performance Decay</text>
+          <line x1="0" y1="110" x2="1040" y2="110" stroke="rgba(31, 27, 22, 0.12)" stroke-width="1.5" />
+        </g>
+
+        
+        <g transform="translate(100, 200)">
+          <rect x="0" y="0" width="1000" height="380" rx="16" fill="#FFFFFF" stroke="rgba(31, 27, 22, 0.12)" />
+
+          <g transform="translate(36, 36)">
+            <text x="0" y="16" font-family="monospace" font-size="11" fill="#B84A29" font-weight="600">STEWARDSHIP TELEMETRY // 24/7 INFRASTRUCTURE LOG</text>
+            <text x="0" y="44" font-family="serif" font-size="24" fill="#1F1B16">Operational Runbook &amp; Continuous Health</text>
+          </g>
+
+          <g transform="translate(36, 110)">
+            <rect x="0" y="0" width="280" height="220" rx="12" fill="#F7F4EE" stroke="rgba(31, 27, 22, 0.12)" />
+            <text x="24" y="32" font-family="monospace" font-size="11" fill="#7B7266">ANNUAL PLATFORM AVAILABILITY</text>
+            <text x="24" y="80" font-family="serif" font-size="44" fill="#1E6B42" font-weight="600">99.98%</text>
+            <text x="24" y="115" font-family="sans-serif" font-size="12" fill="#5E554A">Edge CDN, Multi-Region Failover, Zero Downtime SSG Deploys</text>
+            <rect x="24" y="150" width="232" height="6" rx="3" fill="#E2DDD5" />
+            <rect x="24" y="150" width="228" height="6" rx="3" fill="#1E6B42" />
+            <text x="24" y="180" font-family="monospace" font-size="10" fill="#1E6B42">● HEALTHY // 0 INCIDENTS Q4</text>
+
+            <rect x="310" y="0" width="280" height="220" rx="12" fill="#F7F4EE" stroke="rgba(31, 27, 22, 0.12)" />
+            <text x="24" y="32" font-family="monospace" font-size="11" fill="#7B7266">VULNERABILITY AUDITING</text>
+            <text x="24" y="80" font-family="serif" font-size="44" fill="#1F1B16" font-weight="600">0 Alerts</text>
+            <text x="24" y="115" font-family="sans-serif" font-size="12" fill="#5E554A">Weekly automated npm audit, Next.js security patch cycle</text>
+            <rect x="24" y="150" width="232" height="6" rx="3" fill="#E2DDD5" />
+            <rect x="24" y="150" width="232" height="6" rx="3" fill="#B84A29" />
+            <text x="24" y="180" font-family="monospace" font-size="10" fill="#B84A29">● CONTINUOUS SECURITY CADENCE</text>
+
+            <rect x="620" y="0" width="280" height="220" rx="12" fill="#F7F4EE" stroke="rgba(31, 27, 22, 0.12)" />
+            <text x="24" y="32" font-family="monospace" font-size="11" fill="#7B7266">PERFORMANCE DECAY PREVENTION</text>
+            <text x="24" y="80" font-family="serif" font-size="44" fill="#1F1B16" font-weight="600">&lt; 0.05%</text>
+            <text x="24" y="115" font-family="sans-serif" font-size="12" fill="#5E554A">Automated Lighthouse CI regression gates on every git merge</text>
+            <rect x="24" y="150" width="232" height="6" rx="3" fill="#E2DDD5" />
+            <rect x="24" y="150" width="220" height="6" rx="3" fill="#1E6B42" />
+            <text x="24" y="180" font-family="monospace" font-size="10" fill="#1E6B42">● BUDGET LOCK: &lt; 100KB FIRST LOAD</text>
+          </g>
+        </g>
+      
+
+        <g transform="translate(80, 630)">
+          <text x="0" y="0" font-family="monospace" font-size="10" fill="#7B7266">FIRM ATELIER ARCHIVE // SPECIFICATION REF: 40.7128° N, 74.0060° W</text>
+          <text x="920" y="0" font-family="monospace" font-size="10" fill="#7B7266">APPROVED // PRODUCTION</text>
+        </g>
+      </svg>
+    

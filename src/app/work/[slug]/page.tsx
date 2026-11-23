@@ -1,6 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import PageHeader from "@/components/layout/PageHeader";
 import Section from "@/components/layout/Section";
@@ -84,27 +85,15 @@ export default async function CaseStudyPage({ params }: Props) {
           </h2>
 
           <BrowserFrame url={project.heroMockup.urlText}>
-            <div className="p-8 sm:p-14 bg-[var(--bg-page)] text-left">
-              <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--accent)] font-semibold">
-                {project.clientType}
-              </span>
-              <h3 className="mt-2 font-display text-3xl sm:text-5xl font-normal text-[var(--text-primary)] max-w-2xl">
-                {project.heroMockup.screenTitle}
-              </h3>
-              <p className="mt-3 text-xs sm:text-base text-[var(--text-secondary)] leading-relaxed max-w-xl">
-                {project.heroMockup.screenSubtitle}
-              </p>
-
-              <div className="mt-10 grid grid-cols-3 gap-3 pt-6 border-t border-[var(--border-hairline)]">
-                {project.heroMockup.metrics.map((m) => (
-                  <div key={m.label} className="p-3 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-hairline)]">
-                    <span className="font-mono text-[10px] text-[var(--text-muted)] block">{m.label}</span>
-                    <span className="font-mono text-sm sm:text-base font-medium text-[var(--text-primary)] mt-1 block">
-                      {m.value}
-                    </span>
-                  </div>
-                ))}
-              </div>
+            <div className="relative overflow-hidden bg-[var(--bg-page)] text-left">
+              <Image
+                src={project.image}
+                alt={project.title}
+                width={1200}
+                height={675}
+                priority
+                className="w-full h-auto object-cover"
+              />
             </div>
           </BrowserFrame>
         </div>

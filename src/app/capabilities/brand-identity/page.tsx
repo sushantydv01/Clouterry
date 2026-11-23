@@ -1,5 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import PageHeader from "@/components/layout/PageHeader";
 import Section from "@/components/layout/Section";
@@ -93,8 +94,18 @@ export default function BrandIdentityPage() {
             Visual Demonstration
           </span>
           <h2 className="mt-2 font-display text-2xl sm:text-3xl font-medium tracking-tight text-[var(--text-primary)] mb-6">
-            Typographic specimens & token discipline
+            Typographic specimens &amp; token discipline
           </h2>
+
+          <div className="mb-6 overflow-hidden rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] shadow-xs">
+            <Image
+              src="/images/brand/brand-identity-specimen.webp"
+              alt="FIRM Brand & Identity Architecture Specimen"
+              width={1200}
+              height={675}
+              className="w-full h-auto object-cover"
+            />
+          </div>
 
           <div className="rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-6 sm:p-8 shadow-xs">
             {/* Specimen Header */}

@@ -1,0 +1,57 @@
+
+      <svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(31, 27, 22, 0.12)" stroke-width="0.75"/>
+          </pattern>
+        </defs>
+        <rect width="1200" height="675" fill="#F7F4EE" />
+        <rect width="1200" height="675" fill="url(#grid)" />
+        <g transform="translate(80, 60)">
+          <text x="0" y="16" font-family="monospace" font-size="12" fill="#B84A29" font-weight="600" letter-spacing="1.5">CAPABILITY // DIVISION 02 // WEB &amp; TECHNOLOGY</text>
+          <text x="0" y="58" font-family="serif" font-size="34" fill="#1F1B16" font-weight="500">Next.js 16 App Router Architecture &amp; React 19 RSC Hierarchy</text>
+          <text x="0" y="90" font-family="sans-serif" font-size="14" fill="#5E554A">Zero-Jank Hydration, Edge Prerendering, and Sub-600ms SSG Builds</text>
+          <line x1="0" y1="110" x2="1040" y2="110" stroke="rgba(31, 27, 22, 0.12)" stroke-width="1.5" />
+        </g>
+        
+      <g transform="translate(80, 200)">
+        <rect x="0" y="0" width="1040" height="380" rx="16" fill="#FFFFFF" stroke="rgba(31, 27, 22, 0.12)" />
+        <text x="36" y="44" font-family="monospace" font-size="11" fill="#B84A29" font-weight="600">APP ROUTER SERVER COMPONENT COMPOSITION TREE</text>
+        
+        <g transform="translate(36, 75)">
+          <rect x="360" y="0" width="280" height="50" rx="8" fill="#F7F4EE" stroke="#B84A29" stroke-width="1.5" />
+          <text x="380" y="30" font-family="monospace" font-size="12" fill="#1F1B16">app/layout.tsx [Server Root]</text>
+
+          <line x1="500" y1="50" x2="500" y2="85" stroke="#B84A29" stroke-width="2" />
+          <line x1="220" y1="85" x2="780" y2="85" stroke="#B84A29" stroke-width="2" />
+
+          <line x1="220" y1="85" x2="220" y2="115" stroke="#B84A29" stroke-width="2" />
+          <rect x="80" y="115" width="280" height="60" rx="8" fill="#F7F4EE" stroke="rgba(31, 27, 22, 0.12)" />
+          <text x="100" y="140" font-family="monospace" font-size="11" fill="#1F1B16">Navigation.tsx [Client Leaf]</text>
+          <text x="100" y="158" font-family="monospace" font-size="10" fill="#1E6B42">● Drawer State Only (4.2KB)</text>
+
+          <line x1="500" y1="85" x2="500" y2="115" stroke="#B84A29" stroke-width="2" />
+          <rect x="360" y="115" width="280" height="60" rx="8" fill="#F7F4EE" stroke="rgba(31, 27, 22, 0.12)" />
+          <text x="380" y="140" font-family="monospace" font-size="11" fill="#1F1B16">page.tsx [Static SSG View]</text>
+          <text x="380" y="158" font-family="monospace" font-size="10" fill="#1E6B42">● 0KB JS Runtime Penalty</text>
+
+          <line x1="780" y1="85" x2="780" y2="115" stroke="#B84A29" stroke-width="2" />
+          <rect x="640" y="115" width="280" height="60" rx="8" fill="#F7F4EE" stroke="rgba(31, 27, 22, 0.12)" />
+          <text x="660" y="140" font-family="monospace" font-size="11" fill="#1F1B16">Footer.tsx [Server Leaf]</text>
+          <text x="660" y="158" font-family="monospace" font-size="10" fill="#1E6B42">● Pure Static HTML Output</text>
+        </g>
+
+        <g transform="translate(36, 280)">
+          <rect x="0" y="0" width="968" height="65" rx="8" fill="#F7F4EE" />
+          <text x="30" y="38" font-family="serif" font-size="22" font-weight="600" fill="#1E6B42">591ms</text>
+          <text x="110" y="38" font-family="monospace" font-size="11" fill="#7B7266">TURBOPACK 25/25 SSG BUILD DURATION</text>
+          <text x="600" y="38" font-family="monospace" font-size="11" fill="#B84A29">ZERO FLASH OF UNSTYLED CONTENT (FOUC)</text>
+        </g>
+      </g>
+    
+        <g transform="translate(80, 630)">
+          <text x="0" y="0" font-family="monospace" font-size="10" fill="#7B7266">FIRM ATELIER ARCHIVE // SPECIFICATION REF: 40.7128° N, 74.0060° W</text>
+          <text x="920" y="0" font-family="monospace" font-size="10" fill="#7B7266">APPROVED // PRODUCTION</text>
+        </g>
+      </svg>
+    
