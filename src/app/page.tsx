@@ -2,7 +2,11 @@ import React from "react";
 import Link from "next/link";
 import Section from "@/components/layout/Section";
 import Container from "@/components/layout/Container";
-import { ArrowUpRight, Layers, Globe, Share2, TrendingUp, ShieldCheck } from "lucide-react";
+import PresenceMatrix from "@/components/interactive/PresenceMatrix";
+import SchoolBlueprint from "@/components/interactive/SchoolBlueprint";
+import BrowserFrame from "@/components/ui/BrowserFrame";
+import { PROJECTS } from "@/data/projects";
+import { ArrowUpRight } from "lucide-react";
 
 export default function Home() {
   return (
@@ -64,26 +68,26 @@ export default function Home() {
               </p>
 
               <div className="mt-5 space-y-2.5 pt-4 border-t border-[var(--border-hairline)] text-xs text-[var(--text-secondary)]">
-                <div className="flex items-center justify-between">
+                <Link href="/capabilities/brand-identity" className="flex items-center justify-between hover:text-[var(--accent)] transition-colors">
                   <span>Brand & Identity</span>
-                  <span className="font-mono text-[11px] text-[var(--text-muted)]">Division 01</span>
-                </div>
-                <div className="flex items-center justify-between">
+                  <span className="font-mono text-[11px] text-[var(--text-muted)]">Division 01 →</span>
+                </Link>
+                <Link href="/capabilities/web-technology" className="flex items-center justify-between hover:text-[var(--accent)] transition-colors">
                   <span>Web & Technology</span>
-                  <span className="font-mono text-[11px] text-[var(--text-muted)]">Division 02</span>
-                </div>
-                <div className="flex items-center justify-between">
+                  <span className="font-mono text-[11px] text-[var(--text-muted)]">Division 02 →</span>
+                </Link>
+                <Link href="/capabilities/social-content" className="flex items-center justify-between hover:text-[var(--accent)] transition-colors">
                   <span>Social & Content</span>
-                  <span className="font-mono text-[11px] text-[var(--text-muted)]">Division 03</span>
-                </div>
-                <div className="flex items-center justify-between">
+                  <span className="font-mono text-[11px] text-[var(--text-muted)]">Division 03 →</span>
+                </Link>
+                <Link href="/capabilities/marketing-growth" className="flex items-center justify-between hover:text-[var(--accent)] transition-colors">
                   <span>Marketing & Growth</span>
-                  <span className="font-mono text-[11px] text-[var(--text-muted)]">Division 04</span>
-                </div>
-                <div className="flex items-center justify-between">
+                  <span className="font-mono text-[11px] text-[var(--text-muted)]">Division 04 →</span>
+                </Link>
+                <Link href="/capabilities/digital-management" className="flex items-center justify-between hover:text-[var(--accent)] transition-colors">
                   <span>Digital Management</span>
-                  <span className="font-mono text-[11px] text-[var(--text-muted)]">Division 05</span>
-                </div>
+                  <span className="font-mono text-[11px] text-[var(--text-muted)]">Division 05 →</span>
+                </Link>
               </div>
             </div>
           </div>
@@ -111,217 +115,133 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ── 03. Capabilities Grid: The 5 Core Divisions ── */}
-      <Section id="capabilities" background="page">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between mb-12">
-          <div className="max-w-xl">
-            <p className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] font-medium">
-              Core Capabilities
-            </p>
-            <h2 className="mt-2 font-display text-3xl font-medium tracking-tight text-[var(--text-primary)] sm:text-4xl">
-              Five connected disciplines
-            </h2>
-          </div>
-          <Link
-            href="/capabilities"
-            className="text-xs font-medium text-[var(--accent)] hover:underline inline-flex items-center gap-1"
-          >
-            <span>View all capability specifications</span>
-            <ArrowUpRight size={12} />
-          </Link>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {/* Capability 01 */}
-          <div className="rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-6 flex flex-col justify-between">
-            <div>
-              <div className="h-9 w-9 rounded-lg bg-[var(--bg-raised)] flex items-center justify-center text-[var(--text-primary)] mb-4">
-                <Layers size={18} />
-              </div>
-              <span className="font-mono text-[11px] text-[var(--accent)] font-semibold">01 // IDENTITY</span>
-              <h3 className="mt-2 font-display text-xl font-medium text-[var(--text-primary)]">
-                Brand & Identity
-              </h3>
-              <p className="mt-2 text-xs text-[var(--text-secondary)] leading-relaxed">
-                Strategic positioning, typography systems, comprehensive design tokens, and digital-first brand guidelines.
-              </p>
-            </div>
-            <div className="mt-6 pt-4 border-t border-[var(--border-hairline)] flex items-center justify-between text-[11px] font-mono text-[var(--text-muted)]">
-              <span>Sprint: 4–6 Weeks</span>
-              <Link href="/capabilities#brand" className="text-[var(--text-primary)] hover:text-[var(--accent)]">
-                Explore →
-              </Link>
-            </div>
-          </div>
-
-          {/* Capability 02 */}
-          <div className="rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-6 flex flex-col justify-between">
-            <div>
-              <div className="h-9 w-9 rounded-lg bg-[var(--bg-raised)] flex items-center justify-center text-[var(--text-primary)] mb-4">
-                <Globe size={18} />
-              </div>
-              <span className="font-mono text-[11px] text-[var(--accent)] font-semibold">02 // ENGINEERING</span>
-              <h3 className="mt-2 font-display text-xl font-medium text-[var(--text-primary)]">
-                Web & Technology
-              </h3>
-              <p className="mt-2 text-xs text-[var(--text-secondary)] leading-relaxed">
-                High-performance Next.js App Router platforms, WCAG 2.1 AA accessibility, and bespoke admissions & client portals.
-              </p>
-            </div>
-            <div className="mt-6 pt-4 border-t border-[var(--border-hairline)] flex items-center justify-between text-[11px] font-mono text-[var(--text-muted)]">
-              <span>Sprint: 6–10 Weeks</span>
-              <Link href="/capabilities#web" className="text-[var(--text-primary)] hover:text-[var(--accent)]">
-                Explore →
-              </Link>
-            </div>
-          </div>
-
-          {/* Capability 03 */}
-          <div className="rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-6 flex flex-col justify-between">
-            <div>
-              <div className="h-9 w-9 rounded-lg bg-[var(--bg-raised)] flex items-center justify-center text-[var(--text-primary)] mb-4">
-                <Share2 size={18} />
-              </div>
-              <span className="font-mono text-[11px] text-[var(--accent)] font-semibold">03 // MEDIA</span>
-              <h3 className="mt-2 font-display text-xl font-medium text-[var(--text-primary)]">
-                Social & Content
-              </h3>
-              <p className="mt-2 text-xs text-[var(--text-secondary)] leading-relaxed">
-                Disciplined editorial video production, photography art direction, and high-retention narrative content.
-              </p>
-            </div>
-            <div className="mt-6 pt-4 border-t border-[var(--border-hairline)] flex items-center justify-between text-[11px] font-mono text-[var(--text-muted)]">
-              <span>Cadence: Monthly</span>
-              <Link href="/capabilities#social" className="text-[var(--text-primary)] hover:text-[var(--accent)]">
-                Explore →
-              </Link>
-            </div>
-          </div>
-
-          {/* Capability 04 */}
-          <div className="rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-6 flex flex-col justify-between">
-            <div>
-              <div className="h-9 w-9 rounded-lg bg-[var(--bg-raised)] flex items-center justify-center text-[var(--text-primary)] mb-4">
-                <TrendingUp size={18} />
-              </div>
-              <span className="font-mono text-[11px] text-[var(--accent)] font-semibold">04 // INBOUND</span>
-              <h3 className="mt-2 font-display text-xl font-medium text-[var(--text-primary)]">
-                Marketing & Growth
-              </h3>
-              <p className="mt-2 text-xs text-[var(--text-secondary)] leading-relaxed">
-                Technical SEO infrastructure, high-intent search acquisition, and high-converting inquiry funnels.
-              </p>
-            </div>
-            <div className="mt-6 pt-4 border-t border-[var(--border-hairline)] flex items-center justify-between text-[11px] font-mono text-[var(--text-muted)]">
-              <span>Sprint: 12 Weeks</span>
-              <Link href="/capabilities#marketing" className="text-[var(--text-primary)] hover:text-[var(--accent)]">
-                Explore →
-              </Link>
-            </div>
-          </div>
-
-          {/* Capability 05 */}
-          <div className="rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-6 flex flex-col justify-between md:col-span-2 lg:col-span-2">
-            <div>
-              <div className="h-9 w-9 rounded-lg bg-[var(--bg-raised)] flex items-center justify-center text-[var(--text-primary)] mb-4">
-                <ShieldCheck size={18} />
-              </div>
-              <span className="font-mono text-[11px] text-[var(--accent)] font-semibold">05 // STEWARDSHIP</span>
-              <h3 className="mt-2 font-display text-xl font-medium text-[var(--text-primary)]">
-                Digital Management & Consulting
-              </h3>
-              <p className="mt-2 text-xs text-[var(--text-secondary)] leading-relaxed max-w-xl">
-                Fractional digital leadership, continuous platform governance, monthly security and uptime monitoring, and senior executive advisory.
-              </p>
-            </div>
-            <div className="mt-6 pt-4 border-t border-[var(--border-hairline)] flex items-center justify-between text-[11px] font-mono text-[var(--text-muted)]">
-              <span>Retainer: Annual SLA</span>
-              <Link href="/capabilities#management" className="text-[var(--text-primary)] hover:text-[var(--accent)]">
-                Explore →
-              </Link>
-            </div>
-          </div>
-        </div>
+      {/* ── 03. Signature Experience 01: The Interactive Presence Matrix ── */}
+      <Section id="matrix" background="page">
+        <PresenceMatrix />
       </Section>
 
-      {/* ── 04. Institutional Focus: Education & Schools ── */}
-      <Section id="education" background="subtle">
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-          <div className="lg:col-span-7">
-            <span className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] font-medium">
-              Institutional Specialization
-            </span>
-            <h2 className="mt-2 font-display text-3xl font-medium tracking-tight text-[var(--text-primary)] sm:text-4xl">
-              Digital presence engineered for schools & educational academies
-            </h2>
-            <p className="mt-4 text-base text-[var(--text-secondary)] leading-relaxed">
-              Schools face a unique digital tension: they must inspire prospective parents to inquire and enroll, while serving existing families with daily calendars, athletics, and portal resources.
-            </p>
-            <p className="mt-3 text-sm text-[var(--text-secondary)] leading-relaxed">
-              We design specialized school architectures that decouple the admissions conversion funnel from internal community utilities—delivering high-speed mobile tour booking, documentary photography standards, and full WCAG 2.1 AA accessibility.
-            </p>
-
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-4 text-left">
-                <p className="text-xs font-semibold text-[var(--text-primary)]">The Admissions Engine</p>
-                <p className="mt-1 text-[11px] text-[var(--text-muted)] leading-relaxed">
-                  Virtual viewbooks, automated open house booking, and friction-free mobile inquiry flows.
-                </p>
-              </div>
-              <div className="rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-4 text-left">
-                <p className="text-xs font-semibold text-[var(--text-primary)]">Institutional Trust</p>
-                <p className="mt-1 text-[11px] text-[var(--text-muted)] leading-relaxed">
-                  Faculty prestige, university matriculation records, and authentic classroom documentary assets.
-                </p>
-              </div>
+      {/* ── 04. Selected Work Exhibition with Browser Previews ── */}
+      <Section id="work" background="subtle">
+        <div className="max-w-5xl mx-auto text-left">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-10 gap-3">
+            <div>
+              <span className="font-mono text-xs uppercase tracking-wider text-[var(--accent)] font-medium">
+                Selected Work & Studies
+              </span>
+              <h2 className="mt-1 font-display text-3xl font-medium tracking-tight text-[var(--text-primary)] sm:text-4xl">
+                Demonstrated digital architecture
+              </h2>
             </div>
+            <Link
+              href="/work"
+              className="text-xs font-medium text-[var(--accent)] hover:underline inline-flex items-center gap-1 self-start sm:self-auto"
+            >
+              <span>View complete work archive</span>
+              <ArrowUpRight size={13} />
+            </Link>
+          </div>
 
-            <div className="mt-8">
-              <Link
-                href="/industries#education"
-                className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--accent)] hover:underline"
+          {/* Transparent Credibility Ribbon */}
+          <div className="mb-8 p-3.5 rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] flex items-center justify-between text-xs">
+            <div className="flex items-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-[var(--accent)]" />
+              <span className="font-mono text-[11px] text-[var(--text-secondary)]">
+                PORTFOLIO INTEGRITY: All featured studies are classified transparently with zero fabricated metrics.
+              </span>
+            </div>
+            <span className="font-mono text-[10px] text-[var(--text-muted)] hidden sm:block">
+              Strategic Concepts & Retrospectives
+            </span>
+          </div>
+
+          {/* Exhibition Project Cards */}
+          <div className="space-y-8">
+            {PROJECTS.map((proj) => (
+              <div
+                key={proj.slug}
+                className="rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-6 sm:p-8 shadow-xs"
               >
-                <span>Read the complete Education Digital Blueprint</span>
-                <ArrowUpRight size={13} />
-              </Link>
-            </div>
-          </div>
+                <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
+                  {/* Left: Case Context */}
+                  <div className="lg:col-span-5 space-y-4">
+                    <div>
+                      <span className="font-mono text-[10px] text-[var(--accent)] font-semibold uppercase tracking-wider block">
+                        {proj.industry} {"//"} {proj.classification}
+                      </span>
+                      <h3 className="mt-1.5 font-display text-2xl font-medium text-[var(--text-primary)]">
+                        {proj.title}
+                      </h3>
+                      <p className="mt-2 text-xs text-[var(--text-secondary)] leading-relaxed">
+                        {proj.summary}
+                      </p>
+                    </div>
 
-          <div className="lg:col-span-5 rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-6 shadow-xs">
-            <span className="font-mono text-xs font-semibold text-[var(--accent)]">
-              EDUCATION FRAMEWORK // THREE LAYERS
-            </span>
-            <div className="mt-4 space-y-4 text-left">
-              <div className="p-3.5 rounded-lg bg-[var(--bg-subtle)] border border-[var(--border-hairline)]">
-                <span className="font-mono text-[10px] text-[var(--accent)] font-semibold block uppercase">
-                  Layer 01 // Public Inbound
-                </span>
-                <p className="text-xs font-medium text-[var(--text-primary)] mt-0.5">Admissions & Tour Gateway</p>
-                <p className="text-[11px] text-[var(--text-muted)] mt-1">High-speed mobile experience for prospective families.</p>
-              </div>
+                    <div className="pt-3 border-t border-[var(--border-hairline)] space-y-1.5">
+                      <span className="font-mono text-[10px] uppercase text-[var(--text-muted)] block">
+                        Scope of Engagement
+                      </span>
+                      <div className="flex flex-wrap gap-1.5">
+                        {proj.divisions.map((div) => (
+                          <span
+                            key={div}
+                            className="rounded-md bg-[var(--bg-subtle)] border border-[var(--border-hairline)] px-2 py-0.5 font-mono text-[10px] text-[var(--text-secondary)]"
+                          >
+                            {div}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
 
-              <div className="p-3.5 rounded-lg bg-[var(--bg-subtle)] border border-[var(--border-hairline)]">
-                <span className="font-mono text-[10px] text-[var(--text-muted)] font-semibold block uppercase">
-                  Layer 02 // Community Hub
-                </span>
-                <p className="text-xs font-medium text-[var(--text-primary)] mt-0.5">Parent & Campus Portal</p>
-                <p className="text-[11px] text-[var(--text-muted)] mt-1">Cleanly separated utility bar for daily calendars and forms.</p>
-              </div>
+                    <div className="pt-2">
+                      <Link
+                        href={`/work/${proj.slug}`}
+                        className="inline-flex h-9 items-center justify-center gap-1.5 rounded-lg bg-[var(--accent)] px-4 text-xs font-medium text-white hover:bg-[var(--accent-hover)] transition-colors"
+                      >
+                        <span>Read case retrospective</span>
+                        <ArrowUpRight size={12} />
+                      </Link>
+                    </div>
+                  </div>
 
-              <div className="p-3.5 rounded-lg bg-[var(--bg-subtle)] border border-[var(--border-hairline)]">
-                <span className="font-mono text-[10px] text-[var(--text-muted)] font-semibold block uppercase">
-                  Layer 03 // Reputation
-                </span>
-                <p className="text-xs font-medium text-[var(--text-primary)] mt-0.5">Academic & Alumni Stature</p>
-                <p className="text-[11px] text-[var(--text-muted)] mt-1">Endowment storytelling, board governance, and accreditation.</p>
+                  {/* Right: Realistic Browser Frame Preview */}
+                  <div className="lg:col-span-7">
+                    <BrowserFrame url={proj.heroMockup.urlText}>
+                      <div className="p-6 bg-[var(--bg-page)] text-left">
+                        <span className="font-mono text-[9px] uppercase tracking-wider text-[var(--accent)] font-medium">
+                          {proj.clientType}
+                        </span>
+                        <h4 className="mt-1 font-display text-xl font-medium text-[var(--text-primary)]">
+                          {proj.heroMockup.screenTitle}
+                        </h4>
+                        <p className="mt-1 text-[11px] text-[var(--text-secondary)] leading-relaxed">
+                          {proj.heroMockup.screenSubtitle}
+                        </p>
+
+                        <div className="mt-5 grid grid-cols-3 gap-2 pt-4 border-t border-[var(--border-hairline)]">
+                          {proj.heroMockup.metrics.map((m) => (
+                            <div key={m.label} className="p-2 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-hairline)]">
+                              <span className="font-mono text-[9px] text-[var(--text-muted)] block">{m.label}</span>
+                              <span className="font-mono text-xs font-medium text-[var(--text-primary)] mt-0.5 block">{m.value}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </BrowserFrame>
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </Section>
 
-      {/* ── 05. Call to Action: Direct Intake ── */}
-      <Section background="page">
+      {/* ── 05. Signature Experience 02: Institutional Focus (Education & Schools) ── */}
+      <Section id="education" background="page">
+        <SchoolBlueprint />
+      </Section>
+
+      {/* ── 06. Call to Action: Direct Intake ── */}
+      <Section background="subtle">
         <div className="mx-auto max-w-3xl rounded-2xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-8 sm:p-12 text-center shadow-xs">
           <span className="font-mono text-xs font-semibold text-[var(--accent)] tracking-tight">
             COMMISSION BRIEFING // 2026
