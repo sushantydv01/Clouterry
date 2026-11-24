@@ -14,9 +14,11 @@ export async function dispatchInquiry(
   inquiry: SanitizedInquiry
 ): Promise<LeadCaptureResponse> {
   const apiKey = process.env.RESEND_API_KEY?.trim();
+  const recipientEmail = process.env.NOTIFICATION_RECIPIENT_EMAIL?.trim();
+  const fromEmail = process.env.NOTIFICATION_FROM_EMAIL?.trim();
 
-  // If no email delivery provider is configured, return honest UNCONFIGURED status.
-  if (!apiKey) {
+  // Delivery is only activated when all required provider credentials and routing addresses are configured
+  if (!apiKey || !recipientEmail || !fromEmail) {
     return {
       success: false,
       status: "UNCONFIGURED",
@@ -24,11 +26,6 @@ export async function dispatchInquiry(
         "The online project briefing service is currently undergoing infrastructure configuration. Direct online transmission is not yet active. Please connect directly or check back shortly once commercial credentials are configured.",
     };
   }
-
-  const recipientEmail =
-    process.env.NOTIFICATION_RECIPIENT_EMAIL?.trim() || "inquiries@configured-domain.internal";
-  const fromEmail =
-    process.env.NOTIFICATION_FROM_EMAIL?.trim() || "Briefing Portal <onboarding@resend.dev>";
 
   try {
     const subjectPrefix = inquiry.organization ? `[Briefing: ${inquiry.organization}]` : "[Project Briefing]";

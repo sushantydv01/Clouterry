@@ -77,12 +77,12 @@ export default function Footer() {
               <p className="font-mono text-xs uppercase tracking-wider text-[#ED83A8] font-bold pb-2 border-b border-[#3A3835]">
                 Direct
               </p>
-              <a
-                href="mailto:inquiries@firm.agency"
+              <Link
+                href="/connect"
                 className="font-mono text-xs font-bold text-[#F8F6EF] hover:text-[#F4CF55] hover:underline"
               >
-                inquiries@firm.agency
-              </a>
+                Executive Partner Intake →
+              </Link>
               <span className="text-xs text-[#A8A49A]">
                 New York Studio &amp; Remote Delivery Worldwide
               </span>

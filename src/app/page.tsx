@@ -356,12 +356,12 @@ export default function Home() {
               <span>Submit a project brief</span>
               <ArrowUpRight size={16} />
             </Link>
-            <a
-              href="mailto:inquiries@firm.agency"
-              className="neo-btn-white text-sm px-8 py-4 w-full sm:w-auto shadow-[3px_3px_0_0_#171717]"
+            <Link
+              href="/connect"
+              className="neo-btn-white text-sm px-8 py-4 w-full sm:w-auto shadow-[3px_3px_0_0_#171717] text-center"
             >
-              inquiries@firm.agency
-            </a>
+              Executive Partner Intake
+            </Link>
           </div>
 
           <div className="mt-8 flex justify-center">

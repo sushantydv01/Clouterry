@@ -7,6 +7,7 @@ import Container from "@/components/layout/Container";
 import Section from "@/components/layout/Section";
 import { ARTICLES } from "@/data/articles";
 import { ArrowLeft, ArrowUpRight, Clock, User, Compass } from "lucide-react";
+import { getSiteUrl, siteConfig } from "@/lib/siteConfig";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -21,21 +22,22 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const article = ARTICLES.find((a) => a.slug === slug);
+  const siteUrl = getSiteUrl();
 
   if (!article) {
     return {
-      title: "Article Not Found | FIRM",
+      title: `Article Not Found | ${siteConfig.workingName}`,
     };
   }
 
   return {
-    title: `${article.title} | FIRM Insights`,
+    title: `${article.title} | ${siteConfig.workingName} Insights`,
     description: article.subtitle,
     openGraph: {
       title: article.title,
       description: article.subtitle,
-      url: `https://firm.agency/insights/${article.slug}`,
-      siteName: "FIRM",
+      url: `${siteUrl}/insights/${article.slug}`,
+      siteName: siteConfig.workingName,
       type: "article",
       publishedTime: article.isoDate,
       authors: [article.author],
@@ -60,6 +62,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function ArticlePage({ params }: PageProps) {
   const { slug } = await params;
   const article = ARTICLES.find((a) => a.slug === slug);
+  const siteUrl = getSiteUrl();
 
   if (!article) {
     notFound();
@@ -70,22 +73,22 @@ export default async function ArticlePage({ params }: PageProps) {
     "@type": "Article",
     headline: article.title,
     description: article.subtitle,
-    image: `https://firm.agency${article.heroImage}`,
+    image: `${siteUrl}${article.heroImage}`,
     datePublished: article.isoDate,
     dateModified: article.isoDate,
     author: {
       "@type": "Organization",
       name: article.author,
-      url: "https://firm.agency",
+      url: siteUrl,
     },
     publisher: {
       "@type": "Organization",
-      name: "FIRM",
-      url: "https://firm.agency",
+      name: siteConfig.workingName,
+      url: siteUrl,
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://firm.agency/insights/${article.slug}`,
+      "@id": `${siteUrl}/insights/${article.slug}`,
     },
   };
 
