@@ -3,59 +3,76 @@ import { ARTICLES } from "@/data/articles";
 import { SERVICES } from "@/data/services";
 import { INDUSTRIES } from "@/data/industries";
 import { PROJECTS } from "@/data/projects";
+import { getSiteUrl } from "@/lib/siteConfig";
 
-const BASE_URL = "https://firm.agency";
+// Meaningful content modification timestamps reflecting actual editorial release dates
+const CORE_PAGE_DATES: Record<string, string> = {
+  "/": "2026-11-24T00:00:00.000Z",
+  "/firm": "2026-11-23T18:00:00.000Z",
+  "/capabilities": "2026-11-23T18:00:00.000Z",
+  "/industries": "2026-11-23T18:44:00.000Z",
+  "/work": "2026-11-23T19:21:00.000Z",
+  "/insights": "2026-11-23T00:00:00.000Z",
+  "/connect": "2026-11-24T00:00:00.000Z",
+  "/faq": "2026-11-24T00:00:00.000Z",
+};
+
+const PROJECT_DATES: Record<string, string> = {
+  "saint-jude-academy": "2026-11-15T00:00:00.000Z",
+  "aether-health": "2026-11-10T00:00:00.000Z",
+  "vance-legal": "2026-11-05T00:00:00.000Z",
+};
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
+  const baseUrl = getSiteUrl();
 
   // Core Static Routes
   const staticRoutes: MetadataRoute.Sitemap = [
     {
-      url: BASE_URL,
-      lastModified,
+      url: baseUrl,
+      lastModified: new Date(CORE_PAGE_DATES["/"]),
       changeFrequency: "weekly",
       priority: 1.0,
     },
     {
-      url: `${BASE_URL}/firm`,
-      lastModified,
+      url: `${baseUrl}/firm`,
+      lastModified: new Date(CORE_PAGE_DATES["/firm"]),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
-      url: `${BASE_URL}/capabilities`,
-      lastModified,
+      url: `${baseUrl}/capabilities`,
+      lastModified: new Date(CORE_PAGE_DATES["/capabilities"]),
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: `${BASE_URL}/industries`,
-      lastModified,
+      url: `${baseUrl}/industries`,
+      lastModified: new Date(CORE_PAGE_DATES["/industries"]),
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: `${BASE_URL}/work`,
-      lastModified,
+      url: `${baseUrl}/work`,
+      lastModified: new Date(CORE_PAGE_DATES["/work"]),
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: `${BASE_URL}/insights`,
-      lastModified,
+      url: `${baseUrl}/insights`,
+      lastModified: new Date(CORE_PAGE_DATES["/insights"]),
       changeFrequency: "daily",
       priority: 0.9,
     },
     {
-      url: `${BASE_URL}/connect`,
-      lastModified,
+      url: `${baseUrl}/connect`,
+      lastModified: new Date(CORE_PAGE_DATES["/connect"]),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/faq`,
-      lastModified,
+      url: `${baseUrl}/faq`,
+      lastModified: new Date(CORE_PAGE_DATES["/faq"]),
       changeFrequency: "monthly",
       priority: 0.7,
     },
@@ -63,31 +80,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // 5 Capabilities
   const capabilityRoutes: MetadataRoute.Sitemap = SERVICES.map((s) => ({
-    url: `${BASE_URL}/capabilities/${s.slug}`,
-    lastModified,
+    url: `${baseUrl}/capabilities/${s.slug}`,
+    lastModified: new Date("2026-11-23T18:00:00.000Z"),
     changeFrequency: "monthly",
     priority: 0.85,
   }));
 
   // 5 Industries
   const industryRoutes: MetadataRoute.Sitemap = INDUSTRIES.map((i) => ({
-    url: `${BASE_URL}/industries/${i.slug}`,
-    lastModified,
+    url: `${baseUrl}/industries/${i.slug}`,
+    lastModified: new Date("2026-11-23T18:44:00.000Z"),
     changeFrequency: "monthly",
     priority: 0.85,
   }));
 
   // 3 Case Studies
   const workRoutes: MetadataRoute.Sitemap = PROJECTS.map((p) => ({
-    url: `${BASE_URL}/work/${p.slug}`,
-    lastModified,
+    url: `${baseUrl}/work/${p.slug}`,
+    lastModified: new Date(PROJECT_DATES[p.slug] || "2026-11-15T00:00:00.000Z"),
     changeFrequency: "monthly",
     priority: 0.8,
   }));
 
   // 6 Editorial Articles
   const articleRoutes: MetadataRoute.Sitemap = ARTICLES.map((a) => ({
-    url: `${BASE_URL}/insights/${a.slug}`,
+    url: `${baseUrl}/insights/${a.slug}`,
     lastModified: new Date(a.isoDate),
     changeFrequency: "never",
     priority: 0.8,

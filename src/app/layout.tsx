@@ -3,6 +3,7 @@ import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
+import { getSiteUrl, siteConfig } from "@/lib/siteConfig";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -31,37 +32,28 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+const siteUrl = getSiteUrl();
+
 export const metadata: Metadata = {
-  title: "FIRM — Digital Presence & Growth Firm",
-  description:
-    "We engineer enduring digital presence for ambitious organizations. Unifying brand identity, bespoke web platforms, editorial content, and systematic visibility.",
-  keywords: [
-    "digital presence firm",
-    "web development consultancy",
-    "brand identity",
-    "school digital strategy",
-    "growth marketing",
-    "next.js engineering",
-    "digital presence architecture",
-  ],
-  authors: [{ name: "FIRM Studio" }],
-  creator: "FIRM",
-  publisher: "FIRM",
-  metadataBase: new URL("https://firm.agency"),
+  title: `${siteConfig.workingName} — ${siteConfig.workingTagline}`,
+  description: siteConfig.workingDescription,
+  keywords: siteConfig.keywords,
+  authors: [{ name: `${siteConfig.workingName} Studio` }],
+  creator: siteConfig.workingName,
+  publisher: siteConfig.workingName,
+  metadataBase: new URL(siteUrl),
   openGraph: {
-    title: "FIRM — Digital Presence & Growth Firm",
-    description:
-      "We engineer enduring digital presence for ambitious organizations. Brand, web, content, and visibility under one disciplined standard.",
-    url: "https://firm.agency",
-    siteName: "FIRM",
+    title: `${siteConfig.workingName} — ${siteConfig.workingTagline}`,
+    description: siteConfig.workingDescription,
+    url: siteUrl,
+    siteName: siteConfig.workingName,
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "FIRM — Digital Presence & Growth Firm",
-    description:
-      "Digital presence and growth consultancy for brands, schools, and organizations.",
+    title: `${siteConfig.workingName} — ${siteConfig.workingTagline}`,
+    description: siteConfig.workingDescription,
   },
   robots: {
     index: true,
@@ -77,13 +69,11 @@ export default function RootLayout({
   const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "FIRM",
-    url: "https://firm.agency",
-    logo: "https://firm.agency/images/brand/brand-identity-specimen.webp",
-    description:
-      "Digital Presence & Growth Firm unifying brand identity, bespoke web platforms, editorial content, and systematic visibility.",
-    email: "inquiries@firm.agency",
-    sameAs: ["https://github.com/sushantydv01/Clouterry"],
+    name: siteConfig.workingName,
+    url: siteUrl,
+    logo: `${siteUrl}/images/brand/brand-identity-specimen.webp`,
+    description: siteConfig.workingDescription,
+    sameAs: [siteConfig.repositoryUrl],
   };
 
   return (
