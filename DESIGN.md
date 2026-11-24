@@ -42,3 +42,17 @@ Reference: Gumroad confidence, bold typography, visual energy, crisp outlines, e
 - **Active Press:** `active:translate-x-0 active:translate-y-0 active:shadow-none`
 - **Transitions:** `transition-all duration-140 ease-out`
 - **Focus Rings:** `focus-visible:ring-2 focus-visible:ring-[#171717]`
+
+## Original Doodle Illustration System
+- **Style:** Hand-drawn organic vector linework (`stroke="#171717" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"`).
+- **Color Fills:** Flat Pop Garden palette fills (`#ED83A8`, `#A6D8A1`, `#F4CF55`, `#FFFFFF`).
+- **Core Assets:**
+  - `HeroStudioIllustration`: Architect & digital product workstation in action.
+  - `FragmentationDoodle`: Visual comparison of disconnected agency silos vs unified FIRM standard.
+  - `CapabilitiesEcosystem`: Interactive 5-capability visual engine.
+  - `IndustryIcons`: Dedicated hand-drawn vignettes for Education, Healthcare, Professional, Retail, Startups.
+  - `DoodleAccents`: Hand-drawn underline swooshes, curly arrows, sparkles, stars, and stamps.
+
+## Two-Level Information Hierarchy
+- **Level 1 (Homepage):** Visual-first, spacious, memorable. Big typography, original doodle artwork, scannable summaries, zero walls of text.
+- **Level 2 (Dedicated Pages):** Technical specifications, full matrices (`PresenceMatrix`), detailed institutional blueprints (`SchoolBlueprint`), SLAs, and case-study retrospectives.
