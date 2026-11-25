@@ -5,32 +5,32 @@ import { ArrowUpRight } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <div className="min-h-[75vh] flex items-center justify-center py-24 bg-[#F8F6EF]">
+    <div className="min-h-[75vh] flex items-center justify-center py-24 bg-[#000000] text-white">
       <Container size="narrow">
-        <div className="text-center border border-[#171717] bg-[#FFFFFF] p-8 sm:p-14 shadow-[8px_8px_0_0_#171717]">
-          <span className="inline-block border border-[#171717] bg-[#ED83A8] text-[#171717] px-3.5 py-1 font-mono text-xs font-bold uppercase tracking-wider shadow-[2px_2px_0_0_#171717]">
-            ERROR 404 // ROUTE NOT LOCATED
+        <div className="text-center gumroad-card p-8 sm:p-14 border-white/10">
+          <span className="inline-block px-3 py-1 rounded-full bg-[#FF90E8]/20 border border-[#FF90E8]/30 text-xs font-semibold text-[#FF90E8]">
+            404 &bull; Route Not Located
           </span>
-          <h1 className="mt-4 font-display text-3xl sm:text-5xl font-bold tracking-tight text-[#171717]">
-            Architectural page not found
+          <h1 className="mt-4 font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
+            Page not found
           </h1>
-          <p className="mt-4 text-xs sm:text-base text-[#404040] leading-relaxed max-w-md mx-auto font-sans">
-            The requested digital surface or resource does not exist in FIRM’s current information architecture.
+          <p className="mt-4 text-sm sm:text-base text-white/70 leading-relaxed max-w-md mx-auto font-sans">
+            The requested digital surface or resource does not exist in FIRM&apos;s current information architecture.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5">
             <Link
               href="/"
-              className="neo-btn-pink text-xs px-6 py-3 w-full sm:w-auto"
+              className="gumroad-btn-pink text-xs sm:text-sm font-bold !py-3 !px-6 w-full sm:w-auto"
             >
-              <span>Return to homepage</span>
-              <ArrowUpRight size={13} />
+              <span>Return to Homepage</span>
+              <ArrowUpRight size={14} className="stroke-[2.5]" />
             </Link>
             <Link
               href="/capabilities"
-              className="neo-btn-white text-xs px-6 py-3 w-full sm:w-auto"
+              className="gumroad-btn-secondary text-xs sm:text-sm !py-3 !px-6 w-full sm:w-auto"
             >
-              Explore capabilities
+              <span>Explore 5 Disciplines</span>
             </Link>
           </div>
         </div>

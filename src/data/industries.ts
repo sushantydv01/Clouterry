@@ -189,7 +189,7 @@ export const INDUSTRIES: IndustrySector[] = [
     faqs: [
       {
         question: "Do we have to replace our existing school software (Blackbaud, PowerSchool, Veracross)?",
-        answer: "No. FIRM specializes in the public-facing brand, admissions, and community gateway. We integrate seamlessly with your existing SIS / LMS by providing high-speed gateways and single-sign-on links, leaving your student records intact.",
+        answer: "No. FIRM specializes in the public-facing brand, admissions, and community gateway. We connect to your existing SIS or LMS through single-sign-on links, leaving your student records intact.",
       },
       {
         question: "How long does a school website overhaul take?",
@@ -207,7 +207,7 @@ export const INDUSTRIES: IndustrySector[] = [
     title: "Healthcare & Medical",
     eyebrow: "Sector Specialization",
     tagline: "Calm, dignified digital presence for specialty clinics, surgical centers, and healthcare organizations.",
-    description: "Healthcare digital experiences are often cold, clinical, and difficult to navigate. We engineer reassuring, high-speed platforms that build patient confidence, clarify clinical credentials, and make appointment booking friction-free.",
+    description: "Healthcare digital experiences often feel sterile and confusing. We engineer reassuring, high-speed platforms that build patient confidence, clarify clinical credentials, and make appointment booking friction-free.",
     audiences: [
       "Specialty Medical & Surgical Practices",
       "Dental & Orthodontic Studios",
@@ -351,7 +351,7 @@ export const INDUSTRIES: IndustrySector[] = [
       },
       {
         title: "Editorial Lookbooks & Narrative Commerce",
-        description: "Blending editorial photography and documentary product stories seamlessly with 'Add to Bag' workflows.",
+        description: "Editorial photography and product stories tied directly into bag workflows.",
       },
     ],
     deliverables: [
@@ -363,7 +363,7 @@ export const INDUSTRIES: IndustrySector[] = [
     faqs: [
       {
         question: "Do we still use our existing Shopify backend for inventory and shipping?",
-        answer: "Yes. Your warehouse and fulfillment team continues to manage orders and inventory in Shopify as normal; we simply build a bespoke, ultra-fast frontend that replaces the slow default theme.",
+        answer: "Yes. Your warehouse and fulfillment team continues to manage orders and inventory in Shopify as normal; we build a custom Next.js frontend that replaces the default theme.",
       },
     ],
   },

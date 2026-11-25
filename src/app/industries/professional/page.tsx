@@ -17,25 +17,25 @@ export default function ProfessionalServicesIndustryPage() {
   const sector = INDUSTRIES.find((i) => i.slug === "professional") || INDUSTRIES[2];
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#F8F6EF]">
+    <div className="flex flex-col min-h-screen bg-[#000000] text-white">
       <Container>
         <PageHeader
           badge={sector.eyebrow}
-          eyebrow="Legal & Financial Partnerships"
+          eyebrow="Legal &amp; Financial Partnerships"
           title={sector.title}
           description={sector.description}
         >
           <div className="flex flex-wrap items-center gap-3">
             <Link
               href="/connect"
-              className="neo-btn-yellow text-xs px-5 py-2.5"
+              className="gumroad-btn-pink text-xs sm:text-sm font-bold !py-2.5 !px-5"
             >
-              <span>Schedule a partnership briefing</span>
-              <ArrowUpRight size={13} />
+              <span>Start a project</span>
+              <ArrowUpRight size={14} className="stroke-[2.5]" />
             </Link>
             <Link
               href="/work/vance-legal"
-              className="neo-btn-white text-xs px-5 py-2.5"
+              className="gumroad-btn-secondary text-xs sm:text-sm !py-2.5 !px-5"
             >
               View Vance &amp; Partners Case Study
             </Link>
@@ -43,122 +43,76 @@ export default function ProfessionalServicesIndustryPage() {
         </PageHeader>
       </Container>
 
-      {/* Challenges */}
-      <Section background="cream">
-        <div className="max-w-4xl mx-auto text-left">
-          <span className="inline-block border border-[#171717] bg-[#ED83A8] px-3 py-0.5 font-mono text-xs uppercase tracking-wider text-[#171717] font-bold shadow-[2px_2px_0_0_#171717]">
-            Prestige Challenges
-          </span>
-          <h2 className="mt-2 font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#171717] mb-8">
-            Why generic corporate templates fail prestigious practices
-          </h2>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            {sector.challenges.map((c, idx) => {
-              const tagColors = ["bg-[#ED83A8]", "bg-[#F4CF55]", "bg-[#A6D8A1]"];
-              return (
-                <div
-                  key={c.title}
-                  className="neo-card p-6 shadow-[4px_4px_0_0_#171717] flex flex-col justify-between"
-                >
-                  <div>
-                    <span className={`inline-block border border-[#171717] ${tagColors[idx % tagColors.length]} px-2 py-0.5 font-mono text-[10px] text-[#171717] font-bold uppercase mb-3`}>
-                      Challenge 0{idx + 1}
-                    </span>
-                    <h3 className="font-display text-base font-bold text-[#171717]">
-                      {c.title}
-                    </h3>
-                    <p className="mt-2 text-xs sm:text-sm text-[#404040] leading-relaxed">
-                      {c.description}
-                    </p>
-                  </div>
+      {/* Challenges & Solutions */}
+      <Section background="black" padding="tight">
+        <div className="max-w-4xl mx-auto text-left space-y-6">
+          <div className="gumroad-card p-6 sm:p-10 space-y-4">
+            <span className="inline-block px-3 py-1 rounded-full bg-[#FFB800]/20 border border-[#FFB800]/30 text-xs font-semibold text-[#FFB800]">
+              Prestige Challenges
+            </span>
+            <h2 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
+              Commanding intellectual authority online
+            </h2>
+            <div className="space-y-4 pt-2">
+              {sector.challenges.map((c) => (
+                <div key={c.title} className="p-4 rounded-xl bg-[#141416] border border-white/5 space-y-1">
+                  <h4 className="text-sm font-bold text-white">{c.title}</h4>
+                  <p className="text-xs sm:text-sm text-white/70 leading-relaxed">{c.description}</p>
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </div>
       </Section>
 
       {/* Deliverables */}
-      <Section background="white">
-        <div className="max-w-4xl mx-auto text-left">
-          <span className="inline-block border border-[#171717] bg-[#F4CF55] px-3 py-0.5 font-mono text-xs uppercase tracking-wider text-[#171717] font-bold shadow-[2px_2px_0_0_#171717]">
-            FIRM Professional Framework
-          </span>
-          <h2 className="mt-2 font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#171717] mb-8">
-            Tangible deliverables for professional partnerships
-          </h2>
+      <Section background="black" padding="normal">
+        <div className="max-w-4xl mx-auto text-left space-y-6">
+          <div>
+            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-white">
+              Professional services practice scope
+            </h2>
+          </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            {sector.deliverables.map((deliv) => (
-              <div
-                key={deliv}
-                className="p-4 border border-[#171717] bg-[#FFFFFF] shadow-[3px_3px_0_0_#171717] flex items-center gap-3 text-xs sm:text-sm font-semibold text-[#171717]"
-              >
-                <div className="w-6 h-6 rounded-none border border-[#171717] bg-[#F4CF55] flex items-center justify-center shrink-0">
-                  <Check size={14} className="text-[#171717] stroke-[3]" />
+            {sector.deliverables.map((d) => (
+              <div key={d} className="p-4 rounded-xl bg-[#18181B] border border-white/10 flex items-center gap-3 text-xs sm:text-sm text-white/80">
+                <div className="w-5 h-5 rounded-full bg-[#10B981] text-black flex items-center justify-center shrink-0 font-bold">
+                  <Check size={12} className="stroke-[3]" />
                 </div>
-                <span>{deliv}</span>
+                <span>{d}</span>
               </div>
             ))}
           </div>
         </div>
       </Section>
 
-      {/* FAQ */}
-      <Section background="cream">
-        <div className="max-w-3xl mx-auto text-left">
-          <span className="inline-block border border-[#171717] bg-[#A6D8A1] px-3 py-0.5 font-mono text-xs uppercase tracking-wider text-[#171717] font-bold shadow-[2px_2px_0_0_#171717]">
-            Partnership FAQ
+      {/* Closing CTA */}
+      <Section background="black" padding="spacious">
+        <div className="max-w-3xl mx-auto text-center space-y-6 gumroad-card p-8 sm:p-14 border-white/10">
+          <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-white text-xs font-semibold">
+            PARTNERSHIP CONSULTATION
           </span>
-          <h2 className="mt-2 font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#171717] mb-6">
-            Frequently asked questions by senior partners
+          <h2 className="font-display text-3xl sm:text-5xl font-bold text-white leading-tight">
+            Elevate your firm&apos;s digital stature
           </h2>
-
-          <div className="space-y-4">
-            {sector.faqs.map((faq) => (
-              <div
-                key={faq.question}
-                className="p-5 border border-[#171717] bg-[#FFFFFF] shadow-[3px_3px_0_0_#171717]"
-              >
-                <h3 className="font-display text-base font-bold text-[#171717]">
-                  {faq.question}
-                </h3>
-                <p className="mt-2 text-xs sm:text-sm text-[#404040] leading-relaxed">
-                  {faq.answer}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* CTA */}
-      <Section background="white">
-        <div className="max-w-3xl mx-auto text-center border border-[#171717] bg-[#F4CF55] p-8 sm:p-12 shadow-[8px_8px_0_0_#171717]">
-          <span className="inline-block border border-[#171717] bg-[#FFFFFF] px-3 py-1 font-mono text-xs font-bold text-[#171717] shadow-[2px_2px_0_0_#171717]">
-            PROFESSIONAL INTAKE
-          </span>
-          <h2 className="mt-3 font-display text-3xl sm:text-4xl font-bold text-[#171717] leading-tight">
-            Reflect the true intellectual stature of your practice
-          </h2>
-          <p className="mt-3 text-xs sm:text-sm text-[#171717] font-medium leading-relaxed max-w-lg mx-auto">
-            Discuss an editorial publishing and practice directory transformation with our partners.
+          <p className="text-sm sm:text-base text-white/70 max-w-lg mx-auto leading-relaxed">
+            Confidential briefings for senior managing partners, general counsels, and financial advisors.
           </p>
 
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5">
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3.5">
             <Link
               href="/connect"
-              className="neo-btn text-xs px-6 py-3 w-full sm:w-auto"
+              className="gumroad-btn-pink text-xs sm:text-sm font-bold !py-3 !px-6 w-full sm:w-auto"
             >
-              <span>Submit partnership briefing</span>
-              <ArrowUpRight size={13} />
+              <span>Start a project</span>
+              <ArrowUpRight size={14} className="stroke-[2.5]" />
             </Link>
             <Link
               href="/industries"
-              className="neo-btn-white text-xs px-6 py-3 w-full sm:w-auto"
+              className="gumroad-btn-secondary text-xs sm:text-sm !py-3 !px-6 w-full sm:w-auto"
             >
-              View all industry sectors
+              View all industry practices
             </Link>
           </div>
         </div>

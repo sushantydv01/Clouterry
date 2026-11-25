@@ -79,10 +79,9 @@ export default function ConnectFormView() {
         setStatus("delivered");
         setStatusMessage(
           data.message ||
-            "Your project briefing has been successfully transmitted and logged. A senior partner will review your requirements within 24 business hours."
+            "Your project briefing has been successfully transmitted and logged. A senior partner will review your requirements."
         );
       } else if (response.status === 503 || data.status === "UNCONFIGURED") {
-        // Honest response when backend destination is not yet configured
         setStatus("unconfigured");
         setStatusMessage(
           data.message ||
@@ -107,52 +106,51 @@ export default function ConnectFormView() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#F8F6EF]">
+    <div className="flex flex-col min-h-screen bg-[#000000] text-white">
       <Container>
         <PageHeader
           badge="CONNECT"
           eyebrow="Initiate an Engagement"
           title="Start a project briefing."
-          description="We work with a limited client roster each quarter. Tell us about your organization, timeline, and current presence challenges."
+          description="We partner with a limited client roster each quarter. Tell us about your organization, timeline, and current digital presence challenges."
         />
       </Container>
 
-      <Section background="cream">
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-start max-w-5xl mx-auto">
+      <Section background="black" padding="tight">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-start max-w-5xl mx-auto">
           {/* Left Column: Direct Inquiries */}
-          <div className="lg:col-span-5 text-left">
-            <span className="inline-block border border-[#171717] bg-[#ED83A8] px-3 py-0.5 font-mono text-xs uppercase tracking-wider text-[#171717] font-bold shadow-[2px_2px_0_0_#171717]">
-              Direct Contact
-            </span>
-            <h2 className="mt-2 font-display text-2xl sm:text-3xl font-bold text-[#171717]">
-              Executive Office
-            </h2>
-            <p className="mt-3 text-xs sm:text-sm text-[#404040] leading-relaxed">
-              For partner inquiries, institutional RFP invitations, or architectural consultations, connect through our intake gateway.
-            </p>
+          <div className="lg:col-span-5 text-left space-y-6">
+            <div>
+              <h2 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                Executive Partner Office
+              </h2>
+              <p className="mt-2 text-xs sm:text-sm text-white/70 leading-relaxed font-sans">
+                For institutional RFP invitations, executive consultations, or digital transformation diagnostics, initiate a briefing through our gateway.
+              </p>
+            </div>
 
-            <div className="mt-6 p-5 border border-[#171717] bg-[#FFFFFF] shadow-[4px_4px_0_0_#171717] space-y-3 text-xs">
+            <div className="p-5 rounded-2xl border border-white/10 bg-[#18181B] space-y-3 text-xs">
               <div>
-                <span className="font-mono text-[10px] font-bold text-[#171717] block uppercase tracking-wider">Inquiry Routing</span>
-                <span className="font-mono text-xs font-semibold text-[#171717]">
-                  Executive Partner Intake (Infrastructure Setup In Progress)
+                <span className="text-xs text-white/50 block font-medium">Inquiry Routing</span>
+                <span className="font-medium text-white/90">
+                  Senior Partner Review
                 </span>
               </div>
-              <div className="pt-3 border-t border-[#171717]">
-                <span className="font-mono text-[10px] font-bold text-[#171717] block uppercase tracking-wider">Location</span>
-                <span className="text-[#171717] font-medium">New York Studio &amp; Remote Delivery</span>
+              <div className="pt-3 border-t border-white/10">
+                <span className="text-xs text-white/50 block font-medium">Practice Scope</span>
+                <span className="text-white/80 font-medium">Independent Practice · Global Delivery</span>
               </div>
-              <div className="pt-3 border-t border-[#171717]">
-                <span className="font-mono text-[10px] font-bold text-[#171717] block uppercase tracking-wider">Service Cadence</span>
-                <span className="text-[#171717] font-medium">Partner diagnostic review within 24 business hours</span>
+              <div className="pt-3 border-t border-white/10">
+                <span className="text-xs text-white/50 block font-medium">Engagement Model</span>
+                <span className="text-white/80 font-medium">Fixed 4-Stage Cadence · Zero Billable Hour Overruns</span>
               </div>
             </div>
 
-            <div className="mt-6 p-4 border border-[#171717] bg-[#F4CF55] shadow-[3px_3px_0_0_#171717] text-left">
+            <div className="p-4 rounded-xl border border-white/10 bg-[#141416] text-left">
               <div className="flex items-start gap-2.5">
-                <Info size={16} className="text-[#171717] shrink-0 stroke-[2.5] mt-0.5" />
-                <p className="text-[11px] leading-relaxed text-[#171717] font-medium">
-                  <strong>Notice:</strong> Commercial email and receiving inboxes are currently provisional. When submitting this form, the service will provide real-time notification regarding delivery readiness.
+                <Info size={16} className="text-[#FF90E8] shrink-0 mt-0.5" />
+                <p className="text-[11px] leading-relaxed text-white/70">
+                  <strong>Status Notice:</strong> The direct email gateway is currently undergoing production configuration. Submitting this form tests real-time connection status and preserves your entries safely.
                 </p>
               </div>
             </div>
@@ -164,15 +162,15 @@ export default function ConnectFormView() {
               <div
                 role="status"
                 aria-live="polite"
-                className="border border-[#171717] bg-[#A6D8A1] p-8 sm:p-10 text-center shadow-[6px_6px_0_0_#171717]"
+                className="gumroad-card p-8 sm:p-10 text-center border-white/10 space-y-4"
               >
-                <div className="h-12 w-12 rounded-none border border-[#171717] bg-[#FFFFFF] text-[#171717] flex items-center justify-center mx-auto mb-4 shadow-[2px_2px_0_0_#171717]">
-                  <Check size={24} className="text-[#171717] stroke-[3]" />
+                <div className="h-12 w-12 rounded-full bg-[#10B981] text-black flex items-center justify-center mx-auto mb-2 font-bold shadow-lg">
+                  <Check size={24} className="stroke-[3]" />
                 </div>
-                <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#171717]">
+                <h3 className="font-display text-2xl sm:text-3xl font-bold text-white">
                   Briefing Received
                 </h3>
-                <p className="mt-3 text-xs sm:text-sm text-[#171717] font-medium leading-relaxed max-w-md mx-auto">
+                <p className="text-xs sm:text-sm text-white/70 leading-relaxed max-w-md mx-auto">
                   Thank you, {name}. {statusMessage}
                 </p>
                 <button
@@ -184,7 +182,7 @@ export default function ConnectFormView() {
                     setOrganization("");
                     setMessage("");
                   }}
-                  className="mt-6 neo-btn text-xs px-5 py-2.5"
+                  className="mt-4 gumroad-btn-secondary text-xs px-5 py-2.5"
                 >
                   Submit another briefing
                 </button>
@@ -193,21 +191,21 @@ export default function ConnectFormView() {
               <form
                 onSubmit={handleSubmit}
                 noValidate
-                className="border border-[#171717] bg-[#FFFFFF] p-6 sm:p-8 shadow-[6px_6px_0_0_#171717] text-left space-y-5"
+                className="gumroad-card p-6 sm:p-8 border-white/10 text-left space-y-5"
               >
                 {/* Honest Notice for Unconfigured Service */}
                 {status === "unconfigured" && (
                   <div
                     role="alert"
                     aria-live="assertive"
-                    className="p-4 border-2 border-[#171717] bg-[#F4CF55] shadow-[3px_3px_0_0_#171717] flex items-start gap-3"
+                    className="p-4 rounded-xl border border-yellow-500/30 bg-yellow-500/10 flex items-start gap-3"
                   >
-                    <Info size={18} className="text-[#171717] shrink-0 stroke-[2.5] mt-0.5" />
+                    <Info size={18} className="text-yellow-400 shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="font-display text-sm font-bold text-[#171717]">
-                        Briefing Service Infrastructure Notice
+                      <h4 className="font-display text-sm font-bold text-white">
+                        Briefing Service Notice
                       </h4>
-                      <p className="mt-1 text-xs text-[#171717] font-medium leading-relaxed">
+                      <p className="mt-1 text-xs text-white/80 font-sans leading-relaxed">
                         {statusMessage}
                       </p>
                     </div>
@@ -219,14 +217,14 @@ export default function ConnectFormView() {
                   <div
                     role="alert"
                     aria-live="assertive"
-                    className="p-4 border-2 border-[#171717] bg-[#ED83A8] shadow-[3px_3px_0_0_#171717] flex items-start gap-3"
+                    className="p-4 rounded-xl border border-red-500/30 bg-red-500/10 flex items-start gap-3"
                   >
-                    <AlertCircle size={18} className="text-[#171717] shrink-0 stroke-[2.5] mt-0.5" />
+                    <AlertCircle size={18} className="text-red-400 shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="font-display text-sm font-bold text-[#171717]">
+                      <h4 className="font-display text-sm font-bold text-white">
                         Submission Incomplete
                       </h4>
-                      <p className="mt-1 text-xs text-[#171717] font-medium leading-relaxed">
+                      <p className="mt-1 text-xs text-white/80 font-sans leading-relaxed">
                         {statusMessage}
                       </p>
                     </div>
@@ -234,8 +232,8 @@ export default function ConnectFormView() {
                 )}
 
                 <div>
-                  <label htmlFor="name" className="block font-mono text-xs font-bold text-[#171717] uppercase tracking-wider mb-1.5">
-                    Your Name <span className="text-[#ED83A8]">*</span>
+                  <label htmlFor="name" className="block text-xs font-semibold text-white/80 mb-1.5">
+                    Your Name <span className="text-[#FF90E8]">*</span>
                   </label>
                   <input
                     id="name"
@@ -254,20 +252,20 @@ export default function ConnectFormView() {
                     placeholder="Jane Doe"
                     aria-invalid={!!fieldErrors.name}
                     aria-describedby={fieldErrors.name ? "name-error" : undefined}
-                    className={`w-full border ${
-                      fieldErrors.name ? "border-red-600 bg-red-50" : "border-[#171717] bg-[#F8F6EF]"
-                    } px-3.5 py-2.5 text-sm text-[#171717] placeholder:text-neutral-500 font-sans focus:bg-[#FFFFFF] focus:outline-none focus:shadow-[2px_2px_0_0_#171717] disabled:opacity-60`}
+                    className={`w-full rounded-xl border ${
+                      fieldErrors.name ? "border-red-500 bg-red-500/10" : "border-white/15 bg-[#141416]"
+                    } px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-[#FF90E8] focus:outline-none transition-colors disabled:opacity-50`}
                   />
                   {fieldErrors.name && (
-                    <p id="name-error" className="mt-1 font-mono text-[11px] font-bold text-red-600">
+                    <p id="name-error" className="mt-1 text-[11px] text-red-400">
                       {fieldErrors.name}
                     </p>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block font-mono text-xs font-bold text-[#171717] uppercase tracking-wider mb-1.5">
-                    Official Email <span className="text-[#ED83A8]">*</span>
+                  <label htmlFor="email" className="block text-xs font-semibold text-white/80 mb-1.5">
+                    Official Email <span className="text-[#FF90E8]">*</span>
                   </label>
                   <input
                     id="email"
@@ -286,19 +284,19 @@ export default function ConnectFormView() {
                     placeholder="jane@organization.com"
                     aria-invalid={!!fieldErrors.email}
                     aria-describedby={fieldErrors.email ? "email-error" : undefined}
-                    className={`w-full border ${
-                      fieldErrors.email ? "border-red-600 bg-red-50" : "border-[#171717] bg-[#F8F6EF]"
-                    } px-3.5 py-2.5 text-sm text-[#171717] placeholder:text-neutral-500 font-sans focus:bg-[#FFFFFF] focus:outline-none focus:shadow-[2px_2px_0_0_#171717] disabled:opacity-60`}
+                    className={`w-full rounded-xl border ${
+                      fieldErrors.email ? "border-red-500 bg-red-500/10" : "border-white/15 bg-[#141416]"
+                    } px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-[#FF90E8] focus:outline-none transition-colors disabled:opacity-50`}
                   />
                   {fieldErrors.email && (
-                    <p id="email-error" className="mt-1 font-mono text-[11px] font-bold text-red-600">
+                    <p id="email-error" className="mt-1 text-[11px] text-red-400">
                       {fieldErrors.email}
                     </p>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="organization" className="block font-mono text-xs font-bold text-[#171717] uppercase tracking-wider mb-1.5">
+                  <label htmlFor="organization" className="block text-xs font-semibold text-white/80 mb-1.5">
                     Organization / Institution
                   </label>
                   <input
@@ -309,13 +307,13 @@ export default function ConnectFormView() {
                     disabled={status === "submitting"}
                     value={organization}
                     onChange={(e) => setOrganization(e.target.value)}
-                    placeholder="e.g. Saint Jude Academy or Acme Labs"
-                    className="w-full border border-[#171717] bg-[#F8F6EF] px-3.5 py-2.5 text-sm text-[#171717] placeholder:text-neutral-500 font-sans focus:bg-[#FFFFFF] focus:outline-none focus:shadow-[2px_2px_0_0_#171717] disabled:opacity-60"
+                    placeholder="e.g. Saint Jude Academy or Vance Legal"
+                    className="w-full rounded-xl border border-white/15 bg-[#141416] px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-[#FF90E8] focus:outline-none transition-colors disabled:opacity-50"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="division" className="block font-mono text-xs font-bold text-[#171717] uppercase tracking-wider mb-1.5">
+                  <label htmlFor="division" className="block text-xs font-semibold text-white/80 mb-1.5">
                     Primary Service Focus
                   </label>
                   <select
@@ -324,10 +322,10 @@ export default function ConnectFormView() {
                     disabled={status === "submitting"}
                     value={division}
                     onChange={(e) => setDivision(e.target.value)}
-                    className="w-full border border-[#171717] bg-[#F8F6EF] px-3.5 py-2.5 text-sm text-[#171717] font-medium focus:bg-[#FFFFFF] focus:outline-none focus:shadow-[2px_2px_0_0_#171717] disabled:opacity-60"
+                    className="w-full rounded-xl border border-white/15 bg-[#141416] px-4 py-3 text-sm text-white focus:border-[#FF90E8] focus:outline-none transition-colors disabled:opacity-50"
                   >
                     {DIVISIONS.map((d) => (
-                      <option key={d} value={d}>
+                      <option key={d} value={d} className="bg-[#18181B] text-white">
                         {d}
                       </option>
                     ))}
@@ -335,7 +333,7 @@ export default function ConnectFormView() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block font-mono text-xs font-bold text-[#171717] uppercase tracking-wider mb-1.5">
+                  <label htmlFor="message" className="block text-xs font-semibold text-white/80 mb-1.5">
                     Project Summary &amp; Objectives
                   </label>
                   <textarea
@@ -346,25 +344,25 @@ export default function ConnectFormView() {
                     disabled={status === "submitting"}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Briefly describe your current digital presence, goals, and target launch timeframe..."
-                    className="w-full border border-[#171717] bg-[#F8F6EF] p-3 text-sm text-[#171717] placeholder:text-neutral-500 font-sans focus:bg-[#FFFFFF] focus:outline-none focus:shadow-[2px_2px_0_0_#171717] disabled:opacity-60"
+                    placeholder="Briefly describe your current digital presence, objectives, and target launch timeframe..."
+                    className="w-full rounded-xl border border-white/15 bg-[#141416] p-4 text-sm text-white placeholder:text-white/40 focus:border-[#FF90E8] focus:outline-none transition-colors disabled:opacity-50"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="neo-btn-pink text-xs px-6 py-3 w-full shadow-[4px_4px_0_0_#171717] flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="gumroad-btn-pink w-full py-3.5 font-bold text-sm sm:text-base flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {status === "submitting" ? (
                     <>
-                      <Loader2 size={14} className="animate-spin" />
+                      <Loader2 size={16} className="animate-spin" />
                       <span>Transmitting briefing...</span>
                     </>
                   ) : (
                     <>
-                      <span>Submit project briefing</span>
-                      <ArrowUpRight size={13} />
+                      <span>Start a project</span>
+                      <ArrowUpRight size={15} className="stroke-[2.5]" />
                     </>
                   )}
                 </button>

@@ -97,7 +97,7 @@ export default async function ArticlePage({ params }: PageProps) {
   );
 
   return (
-    <article className="flex flex-col min-h-screen pt-28 pb-20 bg-[#F8F6EF]">
+    <article className="flex flex-col min-h-screen pt-28 pb-20 bg-[#000000] text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -108,7 +108,7 @@ export default async function ArticlePage({ params }: PageProps) {
         <div className="mb-8">
           <Link
             href="/insights"
-            className="inline-flex items-center gap-1.5 font-mono text-xs font-bold text-[#171717] border border-[#171717] bg-[#FFFFFF] px-3 py-1 shadow-[2px_2px_0_0_#171717] hover:bg-[#F4CF55] transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-white/70 hover:text-white px-3.5 py-1.5 rounded-full bg-[#18181B] border border-white/10 hover:border-white/25 transition-all"
           >
             <ArrowLeft size={13} className="stroke-[2.5]" />
             <span>Return to field perspectives</span>
@@ -116,53 +116,53 @@ export default async function ArticlePage({ params }: PageProps) {
         </div>
 
         {/* Masthead */}
-        <header className="max-w-4xl mx-auto text-left mb-10">
-          <div className="flex flex-wrap items-center gap-3 font-mono text-xs text-[#171717] mb-4">
-            <span className="border border-[#171717] bg-[#ED83A8] text-[#171717] px-3 py-0.5 font-bold uppercase tracking-wider shadow-[2px_2px_0_0_#171717]">
+        <header className="max-w-4xl mx-auto text-left mb-10 space-y-4">
+          <div className="flex flex-wrap items-center gap-3 text-xs text-white/50">
+            <span className="font-semibold text-[#FF90E8]">
               {article.category}
             </span>
             <span>•</span>
-            <span className="font-semibold">{article.date}</span>
+            <span>{article.date}</span>
             <span>•</span>
-            <span className="inline-flex items-center gap-1 border border-[#171717] bg-[#F4CF55] px-2 py-0.5 font-bold shadow-[1px_1px_0_0_#171717]">
-              <Clock size={12} className="stroke-[2.5]" />
+            <span className="inline-flex items-center gap-1 text-[#10B981]">
+              <Clock size={12} />
               <span>{article.readingTime}</span>
             </span>
           </div>
 
-          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#171717] leading-tight">
+          <h1 className="font-display text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-tight">
             {article.title}
           </h1>
 
-          <p className="mt-5 text-base sm:text-lg text-[#404040] font-medium leading-relaxed">
+          <p className="text-base sm:text-xl text-white/70 leading-relaxed font-sans">
             {article.subtitle}
           </p>
 
-          <div className="mt-8 pt-6 border-t border-[#171717] flex items-center justify-between text-xs">
+          <div className="pt-6 border-t border-white/10 flex items-center justify-between text-xs text-white/60">
             <div className="flex items-center gap-3">
-              <div className="h-9 w-9 rounded-none border border-[#171717] bg-[#A6D8A1] text-[#171717] flex items-center justify-center font-mono text-xs font-bold shadow-[2px_2px_0_0_#171717]">
-                <User size={16} className="stroke-[2.5]" />
+              <div className="h-9 w-9 rounded-full bg-[#18181B] border border-white/15 text-white flex items-center justify-center font-bold">
+                <User size={15} />
               </div>
               <div>
-                <p className="font-bold text-[#171717]">{article.author}</p>
-                <p className="font-mono text-[11px] text-[#404040] font-medium">{article.authorRole}</p>
+                <p className="font-bold text-white">{article.author}</p>
+                <p className="text-[11px] text-white/50">{article.authorRole}</p>
               </div>
             </div>
-            <span className="border border-[#171717] bg-[#FFFFFF] px-2.5 py-1 font-mono text-[10px] font-bold text-[#171717] uppercase shadow-[2px_2px_0_0_#171717] hidden sm:block">
-              PEER-REVIEWED ARCHIVAL MONOGRAPH
+            <span className="hidden sm:inline-block px-3 py-1 rounded-full bg-white/5 text-white/60 text-[11px] font-medium tracking-wide">
+              Archival Monograph
             </span>
           </div>
         </header>
 
         {/* Hero Visual */}
-        <div className="max-w-5xl mx-auto mb-16 overflow-hidden border border-[#171717] bg-[#FFFFFF] p-2 shadow-[6px_6px_0_0_#171717]">
+        <div className="max-w-5xl mx-auto mb-16 overflow-hidden rounded-2xl border border-white/10 bg-[#141416] p-2">
           <Image
             src={article.heroImage}
             alt={article.title}
             width={1200}
             height={675}
             priority
-            className="w-full h-auto object-cover border border-[#171717]"
+            className="w-full h-auto object-cover rounded-xl"
           />
         </div>
 
@@ -170,32 +170,32 @@ export default async function ArticlePage({ params }: PageProps) {
         <div className="grid gap-12 lg:grid-cols-12 max-w-5xl mx-auto text-left">
           {/* Left Column: Sticky Table of Contents */}
           <aside className="lg:col-span-4 hidden lg:block">
-            <div className="sticky top-28 p-6 border border-[#171717] bg-[#FFFFFF] shadow-[4px_4px_0_0_#171717]">
-              <span className="inline-block border border-[#171717] bg-[#ED83A8] px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-[#171717] font-bold shadow-[2px_2px_0_0_#171717] mb-4">
-                TABLE OF CONTENTS
+            <div className="sticky top-28 p-6 gumroad-card border-white/10 space-y-4">
+              <span className="text-xs font-semibold text-white/50 block">
+                Table of contents
               </span>
               <nav className="space-y-2 text-xs font-medium">
                 {article.tableOfContents.map((item) => (
                   <a
                     key={item.id}
                     href={`#${item.id}`}
-                    className="block text-[#404040] hover:text-[#171717] hover:font-bold hover:translate-x-1 transition-all"
+                    className="block text-white/60 hover:text-white transition-colors py-1"
                   >
                     {item.title}
                   </a>
                 ))}
               </nav>
 
-              <div className="mt-8 pt-6 border-t border-[#171717]">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-[#171717] font-bold block mb-3">
-                  RELATED CAPABILITIES
+              <div className="pt-4 border-t border-white/10 space-y-2">
+                <span className="text-xs text-white/40 font-medium block">
+                  Related disciplines
                 </span>
-                <div className="space-y-2">
+                <div className="space-y-1">
                   {article.relatedCapabilities.map((c) => (
                     <Link
                       key={c.href}
                       href={c.href}
-                      className="flex items-center justify-between text-xs font-semibold text-[#171717] hover:bg-[#F4CF55] p-1 border border-transparent hover:border-[#171717] transition-colors"
+                      className="flex items-center justify-between text-xs text-white/70 hover:text-[#FF90E8] py-1 transition-colors"
                     >
                       <span>{c.title}</span>
                       <ArrowUpRight size={12} />
@@ -214,29 +214,29 @@ export default async function ArticlePage({ params }: PageProps) {
 
               return (
                 <section key={section.heading} id={sectionId} className="scroll-mt-28 space-y-4">
-                  <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#171717]">
+                  <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-white">
                     {section.heading}
                   </h2>
 
                   {section.subheading && (
-                    <p className="font-mono text-xs text-[#ED83A8] font-bold">
-                      {"// "} {section.subheading}
+                    <p className="text-xs text-[#FF90E8] font-semibold tracking-wide">
+                      {section.subheading}
                     </p>
                   )}
 
-                  <div className="space-y-4 text-sm sm:text-base text-[#404040] leading-relaxed pt-2 font-sans">
+                  <div className="space-y-4 text-sm sm:text-base text-white/80 leading-relaxed pt-2 font-sans">
                     {section.paragraphs.map((p, pIdx) => (
                       <p key={pIdx}>{p}</p>
                     ))}
                   </div>
 
                   {section.callout && (
-                    <div className="my-6 p-5 border border-[#171717] bg-[#F4CF55] shadow-[4px_4px_0_0_#171717] text-xs sm:text-sm">
-                      <div className="flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-wider text-[#171717] mb-2">
+                    <div className="my-6 p-6 rounded-2xl bg-[#18181B] border border-white/10 space-y-2 text-xs sm:text-sm">
+                      <div className="flex items-center gap-1.5 text-xs font-semibold text-[#FF90E8]">
                         <Compass size={13} className="stroke-[2.5]" />
-                        <span>{section.callout.type.toUpperCase()} PERSPECTIVE</span>
+                        <span>{section.callout.type} perspective</span>
                       </div>
-                      <p className="text-[#171717] font-bold leading-relaxed italic">
+                      <p className="text-white/90 font-medium leading-relaxed italic">
                         &ldquo;{section.callout.text}&rdquo;
                       </p>
                     </div>
@@ -246,23 +246,23 @@ export default async function ArticlePage({ params }: PageProps) {
             })}
 
             {/* Contextual Consultation Box */}
-            <div className="mt-16 p-8 border border-[#171717] bg-[#ED83A8] shadow-[6px_6px_0_0_#171717]">
-              <span className="inline-block border border-[#171717] bg-[#FFFFFF] px-2.5 py-0.5 font-mono text-xs font-bold text-[#171717] uppercase tracking-wider shadow-[2px_2px_0_0_#171717]">
-                STRATEGIC CONSULTATION
+            <div className="mt-16 p-8 gumroad-card border-white/10 space-y-4 bg-gradient-to-b from-[#18181B] to-[#121214]">
+              <span className="text-xs text-white/50 font-medium">
+                Strategic consultation
               </span>
-              <h3 className="mt-3 font-display text-2xl sm:text-3xl font-bold text-[#171717]">
+              <h3 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
                 Discuss this monograph with FIRM partners
               </h3>
-              <p className="mt-2 text-xs sm:text-sm text-[#171717] font-medium leading-relaxed">
-                If your organization is evaluating a digital transformation, admissions modernization, or brand architecture sprint, we invite you to initiate a confidential briefing.
+              <p className="text-xs sm:text-sm text-white/70 leading-relaxed font-sans">
+                If your organization is evaluating a digital transformation, admissions modernization, or brand architecture sprint, we invite you to initiate a briefing.
               </p>
-              <div className="mt-6">
+              <div className="pt-2">
                 <Link
                   href="/connect"
-                  className="neo-btn text-xs px-6 py-3"
+                  className="gumroad-btn-pink text-xs sm:text-sm font-bold !py-3 !px-6"
                 >
-                  <span>Initiate a project briefing</span>
-                  <ArrowUpRight size={13} />
+                  <span>Start a project</span>
+                  <ArrowUpRight size={14} className="stroke-[2.5]" />
                 </Link>
               </div>
             </div>
@@ -272,42 +272,41 @@ export default async function ArticlePage({ params }: PageProps) {
 
       {/* Related Reading Bar */}
       {relatedArticlesList.length > 0 && (
-        <Section background="cream">
-          <div className="max-w-5xl mx-auto text-left">
-            <span className="inline-block border border-[#171717] bg-[#A6D8A1] px-3 py-0.5 font-mono text-xs uppercase tracking-wider text-[#171717] font-bold shadow-[2px_2px_0_0_#171717] mb-2">
-              FURTHER PERSPECTIVES
-            </span>
-            <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#171717] mb-6">
-              Related monographs in the archive
-            </h3>
+        <Section background="black" padding="normal">
+          <div className="max-w-5xl mx-auto text-left space-y-6">
+            <div>
+              <h3 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-white">
+                Related monographs in the archive
+              </h3>
+            </div>
 
             <div className="grid gap-6 sm:grid-cols-2">
               {relatedArticlesList.map((rel) => (
                 <div
                   key={rel.slug}
-                  className="neo-card p-6 shadow-[4px_4px_0_0_#171717] flex flex-col justify-between"
+                  className="gumroad-card p-6 flex flex-col justify-between group hover:border-white/30 transition-all"
                 >
                   <div>
-                    <span className="border border-[#171717] bg-[#ED83A8] px-2 py-0.5 font-mono text-[10px] text-[#171717] font-bold uppercase shadow-[2px_2px_0_0_#171717]">
+                    <span className="text-xs font-medium text-white/50">
                       {rel.category}
                     </span>
-                    <h4 className="mt-3 font-display text-lg font-bold text-[#171717] hover:underline leading-snug">
+                    <h4 className="mt-2 font-display text-lg font-bold text-white group-hover:text-[#FF90E8] transition-colors leading-snug">
                       <Link href={`/insights/${rel.slug}`}>
                         {rel.title}
                       </Link>
                     </h4>
-                    <p className="mt-2 text-xs sm:text-sm text-[#404040] line-clamp-2">
+                    <p className="mt-2 text-xs sm:text-sm text-white/70 line-clamp-2 leading-relaxed">
                       {rel.excerpt}
                     </p>
                   </div>
-                  <div className="mt-4 pt-4 border-t border-[#171717] flex items-center justify-between text-xs">
-                    <span className="font-mono text-[11px] font-bold text-[#171717]">{rel.readingTime}</span>
+                  <div className="mt-5 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-white/50">
+                    <span className="tabular-nums">{rel.readingTime}</span>
                     <Link
                       href={`/insights/${rel.slug}`}
-                      className="neo-btn text-xs px-3.5 py-1.5"
+                      className="font-semibold text-white/80 group-hover:text-white inline-flex items-center gap-1"
                     >
                       <span>Read</span>
-                      <ArrowUpRight size={11} />
+                      <ArrowUpRight size={12} />
                     </Link>
                   </div>
                 </div>

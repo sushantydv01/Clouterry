@@ -9,7 +9,7 @@ export interface ProjectCaseStudy {
   image: string;
   clientType: string;
   industry: string;
-  classification: "Client Commission" | "Strategic Concept & Architecture Study" | "Studio Initiative";
+  classification: "Concept Study" | "Strategic Architecture Study" | "Studio Initiative";
   classificationNotice: string;
   timeframe: string;
   divisions: string[];
@@ -41,7 +41,7 @@ export const PROJECTS: ProjectCaseStudy[] = [
     image: "/images/work/saint-jude-preview.webp",
     clientType: "K-12 Independent Preparatory Academy",
     industry: "Education & Schools",
-    classification: "Strategic Concept & Architecture Study",
+    classification: "Concept Study",
     classificationNotice: "This project is a detailed demonstration concept and architectural blueprint developed by FIRM to illustrate our specialized digital practice for educational institutions.",
     timeframe: "8-Week Comprehensive Study",
     divisions: ["Brand & Identity", "Web & Technology", "Social Media & Content"],
@@ -56,15 +56,15 @@ export const PROJECTS: ProjectCaseStudy[] = [
     ],
     executionDetails: [
       {
-        heading: "01 // The Admissions & Tour Funnel",
+        heading: "01 · Admissions & Tour Funnel",
         description: "Replaced an 18-field monolithic registration form with an intuitive 3-step mobile RSVP flow, capturing parent intent, student grade level, and scheduled tour dates with instant confirmation.",
       },
       {
-        heading: "02 // Academic & Faculty Stature",
+        heading: "02 · Academic & Faculty Stature",
         description: "Transformed flat faculty rosters into rich biographical dossiers highlighting educational backgrounds, research publications, and direct department contacts.",
       },
       {
-        heading: "03 // The Community Utility Bar",
+        heading: "03 · Community Utility Suite",
         description: "Created a quiet, persistent header ribbon providing current families with one-click access to Google Calendar sync, daily athletics notices, and direct SIS gateway logins.",
       },
     ],
@@ -86,15 +86,15 @@ export const PROJECTS: ProjectCaseStudy[] = [
         description: "Lighting, framing, and student consent protocols for in-house communications staff.",
       },
     ],
-    accentColor: "#B84A29",
+    accentColor: "#F4CF55",
     heroMockup: {
       urlText: "saintjude.academy/admissions",
       screenTitle: "Saint Jude Preparatory Academy",
       screenSubtitle: "Nurturing intellectual curiosity and moral character since 1946.",
       metrics: [
-        { label: "Core Web Vitals", value: "100% Green" },
-        { label: "Admissions Funnel", value: "3-Step Mobile" },
-        { label: "Compliance Standard", value: "WCAG 2.1 AA" },
+        { label: "Admissions Funnel", value: "3-Step Mobile RSVP" },
+        { label: "Community Access", value: "Persistent Utility Bar" },
+        { label: "Compliance Standard", value: "WCAG 2.1 AA Accessible" },
       ],
     },
   },
@@ -104,12 +104,12 @@ export const PROJECTS: ProjectCaseStudy[] = [
     image: "/images/work/aether-health-preview.webp",
     clientType: "Specialty Surgical & Medical Practice",
     industry: "Healthcare & Medical",
-    classification: "Strategic Concept & Architecture Study",
+    classification: "Concept Study",
     classificationNotice: "This project is a detailed demonstration concept and architectural blueprint developed by FIRM to illustrate our patient-first digital presence framework for specialty healthcare practices.",
     timeframe: "6-Week Architecture Study",
     divisions: ["Brand & Identity", "Web & Technology", "Marketing & Growth"],
     summary: "Transforming a specialty medical practice’s digital presence from an anxious, clinical portal into a reassuring, high-trust flagship with friction-free patient intake.",
-    challenge: "The clinic's existing website was cold, clinical, and difficult to navigate on mobile. Prospective patients seeking consultation for complex surgical procedures faced confusing medical jargon, slow-loading provider bios, and an intake form requiring manual printing and scanning.",
+    challenge: "The clinic's existing website was cold, clinical, and confusing on mobile screens. Prospective patients seeking consultation for complex surgical procedures faced confusing medical jargon, slow-loading provider bios, and an intake form requiring manual printing and scanning.",
     strategicApproach: "We applied calm, patient-first color psychology (soft sage neutrals, warm alabaster, deep slate) and structured provider biographies around verified surgical specialties, patient outcomes, and direct appointment requests.",
     technicalDecisions: [
       "Client-side encrypted intake workflows protecting sensitive patient medical inquiries.",
@@ -119,22 +119,22 @@ export const PROJECTS: ProjectCaseStudy[] = [
     ],
     executionDetails: [
       {
-        heading: "01 // Reassuring Visual Environment",
+        heading: "01 · Reassuring Visual Environment",
         description: "Replaced sterile white backgrounds and harsh hospital blue tones with warm, grounding tinted neutrals that reduce patient anxiety upon arrival.",
       },
       {
-        heading: "02 // Provider Credential Showcase",
+        heading: "02 · Provider Credential Showcase",
         description: "Engineered detailed physician profiles featuring high-resolution editorial portraiture, surgical fellowships, board certifications, and verified patient reviews.",
       },
       {
-        heading: "03 // Streamlined Patient Gateway",
+        heading: "03 · Streamlined Patient Gateway",
         description: "Designed a digital pre-visit intake checklist that patients can complete on their phone in 2 minutes prior to their consultation.",
       },
     ],
     deliverables: [
       {
         title: "Patient Web Flagship",
-        description: "Ultra-fast Next.js platform optimized for seamless mobile navigation.",
+        description: "Next.js platform optimized for responsive mobile navigation.",
       },
       {
         title: "Calm Healthcare Design System",
@@ -149,15 +149,15 @@ export const PROJECTS: ProjectCaseStudy[] = [
         description: "Structured JSON-LD medical schema and Google Business Profile optimization.",
       },
     ],
-    accentColor: "#1E6B42",
+    accentColor: "#A6D8A1",
     heroMockup: {
       urlText: "aetherhealth.clinic/specialties",
       screenTitle: "Aether Health Surgical Institute",
       screenSubtitle: "World-class clinical precision with compassionate, unhurried patient care.",
       metrics: [
-        { label: "Mobile Page Speed", value: "0.6s Load" },
-        { label: "Patient Booking Flow", value: "Mobile First" },
-        { label: "Accessibility Level", value: "WCAG 2.1 AA" },
+        { label: "Intake Workflow", value: "Client-Side Encryption" },
+        { label: "Provider Directory", value: "Specialist Matrix" },
+        { label: "Design System", value: "Calm Low-Stress UI" },
       ],
     },
   },
@@ -167,7 +167,7 @@ export const PROJECTS: ProjectCaseStudy[] = [
     image: "/images/work/vance-legal-preview.webp",
     clientType: "Corporate & Commercial Law Firm",
     industry: "Professional Services",
-    classification: "Strategic Concept & Architecture Study",
+    classification: "Concept Study",
     classificationNotice: "This project is a detailed demonstration concept and architectural study developed by FIRM to illustrate our intellectual prestige framework for legal partnerships.",
     timeframe: "7-Week Architecture Study",
     divisions: ["Brand & Identity", "Web & Technology", "Digital Management"],
@@ -182,15 +182,15 @@ export const PROJECTS: ProjectCaseStudy[] = [
     ],
     executionDetails: [
       {
-        heading: "01 // Editorial Legal Journal",
+        heading: "01 · Editorial Legal Journal",
         description: "Treated partner insights like a formal law review with estimated reading times, citation callouts, and author biographies.",
       },
       {
-        heading: "02 // Partner & Transaction Dossiers",
+        heading: "02 · Partner & Transaction Dossiers",
         description: "Structured partner biographies showcasing bar admissions, landmark commercial transactions, and direct vCard downloads.",
       },
       {
-        heading: "03 // Practice Area Architecture",
+        heading: "03 · Practice Area Architecture",
         description: "Structured complex commercial litigation, mergers, and regulatory advisory into clear, intuitive client pathways.",
       },
     ],
@@ -212,15 +212,15 @@ export const PROJECTS: ProjectCaseStudy[] = [
         description: "Consistent typography and layout tokens for executive pitch decks.",
       },
     ],
-    accentColor: "#1F1B16",
+    accentColor: "#ED83A8",
     heroMockup: {
       urlText: "vancepartners.law/journal",
       screenTitle: "Vance & Partners Attorneys at Law",
       screenSubtitle: "Strategic legal counsel for complex commercial transactions and cross-border governance.",
       metrics: [
-        { label: "Publishing Cadence", value: "Instant MDX" },
-        { label: "Partner Directory", value: "Searchable Matrix" },
-        { label: "Typography Standard", value: "Editorial Serif" },
+        { label: "Publishing Architecture", value: "MDX Journal Engine" },
+        { label: "Partner Directory", value: "Searchable Dossiers" },
+        { label: "Practice Matrix", value: "Multi-Jurisdiction" },
       ],
     },
   },

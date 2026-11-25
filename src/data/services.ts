@@ -39,16 +39,16 @@ export const SERVICES: ServiceDivision[] = [
   {
     id: "brand-identity",
     slug: "brand-identity",
-    code: "01 // DIVISION",
+    code: "Division 01",
     title: "Brand & Identity",
     eyebrow: "Strategic Reputation & Visual Systems",
     subtitle: "We craft enduring brand platforms, typographic systems, and digital design tokens that establish immediate market authority.",
-    proposition: "A brand is not a logo file. It is the visual, typographic, and narrative standard that governs every interaction an organization has with the world.",
+    proposition: "A brand is the visual, typographic, and narrative standard that governs every interaction an organization has with the world.",
     timeframe: "4–8 Week Sprint",
     problems: [
       {
         title: "Visual Incoherence Across Touchpoints",
-        description: "Organizations accumulate fractured assets over years—different fonts on the website, mismatched slide decks, and amateur social graphics that erode perceived competence.",
+        description: "Organizations accumulate fractured assets over time, including mismatched fonts, inconsistent slide decks, and unbranded graphics that erode credibility.",
       },
       {
         title: "Commoditized Market Positioning",
@@ -63,7 +63,7 @@ export const SERVICES: ServiceDivision[] = [
       {
         step: "01",
         title: "Reputation & Market Audit",
-        description: "Deep stakeholder interviews, competitive positioning landscape analysis, and visual surface inventory.",
+        description: "Deep stakeholder interviews, competitive positioning analysis, and visual surface inventory.",
       },
       {
         step: "02",
@@ -149,7 +149,7 @@ export const SERVICES: ServiceDivision[] = [
   {
     id: "web-technology",
     slug: "web-technology",
-    code: "02 // DIVISION",
+    code: "Division 02",
     title: "Web & Technology",
     eyebrow: "Next.js App Router & Software Engineering",
     subtitle: "We engineer ultra-fast, accessible, bespoke web platforms that turn your digital flagship into an institutional conversion engine.",
@@ -260,7 +260,7 @@ export const SERVICES: ServiceDivision[] = [
   {
     id: "social-content",
     slug: "social-content",
-    code: "03 // DIVISION",
+    code: "Division 03",
     title: "Social Media & Content",
     eyebrow: "Editorial Video, Photography & Narrative Strategy",
     subtitle: "We direct and produce disciplined editorial content that reinforces organizational stature and drives authentic organic attention.",
@@ -369,7 +369,7 @@ export const SERVICES: ServiceDivision[] = [
   {
     id: "marketing-growth",
     slug: "marketing-growth",
-    code: "04 // DIVISION",
+    code: "Division 04",
     title: "Marketing & Visibility",
     eyebrow: "Search Visibility, Inbound Funnels & Paid Acquisition",
     subtitle: "We connect your digital flagship with high-intent audiences through technical search visibility, paid distribution, and conversion architecture.",
@@ -479,11 +479,11 @@ export const SERVICES: ServiceDivision[] = [
   {
     id: "digital-management",
     slug: "digital-management",
-    code: "05 // DIVISION",
+    code: "Division 05",
     title: "Digital Management & Consulting",
     eyebrow: "Fractional Stewardship & Platform Governance",
     subtitle: "We provide senior digital leadership, continuous software governance, and strategic advisory for organizations without in-house digital directors.",
-    proposition: "Launching a website is not the finish line—it is day one. An unmanaged digital platform decays in performance, develops security vulnerabilities, and falls behind modern standards.",
+    proposition: "Launching a website marks day one of an operational lifecycle. An unmanaged platform decays in performance, develops security vulnerabilities, and loses search visibility over time.",
     timeframe: "Annual Stewardship SLA",
     problems: [
       {

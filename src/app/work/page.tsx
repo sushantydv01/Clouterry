@@ -5,7 +5,7 @@ import { siteConfig } from "@/lib/siteConfig";
 export const metadata: Metadata = {
   title: `Case Studies & Architecture Portfolios | ${siteConfig.workingName}`,
   description:
-    "Explore architectural case studies, technical stack decisions, and digital presence frameworks across education, healthcare, and professional services under our 3-tier credibility framework.",
+    "Explore architectural case studies, technical stack decisions, and digital presence frameworks across education, healthcare, and professional services with complete intellectual honesty.",
   openGraph: {
     title: `Case Studies & Architecture Portfolios | ${siteConfig.workingName}`,
     description:

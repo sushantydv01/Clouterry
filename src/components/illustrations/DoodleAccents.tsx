@@ -1,7 +1,7 @@
 import React from "react";
 
 /**
- * Hand-drawn vector accents for FIRM.
+ * Hand-drawn vector accents and "The Seam" signature motif for FIRM.
  * Organic outlines with stroke="#171717" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
  * Uses Pop Garden palette fills where applicable.
  */
@@ -151,6 +151,61 @@ export function DoodleStamp({ text = "ORIGINAL", color = "#A6D8A1", className = 
     >
       <span className="h-2 w-2 rounded-full bg-[#171717]" />
       <span>{text}</span>
+    </div>
+  );
+}
+
+/**
+ * Reusable tight inline highlight component that hugs words cleanly
+ * without stretching, handling multiline wrapping properly with box-decoration-clone.
+ */
+export function InlineHighlight({
+  children,
+  color = "pink",
+  className = "",
+}: {
+  children: React.ReactNode;
+  color?: "pink" | "green" | "yellow";
+  className?: string;
+}) {
+  const bgStyles = {
+    pink: "bg-[#ED83A8] text-[#171717] border-b-2 border-[#171717]",
+    green: "bg-[#A6D8A1] text-[#171717] border-b-2 border-[#171717]",
+    yellow: "bg-[#F4CF55] text-[#171717] border-b-2 border-[#171717]",
+  };
+
+  return (
+    <span
+      className={`relative inline px-1.5 py-0.5 box-decoration-clone ${bgStyles[color]} ${className}`}
+      style={{
+        boxDecorationBreak: "clone",
+        WebkitBoxDecorationBreak: "clone",
+      }}
+    >
+      {children}
+    </span>
+  );
+}
+
+/**
+ * "The Seam" — A signature recurring architectural motif representing the unified
+ * connection between Brand, Web, Content, Growth, and Stewardship.
+ */
+export function TheSeamSpine({ className = "" }: { className?: string }) {
+  return (
+    <div className={`relative flex items-center justify-center my-6 ${className}`} aria-hidden="true">
+      <svg width="100%" height="28" viewBox="0 0 800 28" fill="none" xmlns="http://www.w3.org/2000/svg" className="max-w-4xl w-full">
+        {/* Core Architectural Guideline */}
+        <path d="M10 14 H790" stroke="#171717" strokeWidth="3" strokeLinecap="round" />
+        <path d="M10 14 H790" stroke="#A6D8A1" strokeWidth="1.5" strokeDasharray="8 6" strokeLinecap="round" />
+        
+        {/* 5 Interlocking Anchor Nodes */}
+        <circle cx="80" cy="14" r="7" fill="#ED83A8" stroke="#171717" strokeWidth="2" />
+        <circle cx="240" cy="14" r="7" fill="#F4CF55" stroke="#171717" strokeWidth="2" />
+        <circle cx="400" cy="14" r="8" fill="#A6D8A1" stroke="#171717" strokeWidth="2" />
+        <circle cx="560" cy="14" r="7" fill="#ED83A8" stroke="#171717" strokeWidth="2" />
+        <circle cx="720" cy="14" r="7" fill="#F4CF55" stroke="#171717" strokeWidth="2" />
+      </svg>
     </div>
   );
 }

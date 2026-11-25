@@ -15,13 +15,8 @@ export const metadata: Metadata = {
 };
 
 export default function IndustriesDirectoryPage() {
-  const getAccentBadge = (idx: number) => {
-    const colors = ["bg-[#ED83A8]", "bg-[#A6D8A1]", "bg-[#F4CF55]", "bg-[#ED83A8]", "bg-[#A6D8A1]"];
-    return colors[idx % colors.length];
-  };
-
   return (
-    <div className="flex flex-col min-h-screen bg-[#F8F6EF]">
+    <div className="flex flex-col min-h-screen bg-[#000000] text-white">
       <Container>
         <PageHeader
           badge="INDUSTRIES"
@@ -32,55 +27,52 @@ export default function IndustriesDirectoryPage() {
       </Container>
 
       {/* Primary Specialization Spotlight: Education & Schools with School Blueprint */}
-      <Section background="cream">
+      <Section background="black" padding="tight">
         <SchoolBlueprint />
       </Section>
 
       {/* Industry Sector Directory Cards */}
-      <Section background="white">
-        <div className="max-w-5xl mx-auto text-left">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8 gap-3">
+      <Section background="black" padding="normal">
+        <div className="max-w-5xl mx-auto text-left space-y-8">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <div>
-              <span className="inline-block border border-[#171717] bg-[#F4CF55] px-3 py-0.5 font-mono text-xs uppercase tracking-wider text-[#171717] font-bold shadow-[2px_2px_0_0_#171717]">
-                Sector Practice Guides
-              </span>
-              <h2 className="mt-2 font-display text-2xl sm:text-3xl font-bold text-[#171717]">
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight">
                 Explore individual industry frameworks
               </h2>
             </div>
-            <span className="border border-[#171717] bg-[#FFFFFF] px-3 py-1 font-mono text-xs font-bold text-[#171717] shadow-[2px_2px_0_0_#171717]">
+            <span className="px-3.5 py-1 rounded-full bg-[#18181B] border border-white/15 text-xs font-medium text-white/70">
               5 Core Sectors
             </span>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
-            {INDUSTRIES.map((s, idx) => (
+            {INDUSTRIES.map((s) => (
               <div
                 key={s.slug}
-                className="neo-card p-6 sm:p-8 flex flex-col justify-between text-left shadow-[4px_4px_0_0_#171717]"
+                className="gumroad-card p-6 sm:p-8 flex flex-col justify-between group hover:border-white/30 transition-all"
               >
-                <div>
-                  <span className={`border border-[#171717] ${getAccentBadge(idx)} px-2.5 py-0.5 font-mono text-[10px] text-[#171717] font-bold uppercase tracking-wider inline-block shadow-[1px_1px_0_0_#171717]`}>
+                <div className="space-y-3">
+                  <span className="inline-block px-2.5 py-0.5 rounded-full bg-white/10 text-white/80 text-[11px] font-semibold">
                     {s.eyebrow}
                   </span>
-                  <h3 className="mt-2 font-display text-2xl font-bold text-[#171717]">
+                  <h3 className="font-display text-2xl font-bold text-white group-hover:text-[#FF90E8] transition-colors">
                     {s.title}
                   </h3>
-                  <p className="mt-2 text-xs sm:text-sm text-[#404040] leading-relaxed">
+                  <p className="text-xs sm:text-sm text-white/70 leading-relaxed font-sans">
                     {s.tagline}
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-[#171717] flex items-center justify-between text-xs">
-                  <span className="font-mono text-xs font-bold text-[#666666]">
+                <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs">
+                  <span className="text-white/60">
                     {s.deliverables.length} Deliverables Included
                   </span>
                   <Link
                     href={`/industries/${s.slug}`}
-                    className="neo-btn text-xs px-3.5 py-1.5"
+                    className="text-xs font-semibold text-[#FF90E8] group-hover:underline inline-flex items-center gap-1"
                   >
                     <span>Read practice</span>
-                    <ArrowUpRight size={12} />
+                    <ArrowUpRight size={13} />
                   </Link>
                 </div>
               </div>

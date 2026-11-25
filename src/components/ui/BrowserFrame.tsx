@@ -14,29 +14,29 @@ export default function BrowserFrame({
 }: BrowserFrameProps) {
   return (
     <div
-      className={`border border-[#171717] bg-white shadow-[4px_4px_0_0_#171717] sm:shadow-[6px_6px_0_0_#171717] overflow-hidden ${className}`}
+      className={`rounded-2xl border border-white/15 bg-[#141416] overflow-hidden shadow-2xl ${className}`}
     >
-      {/* Browser Chrome Header with Solid Midnight Black Border */}
-      <div className="flex items-center justify-between gap-2 px-3 sm:px-4 py-2 sm:py-3 border-b border-[#171717] bg-[#F8F6EF]">
-        {/* Pop Garden Window Traffic Lights */}
-        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-          <span className="h-2.5 w-2.5 sm:h-3.5 sm:w-3.5 rounded-full bg-[#ED83A8] border border-[#171717]" />
-          <span className="h-2.5 w-2.5 sm:h-3.5 sm:w-3.5 rounded-full bg-[#F4CF55] border border-[#171717]" />
-          <span className="h-2.5 w-2.5 sm:h-3.5 sm:w-3.5 rounded-full bg-[#A6D8A1] border border-[#171717]" />
+      {/* Browser Chrome Header */}
+      <div className="flex items-center justify-between gap-2 px-4 py-3 border-b border-white/10 bg-[#18181B]">
+        {/* Subtle Window Controls */}
+        <div className="flex items-center gap-2 shrink-0">
+          <span className="h-3 w-3 rounded-full bg-white/20" />
+          <span className="h-3 w-3 rounded-full bg-white/20" />
+          <span className="h-3 w-3 rounded-full bg-white/20" />
         </div>
 
-        {/* Address Bar with Solid Midnight Black Border */}
-        <div className="flex items-center gap-1.5 sm:gap-2 border border-[#171717] bg-white px-2.5 sm:px-3.5 py-1 text-[11px] sm:text-xs font-mono text-[#171717] flex-1 min-w-0 max-w-[200px] sm:max-w-md justify-center shadow-[1px_1px_0_0_#171717] sm:shadow-[2px_2px_0_0_#171717]">
-          <Lock size={11} className="text-[#171717] shrink-0" />
-          <span className="truncate font-semibold">{url}</span>
+        {/* Clean Modern Address Bar */}
+        <div className="flex items-center gap-2 rounded-full bg-[#101012] border border-white/10 px-4 py-1 text-xs text-white/60 flex-1 min-w-0 max-w-sm justify-center">
+          <Lock size={12} className="text-white/40 shrink-0" />
+          <span className="truncate font-sans font-medium">{url}</span>
         </div>
 
         {/* Spacer to balance traffic lights */}
-        <div className="w-5 sm:w-8 shrink-0 hidden xs:block" />
+        <div className="w-12 shrink-0 hidden xs:block" />
       </div>
 
       {/* Browser Viewport Content */}
-      <div className="relative w-full overflow-hidden bg-[#F8F6EF]">
+      <div className="relative w-full overflow-hidden bg-[#101012]">
         {children}
       </div>
     </div>

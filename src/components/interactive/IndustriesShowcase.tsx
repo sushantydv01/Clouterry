@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import {
   EducationDoodle,
+  EducationFeatureIllustration,
   HealthcareDoodle,
   ProfessionalDoodle,
   RetailDoodle,
@@ -86,21 +87,28 @@ export default function IndustriesShowcase() {
       {/* ── Asymmetric Staggered Sector Grid (Breaking the Boxiness) ── */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {/* Education Hero Tile (Span 2 on large screens for primary specialization) */}
-        <div className="sm:col-span-2 lg:col-span-2 border-2 border-[#171717] bg-[#FFFFFF] p-8 sm:p-10 shadow-[8px_8px_0_0_#171717] flex flex-col justify-between group hover:-translate-y-1 transition-transform">
+        <div className="sm:col-span-2 lg:col-span-2 border-2 border-[#171717] bg-[#FFFFFF] p-6 sm:p-10 shadow-[8px_8px_0_0_#171717] flex flex-col justify-between group hover:-translate-y-1 transition-transform">
           <div>
             <div className="flex items-center justify-between mb-6">
               <span className="border border-[#171717] bg-[#F4CF55] px-3 py-1 font-mono text-xs font-bold text-[#171717] uppercase shadow-[2px_2px_0_0_#171717]">
                 PRIMARY PRACTICE SPECIALIZATION
               </span>
-              <EducationDoodle className="w-14 h-14" />
+              <EducationDoodle className="w-12 h-12" />
             </div>
 
-            <h3 className="font-display text-3xl sm:text-4xl font-bold text-[#171717] leading-snug">
-              Education &amp; Independent Schools
-            </h3>
-            <p className="mt-3 text-sm sm:text-base text-[#404040] leading-relaxed max-w-xl font-sans">
-              Dedicated institutional digital presence architecture for independent preparatory academies, K-12 schools, and universities. Decoupling admissions inquiry funnels from parent community utilities.
-            </p>
+            <div className="grid gap-6 lg:grid-cols-12 lg:items-center">
+              <div className="lg:col-span-7">
+                <h3 className="font-display text-2xl sm:text-4xl font-bold text-[#171717] leading-snug">
+                  Education &amp; Independent Schools
+                </h3>
+                <p className="mt-3 text-sm sm:text-base text-[#404040] leading-relaxed font-sans">
+                  Dedicated digital presence architecture for independent preparatory academies, K-12 schools, and higher education. We decouple high-conversion admissions inquiry funnels from private parent community portals.
+                </p>
+              </div>
+              <div className="lg:col-span-5 hidden sm:block">
+                <EducationFeatureIllustration className="w-full h-auto" />
+              </div>
+            </div>
           </div>
 
           <div className="mt-8 pt-6 border-t border-[#171717] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -111,7 +119,7 @@ export default function IndustriesShowcase() {
               href="/industries/education"
               className="neo-btn-pink text-xs px-5 py-2.5 self-start sm:self-auto inline-flex items-center gap-1.5"
             >
-              <span>Read education practice</span>
+              <span>Explore education practice</span>
               <ArrowUpRight size={13} className="stroke-[2.5]" />
             </Link>
           </div>

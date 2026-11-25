@@ -4,8 +4,9 @@ import Link from "next/link";
 import PageHeader from "@/components/layout/PageHeader";
 import Section from "@/components/layout/Section";
 import Container from "@/components/layout/Container";
+import TheThreadMini from "@/components/thread/TheThreadMini";
 import { SERVICES } from "@/data/services";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Check, TrendingUp } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Marketing & Growth — Search Visibility & Conversion Architecture | FIRM",
@@ -17,8 +18,8 @@ export default function MarketingGrowthPage() {
   const service = SERVICES.find((s) => s.slug === "marketing-growth") || SERVICES[3];
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#F8F6EF]">
-      {/* 01. Editorial Hero */}
+    <div className="flex flex-col min-h-screen bg-[#000000] text-white">
+      {/* 01. Hero Header */}
       <Container>
         <PageHeader
           badge={service.code}
@@ -29,118 +30,57 @@ export default function MarketingGrowthPage() {
           <div className="flex flex-wrap items-center gap-3">
             <Link
               href="/connect"
-              className="neo-btn-pink text-xs px-5 py-2.5 shadow-[3px_3px_0_0_#171717]"
+              className="gumroad-btn-pink text-xs sm:text-sm font-bold !py-2.5 !px-5"
             >
-              <span>Request growth diagnostic</span>
-              <ArrowUpRight size={13} className="stroke-[2.5]" />
+              <span>Start a project</span>
+              <ArrowUpRight size={14} className="stroke-[2.5]" />
             </Link>
-            <span className="border border-[#171717] bg-white px-3 py-1 font-mono text-xs font-bold text-[#171717] shadow-[2px_2px_0_0_#171717]">
+            <span className="px-3.5 py-1 rounded-full bg-[#18181B] border border-white/15 text-xs text-white/70">
               Cadence: {service.timeframe}
             </span>
+          </div>
+
+          <div className="mt-8 max-w-md">
+            <TheThreadMini activeNodeNum="04" showLabels={true} size="md" />
           </div>
         </PageHeader>
       </Container>
 
-      {/* 02. Core Proposition */}
-      <Section background="white">
-        <div className="max-w-4xl mx-auto text-left border border-[#171717] bg-[#F8F6EF] p-6 sm:p-10 shadow-[6px_6px_0_0_#171717]">
-          <span className="inline-block border border-[#171717] bg-[#ED83A8] px-3.5 py-1 font-mono text-xs uppercase tracking-wider text-[#171717] font-bold shadow-[2px_2px_0_0_#171717]">
+      {/* 02. Core Growth Proposition */}
+      <Section background="black" padding="tight">
+        <div className="max-w-4xl mx-auto text-left gumroad-card p-6 sm:p-10 border-white/10 space-y-4">
+          <span className="inline-block px-3 py-1 rounded-full bg-[#10B981]/20 border border-[#10B981]/30 text-xs font-semibold text-[#10B981]">
             Growth Proposition
           </span>
-          <h2 className="mt-3.5 font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#171717] leading-tight">
-            Visibility without conversion is an expensive vanity.
+          <h2 className="font-display text-2xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
+            Visibility is an engineering challenge, not an ad spend competition.
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-[#3A3835] leading-relaxed font-sans">
-            {service.proposition} We build search architectures that connect qualified, high-intent prospective families, clients, and partners directly to streamlined conversion pathways on your website.
+          <p className="text-base text-white/70 leading-relaxed font-sans">
+            {service.proposition} Throwing money at paid ads without optimizing page speed, schema markup, and admissions funnels produces high bounce rates. We build organic discovery and conversion architecture directly into the web platform.
           </p>
         </div>
       </Section>
 
-      {/* 03. Strategic Inbound Funnel Specimen */}
-      <Section background="cream">
-        <div className="max-w-4xl mx-auto text-left">
-          <span className="inline-block border border-[#171717] bg-[#A6D8A1] px-3.5 py-1 font-mono text-xs uppercase tracking-wider text-[#171717] font-bold shadow-[2px_2px_0_0_#171717]">
-            Architectural Workflow
-          </span>
-          <h2 className="mt-2.5 font-display text-2xl sm:text-4xl font-bold tracking-tight text-[#171717] mb-8">
-            The high-intent search conversion pipeline
-          </h2>
-
-          <div className="border border-[#171717] bg-white p-6 sm:p-9 shadow-[6px_6px_0_0_#171717]">
-            <div className="space-y-4">
-              {/* Funnel Stage 1 */}
-              <div className="p-4 border border-[#171717] bg-[#F8F6EF] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 shadow-[3px_3px_0_0_#171717]">
-                <div className="flex items-center gap-3">
-                  <div className="h-8 w-8 border border-[#171717] bg-[#ED83A8] flex items-center justify-center text-[#171717] font-mono text-xs font-bold shadow-[1px_1px_0_0_#171717]">
-                    01
-                  </div>
-                  <div>
-                    <span className="text-sm font-bold text-[#171717] block">High-Intent Demand Discovery</span>
-                    <span className="text-xs text-[#3A3835]">Targeting specific terms (e.g. &apos;independent boarding school admissions&apos;)</span>
-                  </div>
-                </div>
-                <span className="border border-[#171717] bg-white px-3 py-0.5 font-mono text-xs font-bold text-[#171717] self-start sm:self-auto">
-                  Search Intent Layer
-                </span>
-              </div>
-
-              {/* Funnel Stage 2 */}
-              <div className="p-4 border border-[#171717] bg-[#F8F6EF] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 shadow-[3px_3px_0_0_#171717]">
-                <div className="flex items-center gap-3">
-                  <div className="h-8 w-8 border border-[#171717] bg-[#F4CF55] flex items-center justify-center text-[#171717] font-mono text-xs font-bold shadow-[1px_1px_0_0_#171717]">
-                    02
-                  </div>
-                  <div>
-                    <span className="text-sm font-bold text-[#171717] block">Sub-Second Landing Experience</span>
-                    <span className="text-xs text-[#3A3835]">Dedicated Next.js page answering specific search questions immediately</span>
-                  </div>
-                </div>
-                <span className="border border-[#171717] bg-[#A6D8A1] px-3 py-0.5 font-mono text-xs font-bold text-[#171717] self-start sm:self-auto">
-                  100% Core Web Vitals
-                </span>
-              </div>
-
-              {/* Funnel Stage 3 */}
-              <div className="p-4 border border-[#171717] bg-[#F8F6EF] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 shadow-[3px_3px_0_0_#171717]">
-                <div className="flex items-center gap-3">
-                  <div className="h-8 w-8 border border-[#171717] bg-[#A6D8A1] flex items-center justify-center text-[#171717] font-mono text-xs font-bold shadow-[1px_1px_0_0_#171717]">
-                    03
-                  </div>
-                  <div>
-                    <span className="text-sm font-bold text-[#171717] block">Friction-Free 3-Step Intake</span>
-                    <span className="text-xs text-[#3A3835]">Mobile tour booking or brief submission with zero clutter</span>
-                  </div>
-                </div>
-                <span className="border border-[#171717] bg-[#171717] text-[#F8F6EF] px-3 py-0.5 font-mono text-xs font-bold self-start sm:self-auto">
-                  Conversion Gateway
-                </span>
-              </div>
-            </div>
+      {/* 03. Problems Eliminated */}
+      <Section background="black" padding="normal">
+        <div className="max-w-4xl mx-auto text-left space-y-6">
+          <div>
+            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-white">
+              Why traditional agency retainers burn budget
+            </h2>
           </div>
-        </div>
-      </Section>
-
-      {/* 04. Problems Solved */}
-      <Section background="white">
-        <div className="max-w-4xl mx-auto text-left">
-          <span className="inline-block border border-[#171717] bg-[#DC341E] text-white px-3.5 py-1 font-mono text-xs uppercase tracking-wider font-bold shadow-[2px_2px_0_0_#171717]">
-            Inbound Failures Prevented
-          </span>
-          <h2 className="mt-2.5 font-display text-2xl sm:text-4xl font-bold tracking-tight text-[#171717] mb-8">
-            Why traditional digital marketing wastes budget
-          </h2>
 
           <div className="grid gap-6 sm:grid-cols-3">
             {service.problems.map((prob) => (
               <div
                 key={prob.title}
-                className="neo-card p-6 flex flex-col justify-between shadow-[4px_4px_0_0_#171717]"
+                className="gumroad-card p-6 flex flex-col justify-between"
               >
                 <div>
-                  <h3 className="text-base font-display font-bold text-[#171717]">
+                  <h3 className="text-base font-display font-bold text-white">
                     {prob.title}
                   </h3>
-                  <p className="mt-2 text-xs sm:text-sm text-[#3A3835] leading-relaxed font-sans">
+                  <p className="mt-2 text-xs sm:text-sm text-white/70 leading-relaxed font-sans">
                     {prob.description}
                   </p>
                 </div>
@@ -150,66 +90,59 @@ export default function MarketingGrowthPage() {
         </div>
       </Section>
 
-      {/* 05. Methodology */}
-      <Section background="cream">
-        <div className="max-w-4xl mx-auto text-left">
-          <span className="inline-block border border-[#171717] bg-[#ED83A8] px-3.5 py-1 font-mono text-xs uppercase tracking-wider text-[#171717] font-bold shadow-[2px_2px_0_0_#171717]">
-            Strategic Methodology
-          </span>
-          <h2 className="mt-2.5 font-display text-2xl sm:text-4xl font-bold tracking-tight text-[#171717] mb-8">
-            The 4-stage search acquisition cadence
-          </h2>
+      {/* 04. Growth Architecture Showcase */}
+      <Section background="black" padding="normal">
+        <div className="max-w-4xl mx-auto text-left space-y-6">
+          <div>
+            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-white">
+              Technical SEO &amp; Inbound Conversion Funnels
+            </h2>
+          </div>
 
-          <div className="space-y-4">
-            {service.methodology.map((m) => (
-              <div
-                key={m.step}
-                className="flex items-start gap-4 p-5 border border-[#171717] bg-white shadow-[4px_4px_0_0_#171717]"
-              >
-                <span className="border border-[#171717] bg-[#ED83A8] font-mono text-xs font-bold text-[#171717] px-2.5 py-1 shrink-0 shadow-[1px_1px_0_0_#171717]">
-                  {m.step}
-                </span>
-                <div>
-                  <h3 className="text-base font-display font-bold text-[#171717]">
-                    {m.title}
-                  </h3>
-                  <p className="mt-1 text-xs sm:text-sm text-[#3A3835] leading-relaxed font-sans">
-                    {m.description}
-                  </p>
-                </div>
+          <div className="gumroad-card p-8 sm:p-12 space-y-6 bg-gradient-to-b from-[#18181B] to-[#121214]">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-lg bg-[#10B981] text-black flex items-center justify-center font-bold">
+                <TrendingUp size={20} />
               </div>
-            ))}
+              <div>
+                <h4 className="font-display text-xl font-bold text-white">Programmatic SEO Architecture</h4>
+                <p className="text-xs text-white/50">Semantic JSON-LD • Static HTML Pre-rendering • Edge XML Sitemaps</p>
+              </div>
+            </div>
+
+            <p className="text-sm sm:text-base text-white/70 leading-relaxed max-w-2xl">
+              We structure pages with rigorous schema markup, canonical management, and sub-second Time to First Byte (TTFB). Search engines reward clean code with superior organic indexing.
+            </p>
           </div>
         </div>
       </Section>
 
-      {/* 06. Deliverables */}
-      <Section background="white">
-        <div className="max-w-4xl mx-auto text-left">
-          <span className="inline-block border border-[#171717] bg-[#F4CF55] px-3.5 py-1 font-mono text-xs uppercase tracking-wider text-[#171717] font-bold shadow-[2px_2px_0_0_#171717]">
-            Handover Deliverables
-          </span>
-          <h2 className="mt-2.5 font-display text-2xl sm:text-4xl font-bold tracking-tight text-[#171717] mb-8">
-            Growth &amp; visibility specifications
-          </h2>
+      {/* 05. Deliverables */}
+      <Section background="black" padding="normal">
+        <div className="max-w-4xl mx-auto text-left space-y-6">
+          <div>
+            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-white">
+              Complete marketing specifications
+            </h2>
+          </div>
 
           <div className="grid gap-6 md:grid-cols-3">
             {service.deliverables.map((deliv) => (
               <div
                 key={deliv.category}
-                className="p-6 border border-[#171717] bg-white shadow-[4px_4px_0_0_#171717] flex flex-col justify-between"
+                className="gumroad-card p-6 flex flex-col justify-between"
               >
                 <div>
-                  <h3 className="text-xs font-mono text-[#171717] uppercase font-bold pb-2 border-b border-[#171717]">
+                  <h3 className="text-xs font-bold text-white pb-2 border-b border-white/10">
                     {deliv.category}
                   </h3>
-                  <ul className="mt-4 space-y-2.5 text-xs text-[#3A3835]">
+                  <ul className="mt-4 space-y-2.5 text-xs text-white/80">
                     {deliv.items.map((it) => (
                       <li key={it} className="flex items-start gap-2">
-                        <span className="h-4 w-4 bg-[#A6D8A1] border border-[#171717] flex items-center justify-center text-[#171717] font-bold text-[10px] mt-0.5 shrink-0 shadow-[1px_1px_0_0_#171717]">
-                          ✓
-                        </span>
-                        <span className="font-semibold text-[#171717]">{it}</span>
+                        <div className="w-4 h-4 rounded-full bg-[#10B981] text-black flex items-center justify-center text-[10px] shrink-0 mt-0.5 font-bold">
+                          <Check size={11} className="stroke-[3]" />
+                        </div>
+                        <span className="font-medium text-white/90">{it}</span>
                       </li>
                     ))}
                   </ul>
@@ -220,30 +153,29 @@ export default function MarketingGrowthPage() {
         </div>
       </Section>
 
-      {/* 07. Cross Connections */}
-      <Section background="cream">
-        <div className="max-w-4xl mx-auto text-left">
-          <span className="inline-block border border-[#171717] bg-[#A6D8A1] px-3.5 py-1 font-mono text-xs uppercase tracking-wider text-[#171717] font-bold shadow-[2px_2px_0_0_#171717]">
-            System Coherence
-          </span>
-          <h2 className="mt-2.5 font-display text-2xl sm:text-4xl font-bold tracking-tight text-[#171717] mb-6">
-            How Marketing &amp; Growth connects with other divisions
-          </h2>
+      {/* 06. Cross-Division Connections */}
+      <Section background="black" padding="normal">
+        <div className="max-w-4xl mx-auto text-left space-y-6">
+          <div>
+            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-white">
+              How Marketing &amp; Growth connects along The Thread
+            </h2>
+          </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
             {service.crossConnections.map((conn) => (
               <div
                 key={conn.division}
-                className="p-5 border border-[#171717] bg-white shadow-[3px_3px_0_0_#171717]"
+                className="gumroad-card p-5 space-y-2"
               >
                 <Link
                   href={`/capabilities/${conn.slug}`}
-                  className="font-display text-base font-bold text-[#171717] hover:text-[#ED83A8] hover:underline inline-flex items-center gap-1"
+                  className="font-display text-base font-bold text-white hover:text-[#FF90E8] inline-flex items-center gap-1 transition-colors"
                 >
                   <span>{conn.division}</span>
                   <ArrowUpRight size={13} />
                 </Link>
-                <p className="mt-2 text-xs sm:text-sm text-[#3A3835] leading-relaxed font-sans">
+                <p className="text-xs sm:text-sm text-white/70 leading-relaxed font-sans">
                   {conn.relationship}
                 </p>
               </div>
@@ -252,60 +184,32 @@ export default function MarketingGrowthPage() {
         </div>
       </Section>
 
-      {/* 08. FAQ */}
-      <Section background="white">
-        <div className="max-w-3xl mx-auto text-left">
-          <span className="inline-block border border-[#171717] bg-[#F4CF55] px-3.5 py-1 font-mono text-xs uppercase tracking-wider text-[#171717] font-bold shadow-[2px_2px_0_0_#171717]">
-            Frequently Asked
+      {/* 07. Closing CTA */}
+      <Section background="black" padding="spacious">
+        <div className="max-w-3xl mx-auto text-center space-y-6 gumroad-card p-8 sm:p-14 border-white/10">
+          <span className="inline-block px-3 py-1 rounded-full bg-[#10B981]/20 border border-[#10B981]/30 text-xs font-semibold text-[#10B981]">
+            Direct Inquiry &bull; Marketing &amp; Growth
           </span>
-          <h2 className="mt-2.5 font-display text-2xl sm:text-4xl font-bold tracking-tight text-[#171717] mb-8">
-            Questions regarding our Marketing &amp; Growth practice
+          <h2 className="font-display text-3xl sm:text-5xl font-bold text-white leading-tight">
+            Stop burning ad spend on broken funnels.
           </h2>
-
-          <div className="space-y-4">
-            {service.faqs.map((faq) => (
-              <div
-                key={faq.question}
-                className="p-5 border border-[#171717] bg-white shadow-[3px_3px_0_0_#171717]"
-              >
-                <h3 className="text-base font-display font-bold text-[#171717]">
-                  {faq.question}
-                </h3>
-                <p className="mt-2 text-xs sm:text-sm text-[#3A3835] leading-relaxed font-sans">
-                  {faq.answer}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* 09. CTA in Rose Pink */}
-      <Section background="pink">
-        <div className="max-w-3xl mx-auto text-center border border-[#171717] bg-[#ED83A8] p-8 sm:p-14 shadow-[8px_8px_0_0_#171717]">
-          <span className="inline-block border border-[#171717] bg-white px-3.5 py-1 font-mono text-xs font-bold text-[#171717] shadow-[2px_2px_0_0_#171717]">
-            GROWTH INTAKE // 04 INBOUND
-          </span>
-          <h2 className="mt-4 font-display text-3xl sm:text-5xl font-bold text-[#171717] leading-tight">
-            Ready to establish search authority?
-          </h2>
-          <p className="mt-3.5 text-sm sm:text-base text-[#171717] font-medium leading-relaxed max-w-lg mx-auto font-sans">
-            Request a comprehensive search visibility audit to discover where your competitors are capturing prospective inquiries.
+          <p className="text-sm sm:text-base text-white/70 leading-relaxed max-w-lg mx-auto font-sans">
+            Engineered inbound pipelines designed for long-term compound growth.
           </p>
 
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3.5">
             <Link
               href="/connect"
-              className="neo-btn text-xs px-6 py-3 w-full sm:w-auto shadow-[4px_4px_0_0_#171717]"
+              className="gumroad-btn-pink text-xs sm:text-sm font-bold !py-3 !px-6 w-full sm:w-auto"
             >
-              <span>Request visibility diagnostic</span>
-              <ArrowUpRight size={13} />
+              <span>Start a project</span>
+              <ArrowUpRight size={14} className="stroke-[2.5]" />
             </Link>
             <Link
               href="/capabilities"
-              className="neo-btn-white text-xs px-6 py-3 w-full sm:w-auto shadow-[3px_3px_0_0_#171717]"
+              className="gumroad-btn-secondary text-xs sm:text-sm !py-3 !px-6 w-full sm:w-auto"
             >
-              Explore all capabilities
+              Explore all disciplines
             </Link>
           </div>
         </div>

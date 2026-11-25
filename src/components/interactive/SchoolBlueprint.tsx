@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { INDUSTRIES } from "@/data/industries";
-import { ArrowUpRight, Compass, Shield, Users, Award } from "lucide-react";
+import { ArrowUpRight, Compass, Shield, Users, Award, Check } from "lucide-react";
 
 export default function SchoolBlueprint() {
   const educationSector = INDUSTRIES.find((i) => i.slug === "education");
@@ -27,38 +27,30 @@ export default function SchoolBlueprint() {
     }
   };
 
-  const getLayerColor = (idx: number) => {
-    const colors = ["bg-[#ED83A8]", "bg-[#F4CF55]", "bg-[#A6D8A1]", "bg-[#ED83A8]"];
-    return colors[idx % colors.length];
-  };
-
   return (
-    <div className="w-full border border-[#171717] bg-white p-6 sm:p-10 shadow-[6px_6px_0_0_#171717] text-left">
+    <div className="w-full gumroad-card p-6 sm:p-10 bg-[#18181B] border border-white/10 shadow-2xl text-left">
       {/* Blueprint Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-6 border-b border-[#171717] gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-6 border-b border-white/10 gap-4">
         <div>
-          <span className="inline-block border border-[#171717] bg-[#A6D8A1] px-3 py-1 font-mono text-xs font-bold text-[#171717] shadow-[2px_2px_0_0_#171717]">
-            SIGNATURE SYSTEM // 02
-          </span>
-          <h3 className="mt-2.5 font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#171717]">
+          <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
             The School Digital Blueprint
           </h3>
-          <p className="mt-1 text-sm text-[#3A3835]">
+          <p className="mt-1 text-sm text-white/60">
             An architectural system of four connected layers designed specifically for educational institutions.
           </p>
         </div>
 
         <Link
           href="/industries/education"
-          className="neo-btn text-xs px-5 py-2.5 self-start sm:self-auto"
+          className="gumroad-btn-pink text-xs sm:text-sm font-bold !py-2.5 !px-5 self-start sm:self-auto"
         >
-          <span>Dedicated Practice Overview</span>
-          <ArrowUpRight size={13} />
+          <span>Education Practice</span>
+          <ArrowUpRight size={14} className="stroke-[2.5]" />
         </Link>
       </div>
 
       {/* Layer Navigation Tabs */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 pb-6 border-b border-[#171717]">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 pb-6 border-b border-white/10">
         {layers.map((l, idx) => {
           const isActive = idx === activeLayerIndex;
           return (
@@ -66,22 +58,22 @@ export default function SchoolBlueprint() {
               key={l.layer}
               type="button"
               onClick={() => setActiveLayerIndex(idx)}
-              className={`p-4 border border-[#171717] text-left transition-all duration-140 cursor-pointer ${
+              className={`p-4 rounded-xl text-left transition-all cursor-pointer border ${
                 isActive
-                  ? `${getLayerColor(idx)} text-[#171717] shadow-[3px_3px_0_0_#171717] -translate-x-0.5 -translate-y-0.5 font-bold`
-                  : "bg-[#F8F6EF] text-[#171717] hover:bg-white hover:shadow-[2px_2px_0_0_#171717]"
+                  ? "bg-[#222226] border-white/40 shadow-lg -translate-y-0.5"
+                  : "bg-[#141416] border-white/10 hover:border-white/20 text-white/70 hover:text-white"
               }`}
             >
-              <div className="h-9 w-9 border border-[#171717] bg-white text-[#171717] flex items-center justify-center mb-3 shadow-[1px_1px_0_0_#171717]">
+              <div className="h-8 w-8 rounded-lg bg-white/10 text-white flex items-center justify-center mb-3">
                 {getLayerIcon(l.layer)}
               </div>
-              <span className="font-mono text-[10px] text-[#171717] font-bold block uppercase">
+              <span className="text-xs text-white/50 font-semibold block">
                 Layer {l.layer}
               </span>
-              <p className="font-display text-xs sm:text-sm font-bold text-[#171717] mt-0.5 leading-snug">
+              <p className="font-display text-xs sm:text-sm font-bold text-white mt-0.5 leading-snug">
                 {l.name}
               </p>
-              <p className="text-[11px] text-[#6E6A63] mt-1 truncate">
+              <p className="text-[11px] text-white/50 mt-1 truncate">
                 {l.tagline}
               </p>
             </button>
@@ -89,51 +81,51 @@ export default function SchoolBlueprint() {
         })}
       </div>
 
-      {/* Active Layer Deep Dive */}
+      {/* Active Layer Breakdown */}
       <div className="pt-8 grid gap-8 lg:grid-cols-12 lg:items-start">
         {/* Left: Purpose & Features */}
         <div className="lg:col-span-7 space-y-6">
           <div>
             <div className="flex flex-wrap items-center gap-2 mb-2">
-              <span className="border border-[#171717] bg-[#171717] text-[#F8F6EF] px-2.5 py-0.5 font-mono text-xs font-bold">
-                LAYER {activeLayer.layer} SPECIFICATION
+              <span className="px-2.5 py-0.5 rounded-full bg-white/10 text-white text-xs font-semibold">
+                Layer {activeLayer.layer} Specification
               </span>
-              <span className="border border-[#171717] bg-[#F8F6EF] px-2.5 py-0.5 font-mono text-xs text-[#171717] font-medium">
+              <span className="px-2.5 py-0.5 rounded-full bg-[#141416] border border-white/10 text-xs text-white/60 font-medium">
                 {activeLayer.tagline}
               </span>
             </div>
-            <h4 className="font-display text-2xl sm:text-3xl font-bold text-[#171717]">
+            <h4 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
               {activeLayer.name}
             </h4>
-            <p className="mt-2 text-sm sm:text-base text-[#3A3835] leading-relaxed font-sans">
+            <p className="mt-2 text-sm sm:text-base text-white/70 leading-relaxed font-sans">
               {activeLayer.purpose}
             </p>
           </div>
 
-          <div className="p-6 border border-[#171717] bg-[#F8F6EF] shadow-[3px_3px_0_0_#171717]">
-            <span className="font-mono text-xs uppercase tracking-wider text-[#171717] font-bold block mb-3 pb-1 border-b border-[#171717]">
-              Core Architectural Capabilities
+          <div className="p-6 rounded-xl bg-[#141416] border border-white/10 space-y-3">
+            <span className="text-xs text-white/50 font-semibold block pb-1 border-b border-white/10">
+              Core architectural capabilities
             </span>
-            <ul className="space-y-2.5 text-xs sm:text-sm text-[#3A3835]">
+            <ul className="space-y-2.5 text-xs sm:text-sm text-white/80">
               {activeLayer.features.map((feat) => (
                 <li key={feat} className="flex items-start gap-2.5">
-                  <span className="h-4 w-4 shrink-0 bg-[#ED83A8] border border-[#171717] flex items-center justify-center text-[#171717] font-bold text-[10px] mt-0.5 shadow-[1px_1px_0_0_#171717]">
-                    ✓
-                  </span>
+                  <div className="w-4 h-4 rounded-full bg-[#10B981] text-black flex items-center justify-center text-[10px] shrink-0 mt-0.5 font-bold">
+                    <Check size={11} className="stroke-[3]" />
+                  </div>
                   <span>{feat}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="p-6 border border-[#171717] bg-white">
-            <span className="font-mono text-xs uppercase tracking-wider text-[#171717] font-bold block mb-2 pb-1 border-b border-[#171717]">
-              Institutional Problems Addressed
+          <div className="p-6 rounded-xl bg-[#141416] border border-white/10 space-y-2">
+            <span className="text-xs text-white/50 font-semibold block pb-1 border-b border-white/10">
+              Institutional problems addressed
             </span>
-            <ul className="space-y-2 text-xs sm:text-sm text-[#3A3835]">
+            <ul className="space-y-2 text-xs sm:text-sm text-white/70">
               {activeLayer.problemsAddressed.map((prob) => (
                 <li key={prob} className="flex items-start gap-2">
-                  <span className="font-bold text-[#171717] mt-0.5">—</span>
+                  <span className="text-[#FF90E8] font-bold mt-0.5">&bull;</span>
                   <span>{prob}</span>
                 </li>
               ))}
@@ -141,51 +133,20 @@ export default function SchoolBlueprint() {
           </div>
         </div>
 
-        {/* Right: Deliverables & Connected Capabilities */}
+        {/* Right: Deliverables */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="p-6 border border-[#171717] bg-[#F8F6EF] shadow-[3px_3px_0_0_#171717]">
-            <span className="font-mono text-xs uppercase tracking-wider text-[#171717] font-bold block mb-3 pb-1 border-b border-[#171717]">
-              Tangible Handover Assets
+          <div className="p-6 rounded-xl bg-[#141416] border border-white/10 space-y-3">
+            <span className="text-xs text-white/50 font-semibold block pb-1 border-b border-white/10">
+              Tangible handover assets
             </span>
-            <div className="space-y-2.5 text-xs">
+            <div className="space-y-2.5 text-xs text-white/80">
               {activeLayer.exampleDeliverables.map((deliv) => (
-                <div
-                  key={deliv}
-                  className="bg-white border border-[#171717] p-3.5 text-[#171717] font-semibold flex items-center justify-between shadow-[2px_2px_0_0_#171717]"
-                >
+                <div key={deliv} className="p-3 rounded-lg bg-[#18181B] border border-white/5 flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-[#FF90E8]" />
                   <span>{deliv}</span>
-                  <span className="border border-[#171717] bg-[#F4CF55] px-2 py-0.5 font-mono text-[10px] text-[#171717] font-bold">
-                    INCLUDED
-                  </span>
                 </div>
               ))}
             </div>
-          </div>
-
-          <div className="p-6 border border-[#171717] bg-white">
-            <span className="font-mono text-xs uppercase tracking-wider text-[#171717] font-bold block mb-2 pb-1 border-b border-[#171717]">
-              Connected FIRM Divisions
-            </span>
-            <div className="flex flex-wrap gap-2 mt-3">
-              {activeLayer.connectedCapabilities.map((cap) => (
-                <span
-                  key={cap}
-                  className="inline-flex items-center border border-[#171717] bg-[#F8F6EF] px-3 py-1 text-xs font-mono font-bold text-[#171717] shadow-[1px_1px_0_0_#171717]"
-                >
-                  {cap}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="pt-2">
-            <Link
-              href="/connect"
-              className="neo-btn-pink text-xs px-5 py-2.5 w-full justify-center"
-            >
-              <span>Discuss an institutional school briefing</span>
-              <ArrowUpRight size={13} className="stroke-[2.5]" />
-            </Link>
           </div>
         </div>
       </div>

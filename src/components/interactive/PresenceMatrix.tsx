@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { SERVICES } from "@/data/services";
-import { ArrowUpRight, Layers, Globe, Share2, TrendingUp, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, Layers, Globe, Share2, TrendingUp, ShieldCheck, Check } from "lucide-react";
 
 export default function PresenceMatrix() {
   const [activeSlug, setActiveSlug] = useState("web-technology");
@@ -27,67 +27,67 @@ export default function PresenceMatrix() {
     }
   };
 
-  const getAccentColor = (slug: string) => {
+  const getNodeColor = (slug: string) => {
     switch (slug) {
       case "brand-identity":
-        return "bg-[#ED83A8]";
+        return "#FF5C40";
       case "web-technology":
-        return "bg-[#A6D8A1]";
+        return "#3875FF";
       case "social-content":
-        return "bg-[#F4CF55]";
+        return "#FFB800";
       case "marketing-growth":
-        return "bg-[#ED83A8]";
+        return "#10B981";
       case "digital-management":
-        return "bg-[#A6D8A1]";
+        return "#FF5C9D";
       default:
-        return "bg-[#F4CF55]";
+        return "#FF90E8";
     }
   };
 
   return (
-    <div className="w-full border border-[#171717] bg-white p-6 sm:p-10 shadow-[6px_6px_0_0_#171717] text-left">
+    <div className="w-full gumroad-card p-6 sm:p-10 text-left bg-[#18181B] border border-white/10 shadow-2xl">
       {/* Matrix Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-6 border-b border-[#171717] gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-6 border-b border-white/10 gap-4">
         <div>
-          <span className="inline-block border border-[#171717] bg-[#ED83A8] px-3 py-1 font-mono text-xs font-bold text-[#171717] shadow-[2px_2px_0_0_#171717]">
-            SIGNATURE SYSTEM // 01
-          </span>
-          <h3 className="mt-2.5 font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#171717]">
+          <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
             The Interactive Presence Matrix
           </h3>
-          <p className="mt-1 text-sm text-[#3A3835]">
-            Explore how FIRM’s five divisions connect to engineer an enduring digital presence.
+          <p className="mt-1 text-sm text-white/60">
+            Explore how FIRM&apos;s five disciplines interconnect to eliminate digital fragmentation.
           </p>
         </div>
 
-        <div className="flex items-center gap-2 self-start sm:self-auto border border-[#171717] bg-[#F4CF55] px-3.5 py-1.5 font-mono text-xs font-bold text-[#171717] shadow-[2px_2px_0_0_#171717]">
-          <span className="h-2 w-2 rounded-full bg-[#171717]" />
-          <span>5 Connected Capabilities</span>
+        <div className="flex items-center gap-2 self-start sm:self-auto px-3 py-1 rounded-full bg-[#141416] border border-white/10 text-xs font-medium text-white/60">
+          <span>5 Disciplines Connected</span>
         </div>
       </div>
 
       {/* Division Selector Tabs */}
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-6 pb-6 border-b border-[#171717]">
+      <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-6 pb-6 border-b border-white/10">
         {SERVICES.map((s) => {
           const isActive = s.slug === activeSlug;
+          const nodeColor = getNodeColor(s.slug);
+
           return (
             <button
               key={s.slug}
               type="button"
               onClick={() => setActiveSlug(s.slug)}
-              className={`flex flex-col items-start p-4 border border-[#171717] text-left transition-all duration-140 cursor-pointer ${
-                isActive
-                  ? `${getAccentColor(s.slug)} text-[#171717] shadow-[3px_3px_0_0_#171717] -translate-x-0.5 -translate-y-0.5 font-bold`
-                  : "bg-[#F8F6EF] text-[#171717] hover:bg-white hover:shadow-[2px_2px_0_0_#171717]"
-              }`}
+              className={`flex flex-col items-start p-4 rounded-xl text-left transition-all cursor-pointer border ${isActive
+                ? "bg-[#222226] border-white/40 shadow-lg -translate-y-0.5"
+                : "bg-[#141416] border-white/10 hover:border-white/20 text-white/70 hover:text-white"
+                }`}
             >
-              <div className="h-9 w-9 border border-[#171717] bg-white text-[#171717] flex items-center justify-center mb-3 shadow-[1px_1px_0_0_#171717]">
+              <div
+                className="h-8 w-8 rounded-lg flex items-center justify-center mb-3 shadow-sm transition-colors text-black font-bold"
+                style={{ backgroundColor: nodeColor }}
+              >
                 {getIcon(s.slug)}
               </div>
-              <span className="font-mono text-[10px] uppercase font-bold text-[#6E6A63]">
-                {s.code.split("//")[0].trim()}
+              <span className="text-[10px] uppercase font-semibold text-white/50 tracking-wider">
+                {s.code}
               </span>
-              <span className="font-display text-xs sm:text-sm font-bold text-[#171717] mt-1 leading-snug">
+              <span className="font-display text-xs sm:text-sm font-bold text-white mt-1 leading-snug">
                 {s.title}
               </span>
             </button>
@@ -101,32 +101,32 @@ export default function PresenceMatrix() {
         <div className="lg:col-span-7 space-y-6">
           <div>
             <div className="flex flex-wrap items-center gap-2 mb-2">
-              <span className="border border-[#171717] bg-[#171717] text-[#F8F6EF] px-2.5 py-0.5 font-mono text-xs font-bold">
+              <span className="px-2.5 py-0.5 rounded-full bg-white/10 text-white text-xs font-semibold">
                 {activeService.code}
               </span>
-              <span className="border border-[#171717] bg-[#F8F6EF] px-2.5 py-0.5 font-mono text-xs text-[#171717] font-medium">
-                Cadence: {activeService.timeframe}
+              <span className="px-2.5 py-0.5 rounded-full bg-[#141416] border border-white/10 text-xs text-white/60">
+                Sprint: {activeService.timeframe}
               </span>
             </div>
-            <h4 className="font-display text-2xl sm:text-3xl font-bold text-[#171717]">
+            <h4 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
               {activeService.title}
             </h4>
-            <p className="mt-2 text-sm sm:text-base text-[#3A3835] leading-relaxed font-sans">
+            <p className="mt-2 text-sm sm:text-base text-white/70 leading-relaxed font-sans">
               {activeService.subtitle}
             </p>
           </div>
 
-          <div className="p-6 border border-[#171717] bg-[#F8F6EF] shadow-[3px_3px_0_0_#171717]">
-            <span className="font-mono text-xs uppercase tracking-wider text-[#171717] font-bold block mb-3 pb-1 border-b border-[#171717]">
-              Problems This Division Solves
+          <div className="p-6 rounded-xl bg-[#141416] border border-white/10">
+            <span className="text-xs text-white/50 font-semibold block mb-3 pb-1 border-b border-white/10">
+              Problems this division eliminates
             </span>
-            <ul className="space-y-3 text-xs sm:text-sm text-[#3A3835]">
+            <ul className="space-y-3 text-xs sm:text-sm text-white/80">
               {activeService.problems.map((prob) => (
                 <li key={prob.title} className="flex items-start gap-2.5">
-                  <span className="font-bold text-[#ED83A8] mt-0.5">■</span>
+                  <span className="text-[#FF90E8] font-bold mt-0.5">■</span>
                   <div>
-                    <strong className="font-bold text-[#171717]">{prob.title}:</strong>{" "}
-                    {prob.description}
+                    <strong className="font-semibold text-white">{prob.title}:</strong>{" "}
+                    <span className="text-white/70">{prob.description}</span>
                   </div>
                 </li>
               ))}
@@ -136,47 +136,47 @@ export default function PresenceMatrix() {
           <div className="pt-2">
             <Link
               href={`/capabilities/${activeService.slug}`}
-              className="neo-btn-pink text-xs px-5 py-2.5"
+              className="gumroad-btn-pink text-xs sm:text-sm font-bold !py-2.5 !px-5"
             >
-              <span>Explore {activeService.title} specifications &amp; deliverables</span>
-              <ArrowUpRight size={13} className="stroke-[2.5]" />
+              <span>Explore {activeService.title} specifications</span>
+              <ArrowUpRight size={14} className="stroke-[2.5]" />
             </Link>
           </div>
         </div>
 
         {/* Right Col: Deliverables & Connected Capabilities */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="p-6 border border-[#171717] bg-white shadow-[3px_3px_0_0_#171717]">
-            <span className="font-mono text-xs uppercase tracking-wider text-[#171717] font-bold block mb-3 pb-1 border-b border-[#171717]">
-              Tangible Handover Deliverables
+          <div className="p-6 rounded-xl bg-[#141416] border border-white/10">
+            <span className="text-xs text-white/50 font-semibold block mb-3 pb-1 border-b border-white/10">
+              Tangible handover deliverables
             </span>
-            <ul className="space-y-2.5 text-xs sm:text-sm text-[#3A3835]">
+            <ul className="space-y-2.5 text-xs sm:text-sm text-white/80">
               {activeService.deliverables[0]?.items.map((item) => (
                 <li key={item} className="flex items-start gap-2.5">
-                  <span className="h-4 w-4 shrink-0 bg-[#A6D8A1] border border-[#171717] flex items-center justify-center text-[#171717] font-bold text-[10px] mt-0.5 shadow-[1px_1px_0_0_#171717]">
-                    ✓
-                  </span>
-                  <span className="font-semibold text-[#171717]">{item}</span>
+                  <div className="w-4 h-4 rounded-full bg-[#10B981] text-black flex items-center justify-center text-[10px] shrink-0 mt-0.5 font-bold">
+                    <Check size={11} className="stroke-[3]" />
+                  </div>
+                  <span className="font-medium text-white/90">{item}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="p-6 border border-[#171717] bg-[#F8F6EF]">
-            <span className="font-mono text-xs uppercase tracking-wider text-[#171717] font-bold block mb-3 pb-1 border-b border-[#171717]">
-              How It Connects with Other Divisions
+          <div className="p-6 rounded-xl bg-[#141416] border border-white/10">
+            <span className="text-xs text-white/50 font-semibold block mb-3 pb-1 border-b border-white/10">
+              Continuous thread connection
             </span>
-            <div className="space-y-3.5 text-xs text-[#3A3835]">
+            <div className="space-y-3 text-xs text-white/70">
               {activeService.crossConnections.slice(0, 2).map((conn) => (
-                <div key={conn.division} className="pb-3 border-b border-[#171717] last:border-none last:pb-0">
+                <div key={conn.division} className="pb-3 border-b border-white/10 last:border-none last:pb-0">
                   <Link
                     href={`/capabilities/${conn.slug}`}
-                    className="font-bold text-[#171717] hover:text-[#ED83A8] hover:underline inline-flex items-center gap-1 font-display"
+                    className="font-bold text-white hover:text-[#FF90E8] inline-flex items-center gap-1 font-display transition-colors"
                   >
                     <span>{conn.division}</span>
                     <ArrowUpRight size={12} />
                   </Link>
-                  <p className="mt-1 text-xs text-[#3A3835] leading-relaxed font-sans">
+                  <p className="mt-1 text-xs text-white/60 leading-relaxed font-sans">
                     {conn.relationship}
                   </p>
                 </div>
