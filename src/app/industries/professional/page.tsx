@@ -8,7 +8,7 @@ import { INDUSTRIES } from "@/data/industries";
 import { ArrowUpRight, Check } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Professional Services — Legal & Advisory Digital Presence | FIRM",
+  title: "Professional Services | Legal & Advisory Digital Presence | FIRM",
   description:
     "Intellectual prestige, editorial thought leadership publishing, and practice area architecture for law firms, accounting practices, and consultancies.",
 };
@@ -17,7 +17,7 @@ export default function ProfessionalServicesIndustryPage() {
   const sector = INDUSTRIES.find((i) => i.slug === "professional") || INDUSTRIES[2];
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#000000] text-white">
+    <div className="flex flex-col min-h-screen bg-[#171717] text-[#F8F6EF]">
       <Container>
         <PageHeader
           badge={sector.eyebrow}
@@ -44,20 +44,20 @@ export default function ProfessionalServicesIndustryPage() {
       </Container>
 
       {/* Challenges & Solutions */}
-      <Section background="black" padding="tight">
+      <Section background="charcoal" padding="tight">
         <div className="max-w-4xl mx-auto text-left space-y-6">
           <div className="gumroad-card p-6 sm:p-10 space-y-4">
-            <span className="inline-block px-3 py-1 rounded-full bg-[#FFB800]/20 border border-[#FFB800]/30 text-xs font-semibold text-[#FFB800]">
+            <span className="inline-block px-3 py-1 rounded-full bg-[#F4CF55]/20 border border-[#F4CF55]/30 text-xs font-semibold text-[#F4CF55]">
               Prestige Challenges
             </span>
-            <h2 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
+            <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#F8F6EF] tracking-tight">
               Commanding intellectual authority online
             </h2>
             <div className="space-y-4 pt-2">
               {sector.challenges.map((c) => (
-                <div key={c.title} className="p-4 rounded-xl bg-[#141416] border border-white/5 space-y-1">
-                  <h4 className="text-sm font-bold text-white">{c.title}</h4>
-                  <p className="text-xs sm:text-sm text-white/70 leading-relaxed">{c.description}</p>
+                <div key={c.title} className="p-4 rounded-xl bg-[#1E1E20] border border-[#F8F6EF]/5 space-y-1">
+                  <h4 className="text-sm font-bold text-[#F8F6EF]">{c.title}</h4>
+                  <p className="text-xs sm:text-sm text-[#F8F6EF]/70 leading-relaxed">{c.description}</p>
                 </div>
               ))}
             </div>
@@ -66,18 +66,18 @@ export default function ProfessionalServicesIndustryPage() {
       </Section>
 
       {/* Deliverables */}
-      <Section background="black" padding="normal">
+      <Section background="charcoal" padding="normal">
         <div className="max-w-4xl mx-auto text-left space-y-6">
           <div>
-            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-white">
+            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#F8F6EF]">
               Professional services practice scope
             </h2>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
             {sector.deliverables.map((d) => (
-              <div key={d} className="p-4 rounded-xl bg-[#18181B] border border-white/10 flex items-center gap-3 text-xs sm:text-sm text-white/80">
-                <div className="w-5 h-5 rounded-full bg-[#10B981] text-black flex items-center justify-center shrink-0 font-bold">
+              <div key={d} className="p-4 rounded-xl bg-[#1E1E20] border border-[#F8F6EF]/10 flex items-center gap-3 text-xs sm:text-sm text-[#F8F6EF]/80">
+                <div className="w-5 h-5 rounded-full bg-[#A6D8A1] text-[#171717] flex items-center justify-center shrink-0 font-bold">
                   <Check size={12} className="stroke-[3]" />
                 </div>
                 <span>{d}</span>
@@ -88,15 +88,15 @@ export default function ProfessionalServicesIndustryPage() {
       </Section>
 
       {/* Closing CTA */}
-      <Section background="black" padding="spacious">
-        <div className="max-w-3xl mx-auto text-center space-y-6 gumroad-card p-8 sm:p-14 border-white/10">
-          <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-white text-xs font-semibold">
+      <Section background="charcoal" padding="spacious">
+        <div className="max-w-3xl mx-auto text-center space-y-6 gumroad-card p-8 sm:p-14 border-[#F8F6EF]/10">
+          <span className="inline-block px-3 py-1 rounded-full bg-[#F8F6EF]/10 text-[#F8F6EF] text-xs font-semibold">
             PARTNERSHIP CONSULTATION
           </span>
-          <h2 className="font-display text-3xl sm:text-5xl font-bold text-white leading-tight">
+          <h2 className="font-display text-3xl sm:text-5xl font-bold text-[#F8F6EF] leading-tight">
             Elevate your firm&apos;s digital stature
           </h2>
-          <p className="text-sm sm:text-base text-white/70 max-w-lg mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base text-[#F8F6EF]/70 max-w-lg mx-auto leading-relaxed">
             Confidential briefings for senior managing partners, general counsels, and financial advisors.
           </p>
 

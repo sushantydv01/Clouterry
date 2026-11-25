@@ -239,19 +239,19 @@ export const ARTICLES: Article[] = [
         paragraphs: [
           "Google's search indexing algorithms no longer evaluate websites solely on keyword density and backlink profiles. With Core Web Vitals, Google explicitly penalizes websites that fail three concrete user experience thresholds:",
           "Largest Contentful Paint (LCP): The time required for the main visual content to render. Target: under 1.2 seconds. Interaction to Next Paint (INP): The responsiveness of buttons and links to user touch or click. Target: under 50 milliseconds. Cumulative Layout Shift (CLS): Visual stability without jarring layout jumps during image loading. Target: 0.00.",
-          "FIRM engineers every page to achieve straight 100/100 Lighthouse benchmarks, ensuring algorithmic favor in organic search results.",
+          "FIRM engineers semantic static HTML, lean Server Component bundles, and responsive image pipelines tailored to pass Google Core Web Vitals.",
         ],
       },
       {
-        heading: "03. The Next.js 16 App Router Advantage",
-        subheading: "How React 19 Server Components eliminate runtime JavaScript bloat",
+        heading: "03. The Next.js App Router Advantage",
+        subheading: "How React Server Components eliminate runtime JavaScript bloat",
         paragraphs: [
-          "Legacy CMS platforms like WordPress or Drupal load dozens of unoptimized plugins, heavy jQuery libraries, and megabytes of unused JavaScript. By contrast, FIRM leverages Next.js 16 with React 19 Server Components.",
-          "With Server Components, the heavy compilation and data fetching happen on the edge server during build time. The browser receives lightweight, pristine HTML and CSS. Dynamic interactive leaves (such as our Presence Matrix) are scoped to tiny client bundles (under 5KB), resulting in instant first load and zero layout shift.",
+          "Legacy CMS platforms like WordPress or Drupal load dozens of unoptimized plugins, heavy jQuery libraries, and megabytes of unused JavaScript. By contrast, FIRM leverages Next.js with React Server Components.",
+          "With Server Components, the heavy compilation and data fetching happen on the edge server during build time. The browser receives lightweight, pristine HTML and CSS. Dynamic interactive leaves (such as our Presence Matrix) are scoped to lean client islands, reducing layout shift and runtime latency.",
         ],
         callout: {
           type: "observation",
-          text: "By prerendering 25+ routes as static HTML in under 600ms via Turbopack, FIRM delivers instant edge delivery worldwide without expensive server infrastructure.",
+          text: "By prerendering static routes at build time cleanly into pure semantic HTML and optimized WebP media, FIRM delivers responsive experiences worldwide without server bloat.",
         },
       },
       {

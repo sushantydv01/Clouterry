@@ -5,43 +5,48 @@ import PageHeader from "@/components/layout/PageHeader";
 import Section from "@/components/layout/Section";
 import Container from "@/components/layout/Container";
 import SchoolBlueprint from "@/components/interactive/SchoolBlueprint";
+import StickerMark from "@/components/illustrations/StickerMark";
 import { INDUSTRIES } from "@/data/industries";
 import { ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Industries — Domain Specialization & Practice Areas | FIRM",
+  title: "Industries | Domain Specialization & Practice Areas | FIRM",
   description:
-    "How FIRM's unified digital presence capabilities apply across sectors: Schools & Education, Healthcare, Professional Services, Retail, and Startups.",
+    "How FIRM's unified digital presence capabilities apply across Schools & Education, Healthcare, Professional Services, Retail, and Startups.",
 };
 
 export default function IndustriesDirectoryPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#000000] text-white">
+    <div className="flex flex-col min-h-screen bg-[#171717] text-[#F8F6EF]">
       <Container>
         <PageHeader
-          badge="INDUSTRIES"
+          badge="Industries"
           eyebrow="Sector Specialization"
           title="Presence engineered for your sector."
-          description="We do not apply generic templates. We understand the regulatory constraints, stakeholder dynamics, and audience expectations unique to your industry."
+          description="We reject generic industry templates. Each practice is shaped around regulatory constraints, buyer trust, and stakeholder workflows unique to your field."
         />
       </Container>
 
-      {/* Primary Specialization Spotlight: Education & Schools with School Blueprint */}
-      <Section background="black" padding="tight">
+      <Section background="charcoal" padding="tight">
         <SchoolBlueprint />
       </Section>
 
-      {/* Industry Sector Directory Cards */}
-      <Section background="black" padding="normal">
-        <div className="max-w-5xl mx-auto text-left space-y-8">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-            <div>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight">
-                Explore individual industry frameworks
+      <Section background="charcoal-subtle" padding="normal">
+        <div className="max-w-6xl mx-auto text-left space-y-10">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-[#F8F6EF]/12">
+            <div className="space-y-2">
+              <div className="flex items-center gap-2.5">
+                <span className="text-xs font-mono uppercase tracking-[0.14em] text-[#A6D8A1]">
+                  Five Specialized Sectors
+                </span>
+                <StickerMark name="s09-07-sun" size={22} />
+              </div>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#F8F6EF] tracking-tight">
+                Explore sector practice guides
               </h2>
             </div>
-            <span className="px-3.5 py-1 rounded-full bg-[#18181B] border border-white/15 text-xs font-medium text-white/70">
-              5 Core Sectors
+            <span className="text-xs font-mono text-[#9C9990]">
+              Dedicated Domain Frameworks
             </span>
           </div>
 
@@ -49,27 +54,27 @@ export default function IndustriesDirectoryPage() {
             {INDUSTRIES.map((s) => (
               <div
                 key={s.slug}
-                className="gumroad-card p-6 sm:p-8 flex flex-col justify-between group hover:border-white/30 transition-all"
+                className="p-6 sm:p-8 rounded-2xl bg-[#1E1E20] border border-[#F8F6EF]/12 hover:border-[#F8F6EF]/26 transition-colors flex flex-col justify-between group"
               >
                 <div className="space-y-3">
-                  <span className="inline-block px-2.5 py-0.5 rounded-full bg-white/10 text-white/80 text-[11px] font-semibold">
+                  <span className="text-xs font-mono uppercase tracking-[0.12em] text-[#F4CF55] block">
                     {s.eyebrow}
                   </span>
-                  <h3 className="font-display text-2xl font-bold text-white group-hover:text-[#FF90E8] transition-colors">
+                  <h3 className="font-display text-2xl font-bold text-[#F8F6EF] group-hover:text-[#ED83A8] transition-colors">
                     {s.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-white/70 leading-relaxed font-sans">
+                  <p className="text-sm text-[#C4C1B8] leading-relaxed font-sans">
                     {s.tagline}
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs">
-                  <span className="text-white/60">
+                <div className="mt-6 pt-4 border-t border-[#F8F6EF]/10 flex items-center justify-between text-xs">
+                  <span className="font-mono text-[#9C9990]">
                     {s.deliverables.length} Deliverables Included
                   </span>
                   <Link
                     href={`/industries/${s.slug}`}
-                    className="text-xs font-semibold text-[#FF90E8] group-hover:underline inline-flex items-center gap-1"
+                    className="font-display font-semibold text-[#ED83A8] group-hover:underline inline-flex items-center gap-1 whitespace-nowrap"
                   >
                     <span>Read practice</span>
                     <ArrowUpRight size={13} />

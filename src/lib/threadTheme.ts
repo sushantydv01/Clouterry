@@ -4,11 +4,11 @@ export interface CapabilityNode {
   shortName: string;
   slug: string;
   color: string;
-  borderClass: string;
-  bgClass: string;
-  textClass: string;
-  accentBg: string;
+  colorName: string;
+  tag: string;
+  image: string;
   description: string;
+  deliverableSummary: string;
   deliverables: string[];
 }
 
@@ -18,133 +18,122 @@ export const CAPABILITY_NODES: CapabilityNode[] = [
     name: "Brand & Identity",
     shortName: "Brand",
     slug: "brand-identity",
-    color: "#FF5C40", // Vermilion / Coral
-    borderClass: "border-[#FF5C40]",
-    bgClass: "bg-[#FF5C40]",
-    textClass: "text-[#FF5C40]",
-    accentBg: "rgba(255, 92, 64, 0.15)",
+    color: "#ED83A8",
+    colorName: "Rose Pink",
+    tag: "Visual Authority",
+    image: "/images/studio/s04-brand-specimen.webp",
     description:
-      "Visual identity systems, typography, documentary art direction, and brand guidelines built to endure a decade.",
-    deliverables: ["Visual Identity Systems", "Living Design Tokens", "Art Direction", "Documentary Assets"],
+      "Typographic hierarchies, editorial systems, and living CSS design tokens engineered to translate directly into production code.",
+    deliverableSummary: "Living token system, mark geometry & editorial specimen",
+    deliverables: [
+      "Visual Identity Systems",
+      "Living Design Tokens",
+      "Art Direction",
+      "Editorial Guidelines",
+    ],
   },
   {
     num: "02",
     name: "Web & Technology",
     shortName: "Web",
     slug: "web-technology",
-    color: "#3875FF", // Cobalt / Electric Blue
-    borderClass: "border-[#3875FF]",
-    bgClass: "bg-[#3875FF]",
-    textClass: "text-[#3875FF]",
-    accentBg: "rgba(56, 117, 255, 0.15)",
+    color: "#A6D8A1",
+    colorName: "Garden Green",
+    tag: "Engineered Architecture",
+    image: "/images/studio/s05-web-architecture.webp",
     description:
-      "Next.js 16 platforms, Server Component architecture, sub-second edge delivery, and 100/100 Core Web Vitals.",
-    deliverables: ["Next.js 16 App Router", "Server Components", "Cloudflare Edge", "WCAG 2.1 AA Portals"],
+      "Bespoke Next.js App Router platforms using Server Components, edge delivery, and strict WCAG 2.1 AA accessibility without runtime bloat.",
+    deliverableSummary: "Full-stack Next.js repository with WCAG 2.1 AA engineering",
+    deliverables: [
+      "Next.js App Router",
+      "Server Components",
+      "Edge Cache Architecture",
+      "WCAG 2.1 AA Compliance",
+    ],
   },
   {
     num: "03",
     name: "Social Media & Content",
     shortName: "Content",
     slug: "social-content",
-    color: "#FFB800", // Marigold / Yellow
-    borderClass: "border-[#FFB800]",
-    bgClass: "bg-[#FFB800]",
-    textClass: "text-[#FFB800]",
-    accentBg: "rgba(255, 184, 0, 0.15)",
+    color: "#F4CF55",
+    colorName: "Butter Yellow",
+    tag: "Documentary Rigor",
+    image: "/images/studio/s06-editorial-media.webp",
     description:
-      "Documentary storytelling, editorial social cadences, and authoritative field monographs that build intellectual equity.",
-    deliverables: ["Documentary Video", "Quarterly Monographs", "Multi-Platform Cadence", "Content Operations"],
+      "Original documentary photography, institutional field monographs, and editorial video calibrated specifically for your live viewport.",
+    deliverableSummary: "Viewport-calibrated documentary film, photography & monographs",
+    deliverables: [
+      "Documentary Photography",
+      "Editorial Monographs",
+      "Institutional Video",
+      "Narrative Architecture",
+    ],
   },
   {
     num: "04",
     name: "Marketing & Growth",
     shortName: "Growth",
     slug: "marketing-growth",
-    color: "#10B981", // Jade / Emerald Green
-    borderClass: "border-[#10B981]",
-    bgClass: "bg-[#10B981]",
-    textClass: "text-[#10B981]",
-    accentBg: "rgba(16, 185, 129, 0.15)",
+    color: "#ED83A8",
+    colorName: "Rose Pink",
+    tag: "Organic Inbound",
+    image: "/images/studio/s07-growth-compass.webp",
     description:
-      "Technical search infrastructure, high-intent admissions conversion funnels, and precision inbound acquisition.",
-    deliverables: ["Programmatic SEO", "Conversion Architecture", "High-Intent Pipelines", "Analytics Infrastructure"],
+      "Programmatic JSON-LD schema, admissions and inquiry conversion architecture, and sustainable organic discovery built into core code.",
+    deliverableSummary: "Structured search schema & high-intent conversion pipelines",
+    deliverables: [
+      "Technical SEO & Schema",
+      "Conversion Architecture",
+      "Admissions Funnels",
+      "Discovery Analytics",
+    ],
   },
   {
     num: "05",
     name: "Digital Management & Consulting",
     shortName: "Advisory",
     slug: "digital-management",
-    color: "#FF5C9D", // Rose / Vivid Fuchsia
-    borderClass: "border-[#FF5C9D]",
-    bgClass: "bg-[#FF5C9D]",
-    textClass: "text-[#FF5C9D]",
-    accentBg: "rgba(255, 92, 157, 0.15)",
+    color: "#A6D8A1",
+    colorName: "Garden Green",
+    tag: "Continuous Ownership",
+    image: "/images/studio/s08-stewardship-arch.webp",
     description:
-      "Fractional digital leadership, SLA maintenance stewardship, security compliance, and vendor consolidation advisory.",
-    deliverables: ["Fractional CTO / CDO", "SLA Stewardship", "Security & Auditing", "Vendor Consolidation"],
+      "Senior partner platform stewardship, security governance, continuous maintenance, and complete client codebase ownership with zero lock-in.",
+    deliverableSummary: "Complete client repository ownership & ongoing partner governance",
+    deliverables: [
+      "Fractional CDO Advisory",
+      "Platform Governance",
+      "Security Auditing",
+      "Total Client Ownership",
+    ],
   },
 ];
 
 export const FIRM_COLOR_SYSTEM = {
-  deepInk: "#0A0A0B", // Strong visual anchor and high-contrast typography
-  warmPaper: "#F8F6F0", // Reading surfaces, breathing space, tactile warmth
-  vibrantPink: "#FF90E8", // Primary action, Gumroad energy, select highlights
-  butterYellow: "#FFC700", // The Thread signature, energy, optimism
-  freshGreen: "#10B981", // Connection, growth, positive compounding outcomes
-  cobaltBlue: "#3875FF", // Web engineering, cloud infrastructure, reliability
-  vermilionCoral: "#FF5C40", // Brand identity, living design tokens, craftsmanship
-  marigoldAmber: "#FFB800", // Documentary storytelling, photography, monographs
-  fuchsiaRose: "#FF5C9D", // Digital advisory, SLA stewardship, executive direction
-  pureBlack: "#000000",
-  charcoal: "#18181B",
-  charcoalCard: "#141416",
-  charcoalBorder: "rgba(255, 255, 255, 0.12)",
-};
-
-export const GUMROAD_THEME = {
-  bg: "#000000",
-  charcoal: "#18181B",
-  charcoalSubtle: "#222226",
-  charcoalHover: "#2A2A30",
-  borderSubtle: "rgba(255, 255, 255, 0.10)",
-  borderCard: "rgba(255, 255, 255, 0.14)",
-  pinkAccent: "#FF90E8", // Iconic Gumroad Pink
-  yellowAccent: "#FFC700", // Iconic Gumroad Yellow
-  textWhite: "#FFFFFF",
-  textMuted: "#A1A1AA",
-  textTertiary: "#71717A",
+  midnightCharcoal: "#171717",
+  surfaceCharcoal: "#1E1E20",
+  recessCharcoal: "#121214",
+  warmCream: "#F8F6EF",
+  rosePink: "#ED83A8",
+  gardenGreen: "#A6D8A1",
+  butterYellow: "#F4CF55",
+  chalkWhite: "#FFFFFF",
 };
 
 export const MARQUEE_ROW_1 = [
-  { label: "Brand Identity Systems", color: "#FF5C40", category: "Brand" },
-  { label: "Next.js 16 Web Engineering", color: "#3875FF", category: "Web" },
-  { label: "Documentary Film & Video", color: "#FFB800", category: "Content" },
-  { label: "Programmatic SEO Architecture", color: "#10B981", category: "Growth" },
-  { label: "Fractional Digital Stewardship", color: "#FF5C9D", category: "Advisory" },
-  { label: "Living Design Tokens", color: "#FF5C40", category: "Brand" },
-  { label: "Server Components & Edge CDN", color: "#3875FF", category: "Web" },
-  { label: "Quarterly Field Monographs", color: "#FFB800", category: "Content" },
+  { label: "Brand Identity Systems", color: "#ED83A8", category: "Brand" },
+  { label: "Next.js Web Engineering", color: "#A6D8A1", category: "Web" },
+  { label: "Documentary Media & Film", color: "#F4CF55", category: "Content" },
+  { label: "Programmatic Search Schema", color: "#ED83A8", category: "Growth" },
+  { label: "Continuous Platform Stewardship", color: "#A6D8A1", category: "Advisory" },
 ];
 
 export const MARQUEE_ROW_2 = [
-  { label: "Admissions Conversion Portals", color: "#10B981", category: "Growth" },
-  { label: "Multi-Platform Editorial Cadence", color: "#FFB800", category: "Content" },
-  { label: "WCAG 2.1 AA Accessibility", color: "#3875FF", category: "Web" },
-  { label: "Institutional Typography", color: "#FF5C40", category: "Brand" },
-  { label: "Zero Vendor Handoff Strategy", color: "#FF5C9D", category: "Advisory" },
-  { label: "Core Web Vitals Optimization", color: "#3875FF", category: "Web" },
-  { label: "High-Intent Lead Routing", color: "#10B981", category: "Growth" },
-  { label: "SLA Maintenance & Patching", color: "#FF5C9D", category: "Advisory" },
+  { label: "Admissions Conversion Portals", color: "#F4CF55", category: "Education" },
+  { label: "WCAG 2.1 AA Accessibility", color: "#A6D8A1", category: "Web" },
+  { label: "Living CSS Design Tokens", color: "#ED83A8", category: "Brand" },
+  { label: "Healthcare Clinic Flagships", color: "#A6D8A1", category: "Healthcare" },
+  { label: "Legal Thought Leadership", color: "#F4CF55", category: "Legal" },
+  { label: "Zero Vendor Lock-In", color: "#ED83A8", category: "Advisory" },
 ];
-
-export const MARQUEE_ROW_3 = [
-  { label: "Healthcare Clinic Platforms", color: "#3875FF", category: "Web" },
-  { label: "Legal Practice Thought Leadership", color: "#FFB800", category: "Content" },
-  { label: "Independent School Blueprints", color: "#10B981", category: "Growth" },
-  { label: "Design System Architecture", color: "#FF5C40", category: "Brand" },
-  { label: "Security & CSP Compliance", color: "#FF5C9D", category: "Advisory" },
-  { label: "Edge Static Generation (SSG)", color: "#3875FF", category: "Web" },
-  { label: "Custom Analytics Pipelines", color: "#10B981", category: "Growth" },
-  { label: "Executive Digital Advisory", color: "#FF5C9D", category: "Advisory" },
-];
-

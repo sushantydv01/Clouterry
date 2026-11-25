@@ -19,8 +19,7 @@ export default function TheThreadMini({
   return (
     <div className={`w-full ${className}`}>
       <div className="relative flex items-center justify-between py-2">
-        {/* Continuous Ink Thread line running through all 5 nodes */}
-        <div className="absolute left-3 right-3 top-1/2 -translate-y-1/2 h-[2px] bg-white/20" />
+        <div className="absolute left-3 right-3 top-1/2 -translate-y-1/2 h-[2px] bg-[#F8F6EF]/20" />
 
         {CAPABILITY_NODES.map((node) => {
           const isActive =
@@ -33,21 +32,18 @@ export default function TheThreadMini({
             (!activeNodeNum && activeDivisions.length === 0);
 
           return (
-            <div key={node.num} className="relative z-10 flex flex-col items-center group">
-              {/* Outer circular badge */}
+            <div key={node.num} className="relative z-10 flex flex-col items-center">
               <div
                 className={`rounded-full flex items-center justify-center border transition-all ${
                   size === "sm" ? "w-4 h-4" : "w-6 h-6"
                 } ${
                   isActive
-                    ? "bg-[#18181B] border-white/80 shadow-md scale-110"
-                    : "bg-[#101012] border-white/15 opacity-40 hover:opacity-80"
+                    ? "bg-[#1E1E20] border-[#F8F6EF]/80 scale-110"
+                    : "bg-[#171717] border-[#F8F6EF]/20 opacity-45 hover:opacity-85"
                 }`}
               >
                 <div
-                  className={`rounded-full transition-transform ${
-                    size === "sm" ? "w-2 h-2" : "w-3 h-3"
-                  }`}
+                  className={`rounded-full ${size === "sm" ? "w-2 h-2" : "w-3 h-3"}`}
                   style={{ backgroundColor: node.color }}
                 />
               </div>
@@ -55,8 +51,8 @@ export default function TheThreadMini({
               {showLabels && (
                 <div className="mt-1.5 text-center">
                   <span
-                    className={`text-[10px] font-medium block whitespace-nowrap transition-colors ${
-                      isActive ? "text-white/90 font-semibold" : "text-white/40"
+                    className={`text-[10px] font-medium block whitespace-nowrap ${
+                      isActive ? "text-[#F8F6EF] font-semibold" : "text-[#9C9990]"
                     }`}
                   >
                     {node.shortName}
@@ -70,4 +66,3 @@ export default function TheThreadMini({
     </div>
   );
 }
-

@@ -1,0 +1,21 @@
+<svg width="1120" height="360" viewBox="0 0 1120 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Thread continuous five-discipline track geometry">
+  <!-- Butter Yellow Matte Stadium Track -->
+  <rect x="4" y="4" width="1112" height="352" rx="176" fill="#F4CF55" stroke="#171717" stroke-width="2" stroke-opacity="0.16" />
+  <!-- Inner Subtle Registration Guide -->
+  <rect x="30" y="30" width="1060" height="300" rx="150" stroke="#171717" stroke-width="1" stroke-dasharray="6 8" stroke-opacity="0.22" />
+  <!-- A01 Primary Continuous Thread Loop Path (Stroke Dash Choreography Target) -->
+  <path
+    id="a01-thread-orbit"
+    d="M196 92 H924 C996 92 1036 132 1036 180 C1036 228 996 268 924 268 H196 C124 268 84 228 84 180 C84 132 124 92 196 92 Z"
+    stroke="#ED83A8"
+    stroke-width="6"
+    stroke-linecap="round"
+    fill="none"
+  />
+  <!-- Five Discipline Anchor Nodes -->
+  <circle cx="240" cy="92" r="9" fill="#171717" />
+  <circle cx="560" cy="92" r="9" fill="#171717" />
+  <circle cx="880" cy="92" r="9" fill="#171717" />
+  <circle cx="720" cy="268" r="9" fill="#171717" />
+  <circle cx="400" cy="268" r="9" fill="#171717" />
+</svg>

@@ -33,50 +33,62 @@ export default function Section({
   children,
   id,
   className = "",
-  background = "black",
+  background = "charcoal",
   padding = "normal",
   ariaLabel,
   containerSize = "default",
   withBorder = true,
 }: SectionProps) {
   const bgClasses: Record<string, string> = {
-    black: "bg-[#000000] text-white",
-    dark: "bg-[#0A0A0B] text-white",
-    page: "bg-[#000000] text-white",
-    charcoal: "bg-[#18181B] text-white",
-    "charcoal-subtle": "bg-[#141416] text-white",
-    surface: "bg-[#18181B] text-white",
-    subtle: "bg-[#141416] text-white",
-    "warm-paper": "bg-[#F8F6F0] text-[#121214] selection:bg-[#FFC700] selection:text-black",
-    paper: "bg-[#F8F6F0] text-[#121214] selection:bg-[#FFC700] selection:text-black",
-    cream: "bg-[#F8F6F0] text-[#121214]",
-    white: "bg-[#FFFFFF] text-[#121214]",
-    "butter-yellow": "bg-[#FFC700] text-[#000000] selection:bg-black selection:text-[#FFC700]",
-    yellow: "bg-[#FFC700] text-[#000000] selection:bg-black selection:text-[#FFC700]",
-    "vibrant-pink": "bg-[#FF90E8] text-[#000000] selection:bg-black selection:text-[#FF90E8]",
-    pink: "bg-[#FF90E8] text-[#000000] selection:bg-black selection:text-[#FF90E8]",
-    "fresh-green": "bg-[#10B981] text-[#000000]",
-    green: "bg-[#10B981] text-[#000000]",
+    black: "bg-[#171717] text-[#F8F6EF]",
+    dark: "bg-[#171717] text-[#F8F6EF]",
+    page: "bg-[#171717] text-[#F8F6EF]",
+    charcoal: "bg-[#171717] text-[#F8F6EF]",
+    "charcoal-subtle": "bg-[#121214] text-[#F8F6EF]",
+    surface: "bg-[#1E1E20] text-[#F8F6EF]",
+    subtle: "bg-[#1E1E20] text-[#F8F6EF]",
+    "warm-paper": "bg-[#F8F6EF] text-[#171717] selection:bg-[#F4CF55] selection:text-[#171717]",
+    paper: "bg-[#F8F6EF] text-[#171717] selection:bg-[#F4CF55] selection:text-[#171717]",
+    cream: "bg-[#F8F6EF] text-[#171717]",
+    white: "bg-[#FFFFFF] text-[#171717]",
+    "butter-yellow": "bg-[#F4CF55] text-[#171717] selection:bg-[#171717] selection:text-[#F4CF55]",
+    yellow: "bg-[#F4CF55] text-[#171717] selection:bg-[#171717] selection:text-[#F4CF55]",
+    "vibrant-pink": "bg-[#ED83A8] text-[#171717]",
+    pink: "bg-[#ED83A8] text-[#171717]",
+    "fresh-green": "bg-[#A6D8A1] text-[#171717]",
+    green: "bg-[#A6D8A1] text-[#171717]",
   };
 
   const padClasses = {
     none: "py-0",
     tight: "py-12 sm:py-16",
-    normal: "py-20 sm:py-28",
-    spacious: "py-28 sm:py-36",
+    normal: "py-16 sm:py-24",
+    spacious: "py-20 sm:py-28",
   };
 
+  const isLight =
+    background === "warm-paper" ||
+    background === "paper" ||
+    background === "cream" ||
+    background === "butter-yellow" ||
+    background === "yellow" ||
+    background === "vibrant-pink" ||
+    background === "pink" ||
+    background === "fresh-green" ||
+    background === "green" ||
+    background === "white";
+
   const borderClass = withBorder
-    ? background === "warm-paper" || background === "paper" || background === "butter-yellow" || background === "vibrant-pink" || background === "white"
-      ? "border-t border-black/10"
-      : "border-t border-white/10"
+    ? isLight
+      ? "border-t border-[#171717]/12"
+      : "border-t border-[#F8F6EF]/10"
     : "";
 
   return (
     <section
       id={id}
       aria-label={ariaLabel}
-      className={`relative w-full ${borderClass} ${bgClasses[background] || bgClasses.black} ${padClasses[padding]} ${className}`}
+      className={`relative w-full ${borderClass} ${bgClasses[background] || bgClasses.charcoal} ${padClasses[padding]} ${className}`}
     >
       <Container size={containerSize}>{children}</Container>
     </section>

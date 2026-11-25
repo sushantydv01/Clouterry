@@ -6,7 +6,7 @@ import { SERVICES } from "@/data/services";
 import { ArrowUpRight, Layers, Globe, Share2, TrendingUp, ShieldCheck, Check } from "lucide-react";
 
 export default function PresenceMatrix() {
-  const [activeSlug, setActiveSlug] = useState("web-technology");
+  const [activeSlug, setActiveSlug] = useState("brand-identity");
 
   const activeService = SERVICES.find((s) => s.slug === activeSlug) || SERVICES[0];
 
@@ -30,40 +30,39 @@ export default function PresenceMatrix() {
   const getNodeColor = (slug: string) => {
     switch (slug) {
       case "brand-identity":
-        return "#FF5C40";
+        return "#ED83A8";
       case "web-technology":
-        return "#3875FF";
+        return "#A6D8A1";
       case "social-content":
-        return "#FFB800";
+        return "#F4CF55";
       case "marketing-growth":
-        return "#10B981";
+        return "#ED83A8";
       case "digital-management":
-        return "#FF5C9D";
+        return "#A6D8A1";
       default:
-        return "#FF90E8";
+        return "#F8F6EF";
     }
   };
 
   return (
-    <div className="w-full gumroad-card p-6 sm:p-10 text-left bg-[#18181B] border border-white/10 shadow-2xl">
-      {/* Matrix Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-6 border-b border-white/10 gap-4">
+    <div className="w-full p-6 sm:p-10 rounded-2xl bg-[#1E1E20] border border-[#F8F6EF]/12 text-left">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-6 border-b border-[#F8F6EF]/12 gap-4">
         <div>
-          <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
+          <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#F8F6EF] tracking-tight">
             The Interactive Presence Matrix
           </h3>
-          <p className="mt-1 text-sm text-white/60">
-            Explore how FIRM&apos;s five disciplines interconnect to eliminate digital fragmentation.
+          <p className="mt-1 text-sm text-[#C4C1B8]">
+            Inspect how FIRM&apos;s five disciplines reinforce one continuous client architecture.
           </p>
         </div>
 
-        <div className="flex items-center gap-2 self-start sm:self-auto px-3 py-1 rounded-full bg-[#141416] border border-white/10 text-xs font-medium text-white/60">
-          <span>5 Disciplines Connected</span>
-        </div>
+        <span className="self-start sm:self-auto px-3 py-1 rounded-full bg-[#171717] border border-[#F8F6EF]/12 text-xs font-mono text-[#9C9990]">
+          5 Disciplines Connected
+        </span>
       </div>
 
-      {/* Division Selector Tabs */}
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-6 pb-6 border-b border-white/10">
+      {/* Responsive Scrollable Tab Row */}
+      <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-6 pb-6 border-b border-[#F8F6EF]/12">
         {SERVICES.map((s) => {
           const isActive = s.slug === activeSlug;
           const nodeColor = getNodeColor(s.slug);
@@ -73,21 +72,22 @@ export default function PresenceMatrix() {
               key={s.slug}
               type="button"
               onClick={() => setActiveSlug(s.slug)}
-              className={`flex flex-col items-start p-4 rounded-xl text-left transition-all cursor-pointer border ${isActive
-                ? "bg-[#222226] border-white/40 shadow-lg -translate-y-0.5"
-                : "bg-[#141416] border-white/10 hover:border-white/20 text-white/70 hover:text-white"
-                }`}
+              className={`flex flex-col items-start p-4 rounded-xl text-left transition-all cursor-pointer border ${
+                isActive
+                  ? "bg-[#262629] border-[#F8F6EF]/40"
+                  : "bg-[#171717] border-[#F8F6EF]/10 hover:border-[#F8F6EF]/24"
+              }`}
             >
               <div
-                className="h-8 w-8 rounded-lg flex items-center justify-center mb-3 shadow-sm transition-colors text-black font-bold"
+                className="h-8 w-8 rounded-lg flex items-center justify-center mb-3 text-[#171717]"
                 style={{ backgroundColor: nodeColor }}
               >
                 {getIcon(s.slug)}
               </div>
-              <span className="text-[10px] uppercase font-semibold text-white/50 tracking-wider">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-[#9C9990]">
                 {s.code}
               </span>
-              <span className="font-display text-xs sm:text-sm font-bold text-white mt-1 leading-snug">
+              <span className="font-display text-xs sm:text-sm font-bold text-[#F8F6EF] mt-1 leading-snug">
                 {s.title}
               </span>
             </button>
@@ -95,88 +95,80 @@ export default function PresenceMatrix() {
         })}
       </div>
 
-      {/* Active Service Showcase */}
-      <div className="pt-8 grid gap-8 lg:grid-cols-12 lg:items-start text-left">
-        {/* Left Col: Service Thesis & Scope */}
+      <div className="pt-8 grid gap-8 lg:grid-cols-12 lg:items-start">
         <div className="lg:col-span-7 space-y-6">
           <div>
-            <div className="flex flex-wrap items-center gap-2 mb-2">
-              <span className="px-2.5 py-0.5 rounded-full bg-white/10 text-white text-xs font-semibold">
-                {activeService.code}
-              </span>
-              <span className="px-2.5 py-0.5 rounded-full bg-[#141416] border border-white/10 text-xs text-white/60">
-                Sprint: {activeService.timeframe}
-              </span>
+            <div className="flex flex-wrap items-center gap-2 mb-2 text-xs font-mono">
+              <span className="text-[#ED83A8]">{activeService.code}</span>
+              <span className="text-[#F8F6EF]/25">&bull;</span>
+              <span className="text-[#9C9990]">Sprint: {activeService.timeframe}</span>
             </div>
-            <h4 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
+            <h4 className="font-display text-2xl sm:text-3xl font-bold text-[#F8F6EF] tracking-tight">
               {activeService.title}
             </h4>
-            <p className="mt-2 text-sm sm:text-base text-white/70 leading-relaxed font-sans">
+            <p className="mt-2 text-sm sm:text-base text-[#C4C1B8] leading-relaxed font-sans">
               {activeService.subtitle}
             </p>
           </div>
 
-          <div className="p-6 rounded-xl bg-[#141416] border border-white/10">
-            <span className="text-xs text-white/50 font-semibold block mb-3 pb-1 border-b border-white/10">
-              Problems this division eliminates
+          <div className="p-6 rounded-xl bg-[#171717] border border-[#F8F6EF]/10">
+            <span className="text-xs font-mono uppercase tracking-wider text-[#9C9990] block mb-3 pb-2 border-b border-[#F8F6EF]/10">
+              Problems Eliminated
             </span>
-            <ul className="space-y-3 text-xs sm:text-sm text-white/80">
+            <ul className="space-y-3 text-xs sm:text-sm text-[#C4C1B8]">
               {activeService.problems.map((prob) => (
                 <li key={prob.title} className="flex items-start gap-2.5">
-                  <span className="text-[#FF90E8] font-bold mt-0.5">■</span>
+                  <span className="w-2 h-2 rounded-full bg-[#ED83A8] shrink-0 mt-1.5" />
                   <div>
-                    <strong className="font-semibold text-white">{prob.title}:</strong>{" "}
-                    <span className="text-white/70">{prob.description}</span>
+                    <strong className="font-semibold text-[#F8F6EF]">{prob.title}:</strong>{" "}
+                    <span>{prob.description}</span>
                   </div>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="pt-2">
+          <div className="pt-1">
             <Link
               href={`/capabilities/${activeService.slug}`}
-              className="gumroad-btn-pink text-xs sm:text-sm font-bold !py-2.5 !px-5"
+              className="firm-btn-primary text-xs sm:text-sm !py-2.5 !px-5"
             >
-              <span>Explore {activeService.title} specifications</span>
-              <ArrowUpRight size={14} className="stroke-[2.5]" />
+              <span>Explore specifications</span>
+              <ArrowUpRight size={14} className="stroke-[2.25]" />
             </Link>
           </div>
         </div>
 
-        {/* Right Col: Deliverables & Connected Capabilities */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="p-6 rounded-xl bg-[#141416] border border-white/10">
-            <span className="text-xs text-white/50 font-semibold block mb-3 pb-1 border-b border-white/10">
-              Tangible handover deliverables
+          <div className="p-6 rounded-xl bg-[#171717] border border-[#F8F6EF]/10">
+            <span className="text-xs font-mono uppercase tracking-wider text-[#9C9990] block mb-3 pb-2 border-b border-[#F8F6EF]/10">
+              Handover Deliverables
             </span>
-            <ul className="space-y-2.5 text-xs sm:text-sm text-white/80">
+            <ul className="space-y-2.5 text-xs sm:text-sm text-[#C4C1B8]">
               {activeService.deliverables[0]?.items.map((item) => (
                 <li key={item} className="flex items-start gap-2.5">
-                  <div className="w-4 h-4 rounded-full bg-[#10B981] text-black flex items-center justify-center text-[10px] shrink-0 mt-0.5 font-bold">
-                    <Check size={11} className="stroke-[3]" />
-                  </div>
-                  <span className="font-medium text-white/90">{item}</span>
+                  <Check size={14} className="text-[#A6D8A1] shrink-0 mt-0.5 stroke-[2.5]" />
+                  <span className="text-[#F8F6EF]">{item}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="p-6 rounded-xl bg-[#141416] border border-white/10">
-            <span className="text-xs text-white/50 font-semibold block mb-3 pb-1 border-b border-white/10">
-              Continuous thread connection
+          <div className="p-6 rounded-xl bg-[#171717] border border-[#F8F6EF]/10">
+            <span className="text-xs font-mono uppercase tracking-wider text-[#9C9990] block mb-3 pb-2 border-b border-[#F8F6EF]/10">
+              Continuous Thread Connections
             </span>
-            <div className="space-y-3 text-xs text-white/70">
+            <div className="space-y-3 text-xs text-[#C4C1B8]">
               {activeService.crossConnections.slice(0, 2).map((conn) => (
-                <div key={conn.division} className="pb-3 border-b border-white/10 last:border-none last:pb-0">
+                <div key={conn.division} className="pb-3 border-b border-[#F8F6EF]/10 last:border-none last:pb-0">
                   <Link
                     href={`/capabilities/${conn.slug}`}
-                    className="font-bold text-white hover:text-[#FF90E8] inline-flex items-center gap-1 font-display transition-colors"
+                    className="font-bold text-[#F8F6EF] hover:text-[#ED83A8] inline-flex items-center gap-1 font-display transition-colors"
                   >
                     <span>{conn.division}</span>
                     <ArrowUpRight size={12} />
                   </Link>
-                  <p className="mt-1 text-xs text-white/60 leading-relaxed font-sans">
+                  <p className="mt-1 text-xs text-[#9C9990] leading-relaxed font-sans">
                     {conn.relationship}
                   </p>
                 </div>

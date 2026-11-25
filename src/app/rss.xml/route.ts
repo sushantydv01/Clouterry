@@ -20,7 +20,7 @@ export async function GET() {
   const rssFeed = `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>${siteConfig.workingName} — Field Perspectives &amp; Editorial Monographs</title>
+    <title>${siteConfig.workingName} | Field Perspectives &amp; Editorial Monographs</title>
     <link>${siteUrl}/insights</link>
     <description>Perspectives on digital presence architecture, independent school technology, brand consistency, and high-performance web engineering.</description>
     <language>en-us</language>

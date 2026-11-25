@@ -1,15 +1,16 @@
 import React from "react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import PageHeader from "@/components/layout/PageHeader";
 import Section from "@/components/layout/Section";
 import Container from "@/components/layout/Container";
 import TheThreadMini from "@/components/thread/TheThreadMini";
 import { SERVICES } from "@/data/services";
-import { ArrowUpRight, Check, Play } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Social Media & Content — Editorial Video & Narrative Strategy | FIRM",
+  title: "Social Media & Content | Editorial Video & Narrative Strategy | FIRM",
   description:
     "We produce disciplined editorial video, photography art direction, and high-retention content that protects brand stature.",
 };
@@ -18,7 +19,7 @@ export default function SocialContentPage() {
   const service = SERVICES.find((s) => s.slug === "social-content") || SERVICES[2];
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#000000] text-white">
+    <div className="flex flex-col min-h-screen bg-[#171717] text-[#F8F6EF]">
       {/* 01. Hero Header */}
       <Container>
         <PageHeader
@@ -35,7 +36,7 @@ export default function SocialContentPage() {
               <span>Start a project</span>
               <ArrowUpRight size={14} className="stroke-[2.5]" />
             </Link>
-            <span className="px-3.5 py-1 rounded-full bg-[#18181B] border border-white/15 text-xs text-white/70">
+            <span className="px-3.5 py-1 rounded-full bg-[#1E1E20] border border-[#F8F6EF]/15 text-xs text-[#F8F6EF]/70">
               Cadence: {service.timeframe}
             </span>
           </div>
@@ -47,25 +48,25 @@ export default function SocialContentPage() {
       </Container>
 
       {/* 02. Core Editorial Proposition */}
-      <Section background="black" padding="tight">
-        <div className="max-w-4xl mx-auto text-left gumroad-card p-6 sm:p-10 border-white/10 space-y-4">
-          <span className="inline-block px-3 py-1 rounded-full bg-[#FFB800]/20 border border-[#FFB800]/30 text-xs font-semibold text-[#FFB800]">
+      <Section background="charcoal" padding="tight">
+        <div className="max-w-4xl mx-auto text-left gumroad-card p-6 sm:p-10 border-[#F8F6EF]/10 space-y-4">
+          <span className="inline-block px-3 py-1 rounded-full bg-[#F4CF55]/20 border border-[#F4CF55]/30 text-xs font-semibold text-[#F4CF55]">
             Editorial Proposition
           </span>
-          <h2 className="font-display text-2xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
+          <h2 className="font-display text-2xl sm:text-4xl font-bold tracking-tight text-[#F8F6EF] leading-tight">
             Content is institutional proof, not ephemeral social filler.
           </h2>
-          <p className="text-base text-white/70 leading-relaxed font-sans">
+          <p className="text-base text-[#F8F6EF]/70 leading-relaxed font-sans">
             {service.proposition} Disposable TikTok trends and low-effort posts erode the stature of serious institutions. We direct cinematic documentary video, long-form monographs, and disciplined content cadences that build enduring intellectual equity.
           </p>
         </div>
       </Section>
 
       {/* 03. Problems Eliminated */}
-      <Section background="black" padding="normal">
+      <Section background="charcoal" padding="normal">
         <div className="max-w-4xl mx-auto text-left space-y-6">
           <div>
-            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-white">
+            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#F8F6EF]">
               Why trend-chasing agencies degrade institutional trust
             </h2>
           </div>
@@ -77,10 +78,10 @@ export default function SocialContentPage() {
                 className="gumroad-card p-6 flex flex-col justify-between"
               >
                 <div>
-                  <h3 className="text-base font-display font-bold text-white">
+                  <h3 className="text-base font-display font-bold text-[#F8F6EF]">
                     {prob.title}
                   </h3>
-                  <p className="mt-2 text-xs sm:text-sm text-white/70 leading-relaxed font-sans">
+                  <p className="mt-2 text-xs sm:text-sm text-[#F8F6EF]/70 leading-relaxed font-sans">
                     {prob.description}
                   </p>
                 </div>
@@ -91,33 +92,43 @@ export default function SocialContentPage() {
       </Section>
 
       {/* 04. Video & Editorial Showcase */}
-      <Section background="black" padding="normal">
+      <Section background="charcoal" padding="normal">
         <div className="max-w-4xl mx-auto text-left space-y-6">
           <div>
-            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-white">
+            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#F8F6EF]">
               Documentary Film &amp; Field Monograph Architecture
             </h2>
           </div>
 
-          <div className="gumroad-card p-8 sm:p-12 text-center space-y-6 bg-gradient-to-b from-[#18181B] to-[#121214]">
-            <div className="w-16 h-16 rounded-full bg-[#FFB800] text-black flex items-center justify-center mx-auto shadow-lg">
-              <Play size={24} className="fill-black ml-1" />
-            </div>
-            <h3 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
+          <div className="rounded-2xl overflow-hidden border border-[#F8F6EF]/14 bg-[#1E1E20] p-2">
+            <Image
+              src="/images/studio/s06-editorial-media.webp"
+              alt="Documentary Media Camera and Editorial Folio Paper-Cut Specimen"
+              width={1376}
+              height={768}
+              className="w-full h-auto object-cover rounded-xl"
+            />
+          </div>
+
+          <div className="atelier-surface p-8 sm:p-10 space-y-3">
+            <span className="text-xs font-mono uppercase tracking-[0.12em] text-[#F4CF55] block">
+              Documentary Cadence
+            </span>
+            <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#F8F6EF] tracking-tight">
               Cinematic Documentary Production
             </h3>
-            <p className="text-sm sm:text-base text-white/70 max-w-lg mx-auto leading-relaxed">
-              We interview founders, senior faculty, and clinicians on location. Color-graded, sound-designed narratives engineered for web flagships and targeted distribution.
+            <p className="text-sm sm:text-base text-[#C4C1B8] max-w-2xl leading-relaxed">
+              We interview founders, senior faculty, and clinicians on location. Quiet, grounded visual narratives directed specifically for editorial layouts.
             </p>
           </div>
         </div>
       </Section>
 
       {/* 05. Deliverables */}
-      <Section background="black" padding="normal">
+      <Section background="charcoal" padding="normal">
         <div className="max-w-4xl mx-auto text-left space-y-6">
           <div>
-            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-white">
+            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#F8F6EF]">
               Complete content specifications
             </h2>
           </div>
@@ -129,16 +140,16 @@ export default function SocialContentPage() {
                 className="gumroad-card p-6 flex flex-col justify-between"
               >
                 <div>
-                  <h3 className="text-xs font-bold text-white pb-2 border-b border-white/10">
+                  <h3 className="text-xs font-bold text-[#F8F6EF] pb-2 border-b border-[#F8F6EF]/10">
                     {deliv.category}
                   </h3>
-                  <ul className="mt-4 space-y-2.5 text-xs text-white/80">
+                  <ul className="mt-4 space-y-2.5 text-xs text-[#F8F6EF]/80">
                     {deliv.items.map((it) => (
                       <li key={it} className="flex items-start gap-2">
-                        <div className="w-4 h-4 rounded-full bg-[#10B981] text-black flex items-center justify-center text-[10px] shrink-0 mt-0.5 font-bold">
+                        <div className="w-4 h-4 rounded-full bg-[#A6D8A1] text-[#171717] flex items-center justify-center text-[10px] shrink-0 mt-0.5 font-bold">
                           <Check size={11} className="stroke-[3]" />
                         </div>
-                        <span className="font-medium text-white/90">{it}</span>
+                        <span className="font-medium text-[#F8F6EF]/90">{it}</span>
                       </li>
                     ))}
                   </ul>
@@ -150,10 +161,10 @@ export default function SocialContentPage() {
       </Section>
 
       {/* 06. Cross-Division Connections */}
-      <Section background="black" padding="normal">
+      <Section background="charcoal" padding="normal">
         <div className="max-w-4xl mx-auto text-left space-y-6">
           <div>
-            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-white">
+            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#F8F6EF]">
               How Social &amp; Content connects along The Thread
             </h2>
           </div>
@@ -166,12 +177,12 @@ export default function SocialContentPage() {
               >
                 <Link
                   href={`/capabilities/${conn.slug}`}
-                  className="font-display text-base font-bold text-white hover:text-[#FF90E8] inline-flex items-center gap-1 transition-colors"
+                  className="font-display text-base font-bold text-[#F8F6EF] hover:text-[#ED83A8] inline-flex items-center gap-1 transition-colors"
                 >
                   <span>{conn.division}</span>
                   <ArrowUpRight size={13} />
                 </Link>
-                <p className="text-xs sm:text-sm text-white/70 leading-relaxed font-sans">
+                <p className="text-xs sm:text-sm text-[#F8F6EF]/70 leading-relaxed font-sans">
                   {conn.relationship}
                 </p>
               </div>
@@ -181,15 +192,15 @@ export default function SocialContentPage() {
       </Section>
 
       {/* 07. Closing CTA */}
-      <Section background="black" padding="spacious">
-        <div className="max-w-3xl mx-auto text-center space-y-6 gumroad-card p-8 sm:p-14 border-white/10">
-          <span className="inline-block px-3 py-1 rounded-full bg-[#FFB800]/20 border border-[#FFB800]/30 text-xs font-semibold text-[#FFB800]">
+      <Section background="charcoal" padding="spacious">
+        <div className="max-w-3xl mx-auto text-center space-y-6 gumroad-card p-8 sm:p-14 border-[#F8F6EF]/10">
+          <span className="inline-block px-3 py-1 rounded-full bg-[#F4CF55]/20 border border-[#F4CF55]/30 text-xs font-semibold text-[#F4CF55]">
             Direct Inquiry &bull; Social &amp; Content
           </span>
-          <h2 className="font-display text-3xl sm:text-5xl font-bold text-white leading-tight">
+          <h2 className="font-display text-3xl sm:text-5xl font-bold text-[#F8F6EF] leading-tight">
             Elevate your content to match your institutional caliber.
           </h2>
-          <p className="text-sm sm:text-base text-white/70 leading-relaxed max-w-lg mx-auto font-sans">
+          <p className="text-sm sm:text-base text-[#F8F6EF]/70 leading-relaxed max-w-lg mx-auto font-sans">
             Cinematic storytelling and authoritative thought leadership without agency gimmicks.
           </p>
 

@@ -1,51 +1,45 @@
 @import "tailwindcss";
 
 /* ─────────────────────────────────────────────────────────────────
-   FIRM DESIGN SYSTEM — GUMROAD INSPIRATION ADAPTATION
-   Dominant Dark Canvas · Charcoal Bento Cards · Neon Pink Accent
-   Five Connected Disciplines · Floating Brand Keystones · Infinite Marquee
+   FIRM DESIGN SYSTEM — MIDNIGHT ATELIER (PHASE 3.2)
+   Matte Midnight Charcoal (#171717) · Warm Cream Ink (#F8F6EF)
+   Rose Pink (#ED83A8) · Garden Green (#A6D8A1) · Butter Yellow (#F4CF55)
    ───────────────────────────────────────────────────────────────── */
 
 :root {
-  /* Gumroad-Inspired Core Palette */
-  --bg-page: #000000;
-  --bg-card: #18181B;
-  --bg-card-subtle: #222226;
-  --bg-card-hover: #27272C;
+  /* Core Midnight Atelier Surfaces */
+  --bg-page: #171717;
+  --bg-surface: #1e1e20;
+  --bg-surface-hover: #262629;
+  --bg-recess: #121214;
 
-  /* Accent Signatures */
-  --pink-accent: #FF90E8;
-  /* Iconic Gumroad Pink */
-  --yellow-accent: #FFC700;
-  /* Iconic Gumroad Yellow */
+  /* Editorial Inks */
+  --ink-cream: #f8f6ef;
+  --ink-pure: #ffffff;
+  --ink-muted: #c4c1b8;
+  --ink-subtle: #9c9990;
 
-  /* Structural Borders */
-  --border-card: rgba(255, 255, 255, 0.12);
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.20);
+  /* Strict Brand Accents */
+  --accent-pink: #ed83a8;
+  --accent-green: #a6d8a1;
+  --accent-yellow: #f4cf55;
 
-  /* Typography Colors */
-  --text-white: #FFFFFF;
-  --text-secondary: #D4D4D8;
-  --text-muted: #A1A1AA;
-  --text-tertiary: #71717A;
-
-  /* 5 Reserved Capability Node Colors */
-  --node-brand: #FF5C40;
-  --node-web: #3875FF;
-  --node-content: #FFB800;
-  --node-growth: #10B981;
-  --node-advisory: #FF5C9D;
+  /* Calibrated Hairlines */
+  --border-card: rgba(248, 246, 239, 0.14);
+  --border-subtle: rgba(248, 246, 239, 0.08);
+  --border-strong: rgba(248, 246, 239, 0.24);
 }
 
 @theme inline {
-  --color-page: #000000;
-  --color-card: #18181B;
-  --color-card-subtle: #222226;
-  --color-pink-accent: #FF90E8;
-  --color-yellow-accent: #FFC700;
+  --color-page: #171717;
+  --color-surface: #1e1e20;
+  --color-recess: #121214;
+  --color-cream: #f8f6ef;
+  --color-pink-accent: #ed83a8;
+  --color-green-accent: #a6d8a1;
+  --color-yellow-accent: #f4cf55;
 
-  --font-sans: var(--font-space-grotesk), var(--font-inter), sans-serif;
+  --font-sans: var(--font-inter), sans-serif;
   --font-display: var(--font-space-grotesk), sans-serif;
   --font-body: var(--font-inter), sans-serif;
   --font-serif: var(--font-newsreader), Georgia, serif;
@@ -54,230 +48,151 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #000000;
-  color: #FFFFFF;
+  background-color: #171717;
+  color: #f8f6ef;
 }
 
 body {
-  background-color: #000000;
-  color: #FFFFFF;
-  font-family: var(--font-sans);
+  background-color: #171717;
+  color: #f8f6ef;
+  font-family: var(--font-body);
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Tabular figures for data, metrics, timelines */
 .tabular-nums {
   font-variant-numeric: tabular-nums;
 }
 
-/* Gumroad Container & Bento Cards */
-.gumroad-card {
-  background-color: #18181B;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+/* Primary Studio Surfaces */
+.atelier-surface,
+.gumroad-card,
+.thread-card,
+.neo-card {
+  background-color: #1e1e20;
+  border: 1px solid rgba(248, 246, 239, 0.12);
   border-radius: 1.25rem;
-  transition: border-color 180ms ease, background-color 180ms ease, transform 180ms ease;
+  color: #f8f6ef;
+  transition: border-color 180ms ease, background-color 180ms ease, transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.gumroad-card:hover {
-  border-color: rgba(255, 255, 255, 0.22);
+.atelier-surface:hover,
+.gumroad-card:hover,
+.neo-card:hover {
+  border-color: rgba(248, 246, 239, 0.24);
 }
 
+.atelier-recess,
 .gumroad-card-subtle {
-  background-color: #141416;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: #121214;
+  border: 1px solid rgba(248, 246, 239, 0.08);
   border-radius: 1rem;
 }
 
-/* Primary Gumroad Pink Button */
-.gumroad-btn-pink {
-  background-color: #FF90E8;
-  color: #000000;
-  font-family: var(--font-sans);
+/* Cohesive Single-Line Pill Button Family */
+.firm-btn-primary,
+.gumroad-btn-pink,
+.neo-btn-pink,
+.thread-btn-primary {
+  background-color: #ed83a8;
+  color: #171717;
+  font-family: var(--font-display);
   font-weight: 600;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
+  min-height: 44px;
+  padding: 0.7rem 1.5rem;
   border-radius: 9999px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  transition: all 150ms ease;
+  border: 1px solid rgba(23, 23, 23, 0.14);
+  white-space: nowrap;
+  transition: background-color 160ms ease, transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
   cursor: pointer;
   text-decoration: none;
 }
 
-.gumroad-btn-pink:hover {
-  filter: brightness(1.06);
+.firm-btn-primary:hover,
+.gumroad-btn-pink:hover,
+.neo-btn-pink:hover,
+.thread-btn-primary:hover {
+  background-color: #f399b9;
   transform: translateY(-1px);
 }
 
+.firm-btn-primary:active,
 .gumroad-btn-pink:active {
   transform: translateY(0);
 }
 
-/* Secondary Dark Button */
-.gumroad-btn-secondary {
-  background-color: #242428;
-  color: #FFFFFF;
-  font-family: var(--font-sans);
+.firm-btn-secondary,
+.gumroad-btn-secondary,
+.neo-btn,
+.thread-btn-secondary {
+  background-color: #242426;
+  color: #f8f6ef;
+  font-family: var(--font-display);
   font-weight: 500;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
+  min-height: 44px;
+  padding: 0.7rem 1.5rem;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  transition: all 150ms ease;
+  border: 1px solid rgba(248, 246, 239, 0.16);
+  white-space: nowrap;
+  transition: background-color 160ms ease, border-color 160ms ease, transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
   cursor: pointer;
   text-decoration: none;
 }
 
+.firm-btn-secondary:hover,
 .gumroad-btn-secondary:hover {
-  background-color: #2D2D33;
-  border-color: rgba(255, 255, 255, 0.25);
+  background-color: #2c2c30;
+  border-color: rgba(248, 246, 239, 0.3);
   transform: translateY(-1px);
 }
 
-.gumroad-btn-secondary:active {
-  transform: translateY(0);
-}
-
-/* White Accent Button */
-.gumroad-btn-white {
-  background-color: #FFFFFF;
-  color: #000000;
-  font-family: var(--font-sans);
+.firm-btn-cream,
+.gumroad-btn-white,
+.neo-btn-white {
+  background-color: #f8f6ef;
+  color: #171717;
+  font-family: var(--font-display);
   font-weight: 600;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
+  min-height: 44px;
+  padding: 0.7rem 1.5rem;
   border-radius: 9999px;
   border: 1px solid transparent;
-  transition: all 150ms ease;
+  white-space: nowrap;
+  transition: background-color 160ms ease, transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
   cursor: pointer;
   text-decoration: none;
 }
 
+.firm-btn-cream:hover,
 .gumroad-btn-white:hover {
-  background-color: #ECECEE;
+  background-color: #ffffff;
   transform: translateY(-1px);
 }
 
-/* Dark Pill Badge */
-.gumroad-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.375rem 0.875rem;
-  background-color: #1F1F24;
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  border-radius: 9999px;
-  font-size: 0.8125rem;
-  color: #D4D4D8;
-}
-
-/* Backward compatibility aliases mapping old class names to new Gumroad dark styles */
-.neo-card {
-  background-color: #18181B;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 1.25rem;
-  color: #FFFFFF;
-}
-
-.neo-card:hover {
-  border-color: rgba(255, 255, 255, 0.22);
-}
-
-.neo-btn {
-  background-color: #242428;
-  color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  font-weight: 500;
-  padding: 0.625rem 1.25rem;
-  border-radius: 9999px;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-}
-
-.neo-btn-pink {
-  background-color: #FF90E8;
-  color: #000000;
-  font-weight: 600;
-  padding: 0.625rem 1.25rem;
-  border-radius: 9999px;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-}
-
-.neo-btn-white {
-  background-color: #FFFFFF;
-  color: #000000;
-  font-weight: 600;
-  padding: 0.625rem 1.25rem;
-  border-radius: 9999px;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-}
-
-.thread-btn-primary {
-  background-color: #FF90E8;
-  color: #000000;
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-}
-
-.thread-btn-secondary {
-  background-color: #242428;
-  color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  font-weight: 500;
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-}
-
-.thread-card {
-  background-color: #18181B;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 1.25rem;
-}
-
-/* Warm Paper & Editorial Card Classes */
+/* Warm Cream Editorial Plate (Focused Contrast Panels Only) */
 .firm-warm-paper {
-  background-color: #F8F6F0;
-  color: #121214;
+  background-color: #f8f6ef;
+  color: #171717;
 }
 
 .firm-warm-card {
-  background-color: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  border: 1px solid rgba(23, 23, 23, 0.12);
   border-radius: 1.25rem;
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
-  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
-}
-
-.firm-warm-card:hover {
-  border-color: rgba(0, 0, 0, 0.16);
-  box-shadow: 0 10px 28px -4px rgba(0, 0, 0, 0.08);
+  color: #171717;
 }
 
 .firm-serif-italic {
@@ -286,77 +201,42 @@ body {
   font-weight: 400;
 }
 
-/* Floating Coin / Token animations */
-@keyframes float-1 {
-
-  0%,
+/* A01 Continuous Thread Path Trace Animation */
+@keyframes thread-orbit-trace {
+  0% {
+    stroke-dashoffset: 0;
+  }
   100% {
-    transform: translateY(0px) rotate(-6deg);
-  }
-
-  50% {
-    transform: translateY(-16px) rotate(-3deg);
+    stroke-dashoffset: -420;
   }
 }
 
-@keyframes float-2 {
+.animate-thread-trace {
+  stroke-dasharray: 120 300;
+  animation: thread-orbit-trace 14s linear infinite;
+}
 
-  0%,
+/* A02 Tactile Paper Lift Entry for Interactive Switchers */
+@keyframes paper-plate-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
   100% {
-    transform: translateY(0px) rotate(12deg);
-  }
-
-  50% {
-    transform: translateY(-20px) rotate(15deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@keyframes float-3 {
-
-  0%,
-  100% {
-    transform: translateY(0px) rotate(-14deg);
-  }
-
-  50% {
-    transform: translateY(-14px) rotate(-10deg);
-  }
+.animate-paper-enter {
+  animation: paper-plate-enter 240ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-@keyframes float-4 {
-
-  0%,
-  100% {
-    transform: translateY(0px) rotate(8deg);
-  }
-
-  50% {
-    transform: translateY(-18px) rotate(5deg);
-  }
-}
-
-.animate-float-1 {
-  animation: float-1 6s ease-in-out infinite;
-}
-
-.animate-float-2 {
-  animation: float-2 7s ease-in-out infinite 0.5s;
-}
-
-.animate-float-3 {
-  animation: float-3 8s ease-in-out infinite 1s;
-}
-
-.animate-float-4 {
-  animation: float-4 6.5s ease-in-out infinite 1.5s;
-}
-
-/* Infinite Marquee animations */
+/* A03 Dual-Track Compact Marquee */
 @keyframes marquee-scroll-left {
   0% {
     transform: translateX(0%);
   }
-
   100% {
     transform: translateX(-50%);
   }
@@ -366,7 +246,6 @@ body {
   0% {
     transform: translateX(-50%);
   }
-
   100% {
     transform: translateX(0%);
   }
@@ -375,13 +254,13 @@ body {
 .animate-marquee-left {
   display: flex;
   width: max-content;
-  animation: marquee-scroll-left 32s linear infinite;
+  animation: marquee-scroll-left 38s linear infinite;
 }
 
 .animate-marquee-right {
   display: flex;
   width: max-content;
-  animation: marquee-scroll-right 36s linear infinite;
+  animation: marquee-scroll-right 42s linear infinite;
 }
 
 .animate-marquee-left:hover,
@@ -389,15 +268,12 @@ body {
   animation-play-state: paused;
 }
 
-/* Accessible focus styling */
 :focus-visible {
-  outline: 2px solid #FF90E8;
+  outline: 2px solid #ed83a8;
   outline-offset: 2px;
 }
 
-/* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {

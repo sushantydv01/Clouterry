@@ -1,9 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import PageHeader from "@/components/layout/PageHeader";
 import Section from "@/components/layout/Section";
 import Container from "@/components/layout/Container";
+import StickerMark from "@/components/illustrations/StickerMark";
 import { ArrowUpRight, Check, AlertCircle, Info, Loader2 } from "lucide-react";
 
 const DIVISIONS = [
@@ -106,71 +108,78 @@ export default function ConnectFormView() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#000000] text-white">
+    <div className="flex flex-col min-h-screen bg-[#171717] text-[#F8F6EF]">
       <Container>
         <PageHeader
-          badge="CONNECT"
+          badge="Connect"
           eyebrow="Initiate an Engagement"
           title="Start a project briefing."
-          description="We partner with a limited client roster each quarter. Tell us about your organization, timeline, and current digital presence challenges."
+          description="We partner with a limited roster each quarter. Share your organization, timeline, and current digital presence challenges."
         />
       </Container>
 
-      <Section background="black" padding="tight">
+      <Section background="charcoal" padding="tight">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start max-w-5xl mx-auto">
-          {/* Left Column: Direct Inquiries */}
+          {/* Left Column: Authentic Studio Presence & Engagement Info */}
           <div className="lg:col-span-5 text-left space-y-6">
-            <div>
-              <h2 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                Executive Partner Office
-              </h2>
-              <p className="mt-2 text-xs sm:text-sm text-white/70 leading-relaxed font-sans">
-                For institutional RFP invitations, executive consultations, or digital transformation diagnostics, initiate a briefing through our gateway.
+            <div className="relative aspect-[3/2] rounded-2xl overflow-hidden border border-[#F8F6EF]/14 bg-[#1E1E20]">
+              <Image
+                src="/images/editorial/atelier-hero.webp"
+                alt="Architectural floorplans and drafting instruments on sunlit studio desk"
+                fill
+                sizes="(max-width: 1024px) 100vw, 42vw"
+                className="object-cover"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <h2 className="font-display text-2xl font-bold text-[#F8F6EF] tracking-tight">
+                  Senior Partner Review
+                </h2>
+                <StickerMark name="s09-09-paper-plane" size={24} />
+              </div>
+              <p className="text-sm text-[#C4C1B8] leading-relaxed font-sans">
+                For institutional RFP invitations, consultations, or digital presence diagnostics, initiate a direct briefing using the gateway.
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl border border-white/10 bg-[#18181B] space-y-3 text-xs">
-              <div>
-                <span className="text-xs text-white/50 block font-medium">Inquiry Routing</span>
-                <span className="font-medium text-white/90">
-                  Senior Partner Review
-                </span>
+            <div className="divide-y divide-[#F8F6EF]/10 border-y border-[#F8F6EF]/10 text-xs">
+              <div className="py-3 flex justify-between gap-4">
+                <span className="text-[#9C9990] font-mono uppercase">Routing</span>
+                <span className="text-[#F8F6EF] font-medium">Direct Partner Review</span>
               </div>
-              <div className="pt-3 border-t border-white/10">
-                <span className="text-xs text-white/50 block font-medium">Practice Scope</span>
-                <span className="text-white/80 font-medium">Independent Practice · Global Delivery</span>
-              </div>
-              <div className="pt-3 border-t border-white/10">
-                <span className="text-xs text-white/50 block font-medium">Engagement Model</span>
-                <span className="text-white/80 font-medium">Fixed 4-Stage Cadence · Zero Billable Hour Overruns</span>
+              <div className="py-3 flex justify-between gap-4">
+                <span className="text-[#9C9990] font-mono uppercase">Model</span>
+                <span className="text-[#F8F6EF] font-medium">Fixed 4-Stage Sprint Cadence</span>
               </div>
             </div>
 
-            <div className="p-4 rounded-xl border border-white/10 bg-[#141416] text-left">
+            <div className="p-4 rounded-xl border border-[#F8F6EF]/12 bg-[#1E1E20] text-left">
               <div className="flex items-start gap-2.5">
-                <Info size={16} className="text-[#FF90E8] shrink-0 mt-0.5" />
-                <p className="text-[11px] leading-relaxed text-white/70">
-                  <strong>Status Notice:</strong> The direct email gateway is currently undergoing production configuration. Submitting this form tests real-time connection status and preserves your entries safely.
+                <Info size={16} className="text-[#F4CF55] shrink-0 mt-0.5" />
+                <p className="text-xs leading-relaxed text-[#C4C1B8]">
+                  <strong className="text-[#F8F6EF]">Status Notice:</strong> The direct outbound mail relay is undergoing configuration. Submitting verifies validation and preserves your briefing safely.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Briefing Form */}
+          {/* Right Column: Accessible Briefing Form */}
           <div className="lg:col-span-7">
             {status === "delivered" ? (
               <div
                 role="status"
                 aria-live="polite"
-                className="gumroad-card p-8 sm:p-10 text-center border-white/10 space-y-4"
+                className="atelier-surface p-8 sm:p-10 text-center space-y-4"
               >
-                <div className="h-12 w-12 rounded-full bg-[#10B981] text-black flex items-center justify-center mx-auto mb-2 font-bold shadow-lg">
+                <div className="h-12 w-12 rounded-full bg-[#A6D8A1] text-[#171717] flex items-center justify-center mx-auto mb-2 font-bold">
                   <Check size={24} className="stroke-[3]" />
                 </div>
-                <h3 className="font-display text-2xl sm:text-3xl font-bold text-white">
+                <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#F8F6EF]">
                   Briefing Received
                 </h3>
-                <p className="text-xs sm:text-sm text-white/70 leading-relaxed max-w-md mx-auto">
+                <p className="text-sm text-[#C4C1B8] leading-relaxed max-w-md mx-auto">
                   Thank you, {name}. {statusMessage}
                 </p>
                 <button
@@ -182,7 +191,7 @@ export default function ConnectFormView() {
                     setOrganization("");
                     setMessage("");
                   }}
-                  className="mt-4 gumroad-btn-secondary text-xs px-5 py-2.5"
+                  className="mt-4 firm-btn-secondary text-xs px-5 py-2.5"
                 >
                   Submit another briefing
                 </button>
@@ -191,40 +200,38 @@ export default function ConnectFormView() {
               <form
                 onSubmit={handleSubmit}
                 noValidate
-                className="gumroad-card p-6 sm:p-8 border-white/10 text-left space-y-5"
+                className="atelier-surface p-6 sm:p-8 text-left space-y-5"
               >
-                {/* Honest Notice for Unconfigured Service */}
                 {status === "unconfigured" && (
                   <div
                     role="alert"
                     aria-live="assertive"
-                    className="p-4 rounded-xl border border-yellow-500/30 bg-yellow-500/10 flex items-start gap-3"
+                    className="p-4 rounded-xl border border-[#F4CF55]/40 bg-[#F4CF55]/10 flex items-start gap-3"
                   >
-                    <Info size={18} className="text-yellow-400 shrink-0 mt-0.5" />
+                    <Info size={18} className="text-[#F4CF55] shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="font-display text-sm font-bold text-white">
+                      <h4 className="font-display text-sm font-bold text-[#F8F6EF]">
                         Briefing Service Notice
                       </h4>
-                      <p className="mt-1 text-xs text-white/80 font-sans leading-relaxed">
+                      <p className="mt-1 text-xs text-[#C4C1B8] font-sans leading-relaxed">
                         {statusMessage}
                       </p>
                     </div>
                   </div>
                 )}
 
-                {/* Error Banner */}
                 {status === "error" && (
                   <div
                     role="alert"
                     aria-live="assertive"
-                    className="p-4 rounded-xl border border-red-500/30 bg-red-500/10 flex items-start gap-3"
+                    className="p-4 rounded-xl border border-[#ED83A8]/45 bg-[#ED83A8]/10 flex items-start gap-3"
                   >
-                    <AlertCircle size={18} className="text-red-400 shrink-0 mt-0.5" />
+                    <AlertCircle size={18} className="text-[#ED83A8] shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="font-display text-sm font-bold text-white">
+                      <h4 className="font-display text-sm font-bold text-[#F8F6EF]">
                         Submission Incomplete
                       </h4>
-                      <p className="mt-1 text-xs text-white/80 font-sans leading-relaxed">
+                      <p className="mt-1 text-xs text-[#C4C1B8] font-sans leading-relaxed">
                         {statusMessage}
                       </p>
                     </div>
@@ -232,8 +239,8 @@ export default function ConnectFormView() {
                 )}
 
                 <div>
-                  <label htmlFor="name" className="block text-xs font-semibold text-white/80 mb-1.5">
-                    Your Name <span className="text-[#FF90E8]">*</span>
+                  <label htmlFor="name" className="block text-xs font-semibold text-[#F8F6EF] mb-1.5">
+                    Your Name <span className="text-[#ED83A8]">*</span>
                   </label>
                   <input
                     id="name"
@@ -245,27 +252,25 @@ export default function ConnectFormView() {
                     value={name}
                     onChange={(e) => {
                       setName(e.target.value);
-                      if (fieldErrors.name) {
-                        setFieldErrors((prev) => ({ ...prev, name: "" }));
-                      }
+                      if (fieldErrors.name) setFieldErrors((prev) => ({ ...prev, name: "" }));
                     }}
                     placeholder="Jane Doe"
                     aria-invalid={!!fieldErrors.name}
                     aria-describedby={fieldErrors.name ? "name-error" : undefined}
-                    className={`w-full rounded-xl border ${
-                      fieldErrors.name ? "border-red-500 bg-red-500/10" : "border-white/15 bg-[#141416]"
-                    } px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-[#FF90E8] focus:outline-none transition-colors disabled:opacity-50`}
+                    className={`w-full min-h-[46px] rounded-xl border ${
+                      fieldErrors.name ? "border-[#ED83A8] bg-[#ED83A8]/10" : "border-[#F8F6EF]/15 bg-[#121214]"
+                    } px-4 py-3 text-base sm:text-sm text-[#F8F6EF] placeholder:text-[#9C9990] focus:border-[#ED83A8] focus:outline-none transition-colors disabled:opacity-50`}
                   />
                   {fieldErrors.name && (
-                    <p id="name-error" className="mt-1 text-[11px] text-red-400">
+                    <p id="name-error" className="mt-1 text-xs text-[#ED83A8]">
                       {fieldErrors.name}
                     </p>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-xs font-semibold text-white/80 mb-1.5">
-                    Official Email <span className="text-[#FF90E8]">*</span>
+                  <label htmlFor="email" className="block text-xs font-semibold text-[#F8F6EF] mb-1.5">
+                    Official Email <span className="text-[#ED83A8]">*</span>
                   </label>
                   <input
                     id="email"
@@ -277,26 +282,24 @@ export default function ConnectFormView() {
                     value={email}
                     onChange={(e) => {
                       setEmail(e.target.value);
-                      if (fieldErrors.email) {
-                        setFieldErrors((prev) => ({ ...prev, email: "" }));
-                      }
+                      if (fieldErrors.email) setFieldErrors((prev) => ({ ...prev, email: "" }));
                     }}
                     placeholder="jane@organization.com"
                     aria-invalid={!!fieldErrors.email}
                     aria-describedby={fieldErrors.email ? "email-error" : undefined}
-                    className={`w-full rounded-xl border ${
-                      fieldErrors.email ? "border-red-500 bg-red-500/10" : "border-white/15 bg-[#141416]"
-                    } px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-[#FF90E8] focus:outline-none transition-colors disabled:opacity-50`}
+                    className={`w-full min-h-[46px] rounded-xl border ${
+                      fieldErrors.email ? "border-[#ED83A8] bg-[#ED83A8]/10" : "border-[#F8F6EF]/15 bg-[#121214]"
+                    } px-4 py-3 text-base sm:text-sm text-[#F8F6EF] placeholder:text-[#9C9990] focus:border-[#ED83A8] focus:outline-none transition-colors disabled:opacity-50`}
                   />
                   {fieldErrors.email && (
-                    <p id="email-error" className="mt-1 text-[11px] text-red-400">
+                    <p id="email-error" className="mt-1 text-xs text-[#ED83A8]">
                       {fieldErrors.email}
                     </p>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="organization" className="block text-xs font-semibold text-white/80 mb-1.5">
+                  <label htmlFor="organization" className="block text-xs font-semibold text-[#F8F6EF] mb-1.5">
                     Organization / Institution
                   </label>
                   <input
@@ -308,12 +311,12 @@ export default function ConnectFormView() {
                     value={organization}
                     onChange={(e) => setOrganization(e.target.value)}
                     placeholder="e.g. Saint Jude Academy or Vance Legal"
-                    className="w-full rounded-xl border border-white/15 bg-[#141416] px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-[#FF90E8] focus:outline-none transition-colors disabled:opacity-50"
+                    className="w-full min-h-[46px] rounded-xl border border-[#F8F6EF]/15 bg-[#121214] px-4 py-3 text-base sm:text-sm text-[#F8F6EF] placeholder:text-[#9C9990] focus:border-[#ED83A8] focus:outline-none transition-colors disabled:opacity-50"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="division" className="block text-xs font-semibold text-white/80 mb-1.5">
+                  <label htmlFor="division" className="block text-xs font-semibold text-[#F8F6EF] mb-1.5">
                     Primary Service Focus
                   </label>
                   <select
@@ -322,10 +325,10 @@ export default function ConnectFormView() {
                     disabled={status === "submitting"}
                     value={division}
                     onChange={(e) => setDivision(e.target.value)}
-                    className="w-full rounded-xl border border-white/15 bg-[#141416] px-4 py-3 text-sm text-white focus:border-[#FF90E8] focus:outline-none transition-colors disabled:opacity-50"
+                    className="w-full min-h-[46px] rounded-xl border border-[#F8F6EF]/15 bg-[#121214] px-4 py-3 text-base sm:text-sm text-[#F8F6EF] focus:border-[#ED83A8] focus:outline-none transition-colors disabled:opacity-50"
                   >
                     {DIVISIONS.map((d) => (
-                      <option key={d} value={d} className="bg-[#18181B] text-white">
+                      <option key={d} value={d} className="bg-[#1E1E20] text-[#F8F6EF]">
                         {d}
                       </option>
                     ))}
@@ -333,7 +336,7 @@ export default function ConnectFormView() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-xs font-semibold text-white/80 mb-1.5">
+                  <label htmlFor="message" className="block text-xs font-semibold text-[#F8F6EF] mb-1.5">
                     Project Summary &amp; Objectives
                   </label>
                   <textarea
@@ -345,14 +348,14 @@ export default function ConnectFormView() {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Briefly describe your current digital presence, objectives, and target launch timeframe..."
-                    className="w-full rounded-xl border border-white/15 bg-[#141416] p-4 text-sm text-white placeholder:text-white/40 focus:border-[#FF90E8] focus:outline-none transition-colors disabled:opacity-50"
+                    className="w-full rounded-xl border border-[#F8F6EF]/15 bg-[#121214] p-4 text-base sm:text-sm text-[#F8F6EF] placeholder:text-[#9C9990] focus:border-[#ED83A8] focus:outline-none transition-colors disabled:opacity-50"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="gumroad-btn-pink w-full py-3.5 font-bold text-sm sm:text-base flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="firm-btn-primary w-full py-3.5 text-sm sm:text-base flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {status === "submitting" ? (
                     <>
@@ -362,7 +365,7 @@ export default function ConnectFormView() {
                   ) : (
                     <>
                       <span>Start a project</span>
-                      <ArrowUpRight size={15} className="stroke-[2.5]" />
+                      <ArrowUpRight size={15} className="stroke-[2.25]" />
                     </>
                   )}
                 </button>

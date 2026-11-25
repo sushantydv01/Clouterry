@@ -20,40 +20,59 @@ export default function Logo({
     <Link
       href="/"
       className={`inline-flex items-center gap-2.5 select-none outline-none group ${className}`}
-      aria-label="FIRM — Home"
+      aria-label="FIRM Home"
     >
-      {/* Distinctive architectural studio mark */}
-      <div className="h-8 w-8 rounded-lg bg-[#FF90E8] flex items-center justify-center transition-transform duration-150 group-hover:scale-105 shadow-sm">
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-4.5 w-4.5 text-black"
-          aria-hidden="true"
-        >
-          {/* Refined architectural 'f' ligature with custom terminal node */}
-          <path
-            d="M7 20V11M7 11V6.5C7 4.567 8.567 3 10.5 3H15M5 9.5H13"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <circle cx="16" cy="3" r="1.25" fill="currentColor" />
-        </svg>
-      </div>
+      {/* Architectural Thread & Archway Monogram */}
+      <svg
+        viewBox="0 0 32 32"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-7 w-7 shrink-0 transition-transform duration-200 group-hover:scale-105"
+        aria-hidden="true"
+      >
+        <rect
+          x="1.5"
+          y="1.5"
+          width="29"
+          height="29"
+          rx="8"
+          stroke={isDark ? "#F8F6EF" : "#171717"}
+          strokeOpacity="0.18"
+          strokeWidth="1.25"
+        />
+        <path
+          d="M9 22V14C9 10.6863 11.6863 8 15 8H21"
+          stroke={isDark ? "#F8F6EF" : "#171717"}
+          strokeWidth="2.25"
+          strokeLinecap="round"
+        />
+        <path
+          d="M9 15.5H17.5"
+          stroke="#ED83A8"
+          strokeWidth="2.25"
+          strokeLinecap="round"
+        />
+        <circle cx="22.5" cy="8" r="2.25" fill="#F4CF55" />
+        <circle cx="21" cy="22" r="2.25" fill="#A6D8A1" />
+      </svg>
 
-      {/* Clean geometric wordmark */}
       {variant !== "mark" && (
-        <div className="flex items-center gap-2 text-left">
+        <div className="flex items-center gap-2.5 text-left">
           <span
-            className={`font-display text-xl sm:text-2xl font-bold tracking-tight lowercase leading-none transition-colors ${isDark ? "text-white" : "text-black"
-              }`}
+            className={`font-display text-xl sm:text-2xl font-bold tracking-tight lowercase leading-none transition-colors ${
+              isDark ? "text-[#F8F6EF]" : "text-[#171717]"
+            }`}
           >
             firm
           </span>
           {withDescriptor && (
-            <span className="hidden sm:inline-block text-[11px] font-medium text-white/50 tracking-normal pl-1 border-l border-white/20">
+            <span
+              className={`hidden sm:inline-block text-[11px] font-medium tracking-normal pl-2.5 border-l ${
+                isDark
+                  ? "text-[#C4C1B8] border-[#F8F6EF]/20"
+                  : "text-[#171717]/65 border-[#171717]/20"
+              }`}
+            >
               digital presence &amp; growth
             </span>
           )}

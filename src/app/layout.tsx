@@ -35,7 +35,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: "#171717",
   width: "device-width",
   initialScale: 1,
 };
@@ -43,7 +43,7 @@ export const viewport: Viewport = {
 const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
-  title: `${siteConfig.workingName} — ${siteConfig.workingTagline}`,
+  title: `${siteConfig.workingName} | ${siteConfig.workingTagline}`,
   description: siteConfig.workingDescription,
   keywords: siteConfig.keywords,
   authors: [{ name: `${siteConfig.workingName} Studio` }],
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   publisher: siteConfig.workingName,
   metadataBase: new URL(siteUrl),
   openGraph: {
-    title: `${siteConfig.workingName} — ${siteConfig.workingTagline}`,
+    title: `${siteConfig.workingName} | ${siteConfig.workingTagline}`,
     description: siteConfig.workingDescription,
     url: siteUrl,
     siteName: siteConfig.workingName,
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.workingName} — ${siteConfig.workingTagline}`,
+    title: `${siteConfig.workingName} | ${siteConfig.workingTagline}`,
     description: siteConfig.workingDescription,
   },
   robots: {
@@ -79,7 +79,7 @@ export default function RootLayout({
     "@type": "Organization",
     name: siteConfig.workingName,
     url: siteUrl,
-    logo: `${siteUrl}/images/brand/brand-identity-specimen.webp`,
+    logo: `${siteUrl}/images/studio/s04-brand-specimen.webp`,
     description: siteConfig.workingDescription,
     sameAs: [siteConfig.repositoryUrl],
   };
@@ -95,7 +95,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[#000000] text-white font-sans antialiased selection:bg-[#FF90E8] selection:text-black">
+      <body className="min-h-full flex flex-col bg-[#171717] text-[#F8F6EF] font-sans antialiased selection:bg-[#ED83A8] selection:text-[#171717]">
         <Navigation />
         <main className="flex-1">{children}</main>
         <Footer />

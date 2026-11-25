@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import PageHeader from "@/components/layout/PageHeader";
 import Section from "@/components/layout/Section";
 import Container from "@/components/layout/Container";
+import StickerMark from "@/components/illustrations/StickerMark";
 import Link from "next/link";
-import { ArrowUpRight, ChevronDown, Tag } from "lucide-react";
+import { ArrowUpRight, ChevronDown } from "lucide-react";
 
 interface FAQItem {
   category: string;
@@ -17,12 +18,12 @@ const FAQ_ITEMS: FAQItem[] = [
   {
     category: "Engagement & Cadence",
     q: "How does FIRM differ from a traditional digital marketing agency?",
-    a: "Traditional agencies bill monthly retainers for temporary ad buys and generic campaigns. We engineer owned digital platforms, living design tokens, documentary media, and technical SEO that compound in value over years.",
+    a: "Traditional agencies bill monthly retainers for temporary ad buys and generic templates. We engineer owned digital platforms, living design tokens, documentary media, and technical SEO that compound in value over years.",
   },
   {
     category: "Engagement & Cadence",
     q: "What is a typical engagement timeline?",
-    a: "A brand or web sprint takes 6 to 10 weeks from initial diagnostic to deployment. We work on a fixed 4-stage cadence with defined weekly deliverables.",
+    a: "A brand or web sprint takes 6 to 10 weeks from initial diagnostic to deployment. We work on a fixed 4-stage cadence with defined weekly milestones.",
   },
   {
     category: "Technical & Code",
@@ -31,8 +32,8 @@ const FAQ_ITEMS: FAQItem[] = [
   },
   {
     category: "Technical & Code",
-    q: "Why do you engineer in Next.js 16 and React 19 Server Components?",
-    a: "Fast load times drive conversion rates and organic search rankings. Next.js 16 Server Components compile pages into static HTML on edge servers in under 600 milliseconds, eliminating runtime JavaScript overhead and scoring 100/100 on Core Web Vitals.",
+    q: "Why do you engineer in Next.js and React Server Components?",
+    a: "Fast, predictable delivery drives conversion rates and organic search rankings. Server Components render clean semantic HTML on edge servers without bloated client-side JavaScript payloads.",
   },
   {
     category: "Institutional Education",
@@ -42,12 +43,12 @@ const FAQ_ITEMS: FAQItem[] = [
   {
     category: "Stewardship & IP",
     q: "Do you offer ongoing management and maintenance after launch?",
-    a: "Yes. Our Digital Management practice handles platform updates, uptime monitoring, security patches, and monthly content releases under an annual service agreement.",
+    a: "Yes. Our Digital Management practice handles platform updates, uptime monitoring, security patches, and seasonal content releases under a clear service agreement.",
   },
   {
     category: "Stewardship & IP",
     q: "How do you handle client confidentiality in professional services?",
-    a: "For legal, financial, and clinical clients, we execute mutual non-disclosure agreements before discovery begins. We anonymize proprietary matters in published retrospectives.",
+    a: "For legal, financial, and clinical clients, we execute mutual non-disclosure agreements before discovery begins and anonymize sensitive matters in published concept studies.",
   },
 ];
 
@@ -75,34 +76,30 @@ export default function FAQAccordionView() {
       : FAQ_ITEMS.filter((item) => item.category === selectedCategory);
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#000000] text-white">
+    <div className="flex flex-col min-h-screen bg-[#171717] text-[#F8F6EF]">
       <Container>
         <PageHeader
-          badge="OPERATIONAL FAQ"
-          eyebrow="Commercial &amp; Technical Clarity"
+          badge="Operational FAQ"
+          eyebrow="Commercial & Technical Clarity"
           title="Frequently addressed questions."
-          description="Clear answers regarding our methodology, technical stack, intellectual property, and commercial stewardship models."
+          description="Clear answers regarding our methodology, technical stack, intellectual property, and stewardship models."
         />
       </Container>
 
-      <Section background="black" padding="tight">
-        <div className="max-w-4xl mx-auto text-left space-y-6">
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap items-center gap-2 pb-4 border-b border-white/10">
-            <span className="text-xs font-semibold text-white/50 mr-2 flex items-center gap-1.5">
-              <Tag size={13} />
-              <span>Topic:</span>
-            </span>
+      <Section background="charcoal" padding="tight">
+        <div className="max-w-4xl mx-auto text-left space-y-8">
+          <div className="flex flex-wrap items-center gap-2 pb-5 border-b border-[#F8F6EF]/12">
             {CATEGORIES.map((cat) => {
               const active = selectedCategory === cat;
               return (
                 <button
                   key={cat}
+                  type="button"
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-2 text-xs sm:text-sm font-medium rounded-full transition-all cursor-pointer ${
+                  className={`px-4 py-2 text-xs sm:text-sm font-display font-medium rounded-full transition-colors cursor-pointer whitespace-nowrap border ${
                     active
-                      ? "bg-white text-black font-semibold shadow-sm"
-                      : "bg-[#18181B] text-white/70 hover:text-white border border-white/10 hover:border-white/20"
+                      ? "bg-[#F8F6EF] text-[#171717] border-[#F8F6EF] font-semibold"
+                      : "bg-[#1E1E20] text-[#C4C1B8] border-[#F8F6EF]/12 hover:text-[#F8F6EF] hover:border-[#F8F6EF]/25"
                   }`}
                 >
                   {cat}
@@ -111,32 +108,30 @@ export default function FAQAccordionView() {
             })}
           </div>
 
-          {/* Interactive Accordion List */}
-          <div className="space-y-4">
+          <div className="divide-y divide-[#F8F6EF]/12 border-y border-[#F8F6EF]/12">
             {filteredItems.map((item, idx) => {
               const isOpen = openIndices.includes(idx);
               return (
-                <div
-                  key={item.q}
-                  className="gumroad-card overflow-hidden border-white/10"
-                >
+                <div key={item.q} className="transition-colors">
                   <button
                     type="button"
                     onClick={() => toggleItem(idx)}
                     aria-expanded={isOpen}
-                    className="w-full p-6 text-left flex items-center justify-between gap-4 focus-visible:outline-none transition-colors"
+                    className="w-full py-6 text-left flex items-center justify-between gap-4 cursor-pointer group"
                   >
-                    <div>
-                      <span className="inline-block px-2.5 py-0.5 rounded-full bg-white/10 text-white/80 text-[11px] font-semibold mb-2">
+                    <div className="space-y-1.5">
+                      <span className="text-[11px] font-mono uppercase tracking-[0.12em] text-[#F4CF55] block">
                         {item.category}
                       </span>
-                      <h3 className="font-display text-lg sm:text-xl font-bold text-white">
+                      <h3 className="font-display text-lg sm:text-xl font-bold text-[#F8F6EF] group-hover:text-[#ED83A8] transition-colors">
                         {item.q}
                       </h3>
                     </div>
                     <div
-                      className={`h-8 w-8 rounded-full bg-[#141416] border border-white/10 flex items-center justify-center text-white shrink-0 transition-transform duration-200 ${
-                        isOpen ? "rotate-180 bg-[#FF90E8] text-black" : ""
+                      className={`h-9 w-9 rounded-full border flex items-center justify-center shrink-0 transition-all duration-200 ${
+                        isOpen
+                          ? "rotate-180 bg-[#ED83A8] text-[#171717] border-[#ED83A8]"
+                          : "bg-[#1E1E20] text-[#F8F6EF] border-[#F8F6EF]/15"
                       }`}
                     >
                       <ChevronDown size={16} />
@@ -144,7 +139,7 @@ export default function FAQAccordionView() {
                   </button>
 
                   {isOpen && (
-                    <div className="px-6 pb-6 pt-2 border-t border-white/5 text-sm sm:text-base text-white/70 leading-relaxed font-sans">
+                    <div className="pb-6 pt-1 text-sm sm:text-base text-[#C4C1B8] leading-relaxed font-sans max-w-3xl">
                       {item.a}
                     </div>
                   )}
@@ -153,21 +148,20 @@ export default function FAQAccordionView() {
             })}
           </div>
 
-          {/* Further Questions Box */}
-          <div className="mt-12 p-8 gumroad-card text-center space-y-4 border-white/10">
-            <h3 className="font-display text-2xl font-bold text-white">
+          <div className="mt-10 p-8 sm:p-10 rounded-2xl bg-[#1E1E20] border border-[#F8F6EF]/14 text-center space-y-4">
+            <div className="flex justify-center">
+              <StickerMark name="s09-17-lightbulb" size={32} />
+            </div>
+            <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#F8F6EF]">
               Have an institutional question not covered here?
             </h3>
-            <p className="text-sm text-white/70 max-w-md mx-auto">
-              Our partners are available for direct consultation regarding complex architectural requirements, RFPs, and timelines.
+            <p className="text-sm text-[#C4C1B8] max-w-md mx-auto">
+              Initiate a confidential project briefing and a senior partner will address your technical and operational criteria directly.
             </p>
             <div className="pt-2">
-              <Link
-                href="/connect"
-                className="gumroad-btn-pink text-xs sm:text-sm font-bold !py-2.5 !px-5"
-              >
-                <span>Start a project</span>
-                <ArrowUpRight size={14} className="stroke-[2.5]" />
+              <Link href="/connect" className="firm-btn-primary text-sm">
+                <span>Start a briefing</span>
+                <ArrowUpRight size={15} className="stroke-[2.25]" />
               </Link>
             </div>
           </div>

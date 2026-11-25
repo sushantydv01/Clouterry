@@ -27,32 +27,40 @@ export default function SchoolBlueprint() {
     }
   };
 
+  const getLayerColor = (idx: number) => {
+    const palette = ["#F4CF55", "#A6D8A1", "#ED83A8", "#F8F6EF"];
+    return palette[idx % palette.length];
+  };
+
   return (
-    <div className="w-full gumroad-card p-6 sm:p-10 bg-[#18181B] border border-white/10 shadow-2xl text-left">
-      {/* Blueprint Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-6 border-b border-white/10 gap-4">
+    <div className="w-full p-6 sm:p-10 rounded-2xl bg-[#1E1E20] border border-[#F8F6EF]/12 text-left">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-6 border-b border-[#F8F6EF]/12 gap-4">
         <div>
-          <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
+          <span className="text-xs font-mono uppercase tracking-[0.14em] text-[#F4CF55] block mb-1.5">
+            Primary Specialization Architecture
+          </span>
+          <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#F8F6EF] tracking-tight">
             The School Digital Blueprint
           </h3>
-          <p className="mt-1 text-sm text-white/60">
-            An architectural system of four connected layers designed specifically for educational institutions.
+          <p className="mt-1 text-sm text-[#C4C1B8]">
+            Four integrated platform layers separating public admissions conversion from parent portal utilities.
           </p>
         </div>
 
         <Link
           href="/industries/education"
-          className="gumroad-btn-pink text-xs sm:text-sm font-bold !py-2.5 !px-5 self-start sm:self-auto"
+          className="firm-btn-primary text-xs sm:text-sm !py-2.5 !px-5 self-start sm:self-auto"
         >
           <span>Education Practice</span>
-          <ArrowUpRight size={14} className="stroke-[2.5]" />
+          <ArrowUpRight size={14} className="stroke-[2.25]" />
         </Link>
       </div>
 
-      {/* Layer Navigation Tabs */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 pb-6 border-b border-white/10">
+      {/* Layer Navigation Tabs (Scrollable pills on mobile, 4-col grid on sm+) */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 pb-6 border-b border-[#F8F6EF]/12">
         {layers.map((l, idx) => {
           const isActive = idx === activeLayerIndex;
+          const color = getLayerColor(idx);
           return (
             <button
               key={l.layer}
@@ -60,20 +68,23 @@ export default function SchoolBlueprint() {
               onClick={() => setActiveLayerIndex(idx)}
               className={`p-4 rounded-xl text-left transition-all cursor-pointer border ${
                 isActive
-                  ? "bg-[#222226] border-white/40 shadow-lg -translate-y-0.5"
-                  : "bg-[#141416] border-white/10 hover:border-white/20 text-white/70 hover:text-white"
+                  ? "bg-[#262629] border-[#F8F6EF]/40"
+                  : "bg-[#171717] border-[#F8F6EF]/10 hover:border-[#F8F6EF]/24"
               }`}
             >
-              <div className="h-8 w-8 rounded-lg bg-white/10 text-white flex items-center justify-center mb-3">
+              <div
+                className="h-8 w-8 rounded-lg flex items-center justify-center mb-3 text-[#171717]"
+                style={{ backgroundColor: color }}
+              >
                 {getLayerIcon(l.layer)}
               </div>
-              <span className="text-xs text-white/50 font-semibold block">
+              <span className="text-[11px] font-mono text-[#9C9990] block">
                 Layer {l.layer}
               </span>
-              <p className="font-display text-xs sm:text-sm font-bold text-white mt-0.5 leading-snug">
+              <p className="font-display text-xs sm:text-sm font-bold text-[#F8F6EF] mt-0.5 leading-snug">
                 {l.name}
               </p>
-              <p className="text-[11px] text-white/50 mt-1 truncate">
+              <p className="text-[11px] text-[#9C9990] mt-1 truncate">
                 {l.tagline}
               </p>
             </button>
@@ -81,51 +92,44 @@ export default function SchoolBlueprint() {
         })}
       </div>
 
-      {/* Active Layer Breakdown */}
       <div className="pt-8 grid gap-8 lg:grid-cols-12 lg:items-start">
-        {/* Left: Purpose & Features */}
         <div className="lg:col-span-7 space-y-6">
           <div>
-            <div className="flex flex-wrap items-center gap-2 mb-2">
-              <span className="px-2.5 py-0.5 rounded-full bg-white/10 text-white text-xs font-semibold">
-                Layer {activeLayer.layer} Specification
-              </span>
-              <span className="px-2.5 py-0.5 rounded-full bg-[#141416] border border-white/10 text-xs text-white/60 font-medium">
-                {activeLayer.tagline}
-              </span>
+            <div className="flex flex-wrap items-center gap-2 mb-2 text-xs font-mono">
+              <span className="text-[#F4CF55]">Layer {activeLayer.layer} Specification</span>
+              <span className="text-[#F8F6EF]/25">&bull;</span>
+              <span className="text-[#9C9990]">{activeLayer.tagline}</span>
             </div>
-            <h4 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
+            <h4 className="font-display text-2xl sm:text-3xl font-bold text-[#F8F6EF] tracking-tight">
               {activeLayer.name}
             </h4>
-            <p className="mt-2 text-sm sm:text-base text-white/70 leading-relaxed font-sans">
+            <p className="mt-2 text-sm sm:text-base text-[#C4C1B8] leading-relaxed font-sans">
               {activeLayer.purpose}
             </p>
           </div>
 
-          <div className="p-6 rounded-xl bg-[#141416] border border-white/10 space-y-3">
-            <span className="text-xs text-white/50 font-semibold block pb-1 border-b border-white/10">
+          <div className="p-6 rounded-xl bg-[#171717] border border-[#F8F6EF]/10 space-y-3">
+            <span className="text-xs font-mono uppercase tracking-wider text-[#9C9990] block pb-2 border-b border-[#F8F6EF]/10">
               Core architectural capabilities
             </span>
-            <ul className="space-y-2.5 text-xs sm:text-sm text-white/80">
+            <ul className="space-y-2.5 text-xs sm:text-sm text-[#C4C1B8]">
               {activeLayer.features.map((feat) => (
                 <li key={feat} className="flex items-start gap-2.5">
-                  <div className="w-4 h-4 rounded-full bg-[#10B981] text-black flex items-center justify-center text-[10px] shrink-0 mt-0.5 font-bold">
-                    <Check size={11} className="stroke-[3]" />
-                  </div>
-                  <span>{feat}</span>
+                  <Check size={14} className="text-[#A6D8A1] shrink-0 mt-0.5 stroke-[2.5]" />
+                  <span className="text-[#F8F6EF]">{feat}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="p-6 rounded-xl bg-[#141416] border border-white/10 space-y-2">
-            <span className="text-xs text-white/50 font-semibold block pb-1 border-b border-white/10">
+          <div className="p-6 rounded-xl bg-[#171717] border border-[#F8F6EF]/10 space-y-2">
+            <span className="text-xs font-mono uppercase tracking-wider text-[#9C9990] block pb-2 border-b border-[#F8F6EF]/10">
               Institutional problems addressed
             </span>
-            <ul className="space-y-2 text-xs sm:text-sm text-white/70">
+            <ul className="space-y-2 text-xs sm:text-sm text-[#C4C1B8]">
               {activeLayer.problemsAddressed.map((prob) => (
-                <li key={prob} className="flex items-start gap-2">
-                  <span className="text-[#FF90E8] font-bold mt-0.5">&bull;</span>
+                <li key={prob} className="flex items-start gap-2.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ED83A8] shrink-0 mt-1.5" />
                   <span>{prob}</span>
                 </li>
               ))}
@@ -133,16 +137,18 @@ export default function SchoolBlueprint() {
           </div>
         </div>
 
-        {/* Right: Deliverables */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="p-6 rounded-xl bg-[#141416] border border-white/10 space-y-3">
-            <span className="text-xs text-white/50 font-semibold block pb-1 border-b border-white/10">
+          <div className="p-6 rounded-xl bg-[#171717] border border-[#F8F6EF]/10 space-y-3">
+            <span className="text-xs font-mono uppercase tracking-wider text-[#9C9990] block pb-2 border-b border-[#F8F6EF]/10">
               Tangible handover assets
             </span>
-            <div className="space-y-2.5 text-xs text-white/80">
+            <div className="space-y-2.5 text-xs sm:text-sm text-[#F8F6EF]">
               {activeLayer.exampleDeliverables.map((deliv) => (
-                <div key={deliv} className="p-3 rounded-lg bg-[#18181B] border border-white/5 flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-[#FF90E8]" />
+                <div
+                  key={deliv}
+                  className="p-3 rounded-lg bg-[#1E1E20] border border-[#F8F6EF]/10 flex items-center gap-2.5"
+                >
+                  <span className="w-2 h-2 rounded-full bg-[#ED83A8] shrink-0" />
                   <span>{deliv}</span>
                 </div>
               ))}
