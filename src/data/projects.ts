@@ -38,7 +38,7 @@ export const PROJECTS: ProjectCaseStudy[] = [
   {
     slug: "saint-jude-academy",
     title: "Saint Jude Academy",
-    image: "/images/work/saint-jude-preview.webp",
+    image: "/images/studio/w01-saint-jude.webp",
     clientType: "K-12 Independent Preparatory Academy",
     industry: "Education & Schools",
     classification: "Concept Study",
@@ -101,7 +101,7 @@ export const PROJECTS: ProjectCaseStudy[] = [
   {
     slug: "aether-health",
     title: "Aether Health Clinic",
-    image: "/images/work/aether-health-preview.webp",
+    image: "/images/studio/w02-aether-health.webp",
     clientType: "Specialty Surgical & Medical Practice",
     industry: "Healthcare & Medical",
     classification: "Concept Study",
@@ -164,7 +164,7 @@ export const PROJECTS: ProjectCaseStudy[] = [
   {
     slug: "vance-legal",
     title: "Vance & Partners Legal",
-    image: "/images/work/vance-legal-preview.webp",
+    image: "/images/studio/w03-vance-legal.webp",
     clientType: "Corporate & Commercial Law Firm",
     industry: "Professional Services",
     classification: "Concept Study",

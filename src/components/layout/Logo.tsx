@@ -3,7 +3,7 @@ import Link from "next/link";
 
 interface LogoProps {
   className?: string;
-  variant?: "full" | "mark" | "stacked";
+  variant?: "full" | "mark";
   withDescriptor?: boolean;
   theme?: "light" | "dark";
 }
@@ -19,47 +19,51 @@ export default function Logo({
   return (
     <Link
       href="/"
-      className={`inline-flex items-center gap-2.5 select-none outline-none group ${className}`}
+      className={`inline-flex items-center gap-3 select-none group shrink-0 ${className}`}
       aria-label="FIRM Home"
     >
-      {/* Architectural Thread & Archway Monogram */}
+      {/* Bespoke Midnight Atelier Architectural Portal & Thread Seal */}
       <svg
-        viewBox="0 0 32 32"
+        viewBox="0 0 36 36"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="h-7 w-7 shrink-0 transition-transform duration-200 group-hover:scale-105"
+        className="h-9 w-9 shrink-0 transition-transform duration-200 group-hover:scale-[1.04]"
         aria-hidden="true"
       >
         <rect
-          x="1.5"
-          y="1.5"
-          width="29"
-          height="29"
-          rx="8"
+          x="1"
+          y="1"
+          width="34"
+          height="34"
+          rx="10"
+          fill={isDark ? "#1D1D20" : "#171717"}
           stroke={isDark ? "#F8F6EF" : "#171717"}
-          strokeOpacity="0.18"
+          strokeOpacity={isDark ? "0.2" : "1"}
           strokeWidth="1.25"
         />
+        {/* Architectural Arch & Stem forming the F geometry */}
         <path
-          d="M9 22V14C9 10.6863 11.6863 8 15 8H21"
-          stroke={isDark ? "#F8F6EF" : "#171717"}
-          strokeWidth="2.25"
+          d="M11 26V15.5C11 11.91 13.91 9 17.5 9H24.5"
+          stroke="#F8F6EF"
+          strokeWidth="2.4"
           strokeLinecap="round"
         />
+        {/* Crossbar woven in Rose Pink */}
         <path
-          d="M9 15.5H17.5"
+          d="M11 17.5H20.5"
           stroke="#ED83A8"
-          strokeWidth="2.25"
+          strokeWidth="2.4"
           strokeLinecap="round"
         />
-        <circle cx="22.5" cy="8" r="2.25" fill="#F4CF55" />
-        <circle cx="21" cy="22" r="2.25" fill="#A6D8A1" />
+        {/* Keystone & Foundation nodes */}
+        <circle cx="24.5" cy="9" r="2.2" fill="#F4CF55" />
+        <circle cx="23.5" cy="25.5" r="2.2" fill="#A6D8A1" />
       </svg>
 
       {variant !== "mark" && (
-        <div className="flex items-center gap-2.5 text-left">
+        <div className="flex items-center gap-3.5 text-left">
           <span
-            className={`font-display text-xl sm:text-2xl font-bold tracking-tight lowercase leading-none transition-colors ${
+            className={`font-display text-[22px] sm:text-2xl font-bold tracking-[-0.04em] lowercase leading-none transition-colors ${
               isDark ? "text-[#F8F6EF]" : "text-[#171717]"
             }`}
           >
@@ -67,13 +71,13 @@ export default function Logo({
           </span>
           {withDescriptor && (
             <span
-              className={`hidden sm:inline-block text-[11px] font-medium tracking-normal pl-2.5 border-l ${
+              className={`hidden xl:inline-flex items-center gap-2 text-xs font-sans tracking-normal pl-3.5 border-l ${
                 isDark
-                  ? "text-[#C4C1B8] border-[#F8F6EF]/20"
-                  : "text-[#171717]/65 border-[#171717]/20"
+                  ? "text-[#ACA89E] border-[#F8F6EF]/18"
+                  : "text-[#3F3D38] border-[#171717]/20"
               }`}
             >
-              digital presence &amp; growth
+              Digital Presence Studio
             </span>
           )}
         </div>

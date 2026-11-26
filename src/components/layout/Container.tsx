@@ -3,7 +3,7 @@ import React from "react";
 interface ContainerProps {
   children: React.ReactNode;
   className?: string;
-  size?: "default" | "narrow" | "wide";
+  size?: "reading" | "narrow" | "default" | "wide" | "full";
 }
 
 export default function Container({
@@ -12,13 +12,17 @@ export default function Container({
   size = "default",
 }: ContainerProps) {
   const sizeClasses = {
-    narrow: "max-w-3xl",
-    default: "max-w-6xl",
-    wide: "max-w-7xl",
+    reading: "max-w-[78ch]",
+    narrow: "max-w-4xl",
+    default: "max-w-[1360px]",
+    wide: "max-w-[1440px]",
+    full: "max-w-none",
   };
 
   return (
-    <div className={`mx-auto px-4 sm:px-6 md:px-8 w-full ${sizeClasses[size]} ${className}`}>
+    <div
+      className={`mx-auto px-5 sm:px-8 lg:px-12 xl:px-14 w-full ${sizeClasses[size]} ${className}`}
+    >
       {children}
     </div>
   );

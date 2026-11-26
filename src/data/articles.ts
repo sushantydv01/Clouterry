@@ -39,7 +39,7 @@ export const ARTICLES: Article[] = [
     readingTime: "7 min read",
     author: "FIRM Editorial Council",
     authorRole: "Strategic Architecture Group",
-    heroImage: "/images/editorial/article-01-architectural-presence.webp",
+    heroImage: "/images/studio/e01-fragmentation.webp",
     excerpt: "Most organizations manage their digital presence as an accidental assortment of disconnected tools and freelance vendors. When software, brand, and content operate without a shared architectural blueprint, enterprise trust leaks at every seam.",
     tableOfContents: [
       { id: "the-symptom-of-fragmentation", title: "01. The Symptom of Fragmentation" },
@@ -120,7 +120,7 @@ export const ARTICLES: Article[] = [
     readingTime: "8 min read",
     author: "Education Practice Group",
     authorRole: "Institutional Strategy Advisory",
-    heroImage: "/images/editorial/article-02-school-architecture.webp",
+    heroImage: "/images/studio/e02-school-architecture.webp",
     excerpt: "Independent academies elevate admissions velocity when they separate public admissions journeys from daily parent notices.",
     tableOfContents: [
       { id: "the-400-page-bulletin-board", title: "01. The 400-Page Bulletin Board Trap" },
@@ -205,7 +205,7 @@ export const ARTICLES: Article[] = [
     readingTime: "6 min read",
     author: "Technology Architecture Lead",
     authorRole: "Principal Frontend Engineer",
-    heroImage: "/images/editorial/article-03-web-performance.webp",
+    heroImage: "/images/studio/e03-performance.webp",
     excerpt: "Website speed is frequently mischaracterized as a minor technical nuance. In reality, sub-second latency directly dictates organic search rankings, mobile conversion rates, and client perception of organizational competence.",
     tableOfContents: [
       { id: "the-myth-of-good-enough", title: "01. The Myth of 'Good Enough' Speed" },
@@ -287,7 +287,7 @@ export const ARTICLES: Article[] = [
     readingTime: "6 min read",
     author: "Creative Direction Practice",
     authorRole: "Principal Brand Strategist",
-    heroImage: "/images/editorial/article-04-brand-identity.webp",
+    heroImage: "/images/studio/e04-brand-identity.webp",
     excerpt: "A logo is merely an identifier; a brand identity is an entire sensory and typographic operating system. How to construct digital brand guidelines that survive real-world marketing execution.",
     tableOfContents: [
       { id: "the-logo-fetish", title: "01. The Logo Fetish" },
@@ -368,7 +368,7 @@ export const ARTICLES: Article[] = [
     readingTime: "7 min read",
     author: "Client Advisory Group",
     authorRole: "Professional Practice Partner",
-    heroImage: "/images/editorial/article-05-professional-firms.webp",
+    heroImage: "/images/studio/e05-professional-firms.webp",
     excerpt: "Professional partnerships operate in high-trust, high-stakes environments. How law firms, strategic consultancies, and private capital advisories can build digital platforms that project institutional authority.",
     tableOfContents: [
       { id: "the-high-stakes-client-mindset", title: "01. The High-Stakes Client Mindset" },
@@ -449,7 +449,7 @@ export const ARTICLES: Article[] = [
     readingTime: "6 min read",
     author: "Infrastructure Stewardship Group",
     authorRole: "Head of Digital Operations",
-    heroImage: "/images/editorial/article-06-digital-stewardship.webp",
+    heroImage: "/images/studio/e06-stewardship.webp",
     excerpt: "Launch day marks day one of an operational lifecycle. Continuous stewardship prevents technical debt, security breaches, and performance degradation.",
     tableOfContents: [
       { id: "the-launch-and-abandon-tragedy", title: "01. The 'Launch and Abandon' Tragedy" },

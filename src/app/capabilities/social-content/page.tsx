@@ -1,13 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import PageHeader from "@/components/layout/PageHeader";
-import Section from "@/components/layout/Section";
-import Container from "@/components/layout/Container";
-import TheThreadMini from "@/components/thread/TheThreadMini";
+import CapabilityDetailTemplate from "@/components/capabilities/CapabilityDetailTemplate";
 import { SERVICES } from "@/data/services";
-import { ArrowUpRight, Check } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Social Media & Content | Editorial Video & Narrative Strategy | FIRM",
@@ -15,212 +9,67 @@ export const metadata: Metadata = {
     "We produce disciplined editorial video, photography art direction, and high-retention content that protects brand stature.",
 };
 
+const EDITORIAL_PILLARS = [
+  {
+    code: "01 · Capture",
+    title: "On-Site Documentary Production",
+    detail:
+      "Natural lighting, calm environmental framing, and studio-grade audio interviewing founders, faculty, and clinicians without stiff teleprompter scripts.",
+  },
+  {
+    code: "02 · Monographs",
+    title: "Authority Publishing & Long-Form Prose",
+    detail:
+      "Substantive research essays, admissions viewbooks, and legal thought leadership formatted cleanly for distraction-free screen reading.",
+  },
+  {
+    code: "03 · Cadence",
+    title: "Governance & Pre-Clearance Calendars",
+    detail:
+      "Monthly batch production pipelines scheduled 90 days ahead with communication lead sign-off before publication.",
+  },
+];
+
 export default function SocialContentPage() {
   const service = SERVICES.find((s) => s.slug === "social-content") || SERVICES[2];
 
-  return (
-    <div className="flex flex-col min-h-screen bg-[#171717] text-[#F8F6EF]">
-      {/* 01. Hero Header */}
-      <Container>
-        <PageHeader
-          badge={service.code}
-          eyebrow={service.eyebrow}
-          title={service.title}
-          description={service.subtitle}
-        >
-          <div className="flex flex-wrap items-center gap-3">
-            <Link
-              href="/connect"
-              className="gumroad-btn-pink text-xs sm:text-sm font-bold !py-2.5 !px-5"
-            >
-              <span>Start a project</span>
-              <ArrowUpRight size={14} className="stroke-[2.5]" />
-            </Link>
-            <span className="px-3.5 py-1 rounded-full bg-[#1E1E20] border border-[#F8F6EF]/15 text-xs text-[#F8F6EF]/70">
-              Cadence: {service.timeframe}
-            </span>
-          </div>
+  const contentBand = (
+    <div className="space-y-8 text-left">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-[#F8F6EF]/12">
+        <h2 className="font-display text-3xl sm:text-4xl font-medium text-[#F8F6EF] tracking-tight">
+          Documentary production crafted for institutional credibility
+        </h2>
+        <span className="font-mono text-xs text-[#F4CF55]">
+          Zero Trendy Gimmicks · Calm Visual Authority
+        </span>
+      </div>
 
-          <div className="mt-8 max-w-md">
-            <TheThreadMini activeNodeNum="03" showLabels={true} size="md" />
-          </div>
-        </PageHeader>
-      </Container>
-
-      {/* 02. Core Editorial Proposition */}
-      <Section background="charcoal" padding="tight">
-        <div className="max-w-4xl mx-auto text-left gumroad-card p-6 sm:p-10 border-[#F8F6EF]/10 space-y-4">
-          <span className="inline-block px-3 py-1 rounded-full bg-[#F4CF55]/20 border border-[#F4CF55]/30 text-xs font-semibold text-[#F4CF55]">
-            Editorial Proposition
-          </span>
-          <h2 className="font-display text-2xl sm:text-4xl font-bold tracking-tight text-[#F8F6EF] leading-tight">
-            Content is institutional proof, not ephemeral social filler.
-          </h2>
-          <p className="text-base text-[#F8F6EF]/70 leading-relaxed font-sans">
-            {service.proposition} Disposable TikTok trends and low-effort posts erode the stature of serious institutions. We direct cinematic documentary video, long-form monographs, and disciplined content cadences that build enduring intellectual equity.
-          </p>
-        </div>
-      </Section>
-
-      {/* 03. Problems Eliminated */}
-      <Section background="charcoal" padding="normal">
-        <div className="max-w-4xl mx-auto text-left space-y-6">
-          <div>
-            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#F8F6EF]">
-              Why trend-chasing agencies degrade institutional trust
-            </h2>
-          </div>
-
-          <div className="grid gap-6 sm:grid-cols-3">
-            {service.problems.map((prob) => (
-              <div
-                key={prob.title}
-                className="gumroad-card p-6 flex flex-col justify-between"
-              >
-                <div>
-                  <h3 className="text-base font-display font-bold text-[#F8F6EF]">
-                    {prob.title}
-                  </h3>
-                  <p className="mt-2 text-xs sm:text-sm text-[#F8F6EF]/70 leading-relaxed font-sans">
-                    {prob.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* 04. Video & Editorial Showcase */}
-      <Section background="charcoal" padding="normal">
-        <div className="max-w-4xl mx-auto text-left space-y-6">
-          <div>
-            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#F8F6EF]">
-              Documentary Film &amp; Field Monograph Architecture
-            </h2>
-          </div>
-
-          <div className="rounded-2xl overflow-hidden border border-[#F8F6EF]/14 bg-[#1E1E20] p-2">
-            <Image
-              src="/images/studio/s06-editorial-media.webp"
-              alt="Documentary Media Camera and Editorial Folio Paper-Cut Specimen"
-              width={1376}
-              height={768}
-              className="w-full h-auto object-cover rounded-xl"
-            />
-          </div>
-
-          <div className="atelier-surface p-8 sm:p-10 space-y-3">
-            <span className="text-xs font-mono uppercase tracking-[0.12em] text-[#F4CF55] block">
-              Documentary Cadence
-            </span>
-            <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#F8F6EF] tracking-tight">
-              Cinematic Documentary Production
-            </h3>
-            <p className="text-sm sm:text-base text-[#C4C1B8] max-w-2xl leading-relaxed">
-              We interview founders, senior faculty, and clinicians on location. Quiet, grounded visual narratives directed specifically for editorial layouts.
+      <div className="grid gap-8 md:grid-cols-3">
+        {EDITORIAL_PILLARS.map((item) => (
+          <div
+            key={item.code}
+            className="p-6 sm:p-7 rounded-2xl bg-[#1D1D20] border border-[#F8F6EF]/12 space-y-2.5"
+          >
+            <span className="font-mono text-xs text-[#F4CF55] block">{item.code}</span>
+            <h3 className="font-display text-xl font-medium text-[#F8F6EF]">{item.title}</h3>
+            <p className="text-sm sm:text-base text-[#D5D2C7] leading-relaxed font-sans">
+              {item.detail}
             </p>
           </div>
-        </div>
-      </Section>
-
-      {/* 05. Deliverables */}
-      <Section background="charcoal" padding="normal">
-        <div className="max-w-4xl mx-auto text-left space-y-6">
-          <div>
-            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#F8F6EF]">
-              Complete content specifications
-            </h2>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            {service.deliverables.map((deliv) => (
-              <div
-                key={deliv.category}
-                className="gumroad-card p-6 flex flex-col justify-between"
-              >
-                <div>
-                  <h3 className="text-xs font-bold text-[#F8F6EF] pb-2 border-b border-[#F8F6EF]/10">
-                    {deliv.category}
-                  </h3>
-                  <ul className="mt-4 space-y-2.5 text-xs text-[#F8F6EF]/80">
-                    {deliv.items.map((it) => (
-                      <li key={it} className="flex items-start gap-2">
-                        <div className="w-4 h-4 rounded-full bg-[#A6D8A1] text-[#171717] flex items-center justify-center text-[10px] shrink-0 mt-0.5 font-bold">
-                          <Check size={11} className="stroke-[3]" />
-                        </div>
-                        <span className="font-medium text-[#F8F6EF]/90">{it}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* 06. Cross-Division Connections */}
-      <Section background="charcoal" padding="normal">
-        <div className="max-w-4xl mx-auto text-left space-y-6">
-          <div>
-            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#F8F6EF]">
-              How Social &amp; Content connects along The Thread
-            </h2>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            {service.crossConnections.map((conn) => (
-              <div
-                key={conn.division}
-                className="gumroad-card p-5 space-y-2"
-              >
-                <Link
-                  href={`/capabilities/${conn.slug}`}
-                  className="font-display text-base font-bold text-[#F8F6EF] hover:text-[#ED83A8] inline-flex items-center gap-1 transition-colors"
-                >
-                  <span>{conn.division}</span>
-                  <ArrowUpRight size={13} />
-                </Link>
-                <p className="text-xs sm:text-sm text-[#F8F6EF]/70 leading-relaxed font-sans">
-                  {conn.relationship}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* 07. Closing CTA */}
-      <Section background="charcoal" padding="spacious">
-        <div className="max-w-3xl mx-auto text-center space-y-6 gumroad-card p-8 sm:p-14 border-[#F8F6EF]/10">
-          <span className="inline-block px-3 py-1 rounded-full bg-[#F4CF55]/20 border border-[#F4CF55]/30 text-xs font-semibold text-[#F4CF55]">
-            Direct Inquiry &bull; Social &amp; Content
-          </span>
-          <h2 className="font-display text-3xl sm:text-5xl font-bold text-[#F8F6EF] leading-tight">
-            Elevate your content to match your institutional caliber.
-          </h2>
-          <p className="text-sm sm:text-base text-[#F8F6EF]/70 leading-relaxed max-w-lg mx-auto font-sans">
-            Cinematic storytelling and authoritative thought leadership without agency gimmicks.
-          </p>
-
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3.5">
-            <Link
-              href="/connect"
-              className="gumroad-btn-pink text-xs sm:text-sm font-bold !py-3 !px-6 w-full sm:w-auto"
-            >
-              <span>Start a project</span>
-              <ArrowUpRight size={14} className="stroke-[2.5]" />
-            </Link>
-            <Link
-              href="/capabilities"
-              className="gumroad-btn-secondary text-xs sm:text-sm !py-3 !px-6 w-full sm:w-auto"
-            >
-              Explore all disciplines
-            </Link>
-          </div>
-        </div>
-      </Section>
+        ))}
+      </div>
     </div>
+  );
+
+  return (
+    <CapabilityDetailTemplate
+      service={service}
+      nodeIndex={2}
+      propositionTitle="Content is documented proof of your work, never disposable feed filler."
+      problemsTitle="Why trend-chasing social media erodes stature"
+      ctaTitle="Elevate your storytelling to match your institution."
+      ctaCopy="Documentary film, photography art direction, and long-form publishing coordinated directly alongside your web presence."
+      specialtyBand={contentBand}
+    />
   );
 }

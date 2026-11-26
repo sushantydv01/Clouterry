@@ -7,6 +7,7 @@ import Section from "@/components/layout/Section";
 import Container from "@/components/layout/Container";
 import TheThreadMini from "@/components/thread/TheThreadMini";
 import StudyShowcaseArt from "@/components/illustrations/StudyShowcaseArt";
+import ProjectAnatomyInspector from "@/components/work/ProjectAnatomyInspector";
 import { PROJECTS } from "@/data/projects";
 import { ArrowUpRight, Check, ShieldCheck } from "lucide-react";
 
@@ -43,205 +44,205 @@ export default async function CaseStudyPage({ params }: Props) {
 
   return (
     <div className="flex flex-col min-h-screen bg-[#171717] text-[#F8F6EF]">
-      <Container>
+      {/* 01. Portfolio Masthead + Bespoke Paper-Cut Exhibition Plate */}
+      <Container size="wide">
         <PageHeader
-          badge={project.industry}
-          eyebrow={`${project.classification} · ${project.timeframe}`}
+          kicker={`${project.industry} · ${project.classification} · ${project.timeframe}`}
           title={project.title}
           description={project.summary}
+          aside={
+            <div className="space-y-4">
+              <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#F8F6EF]/14 bg-[#121214]">
+                <StudyShowcaseArt
+                  slug={project.slug}
+                  priority
+                  loading="eager"
+                  sizes="(max-width: 1024px) 100vw, 44vw"
+                />
+              </div>
+              <TheThreadMini activeDivisions={project.divisions} showLabels={true} size="sm" />
+            </div>
+          }
         >
-          <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono text-[#C4C1B8]">
-            <span className="px-3.5 py-1.5 rounded-full bg-[#1E1E20] border border-[#F8F6EF]/14">
-              Sector: {project.clientType}
+          <div className="flex flex-wrap items-center gap-3 text-xs font-sans text-[#D5D2C7]">
+            <span className="px-3.5 py-1.5 rounded-full bg-[#1D1D20] border border-[#F8F6EF]/14">
+              {project.clientType}
             </span>
-          </div>
-
-          <div className="mt-8 max-w-md">
-            <TheThreadMini activeDivisions={project.divisions} showLabels={true} size="md" />
+            <span className="inline-flex items-center gap-1.5 text-[#A6D8A1]">
+              <ShieldCheck size={14} />
+              <span>{project.classification} · Zero Fabricated Metrics</span>
+            </span>
           </div>
         </PageHeader>
       </Container>
 
-      {/* Architectural Visual Study Plate (Zero fake UI metrics) */}
-      <Section background="charcoal" padding="tight">
-        <div className="max-w-5xl mx-auto text-left space-y-6">
-          <div className="p-4 rounded-xl border border-[#F8F6EF]/12 bg-[#1E1E20] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-            <div className="flex items-center gap-3">
-              <span className="font-mono uppercase tracking-wider text-[#F4CF55] font-semibold">
-                {project.classification}
-              </span>
-              <p className="text-[#C4C1B8] font-sans">
-                {project.classificationNotice}
-              </p>
-            </div>
-            <span className="text-[11px] font-mono text-[#A6D8A1] shrink-0 flex items-center gap-1.5">
-              <ShieldCheck size={14} />
-              <span>Zero Fabricated Metrics</span>
-            </span>
-          </div>
+      {/* Transparency Framing Banner */}
+      <div className="border-t border-[#F8F6EF]/10 bg-[#121214] py-4">
+        <Container size="wide">
+          <p className="text-xs sm:text-sm text-[#D5D2C7] font-sans">
+            <strong className="text-[#F4CF55] font-sans font-semibold mr-2">
+              {project.classification}:
+            </strong>
+            {project.classificationNotice}
+          </p>
+        </Container>
+      </div>
 
-          <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#F8F6EF]/14 bg-[#1E1E20]">
-            <StudyShowcaseArt slug={project.slug} />
-          </div>
-        </div>
-      </Section>
-
-      {/* Challenge & Strategic Intervention */}
-      <Section background="charcoal-subtle" padding="normal">
-        <div className="max-w-5xl mx-auto text-left grid gap-6 md:grid-cols-2">
-          <div className="p-7 sm:p-8 rounded-2xl bg-[#1E1E20] border border-[#F8F6EF]/12 space-y-3">
-            <span className="text-xs font-mono uppercase tracking-wider text-[#9C9990] block">
-              Context &amp; Friction
+      {/* 02. Warm Cream Paper: Challenge vs Architectural Intervention */}
+      <Section background="warm-paper" containerSize="wide" padding="spacious">
+        <div className="grid gap-12 lg:grid-cols-12 items-start text-left">
+          <div className="lg:col-span-6 space-y-3">
+            <span className="font-mono text-xs text-[#3F3D38] block">
+              01 · Context &amp; Friction
             </span>
-            <h2 className="font-display text-2xl font-bold text-[#F8F6EF]">
+            <h2 className="font-display text-3xl sm:text-4xl font-medium text-[#171717] tracking-tight">
               Operational challenge
             </h2>
-            <p className="text-sm text-[#C4C1B8] leading-relaxed font-sans">
+            <p className="text-base sm:text-lg text-[#3F3D38] leading-relaxed font-sans">
               {project.challenge}
             </p>
           </div>
 
-          <div className="p-7 sm:p-8 rounded-2xl bg-[#1E1E20] border border-[#F8F6EF]/12 space-y-3">
-            <span className="text-xs font-mono uppercase tracking-wider text-[#A6D8A1] block">
-              Strategic Response
+          <div className="lg:col-span-6 space-y-3 lg:border-l lg:border-[#171717]/15 lg:pl-12">
+            <span className="font-mono text-xs text-[#3F3D38] block">
+              02 · Strategic Response
             </span>
-            <h2 className="font-display text-2xl font-bold text-[#F8F6EF]">
+            <h2 className="font-display text-3xl sm:text-4xl font-medium text-[#171717] tracking-tight">
               Architectural intervention
             </h2>
-            <p className="text-sm text-[#C4C1B8] leading-relaxed font-sans">
+            <p className="text-base sm:text-lg text-[#3F3D38] leading-relaxed font-sans">
               {project.strategicApproach}
             </p>
           </div>
         </div>
       </Section>
 
-      {/* Technical Decisions */}
-      <Section background="charcoal" padding="normal">
-        <div className="max-w-5xl mx-auto text-left space-y-6">
-          <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#F8F6EF]">
-            Technical and architectural decisions
-          </h2>
+      {/* 03. System Execution Layers, Interactive Anatomy Inspector & Deliverables */}
+      <Section background="charcoal" containerSize="wide" padding="spacious">
+        <div className="space-y-16 text-left">
+          <div className="grid gap-14 lg:grid-cols-12 items-start">
+            <div className="lg:col-span-7 space-y-6">
+              <h2 className="font-display text-3xl sm:text-4xl font-medium tracking-tight text-[#F8F6EF]">
+                Key system layers executed
+              </h2>
 
-          <div className="grid gap-3.5 sm:grid-cols-2">
-            {project.technicalDecisions.map((dec) => (
-              <div
-                key={dec}
-                className="p-4 rounded-xl border border-[#F8F6EF]/12 bg-[#1E1E20] flex items-start gap-3 text-sm text-[#C4C1B8]"
-              >
-                <Check size={15} className="text-[#A6D8A1] shrink-0 mt-1 stroke-[2.5]" />
-                <span className="leading-relaxed">{dec}</span>
+              <div className="divide-y divide-[#F8F6EF]/12 border-y border-[#F8F6EF]/12">
+                {project.executionDetails.map((ex, idx) => (
+                  <div key={ex.heading} className="py-6 grid gap-3 sm:grid-cols-12 items-start">
+                    <span className="sm:col-span-3 font-mono text-xs text-[#ED83A8] tabular-nums pt-1">
+                      Layer 0{idx + 1}
+                    </span>
+                    <div className="sm:col-span-9 space-y-1.5">
+                      <h3 className="font-display text-xl font-medium text-[#F8F6EF]">
+                        {ex.heading}
+                      </h3>
+                      <p className="text-base text-[#D5D2C7] leading-relaxed font-sans">
+                        {ex.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-      </Section>
+            </div>
 
-      {/* Key Components Delivered */}
-      <Section background="charcoal-subtle" padding="normal">
-        <div className="max-w-5xl mx-auto text-left space-y-6">
-          <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#F8F6EF]">
-            Key system components executed
-          </h2>
+            <div className="lg:col-span-5 space-y-8">
+              <div className="space-y-4">
+                <h2 className="font-display text-2xl font-medium tracking-tight text-[#F8F6EF]">
+                  Technical decisions
+                </h2>
+                <ul className="space-y-3 text-sm text-[#D5D2C7]">
+                  {project.technicalDecisions.map((dec) => (
+                    <li key={dec} className="flex items-start gap-2.5 leading-relaxed">
+                      <span className="mt-1 h-4 w-4 rounded-full bg-[#A6D8A1] text-[#171717] inline-flex items-center justify-center shrink-0">
+                        <Check size={11} className="stroke-[2.5]" />
+                      </span>
+                      <span>{dec}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-          <div className="divide-y divide-[#F8F6EF]/12 border-y border-[#F8F6EF]/12">
-            {project.executionDetails.map((ex, idx) => (
-              <div key={ex.heading} className="py-6 grid gap-3 sm:grid-cols-12 items-start">
-                <span className="sm:col-span-2 text-xs font-mono text-[#ED83A8]">
-                  Layer 0{idx + 1}
-                </span>
-                <div className="sm:col-span-10 space-y-1.5">
-                  <h3 className="font-display text-xl font-bold text-[#F8F6EF]">
-                    {ex.heading}
-                  </h3>
-                  <p className="text-sm text-[#C4C1B8] leading-relaxed font-sans">
-                    {ex.description}
-                  </p>
+              <div className="pt-6 border-t border-[#F8F6EF]/12 space-y-4">
+                <h2 className="font-display text-2xl font-medium tracking-tight text-[#F8F6EF]">
+                  Architectural deliverables
+                </h2>
+                <div className="divide-y divide-[#F8F6EF]/12 border-y border-[#F8F6EF]/12">
+                  {project.deliverables.map((deliv) => (
+                    <div key={deliv.title} className="py-4 space-y-1.5">
+                      <h3 className="font-display text-base font-medium text-[#F4CF55]">
+                        {deliv.title}
+                      </h3>
+                      <p className="text-sm text-[#D5D2C7] font-sans leading-relaxed">
+                        {deliv.description}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* Deliverables & Related */}
-      <Section background="charcoal" padding="normal">
-        <div className="max-w-5xl mx-auto text-left space-y-12">
-          <div className="space-y-6">
-            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#F8F6EF]">
-              Complete project deliverables
-            </h2>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {project.deliverables.map((deliv) => (
-                <div
-                  key={deliv.title}
-                  className="p-5 rounded-xl border border-[#F8F6EF]/12 bg-[#1E1E20] space-y-1.5"
-                >
-                  <h3 className="text-xs font-mono uppercase tracking-wider text-[#F4CF55]">
-                    {deliv.title}
-                  </h3>
-                  <p className="text-sm text-[#C4C1B8] leading-relaxed font-sans">
-                    {deliv.description}
-                  </p>
-                </div>
-              ))}
             </div>
           </div>
 
-          <div className="space-y-6 pt-6 border-t border-[#F8F6EF]/12">
-            <h2 className="font-display text-2xl font-bold tracking-tight text-[#F8F6EF]">
-              Other architectural studies
+          {/* Interactive 8-Layer Project Anatomy Inspector */}
+          <ProjectAnatomyInspector project={project} />
+        </div>
+      </Section>
+
+      {/* 04. Related Studies & Closing Action */}
+      <Section background="charcoal-subtle" containerSize="wide" padding="normal">
+        <div className="space-y-12 text-left">
+          <div className="space-y-6">
+            <h2 className="font-display text-2xl sm:text-3xl font-medium tracking-tight text-[#F8F6EF]">
+              Other concept studies
             </h2>
 
-            <div className="grid gap-6 sm:grid-cols-2">
+            <div className="grid gap-8 md:grid-cols-2">
               {otherProjects.map((op) => (
-                <div
+                <Link
                   key={op.slug}
-                  className="p-6 rounded-2xl bg-[#1E1E20] border border-[#F8F6EF]/12 hover:border-[#F8F6EF]/26 transition-colors flex flex-col justify-between group"
+                  href={`/work/${op.slug}`}
+                  className="group p-6 sm:p-7 rounded-2xl bg-[#1D1D20] border border-[#F8F6EF]/12 hover:border-[#F8F6EF]/30 transition-colors grid gap-5 sm:grid-cols-12 items-center"
                 >
-                  <div>
-                    <span className="text-xs font-mono text-[#ED83A8]">
+                  <div className="sm:col-span-5 relative aspect-[16/10] rounded-xl overflow-hidden bg-[#121214]">
+                    <StudyShowcaseArt
+                      slug={op.slug}
+                      loading="eager"
+                      sizes="(max-width: 1024px) 100vw, 22vw"
+                    />
+                  </div>
+                  <div className="sm:col-span-7 space-y-2">
+                    <span className="font-sans text-xs font-medium text-[#ED83A8] block">
                       {op.industry}
                     </span>
-                    <h3 className="mt-2 font-display text-xl font-bold text-[#F8F6EF] group-hover:text-[#ED83A8] transition-colors">
+                    <h3 className="font-display text-xl font-medium text-[#F8F6EF] group-hover:text-[#F4CF55] transition-colors">
                       {op.title}
                     </h3>
-                    <p className="mt-2 text-sm text-[#C4C1B8] line-clamp-2 leading-relaxed font-sans">
+                    <p className="text-xs sm:text-sm text-[#D5D2C7] line-clamp-2 leading-relaxed">
                       {op.summary}
                     </p>
                   </div>
-                  <div className="mt-5 pt-4 border-t border-[#F8F6EF]/10">
-                    <Link
-                      href={`/work/${op.slug}`}
-                      className="text-sm font-display font-semibold text-[#F8F6EF] hover:text-[#ED83A8] inline-flex items-center gap-1"
-                    >
-                      <span>Read study</span>
-                      <ArrowUpRight size={13} />
-                    </Link>
-                  </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
-        </div>
-      </Section>
 
-      {/* Closing CTA */}
-      <Section background="charcoal-subtle" padding="spacious">
-        <div className="max-w-3xl mx-auto text-center space-y-6 p-8 sm:p-12 rounded-2xl bg-[#1E1E20] border border-[#F8F6EF]/14">
-          <h2 className="font-display text-3xl sm:text-5xl font-bold text-[#F8F6EF] leading-tight">
-            Discuss your organization&apos;s digital architecture
-          </h2>
-          <p className="text-sm sm:text-base text-[#C4C1B8] max-w-lg mx-auto leading-relaxed font-sans">
-            We partner with independent schools, clinics, and advisory firms seeking long-term digital craft.
-          </p>
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3.5">
-            <Link href="/connect" className="firm-btn-primary text-sm w-full sm:w-auto">
-              <span>Start a project</span>
-              <ArrowUpRight size={15} className="stroke-[2.25]" />
-            </Link>
-            <Link href="/work" className="firm-btn-secondary text-sm w-full sm:w-auto">
-              <span>Return to archive</span>
-            </Link>
+          <div className="pt-10 border-t border-[#F8F6EF]/12 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div className="space-y-1.5 max-w-2xl">
+              <h2 className="font-display text-3xl sm:text-4xl font-medium text-[#F8F6EF]">
+                Discuss your organization&apos;s architecture
+              </h2>
+              <p className="text-base text-[#D5D2C7]">
+                We partner with schools, medical clinics, and advisory firms seeking long-term digital craft.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3.5 shrink-0">
+              <Link href="/connect" className="firm-btn-primary text-sm">
+                <span>Start a project</span>
+                <ArrowUpRight size={15} className="stroke-[2]" />
+              </Link>
+              <Link href="/work" className="firm-btn-secondary text-sm">
+                <span>All concept studies</span>
+              </Link>
+            </div>
           </div>
         </div>
       </Section>

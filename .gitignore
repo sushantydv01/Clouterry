@@ -18,6 +18,13 @@ brain/
 .system_generated/
 *.log
 
+# Media & Raw Asset Archives
+/images/
+/asset-sources/
+/screenshots/
+*.webp.json
+
+
 # Dependencies
 /node_modules
 /.pnp

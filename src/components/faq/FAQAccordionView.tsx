@@ -6,7 +6,7 @@ import Section from "@/components/layout/Section";
 import Container from "@/components/layout/Container";
 import StickerMark from "@/components/illustrations/StickerMark";
 import Link from "next/link";
-import { ArrowUpRight, ChevronDown } from "lucide-react";
+import { ArrowUpRight, Minus, Plus, Search } from "lucide-react";
 
 interface FAQItem {
   category: string;
@@ -18,37 +18,37 @@ const FAQ_ITEMS: FAQItem[] = [
   {
     category: "Engagement & Cadence",
     q: "How does FIRM differ from a traditional digital marketing agency?",
-    a: "Traditional agencies bill monthly retainers for temporary ad buys and generic templates. We engineer owned digital platforms, living design tokens, documentary media, and technical SEO that compound in value over years.",
+    a: "Traditional agencies bill monthly retainers for temporary ad campaigns and generic themes. We engineer owned digital platforms, living CSS design tokens, documentary media, and technical SEO that compound in institutional value over years.",
   },
   {
     category: "Engagement & Cadence",
     q: "What is a typical engagement timeline?",
-    a: "A brand or web sprint takes 6 to 10 weeks from initial diagnostic to deployment. We work on a fixed 4-stage cadence with defined weekly milestones.",
+    a: "A brand and web sprint spans 6 to 10 weeks from forensic diagnostic audit to deployment. We operate in fixed weekly stages rather than open-ended hour billing.",
   },
   {
     category: "Technical & Code",
     q: "Who owns the code, design assets, and intellectual property?",
-    a: "You do. When the project finishes, we transfer the code repository, design tokens, typography licenses, and raw media assets to your organization.",
+    a: "You do. Upon completion we transfer full custody of the Git repository codebase, design tokens, custom marks, typography license guidance, and documentary media without proprietary CMS lock-in.",
   },
   {
     category: "Technical & Code",
     q: "Why do you engineer in Next.js and React Server Components?",
-    a: "Fast, predictable delivery drives conversion rates and organic search rankings. Server Components render clean semantic HTML on edge servers without bloated client-side JavaScript payloads.",
+    a: "Sub-second page speed directly raises conversion completion and organic search indexing. React Server Components render clean semantic HTML directly at the edge without heavy client-side plugin bloat.",
   },
   {
     category: "Institutional Education",
     q: "How do you work with schools and educational institutions?",
-    a: "We separate public prospective family admissions journeys from current parent utility portals, and verify all layouts against WCAG 2.1 AA accessibility standards.",
+    a: "We cleanly separate prospective family admissions conversion gateways from internal parent utility hubs, and test every screen for WCAG 2.1 AA screen-reader and keyboard compliance.",
   },
   {
     category: "Stewardship & IP",
     q: "Do you offer ongoing management and maintenance after launch?",
-    a: "Yes. Our Digital Management practice handles platform updates, uptime monitoring, security patches, and seasonal content releases under a clear service agreement.",
+    a: "Yes. Our Digital Management practice handles framework security patches, 24/7 uptime telemetry, accessibility regression checks, and seasonal landing page sprints under clear SLA governance.",
   },
   {
     category: "Stewardship & IP",
     q: "How do you handle client confidentiality in professional services?",
-    a: "For legal, financial, and clinical clients, we execute mutual non-disclosure agreements before discovery begins and anonymize sensitive matters in published concept studies.",
+    a: "For legal, medical, and executive advisory engagements, mutual non-disclosure terms govern discovery and any public work remains anonymized or framed as transparent architectural studies.",
   },
 ];
 
@@ -62,6 +62,7 @@ const CATEGORIES = [
 
 export default function FAQAccordionView() {
   const [selectedCategory, setSelectedCategory] = useState("All Questions");
+  const [query, setQuery] = useState("");
   const [openIndices, setOpenIndices] = useState<number[]>([0]);
 
   const toggleItem = (idx: number) => {
@@ -70,100 +71,161 @@ export default function FAQAccordionView() {
     );
   };
 
-  const filteredItems =
-    selectedCategory === "All Questions"
-      ? FAQ_ITEMS
-      : FAQ_ITEMS.filter((item) => item.category === selectedCategory);
+  const normalizedQuery = query.trim().toLowerCase();
+  const filteredItems = FAQ_ITEMS.filter((item) => {
+    const matchesCategory =
+      selectedCategory === "All Questions" || item.category === selectedCategory;
+    const matchesSearch =
+      !normalizedQuery ||
+      item.q.toLowerCase().includes(normalizedQuery) ||
+      item.a.toLowerCase().includes(normalizedQuery);
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <div className="flex flex-col min-h-screen bg-[#171717] text-[#F8F6EF]">
-      <Container>
+      <Container size="wide">
         <PageHeader
-          badge="Operational FAQ"
-          eyebrow="Commercial & Technical Clarity"
+          kicker="Commercial & Technical Clarity"
           title="Frequently addressed questions."
-          description="Clear answers regarding our methodology, technical stack, intellectual property, and stewardship models."
+          description="Straightforward operational answers regarding weekly sprint cadence, client repository ownership, React architecture, and long-term stewardship."
         />
       </Container>
 
-      <Section background="charcoal" padding="tight">
-        <div className="max-w-4xl mx-auto text-left space-y-8">
-          <div className="flex flex-wrap items-center gap-2 pb-5 border-b border-[#F8F6EF]/12">
-            {CATEGORIES.map((cat) => {
-              const active = selectedCategory === cat;
-              return (
-                <button
-                  key={cat}
-                  type="button"
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-2 text-xs sm:text-sm font-display font-medium rounded-full transition-colors cursor-pointer whitespace-nowrap border ${
-                    active
-                      ? "bg-[#F8F6EF] text-[#171717] border-[#F8F6EF] font-semibold"
-                      : "bg-[#1E1E20] text-[#C4C1B8] border-[#F8F6EF]/12 hover:text-[#F8F6EF] hover:border-[#F8F6EF]/25"
-                  }`}
-                >
-                  {cat}
-                </button>
-              );
-            })}
-          </div>
+      {/* Warm Cream Open Asymmetric FAQ Dossier with Search & Topic Filtering */}
+      <Section background="warm-paper" containerSize="wide" padding="spacious">
+        <div className="grid gap-12 lg:grid-cols-12 items-start text-left">
+          {/* Left Category Sticky Index (4 cols) */}
+          <aside className="lg:col-span-4 space-y-6 lg:sticky lg:top-28">
+            {/* Keyword Search Box */}
+            <div className="space-y-2">
+              <label htmlFor="faq-search" className="text-xs font-sans font-semibold text-[#171717] block">
+                Search topics or keywords
+              </label>
+              <div className="relative">
+                <Search
+                  size={15}
+                  className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#3F3D38]"
+                  aria-hidden="true"
+                />
+                <input
+                  id="faq-search"
+                  type="search"
+                  value={query}
+                  onChange={(e) => {
+                    setQuery(e.target.value);
+                    setOpenIndices([0]);
+                  }}
+                  placeholder="Search timelines, IP, Next.js…"
+                  className="w-full min-h-[44px] rounded-xl bg-[#FFFFFF] border border-[#171717]/18 pl-10 pr-4 text-sm text-[#171717] placeholder:text-[#3F3D38]/65 focus:border-[#171717]"
+                />
+              </div>
+            </div>
 
-          <div className="divide-y divide-[#F8F6EF]/12 border-y border-[#F8F6EF]/12">
-            {filteredItems.map((item, idx) => {
-              const isOpen = openIndices.includes(idx);
-              return (
-                <div key={item.q} className="transition-colors">
-                  <button
-                    type="button"
-                    onClick={() => toggleItem(idx)}
-                    aria-expanded={isOpen}
-                    className="w-full py-6 text-left flex items-center justify-between gap-4 cursor-pointer group"
-                  >
-                    <div className="space-y-1.5">
-                      <span className="text-[11px] font-mono uppercase tracking-[0.12em] text-[#F4CF55] block">
-                        {item.category}
-                      </span>
-                      <h3 className="font-display text-lg sm:text-xl font-bold text-[#F8F6EF] group-hover:text-[#ED83A8] transition-colors">
-                        {item.q}
-                      </h3>
-                    </div>
-                    <div
-                      className={`h-9 w-9 rounded-full border flex items-center justify-center shrink-0 transition-all duration-200 ${
-                        isOpen
-                          ? "rotate-180 bg-[#ED83A8] text-[#171717] border-[#ED83A8]"
-                          : "bg-[#1E1E20] text-[#F8F6EF] border-[#F8F6EF]/15"
+            <div className="space-y-2">
+              <span className="font-sans text-xs font-semibold text-[#3F3D38] block">
+                Filter topic
+              </span>
+              <div className="flex flex-col gap-1.5">
+                {CATEGORIES.map((cat) => {
+                  const active = selectedCategory === cat;
+                  return (
+                    <button
+                      key={cat}
+                      type="button"
+                      onClick={() => {
+                        setSelectedCategory(cat);
+                        setOpenIndices([0]);
+                      }}
+                      className={`text-left px-4 py-2.5 rounded-xl text-sm font-display font-medium transition-colors cursor-pointer border ${
+                        active
+                          ? "bg-[#171717] text-[#F8F6EF] border-[#171717]"
+                          : "bg-transparent text-[#3F3D38] border-transparent hover:bg-[#EFECE3] hover:text-[#171717]"
                       }`}
                     >
-                      <ChevronDown size={16} />
-                    </div>
-                  </button>
-
-                  {isOpen && (
-                    <div className="pb-6 pt-1 text-sm sm:text-base text-[#C4C1B8] leading-relaxed font-sans max-w-3xl">
-                      {item.a}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="mt-10 p-8 sm:p-10 rounded-2xl bg-[#1E1E20] border border-[#F8F6EF]/14 text-center space-y-4">
-            <div className="flex justify-center">
-              <StickerMark name="s09-17-lightbulb" size={32} />
+                      {cat}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
-            <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#F8F6EF]">
-              Have an institutional question not covered here?
-            </h3>
-            <p className="text-sm text-[#C4C1B8] max-w-md mx-auto">
-              Initiate a confidential project briefing and a senior partner will address your technical and operational criteria directly.
-            </p>
-            <div className="pt-2">
-              <Link href="/connect" className="firm-btn-primary text-sm">
-                <span>Start a briefing</span>
-                <ArrowUpRight size={15} className="stroke-[2.25]" />
+
+            <div className="p-6 rounded-2xl bg-[#FFFFFF] border border-[#171717]/12 space-y-4">
+              <StickerMark name="s09-17-lightbulb" size={30} />
+              <h3 className="font-display text-xl font-medium text-[#171717]">
+                Specific institutional requirement?
+              </h3>
+              <p className="text-sm text-[#3F3D38] leading-relaxed font-sans">
+                Share your scope directly and a senior studio partner reviews your architecture criteria personally.
+              </p>
+              <Link href="/connect" className="firm-btn-dark text-sm w-full justify-center">
+                <span>Start a project</span>
+                <ArrowUpRight size={15} />
               </Link>
             </div>
+          </aside>
+
+          {/* Right Open Accordion List (8 cols) */}
+          <div className="lg:col-span-8">
+            {filteredItems.length === 0 ? (
+              <div className="p-8 rounded-2xl bg-[#FFFFFF] border border-[#171717]/14 space-y-4">
+                <p className="font-display text-xl font-medium text-[#171717]">
+                  No questions match &ldquo;{query}&rdquo; inside {selectedCategory}.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setQuery("");
+                    setSelectedCategory("All Questions");
+                    setOpenIndices([0]);
+                  }}
+                  className="firm-btn-outline-dark text-sm"
+                >
+                  Reset search filters
+                </button>
+              </div>
+            ) : (
+              <div className="divide-y divide-[#171717]/15 border-y border-[#171717]/15">
+                {filteredItems.map((item, idx) => {
+                  const isOpen = openIndices.includes(idx);
+                  return (
+                    <div key={item.q}>
+                      <button
+                        type="button"
+                        onClick={() => toggleItem(idx)}
+                        aria-expanded={isOpen}
+                        className="w-full py-6 sm:py-7 text-left flex items-start justify-between gap-6 cursor-pointer group"
+                      >
+                        <div className="space-y-1.5">
+                          <span className="font-sans text-xs font-medium text-[#3F3D38] block">
+                            {item.category}
+                          </span>
+                          <h2 className="font-display text-xl sm:text-2xl font-medium text-[#171717] group-hover:text-[#3F3D38] transition-colors leading-snug">
+                            {item.q}
+                          </h2>
+                        </div>
+
+                        <span
+                          className={`mt-1 h-9 w-9 rounded-full border flex items-center justify-center shrink-0 transition-colors ${
+                            isOpen
+                              ? "bg-[#ED83A8] text-[#171717] border-[#171717]/20"
+                              : "bg-[#FFFFFF] text-[#171717] border-[#171717]/18 group-hover:border-[#171717]/40"
+                          }`}
+                        >
+                          {isOpen ? <Minus size={16} /> : <Plus size={16} />}
+                        </span>
+                      </button>
+
+                      {isOpen && (
+                        <div className="animate-paper-enter pb-7 pr-8 text-base text-[#3F3D38] leading-relaxed font-sans max-w-[65ch]">
+                          {item.a}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
       </Section>

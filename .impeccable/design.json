@@ -1,0 +1,385 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-26T16:02:00Z",
+  "title": "Design System: FIRM Studio · Midnight Atelier",
+  "extensions": {
+    "colorMeta": {
+      "midnight-charcoal": {
+        "role": "neutral",
+        "displayName": "Midnight Charcoal",
+        "canonical": "oklch(20.5% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(20.5% 0 0)",
+          "oklch(26% 0.005 260)",
+          "oklch(35% 0.006 260)",
+          "oklch(48% 0.006 260)",
+          "oklch(65% 0.005 85)",
+          "oklch(82% 0.008 85)",
+          "oklch(95% 0.012 85)"
+        ]
+      },
+      "charcoal-surface": {
+        "role": "neutral",
+        "displayName": "Charcoal Surface",
+        "canonical": "oklch(23.2% 0.006 285)",
+        "tonalRamp": [
+          "oklch(15% 0.004 285)",
+          "oklch(20% 0.005 285)",
+          "oklch(23.2% 0.006 285)",
+          "oklch(32% 0.007 285)",
+          "oklch(46% 0.007 285)",
+          "oklch(64% 0.006 285)",
+          "oklch(80% 0.005 285)",
+          "oklch(94% 0.004 285)"
+        ]
+      },
+      "charcoal-recess": {
+        "role": "neutral",
+        "displayName": "Charcoal Recess",
+        "canonical": "oklch(18.2% 0.004 285)",
+        "tonalRamp": [
+          "oklch(14% 0.003 285)",
+          "oklch(18.2% 0.004 285)",
+          "oklch(24% 0.005 285)",
+          "oklch(34% 0.005 285)",
+          "oklch(48% 0.005 285)",
+          "oklch(65% 0.004 285)",
+          "oklch(81% 0.004 285)",
+          "oklch(94% 0.003 285)"
+        ]
+      },
+      "warm-cream": {
+        "role": "neutral",
+        "displayName": "Warm Cream",
+        "canonical": "oklch(97.2% 0.012 88)",
+        "tonalRamp": [
+          "oklch(22% 0.012 88)",
+          "oklch(34% 0.014 88)",
+          "oklch(48% 0.015 88)",
+          "oklch(62% 0.015 88)",
+          "oklch(76% 0.014 88)",
+          "oklch(88% 0.013 88)",
+          "oklch(94% 0.013 88)",
+          "oklch(97.2% 0.012 88)"
+        ]
+      },
+      "paper-subtle": {
+        "role": "neutral",
+        "displayName": "Paper Subtle",
+        "canonical": "oklch(94.2% 0.014 86)",
+        "tonalRamp": [
+          "oklch(22% 0.012 86)",
+          "oklch(34% 0.014 86)",
+          "oklch(48% 0.015 86)",
+          "oklch(62% 0.015 86)",
+          "oklch(76% 0.015 86)",
+          "oklch(87% 0.014 86)",
+          "oklch(94.2% 0.014 86)",
+          "oklch(97% 0.008 86)"
+        ]
+      },
+      "chalk-white": {
+        "role": "neutral",
+        "displayName": "Chalk White",
+        "canonical": "oklch(100% 0 0)",
+        "tonalRamp": [
+          "oklch(20% 0 0)",
+          "oklch(35% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(65% 0 0)",
+          "oklch(78% 0 0)",
+          "oklch(89% 0 0)",
+          "oklch(95% 0 0)",
+          "oklch(100% 0 0)"
+        ]
+      },
+      "rose-pink": {
+        "role": "primary",
+        "displayName": "Rose Pink",
+        "canonical": "oklch(73.8% 0.138 354)",
+        "tonalRamp": [
+          "oklch(24% 0.08 354)",
+          "oklch(36% 0.11 354)",
+          "oklch(48% 0.14 354)",
+          "oklch(61% 0.15 354)",
+          "oklch(73.8% 0.138 354)",
+          "oklch(82% 0.105 354)",
+          "oklch(90% 0.055 354)",
+          "oklch(96% 0.022 354)"
+        ]
+      },
+      "rose-pink-hover": {
+        "role": "primary",
+        "displayName": "Rose Pink Hover",
+        "canonical": "oklch(79.4% 0.106 354)",
+        "tonalRamp": [
+          "oklch(24% 0.08 354)",
+          "oklch(36% 0.11 354)",
+          "oklch(48% 0.14 354)",
+          "oklch(61% 0.15 354)",
+          "oklch(73.8% 0.138 354)",
+          "oklch(79.4% 0.106 354)",
+          "oklch(90% 0.055 354)",
+          "oklch(96% 0.022 354)"
+        ]
+      },
+      "charcoal-hover": {
+        "role": "neutral",
+        "displayName": "Charcoal Hover",
+        "canonical": "oklch(28.1% 0.008 285)",
+        "tonalRamp": [
+          "oklch(15% 0.004 285)",
+          "oklch(20.5% 0.005 285)",
+          "oklch(28.1% 0.008 285)",
+          "oklch(38% 0.008 285)",
+          "oklch(50% 0.007 285)",
+          "oklch(66% 0.006 285)",
+          "oklch(82% 0.005 285)",
+          "oklch(95% 0.004 285)"
+        ]
+      },
+      "garden-green": {
+        "role": "secondary",
+        "displayName": "Garden Green",
+        "canonical": "oklch(83.2% 0.095 142)",
+        "tonalRamp": [
+          "oklch(24% 0.05 142)",
+          "oklch(36% 0.075 142)",
+          "oklch(48% 0.095 142)",
+          "oklch(62% 0.11 142)",
+          "oklch(74% 0.105 142)",
+          "oklch(83.2% 0.095 142)",
+          "oklch(90% 0.055 142)",
+          "oklch(96% 0.02 142)"
+        ]
+      },
+      "butter-yellow": {
+        "role": "tertiary",
+        "displayName": "Butter Yellow",
+        "canonical": "oklch(86.4% 0.135 90)",
+        "tonalRamp": [
+          "oklch(26% 0.06 90)",
+          "oklch(38% 0.085 90)",
+          "oklch(52% 0.11 90)",
+          "oklch(66% 0.13 90)",
+          "oklch(78% 0.14 90)",
+          "oklch(86.4% 0.135 90)",
+          "oklch(92% 0.085 90)",
+          "oklch(96.5% 0.035 90)"
+        ]
+      },
+      "ink-secondary": {
+        "role": "neutral",
+        "displayName": "Ink Secondary",
+        "canonical": "oklch(86.5% 0.016 88)",
+        "tonalRamp": [
+          "oklch(20% 0.01 88)",
+          "oklch(32% 0.012 88)",
+          "oklch(46% 0.015 88)",
+          "oklch(60% 0.016 88)",
+          "oklch(74% 0.016 88)",
+          "oklch(86.5% 0.016 88)",
+          "oklch(92% 0.012 88)",
+          "oklch(96% 0.008 88)"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Ink Muted",
+        "canonical": "oklch(72.8% 0.016 85)",
+        "tonalRamp": [
+          "oklch(18% 0.008 85)",
+          "oklch(30% 0.012 85)",
+          "oklch(44% 0.014 85)",
+          "oklch(58% 0.016 85)",
+          "oklch(72.8% 0.016 85)",
+          "oklch(82% 0.013 85)",
+          "oklch(89% 0.01 85)",
+          "oklch(95% 0.006 85)"
+        ]
+      },
+      "ink-dark-secondary": {
+        "role": "neutral",
+        "displayName": "Ink Dark Secondary",
+        "canonical": "oklch(35.8% 0.01 82)",
+        "tonalRamp": [
+          "oklch(18% 0.006 82)",
+          "oklch(26% 0.008 82)",
+          "oklch(35.8% 0.01 82)",
+          "oklch(48% 0.012 82)",
+          "oklch(62% 0.011 82)",
+          "oklch(75% 0.01 82)",
+          "oklch(86% 0.008 82)",
+          "oklch(95% 0.005 82)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Bricolage Grotesque Display",
+        "purpose": "Hero statements and monumental dark or cream section anchors."
+      },
+      "headline": {
+        "displayName": "Bricolage Grotesque Headline",
+        "purpose": "Primary route headers and band titles."
+      },
+      "title": {
+        "displayName": "Bricolage Grotesque Title",
+        "purpose": "Interactive discipline tabs, blueprint headers, and navigation controls."
+      },
+      "body": {
+        "displayName": "Hanken Grotesk Body",
+        "purpose": "Interface controls, descriptions, and multi-column scannable prose."
+      },
+      "label": {
+        "displayName": "JetBrains Mono Coordinates",
+        "purpose": "Tabular numeric chapter indices, read durations, and technical spec labels."
+      }
+    },
+    "shadows": [
+      {
+        "name": "paper-plate-rest",
+        "value": "0 10px 30px rgba(23, 23, 23, 0.05)",
+        "purpose": "Subtle ambient separation for Chalk White panels placed inside Warm Cream reading sections."
+      },
+      {
+        "name": "primary-cta-hover",
+        "value": "0 8px 24px rgba(237, 131, 168, 0.18)",
+        "purpose": "Soft Rose Pink atmospheric bloom triggered solely on hover over primary pill buttons."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-atelier",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Controlled deceleration curve for button lifts and hairline surface state transitions."
+      },
+      {
+        "name": "ease-plate-enter",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Crisp 260ms vertical fade reveal when switching interactive discipline panels."
+      },
+      {
+        "name": "thread-orbit-trace",
+        "value": "14s linear infinite",
+        "purpose": "Slow continuous orbital dash animation tracing the five connected disciplines; disables under reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" },
+      { "name": "2xl", "value": "1536px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Pill CTA Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary conversion trigger used consistently across header, hero, and footer touchpoints.",
+      "html": "<button type=\"button\" class=\"ds-btn-primary\"><span>Start a project</span><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 17L17 7\"/><path d=\"M7 7h10v10\"/></svg></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; min-height: 46px; padding: 0.72rem 1.55rem; border-radius: 9999px; background-color: #ed83a8; color: #171717; border: 1px solid rgba(23, 23, 23, 0.14); font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 600; font-size: 15px; white-space: nowrap; cursor: pointer; transition: background-color 160ms ease, transform 180ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 180ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-primary:hover { background-color: #f49ebb; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(237, 131, 168, 0.18); } .ds-btn-primary:active { transform: scale(0.98); } .ds-btn-primary:focus-visible { outline: 2px solid #ed83a8; outline-offset: 3px; }"
+    },
+    {
+      "name": "Secondary Dark Outline Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Low-emphasis dark-canvas action paired beside primary Rose Pink CTAs.",
+      "html": "<button type=\"button\" class=\"ds-btn-secondary\"><span>Inspect disciplines</span><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 7l10 10\"/><path d=\"M17 7v10H7\"/></svg></button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; min-height: 46px; padding: 0.72rem 1.55rem; border-radius: 9999px; background-color: transparent; color: #f8f6ef; border: 1px solid rgba(248, 246, 239, 0.24); font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 500; font-size: 15px; white-space: nowrap; cursor: pointer; transition: background-color 160ms ease, border-color 160ms ease, transform 180ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-secondary:hover { background-color: rgba(248, 246, 239, 0.07); border-color: rgba(248, 246, 239, 0.45); transform: translateY(-1px); } .ds-btn-secondary:active { transform: scale(0.98); } .ds-btn-secondary:focus-visible { outline: 2px solid #ed83a8; outline-offset: 3px; }"
+    },
+    {
+      "name": "Paper Outline Action Button",
+      "kind": "button",
+      "refersTo": "button-outline-dark",
+      "description": "Editorial dark-ink button placed inside Warm Cream (#f8f6ef) reading and gallery bands.",
+      "html": "<button type=\"button\" class=\"ds-btn-outline-dark\"><span>All concept studies</span><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 17L17 7\"/><path d=\"M7 7h10v10\"/></svg></button>",
+      "css": ".ds-btn-outline-dark { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; min-height: 46px; padding: 0.72rem 1.55rem; border-radius: 9999px; background-color: transparent; color: #171717; border: 1px solid rgba(23, 23, 23, 0.28); font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 600; font-size: 14px; white-space: nowrap; cursor: pointer; transition: background-color 160ms ease, border-color 160ms ease, transform 180ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-outline-dark:hover { background-color: rgba(23, 23, 23, 0.06); border-color: #171717; transform: translateY(-1px); } .ds-btn-outline-dark:focus-visible { outline: 2px solid #ed83a8; outline-offset: 3px; }"
+    },
+    {
+      "name": "Charcoal Gallery Surface",
+      "kind": "card",
+      "refersTo": "surface-charcoal",
+      "description": "Flat dark specimen container separated strictly by subtle translucent hairlines and tonal contrast.",
+      "html": "<article class=\"ds-charcoal-surface\"><div class=\"ds-meta-row\"><span class=\"ds-meta-label\">Clinical &amp; Surgical</span><span class=\"ds-dot-green\"></span></div><h3 class=\"ds-surface-title\">Healthcare &amp; Medical</h3><p class=\"ds-surface-copy\">Accessible appointment pathways built cleanly around patient clarity and clinical compliance.</p></article>",
+      "css": ".ds-charcoal-surface { background-color: #121214; border: 1px solid rgba(248, 246, 239, 0.12); border-radius: 1rem; padding: 1.75rem; color: #f8f6ef; display: flex; flex-direction: column; gap: 0.75rem; transition: border-color 180ms ease; } .ds-charcoal-surface:hover { border-color: rgba(248, 246, 239, 0.28); } .ds-meta-row { display: flex; align-items: center; justify-content: space-between; } .ds-meta-label { font-family: 'Bricolage Grotesque', sans-serif; font-size: 12px; font-weight: 600; color: #a6d8a1; } .ds-dot-green { width: 8px; height: 8px; border-radius: 9999px; background: #a6d8a1; } .ds-surface-title { margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; font-weight: 700; color: #f8f6ef; } .ds-surface-copy { margin: 0; font-family: 'Hanken Grotesk', sans-serif; font-size: 15px; line-height: 1.6; color: #d5d2c7; }"
+    },
+    {
+      "name": "Chalk Specimen Panel",
+      "kind": "card",
+      "refersTo": "surface-paper",
+      "description": "Clean high-contrast specimen card resting lightly atop Warm Cream reading canvases.",
+      "html": "<div class=\"ds-paper-surface\"><span class=\"ds-spec-num\">01</span><h3 class=\"ds-paper-title\">Brand &amp; Identity</h3><p class=\"ds-paper-copy\">Verbal positioning, visual marks, color geometry, and typography authored around institutional reality.</p></div>",
+      "css": ".ds-paper-surface { background-color: #ffffff; color: #171717; border: 1px solid rgba(23, 23, 23, 0.12); border-radius: 1.25rem; padding: 1.75rem; box-shadow: 0 10px 30px rgba(23, 23, 23, 0.05); } .ds-spec-num { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #3f3d38; } .ds-paper-title { margin: 0.5rem 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 26px; font-weight: 700; color: #171717; } .ds-paper-copy { margin: 0; font-family: 'Hanken Grotesk', sans-serif; font-size: 15px; line-height: 1.6; color: #3f3d38; }"
+    },
+    {
+      "name": "Atelier Studio Input",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Accessible dark-ground diagnostic input with Rose Pink focus ring and clear contrast.",
+      "html": "<div class=\"ds-field-group\"><label for=\"ds-email-demo\" class=\"ds-field-label\">Institution or Organization Email</label><input id=\"ds-email-demo\" class=\"ds-input\" type=\"email\" placeholder=\"hannah@saintjude.example\" /></div>",
+      "css": ".ds-field-group { display: flex; flex-direction: column; gap: 0.5rem; } .ds-field-label { font-family: 'Hanken Grotesk', sans-serif; font-size: 13px; font-weight: 500; color: #f8f6ef; } .ds-input { min-height: 48px; padding: 0.75rem 1rem; border-radius: 12px; background-color: #171717; color: #f8f6ef; border: 1px solid rgba(248, 246, 239, 0.18); font-family: 'Hanken Grotesk', sans-serif; font-size: 15px; transition: border-color 160ms ease; } .ds-input::placeholder { color: #aca89e; } .ds-input:focus { outline: 2px solid #ed83a8; outline-offset: 2px; border-color: #ed83a8; }"
+    },
+    {
+      "name": "Editorial Desktop Navigation Bar",
+      "kind": "nav",
+      "refersTo": "surface-charcoal",
+      "description": "Three-zone sticky header holding studio seal left, balanced links center with Rose Pink active dot, and action right.",
+      "html": "<nav class=\"ds-nav-bar\" aria-label=\"Preview Nav\"><a href=\"#\" class=\"ds-nav-link ds-nav-active\"><span class=\"ds-nav-dot\"></span><span>Capabilities</span></a><a href=\"#\" class=\"ds-nav-link\"><span>Work</span></a><a href=\"#\" class=\"ds-nav-link\"><span>Insights</span></a></nav>",
+      "css": ".ds-nav-bar { display: flex; align-items: center; gap: 2rem; background-color: rgba(23, 23, 23, 0.92); padding: 0.9rem 1.5rem; border-radius: 14px; border: 1px solid rgba(248, 246, 239, 0.14); } .ds-nav-link { position: relative; display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0; font-family: 'Hanken Grotesk', sans-serif; font-size: 15px; font-weight: 500; color: rgba(213, 210, 199, 0.85); text-decoration: none; white-space: nowrap; } .ds-nav-link:hover { color: #f8f6ef; } .ds-nav-active { color: #f8f6ef; font-weight: 600; border-bottom: 2px solid #ed83a8; } .ds-nav-dot { width: 6px; height: 6px; border-radius: 9999px; background: #ed83a8; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Midnight Atelier",
+    "overview": "Midnight Atelier treats digital architecture like a physical print and industrial design practice working at dusk. Wide charcoal galleries hold unboxed photography and tactile paper-cut artwork in full scale, alternating intentionally with warm archival cream plates so dense capability matrices, engineering breakdowns, and long-form essays read with print-journal calm rather than software dashboard fatigue. Instead of decorative floating cards, fake KPI counters, or uniform bento grids, identity emerges through spatial contrast, assertive display letterforms paired with readable editorial body typography, and bespoke artwork created strictly within a disciplined five-ink studio palette. Motion stays calm, continuous, and responsive only to deliberate interaction.",
+    "keyCharacteristics": [
+      "Dark charcoal ground alternating cleanly with warm archival paper reading rooms.",
+      "Bespoke paper-cut collage and architectural diagram artwork blended seamlessly onto dark and cream surfaces without browser chrome mockups.",
+      "Expansive 1360px and 1440px viewport framing with open hairline dividers replacing heavy bordered card walls.",
+      "Expressive display headlines backed by neutral sans-serif UI text and optical serif callouts strictly for essays and study theses.",
+      "Restrained botanical and warm paper accents applied functionally for orientation, active selection, and primary action."
+    ],
+    "rules": [
+      {
+        "name": "The Scarcity Rule",
+        "body": "Accent inks (Rose Pink, Garden Green, Butter Yellow) occupy under 12% of any viewport so neutral charcoal and cream surfaces establish authority first.",
+        "section": "colors"
+      },
+      {
+        "name": "The Honest Ground Rule",
+        "body": "Never place saturated gradient washes, neon glows, or decorative blur blobs behind headlines or cards; all sections sit on solid Midnight Charcoal, Warm Cream, or clean scrim-blended artwork.",
+        "section": "colors"
+      },
+      {
+        "name": "The Single-Emphasis Rule",
+        "body": "At most one typographic emphasis mode appears in any single headline; never combine gradients, dual accent colors, and italics inside the same display phrase.",
+        "section": "typography"
+      },
+      {
+        "name": "The Prose Rhythm Rule",
+        "body": "Extended multi-section essays and case theses shift to Newsreader serif on Warm Cream (#f8f6ef) for print-grade reading comfort.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Rest states never cast hard offset shadows; elevation is communicated exclusively through tonal surface layering, crisp hairlines, and hairline dividers.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep navigation items strictly single-line (<= 62px height, 76px header) with unified Start a project CTA wording across header and footer.",
+      "Do separate dense interactive UI from light Warm Cream editorial copy inside balanced 5/7 or 7/5 asymmetric splits.",
+      "Do ensure text overlapping blended illustrations always sits behind a smooth dark scrim or stops cleanly before light artwork edges.",
+      "Do render every artwork frame edge-to-edge without synthetic browser dot headers or fake SaaS invoice overlays."
+    ],
+    "donts": [
+      "Don't place uppercase monospace eyebrow badges above more than one-third of sections on any route.",
+      "Don't invent placeholder performance metrics (100/100, <600ms), client testimonials, or commercial portfolio claims.",
+      "Don't nest position: fixed full-screen mobile overlays inside ancestors using backdrop-filter.",
+      "Don't duplicate identical split-header alignments across consecutive vertical sections."
+    ]
+  }
+}

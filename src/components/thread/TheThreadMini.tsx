@@ -51,7 +51,7 @@ export default function TheThreadMini({
               {showLabels && (
                 <div className="mt-1.5 text-center">
                   <span
-                    className={`text-[10px] font-medium block whitespace-nowrap ${
+                    className={`text-xs font-medium block whitespace-nowrap ${
                       isActive ? "text-[#F8F6EF] font-semibold" : "text-[#9C9990]"
                     }`}
                   >

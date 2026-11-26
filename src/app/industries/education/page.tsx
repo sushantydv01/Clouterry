@@ -1,5 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import PageHeader from "@/components/layout/PageHeader";
 import Section from "@/components/layout/Section";
@@ -14,167 +15,153 @@ export const metadata: Metadata = {
     "Dedicated digital presence architecture for independent preparatory academies, K-12 schools, and educational institutions. Balancing admissions conversion with institutional dignity.",
 };
 
+const SIX_PILLARS = [
+  {
+    num: "01",
+    color: "#ED83A8",
+    tag: "Heritage & Identity",
+    title: "Institutional Brand Identity",
+    description:
+      "Preserving academic dignity, redrafting school crests, refining institutional colorways, and setting typographic hierarchies tailored to parents and faculty.",
+  },
+  {
+    num: "02",
+    color: "#A6D8A1",
+    tag: "Admissions Funnel",
+    title: "Admissions Conversion Gateway",
+    description:
+      "Frictionless 3-step open house booking forms, digital viewbooks, and direct inquiry syncing into Slate, Blackbaud, Ravenna, or HubSpot.",
+  },
+  {
+    num: "03",
+    color: "#F4CF55",
+    tag: "Community Hub",
+    title: "Parent & Community Utility",
+    description:
+      "Clean utility ribbon for current families: synced academic calendars, athletic notices, lunch menus, and single-sign-on LMS portal links.",
+  },
+  {
+    num: "04",
+    color: "#A6D8A1",
+    tag: "Documentary Media",
+    title: "Campus Photography & Video",
+    description:
+      "Unhurried documentary art direction capturing authentic seminars, arts studios, laboratory work, and athletics without generic stock smiles.",
+  },
+  {
+    num: "05",
+    color: "#ED83A8",
+    tag: "Inbound Discovery",
+    title: "Regional Search Visibility",
+    description:
+      "Structuring school programs cleanly in semantic HTML and Schema.org EducationalOrganization markup for regional family discovery.",
+  },
+  {
+    num: "06",
+    color: "#F4CF55",
+    tag: "Governance & Care",
+    title: "WCAG 2.1 AA & Annual SLA",
+    description:
+      "Verified keyboard/screen-reader accessibility audits, seasonal admissions campaign support, and rapid platform updates.",
+  },
+];
+
 export default function EducationPracticePage() {
   const education = INDUSTRIES.find((i) => i.slug === "education") || INDUSTRIES[0];
 
   return (
     <div className="flex flex-col min-h-screen bg-[#171717] text-[#F8F6EF]">
-      {/* 01. Hero */}
-      <Container>
+      {/* 01. Asymmetric Hero Header with Commissioned School Architecture Artwork */}
+      <Container size="wide">
         <PageHeader
-          badge="SPECIALIZED PRACTICE"
-          eyebrow="Education &amp; Schools"
-          title="Digital presence engineered for schools &amp; educational academies."
+          kicker="Primary Sector Practice · Education & Schools"
+          title="Digital presence engineered for schools and educational academies."
           description={education.description}
+          aside={
+            <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden border border-[#F8F6EF]/14 bg-[#121214]">
+              <Image
+                src="/images/studio/e02-school-architecture.webp"
+                alt="Dual-courtyard architectural plan separating admissions portal arch from organized community schedule tiles"
+                fill
+                priority
+                loading="eager"
+                sizes="(max-width: 1024px) 100vw, 44vw"
+                className="object-cover"
+              />
+            </div>
+          }
         >
-          <div className="flex flex-wrap items-center gap-3">
-            <Link
-              href="/connect"
-              className="gumroad-btn-pink text-xs sm:text-sm font-bold !py-2.5 !px-5"
-            >
+          <div className="flex flex-wrap items-center gap-3.5">
+            <Link href="/connect" className="firm-btn-primary text-sm">
               <span>Start a project</span>
-              <ArrowUpRight size={14} className="stroke-[2.5]" />
+              <ArrowUpRight size={15} className="stroke-[2]" />
             </Link>
-            <Link
-              href="/work/saint-jude-academy"
-              className="gumroad-btn-secondary text-xs sm:text-sm !py-2.5 !px-5"
-            >
-              Explore Saint Jude Academy Study
+            <Link href="/work/saint-jude-academy" className="firm-btn-secondary text-sm">
+              <span>Saint Jude Academy study</span>
             </Link>
           </div>
         </PageHeader>
       </Container>
 
-      {/* 02. Institutional Dilemma & Thesis */}
-      <Section background="charcoal" padding="tight">
-        <div className="max-w-4xl mx-auto text-left gumroad-card p-6 sm:p-10 border-[#F8F6EF]/10 space-y-4">
-          <span className="inline-block px-3 py-1 rounded-full bg-[#A6D8A1]/20 border border-[#A6D8A1]/30 text-xs font-semibold text-[#A6D8A1]">
-            The Institutional Dilemma
-          </span>
-          <h2 className="font-display text-2xl sm:text-4xl font-bold tracking-tight text-[#F8F6EF] leading-tight">
-            Why traditional school websites fail prospective families and current parents.
-          </h2>
-          <div className="space-y-3 text-sm sm:text-base text-[#F8F6EF]/70 leading-relaxed font-sans">
-            <p>
-              Schools have a unique digital tension: they must inspire prospective parents to apply, while simultaneously serving current families with daily schedules, athletic rainouts, and cafeteria menus.
-            </p>
-            <p>
-              When both audiences share an unorganized homepage, prospective parents bounce due to visual clutter, and current families get frustrated trying to find simple daily utilities. FIRM’s architecture decouples the admissions gateway from community utilities.
-            </p>
+      {/* 02. Warm Cream Interactive 4-Layer School Blueprint */}
+      <Section background="warm-paper" containerSize="wide" padding="spacious">
+        <SchoolBlueprint showPracticeLink={false} />
+      </Section>
+
+      {/* 03. Open 6-Pillar School Framework on Midnight Charcoal */}
+      <Section background="charcoal" containerSize="wide" padding="spacious">
+        <div className="space-y-12 text-left">
+          <div className="grid gap-6 lg:grid-cols-12 items-end pb-6 border-b border-[#F8F6EF]/12">
+            <div className="lg:col-span-7 space-y-2">
+              <h2 className="font-display text-3xl sm:text-5xl font-medium tracking-[-0.025em] text-[#F8F6EF]">
+                Six pillars separating admissions from internal campus notices
+              </h2>
+            </div>
+            <div className="lg:col-span-5">
+              <p className="text-base text-[#D5D2C7] leading-relaxed font-sans">
+                Prospective families require inspiring campus storytelling and clear tuition context; current parents need calendars and portals in one click without crowding the homepage.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {SIX_PILLARS.map((p) => (
+              <div key={p.num} className="border-t border-[#F8F6EF]/16 pt-6 space-y-3">
+                <div className="flex items-center justify-between text-xs font-mono">
+                  <span style={{ color: p.color }}>
+                    {p.num} · {p.tag}
+                  </span>
+                </div>
+                <h3 className="font-display text-xl sm:text-2xl font-medium text-[#F8F6EF]">
+                  {p.title}
+                </h3>
+                <p className="text-sm sm:text-base text-[#D5D2C7] leading-relaxed font-sans">
+                  {p.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </Section>
 
-      {/* 03. Signature Interactive Tool: The School Digital Blueprint */}
-      <Section background="charcoal" padding="normal">
-        <SchoolBlueprint />
-      </Section>
-
-      {/* 04. Six Dedicated Pillars for Schools */}
-      <Section background="charcoal" padding="normal">
-        <div className="max-w-5xl mx-auto text-left space-y-6">
-          <div>
-            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#F8F6EF]">
-              Six pillars of school digital presence
+      {/* 04. Closing CTA */}
+      <Section background="butter-yellow" containerSize="wide" padding="normal">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 text-left">
+          <div className="space-y-2 max-w-2xl">
+            <h2 className="font-display text-3xl sm:text-5xl font-medium tracking-[-0.025em] text-[#171717] leading-tight">
+              Schedule an institutional diagnostic for your school
             </h2>
+            <p className="text-base text-[#171717]/80 font-sans">
+              We partner with independent academies, classical schools, and educational institutions seeking modern clarity.
+            </p>
           </div>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {/* Pillar A */}
-            <div className="gumroad-card p-6 space-y-2">
-              <span className="text-xs text-[#ED83A8] font-semibold">01 &bull; Heritage &amp; Identity</span>
-              <h3 className="font-display text-lg font-bold text-[#F8F6EF]">
-                Institutional Brand Identity
-              </h3>
-              <p className="text-xs sm:text-sm text-[#F8F6EF]/70 leading-relaxed">
-                Preserving school heritage, redrafting crests, refining school colorways, and setting typographic hierarchies reflecting academic stature.
-              </p>
-            </div>
-
-            {/* Pillar B */}
-            <div className="gumroad-card p-6 space-y-2">
-              <span className="text-xs text-[#A6D8A1] font-semibold">02 &bull; Admissions Funnel</span>
-              <h3 className="font-display text-lg font-bold text-[#F8F6EF]">
-                Admissions Conversion Funnel
-              </h3>
-              <p className="text-xs sm:text-sm text-[#F8F6EF]/70 leading-relaxed">
-                Streamlined 3-step open house RSVP forms, digital interactive viewbooks, and automated sync with Slate, Blackbaud, or HubSpot CRMs.
-              </p>
-            </div>
-
-            {/* Pillar C */}
-            <div className="gumroad-card p-6 space-y-2">
-              <span className="text-xs text-[#F4CF55] font-semibold">03 &bull; Community Hub</span>
-              <h3 className="font-display text-lg font-bold text-[#F8F6EF]">
-                Parent &amp; Community Portals
-              </h3>
-              <p className="text-xs sm:text-sm text-[#F8F6EF]/70 leading-relaxed">
-                Dedicated top utility ribbon for current parents: iCal synced calendars, lunch menus, athletic schedules, and single-sign-on links.
-              </p>
-            </div>
-
-            {/* Pillar D */}
-            <div className="gumroad-card p-6 space-y-2">
-              <span className="text-xs text-[#A6D8A1] font-semibold">04 &bull; Documentary Media</span>
-              <h3 className="font-display text-lg font-bold text-[#F8F6EF]">
-                Campus Photography &amp; Video
-              </h3>
-              <p className="text-xs sm:text-sm text-[#F8F6EF]/70 leading-relaxed">
-                Documentary art direction capturing authentic classroom rigor, fine arts, laboratory research, and athletic discipline without staged smiles.
-              </p>
-            </div>
-
-            {/* Pillar E */}
-            <div className="gumroad-card p-6 space-y-2">
-              <span className="text-xs text-[#ED83A8] font-semibold">05 &bull; Inbound Discovery</span>
-              <h3 className="font-display text-lg font-bold text-[#F8F6EF]">
-                Local Search &amp; Discovery
-              </h3>
-              <p className="text-xs sm:text-sm text-[#F8F6EF]/70 leading-relaxed">
-                Dominating regional private school search terms, structured Google Maps knowledge panels, and verified review operations.
-              </p>
-            </div>
-
-            {/* Pillar F */}
-            <div className="gumroad-card p-6 space-y-2">
-              <span className="text-xs text-[#F8F6EF]/50 font-semibold">06 &bull; SLA Governance</span>
-              <h3 className="font-display text-lg font-bold text-[#F8F6EF]">
-                Annual SLA Stewardship
-              </h3>
-              <p className="text-xs sm:text-sm text-[#F8F6EF]/70 leading-relaxed">
-                Continuous security updates, ADA compliance audits, and priority editorial turnaround for school announcements.
-              </p>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* 05. Closing CTA */}
-      <Section background="charcoal" padding="spacious">
-        <div className="max-w-3xl mx-auto text-center space-y-6 gumroad-card p-8 sm:p-14 border-[#F8F6EF]/10">
-          <span className="inline-block px-3 py-1 rounded-full bg-[#F8F6EF]/10 text-[#F8F6EF] text-xs font-semibold">
-            INSTITUTIONAL ADMISSIONS INTAKE
-          </span>
-          <h2 className="font-display text-3xl sm:text-5xl font-bold text-[#F8F6EF] leading-tight">
-            Schedule an institutional diagnostic for your school
-          </h2>
-          <p className="text-sm sm:text-base text-[#F8F6EF]/70 max-w-lg mx-auto leading-relaxed">
-            We partner with independent academies, classical schools, and higher-education faculties on unified digital presence.
-          </p>
-
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3.5">
-            <Link
-              href="/connect"
-              className="gumroad-btn-pink text-xs sm:text-sm font-bold !py-3 !px-6 w-full sm:w-auto"
-            >
+          <div className="flex flex-col sm:flex-row gap-3.5 shrink-0">
+            <Link href="/connect" className="firm-btn-dark text-sm sm:text-base">
               <span>Start a project</span>
-              <ArrowUpRight size={14} className="stroke-[2.5]" />
+              <ArrowUpRight size={16} />
             </Link>
-            <Link
-              href="/industries"
-              className="gumroad-btn-secondary text-xs sm:text-sm !py-3 !px-6 w-full sm:w-auto"
-            >
-              View all industry practices
+            <Link href="/industries" className="firm-btn-outline-dark text-sm sm:text-base">
+              <span>All industry practices</span>
             </Link>
           </div>
         </div>

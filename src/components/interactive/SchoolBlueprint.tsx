@@ -3,156 +3,153 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { INDUSTRIES } from "@/data/industries";
-import { ArrowUpRight, Compass, Shield, Users, Award, Check } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 
-export default function SchoolBlueprint() {
+const LAYER_COLORS = ["#F4CF55", "#A6D8A1", "#ED83A8", "#171717"];
+
+/**
+ * Un-Nested 4-Layer School Digital Blueprint on Warm Cream (#F8F6EF).
+ * Restrains display weight to medium (500) and cleanly eliminates stacked bordered badges.
+ */
+export default function SchoolBlueprint({ showPracticeLink = true }: { showPracticeLink?: boolean }) {
   const educationSector = INDUSTRIES.find((i) => i.slug === "education");
   const layers = educationSector?.blueprintLayers || [];
 
   const [activeLayerIndex, setActiveLayerIndex] = useState(0);
   const activeLayer = layers[activeLayerIndex] || layers[0];
 
-  const getLayerIcon = (layerNum: string) => {
-    switch (layerNum) {
-      case "01":
-        return <Compass size={18} />;
-      case "02":
-        return <Award size={18} />;
-      case "03":
-        return <Users size={18} />;
-      case "04":
-        return <Shield size={18} />;
-      default:
-        return <Compass size={18} />;
-    }
-  };
-
-  const getLayerColor = (idx: number) => {
-    const palette = ["#F4CF55", "#A6D8A1", "#ED83A8", "#F8F6EF"];
-    return palette[idx % palette.length];
-  };
-
   return (
-    <div className="w-full p-6 sm:p-10 rounded-2xl bg-[#1E1E20] border border-[#F8F6EF]/12 text-left">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-6 border-b border-[#F8F6EF]/12 gap-4">
-        <div>
-          <span className="text-xs font-mono uppercase tracking-[0.14em] text-[#F4CF55] block mb-1.5">
-            Primary Specialization Architecture
-          </span>
-          <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#F8F6EF] tracking-tight">
+    <div className="w-full space-y-10 text-left">
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-[#171717]/15">
+        <div className="space-y-2 max-w-2xl">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.025em] text-[#171717] leading-[1.08]">
             The School Digital Blueprint
-          </h3>
-          <p className="mt-1 text-sm text-[#C4C1B8]">
-            Four integrated platform layers separating public admissions conversion from parent portal utilities.
+          </h2>
+          <p className="text-base text-[#3F3D38] leading-relaxed font-sans">
+            Four architectural layers that separate prospective parent admissions conversion from internal community utilities.
           </p>
         </div>
 
-        <Link
-          href="/industries/education"
-          className="firm-btn-primary text-xs sm:text-sm !py-2.5 !px-5 self-start sm:self-auto"
-        >
-          <span>Education Practice</span>
-          <ArrowUpRight size={14} className="stroke-[2.25]" />
-        </Link>
+        {showPracticeLink && (
+          <Link
+            href="/industries/education"
+            className="firm-btn-dark text-sm self-start lg:self-end"
+          >
+            <span>Explore Education Practice</span>
+            <ArrowUpRight size={15} />
+          </Link>
+        )}
       </div>
 
-      {/* Layer Navigation Tabs (Scrollable pills on mobile, 4-col grid on sm+) */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 pb-6 border-b border-[#F8F6EF]/12">
-        {layers.map((l, idx) => {
+      {/* Clean Single-Row Layer Switcher Tabs */}
+      <div
+        className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4"
+        role="tablist"
+        aria-label="School Blueprint Architecture Layers"
+      >
+        {layers.map((layer, idx) => {
           const isActive = idx === activeLayerIndex;
-          const color = getLayerColor(idx);
+          const accent = LAYER_COLORS[idx % LAYER_COLORS.length];
+
           return (
             <button
-              key={l.layer}
+              key={layer.layer}
               type="button"
+              role="tab"
+              aria-selected={isActive}
               onClick={() => setActiveLayerIndex(idx)}
-              className={`p-4 rounded-xl text-left transition-all cursor-pointer border ${
+              className={`p-4 sm:p-5 rounded-xl text-left transition-colors cursor-pointer border flex flex-col justify-between gap-2 ${
                 isActive
-                  ? "bg-[#262629] border-[#F8F6EF]/40"
-                  : "bg-[#171717] border-[#F8F6EF]/10 hover:border-[#F8F6EF]/24"
+                  ? "bg-[#171717] text-[#F8F6EF] border-[#171717]"
+                  : "bg-[#FFFFFF] text-[#171717] border-[#171717]/16 hover:border-[#171717]/40"
               }`}
             >
-              <div
-                className="h-8 w-8 rounded-lg flex items-center justify-center mb-3 text-[#171717]"
-                style={{ backgroundColor: color }}
-              >
-                {getLayerIcon(l.layer)}
+              <div className="flex items-center justify-between gap-2">
+                <span
+                  className={`font-mono text-xs ${
+                    isActive ? "text-[#F4CF55]" : "text-[#3F3D38]"
+                  }`}
+                >
+                  Layer {layer.layer}
+                </span>
+                <span
+                  className="h-2.5 w-2.5 rounded-full shrink-0"
+                  style={{
+                    backgroundColor: accent === "#171717" && isActive ? "#F8F6EF" : accent,
+                  }}
+                  aria-hidden="true"
+                />
               </div>
-              <span className="text-[11px] font-mono text-[#9C9990] block">
-                Layer {l.layer}
+              <span className="font-display text-base font-medium leading-snug">
+                {layer.name}
               </span>
-              <p className="font-display text-xs sm:text-sm font-bold text-[#F8F6EF] mt-0.5 leading-snug">
-                {l.name}
-              </p>
-              <p className="text-[11px] text-[#9C9990] mt-1 truncate">
-                {l.tagline}
-              </p>
             </button>
           );
         })}
       </div>
 
-      <div className="pt-8 grid gap-8 lg:grid-cols-12 lg:items-start">
-        <div className="lg:col-span-7 space-y-6">
-          <div>
-            <div className="flex flex-wrap items-center gap-2 mb-2 text-xs font-mono">
-              <span className="text-[#F4CF55]">Layer {activeLayer.layer} Specification</span>
-              <span className="text-[#F8F6EF]/25">&bull;</span>
-              <span className="text-[#9C9990]">{activeLayer.tagline}</span>
-            </div>
-            <h4 className="font-display text-2xl sm:text-3xl font-bold text-[#F8F6EF] tracking-tight">
+      {/* Unboxed 12-Col Layer Details */}
+      <div
+        key={activeLayer.layer}
+        className="animate-paper-enter grid gap-10 lg:gap-12 lg:grid-cols-12 items-start pt-2"
+      >
+        {/* Left: Purpose & Handover List (5 cols) */}
+        <div className="lg:col-span-5 space-y-6">
+          <div className="space-y-2.5">
+            <span className="font-sans text-xs font-semibold text-[#3F3D38] block">
+              Layer {activeLayer.layer} · {activeLayer.tagline}
+            </span>
+            <h3 className="font-display text-2xl sm:text-3xl font-medium text-[#171717] tracking-tight leading-snug">
               {activeLayer.name}
-            </h4>
-            <p className="mt-2 text-sm sm:text-base text-[#C4C1B8] leading-relaxed font-sans">
+            </h3>
+            <p className="text-base text-[#3F3D38] leading-relaxed font-sans">
               {activeLayer.purpose}
             </p>
           </div>
 
-          <div className="p-6 rounded-xl bg-[#171717] border border-[#F8F6EF]/10 space-y-3">
-            <span className="text-xs font-mono uppercase tracking-wider text-[#9C9990] block pb-2 border-b border-[#F8F6EF]/10">
-              Core architectural capabilities
+          <div className="space-y-2.5 pt-4 border-t border-[#171717]/15">
+            <span className="text-xs font-sans font-semibold text-[#171717] block">
+              Included layer modules
             </span>
-            <ul className="space-y-2.5 text-xs sm:text-sm text-[#C4C1B8]">
+            <p className="text-sm text-[#3F3D38] leading-relaxed font-sans">
+              {activeLayer.exampleDeliverables.join(" · ")}
+            </p>
+          </div>
+        </div>
+
+        {/* Right: Capabilities vs Problems Solved (7 cols, Open Typography) */}
+        <div className="lg:col-span-7 grid gap-8 sm:grid-cols-2 border-t border-[#171717]/15 pt-6 lg:border-t-0 lg:pt-0 lg:border-l lg:border-[#171717]/15 lg:pl-10">
+          <div className="space-y-4">
+            <h4 className="text-xs font-sans font-semibold text-[#171717] pb-2 border-b border-[#171717]/15">
+              Core capabilities
+            </h4>
+            <ul className="space-y-3 text-sm text-[#171717]">
               {activeLayer.features.map((feat) => (
-                <li key={feat} className="flex items-start gap-2.5">
-                  <Check size={14} className="text-[#A6D8A1] shrink-0 mt-0.5 stroke-[2.5]" />
-                  <span className="text-[#F8F6EF]">{feat}</span>
+                <li key={feat} className="flex items-start gap-2.5 leading-relaxed">
+                  <span className="mt-1 h-4 w-4 rounded-full bg-[#A6D8A1] text-[#171717] inline-flex items-center justify-center shrink-0">
+                    <Check size={11} className="stroke-[2.5]" />
+                  </span>
+                  <span>{feat}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="p-6 rounded-xl bg-[#171717] border border-[#F8F6EF]/10 space-y-2">
-            <span className="text-xs font-mono uppercase tracking-wider text-[#9C9990] block pb-2 border-b border-[#F8F6EF]/10">
-              Institutional problems addressed
-            </span>
-            <ul className="space-y-2 text-xs sm:text-sm text-[#C4C1B8]">
+          <div className="space-y-4">
+            <h4 className="text-xs font-sans font-semibold text-[#171717] pb-2 border-b border-[#171717]/15">
+              Institutional friction resolved
+            </h4>
+            <ul className="space-y-3 text-sm text-[#3F3D38]">
               {activeLayer.problemsAddressed.map((prob) => (
-                <li key={prob} className="flex items-start gap-2.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#ED83A8] shrink-0 mt-1.5" />
+                <li key={prob} className="flex items-start gap-2.5 leading-relaxed">
+                  <span
+                    className="mt-2 h-2 w-2 rounded-full bg-[#ED83A8] shrink-0"
+                    aria-hidden="true"
+                  />
                   <span>{prob}</span>
                 </li>
               ))}
             </ul>
-          </div>
-        </div>
-
-        <div className="lg:col-span-5 space-y-6">
-          <div className="p-6 rounded-xl bg-[#171717] border border-[#F8F6EF]/10 space-y-3">
-            <span className="text-xs font-mono uppercase tracking-wider text-[#9C9990] block pb-2 border-b border-[#F8F6EF]/10">
-              Tangible handover assets
-            </span>
-            <div className="space-y-2.5 text-xs sm:text-sm text-[#F8F6EF]">
-              {activeLayer.exampleDeliverables.map((deliv) => (
-                <div
-                  key={deliv}
-                  className="p-3 rounded-lg bg-[#1E1E20] border border-[#F8F6EF]/10 flex items-center gap-2.5"
-                >
-                  <span className="w-2 h-2 rounded-full bg-[#ED83A8] shrink-0" />
-                  <span>{deliv}</span>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </div>
